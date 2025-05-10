@@ -1,0 +1,111 @@
+.navbar-expand.top {
+    position: relative;
+    z-index: 5;
+    height: 50px;
+    padding: 0;
+    background-color: #21333e;
+}
+
+.navbar-expand.top,
+i {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #c0c3d0 !important;
+}
+
+.navbar-nav .nav-item {
+    margin: 0 5px;
+}
+
+.navbar-nav .nav-item a {
+    padding: 3px 0;
+}
+
+.navbar-nav .nav-item a:hover {
+    border: 0.5px solid rgb(110, 89, 89);
+    border-radius: 25px;
+    background: rgb(118, 83, 83);
+    color: #fff;
+}
+
+.navbar {
+    width: 100%;
+    background: transparent;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 999;
+}
+
+.navbar.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #21333e !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.fixed a {
+    color: #fff !important;
+}
+
+.carousel-image {
+    max-height: 90vh;
+    object-fit: cover;
+    /* opacity: 0.6; */
+}
+
+section {
+    position: relative;
+    width: 100%;
+    padding: 130px 0;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.full-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+
+.radial {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 10px;
+}
+.radial canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.radial span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    line-height: 70px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#contact .form-control
+ {
+    /* width: 100%; */
+    height: 50px;
+    background: no-repeat;
+    box-shadow: none;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.075);
+    border: none;
+    border-radius: 4px;
+    line-height: 1.2;
+ }
