@@ -6,8 +6,7 @@
     background-color: #21333e;
 }
 
-.navbar-expand.top,
-i {
+.navbar-expand.top, i {
     font-size: 0.9rem;
     font-weight: 400;
     color: #c0c3d0 !important;
@@ -21,7 +20,7 @@ i {
     padding: 3px 0;
 }
 
-.navbar-nav .nav-item a:hover {
+.navbarMain .navbar-nav .nav-item a:hover {
     border: 0.5px solid rgb(110, 89, 89);
     border-radius: 25px;
     background: rgb(118, 83, 83);
@@ -57,7 +56,7 @@ i {
 section {
     position: relative;
     width: 100%;
-    padding: 130px 0;
+    padding: 80px 0;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -73,18 +72,19 @@ section {
     object-position: top;
 }
 
-
 .radial {
     position: relative;
     width: 70px;
     height: 70px;
     margin: 0 auto 10px;
 }
+
 .radial canvas {
     position: absolute;
     top: 0;
     left: 0;
 }
+
 .radial span {
     position: absolute;
     width: 100%;
@@ -97,9 +97,7 @@ section {
     font-size: 16px;
 }
 
-#contact .form-control
- {
-    /* width: 100%; */
+#contact .form-control {
     height: 50px;
     background: no-repeat;
     box-shadow: none;
@@ -108,4 +106,14 @@ section {
     border: none;
     border-radius: 4px;
     line-height: 1.2;
- }
+}
+
+#contact .contacts i {
+    width: 45px;
+    height: 45px;
+    background: rgba(5, 130, 131, 0.15);
+    border-radius: 100px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 20px;
+}
