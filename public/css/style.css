@@ -72,6 +72,36 @@ section {
     object-position: top;
 }
 
+.pre-title {
+    display: inline-block;
+    font-size: 14px;
+    color: #555; /* example */
+    margin-bottom: 10px;
+}
+
+.pre-title {
+    background: yellow;
+}
+
+.pre-title {
+    position: relative;
+    z-index: 10;
+}
+
+.container > .row:first-child {
+    padding-top: 2rem;
+    overflow: visible;
+}
+
+.pre-title {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
 .radial {
     position: relative;
     width: 70px;
@@ -97,8 +127,16 @@ section {
     font-size: 16px;
 }
 
+/* section {
+    padding: 0 !important;
+    margin: 0 !important;
+} */
+
+#contact {
+    font-size: 1.2rem;
+}
+
 #contact .form-control {
-    height: 50px;
     background: no-repeat;
     box-shadow: none;
     padding: 1rem;
@@ -106,6 +144,18 @@ section {
     border: none;
     border-radius: 4px;
     line-height: 1.2;
+}
+
+#contact textarea {
+    height: 100px;
+}
+
+#contact .info {
+    list-style: none !important;
+}
+
+#contact .info .item {
+    margin: 10px 0;
 }
 
 #contact .contacts i {
@@ -116,4 +166,35 @@ section {
     text-align: center;
     line-height: 45px;
     font-size: 20px;
+}
+
+/* Slide from right modal setup */
+.modal.modal-right .modal-dialog {
+    position: fixed;
+    right: 0;
+    margin: 0;
+    height: 100%;
+    max-width: 100%;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.modal.modal-right.show .modal-dialog {
+    transform: translateX(0);
+}
+
+.modal-dialog.modal-slide-right {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    max-width: 500px;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+}
+
+.modal.fade.show .modal-dialog.modal-slide-right {
+    transform: translateX(0);
 }

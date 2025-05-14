@@ -35,7 +35,56 @@
         </div>
     </div>
 
-    <section id="funfacts" class="section-2 odd counter funfacts d-none">
+    <section id="projects">
+        <div class="container-fluid">
+            <h3 class="text-center">Event blog</h3>
+            <ul class="nav nav-pills mb-3 text-center" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="pill" data-bs-target="#all"
+                        type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="social-tab" data-bs-toggle="pill" data-bs-target="#social"
+                        type="button" role="tab" aria-controls="social" aria-selected="false">Social</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="event-tab" data-bs-toggle="pill" data-bs-target="#event"
+                        type="button" role="tab" aria-controls="event" aria-selected="false">Event</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
+                    <div class="row">
+                        @foreach ($images as $index => $img)
+                            <div class="col-md-4">
+                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40" alt="Image {{ $index + 1 }}">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="social" role="tabpanel" aria-labelledby="social-tab" tabindex="0">
+                    <div class="row">
+                        @foreach ($images as $index => $img)
+                            <div class="col-md-4">
+                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40" alt="Image {{ $index + 1 }}">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab" tabindex="0">
+                     <div class="row">
+                        @foreach ($images as $index => $img)
+                            <div class="col-md-4">
+                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40" alt="Image {{ $index + 1 }}">
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="funfacts" class="section-2 odd counter funfacts">
         <video class="full-image to-bottom grayscale" data-mask="70" playsinline="" autoplay="" muted=""
             loop="">
             <source src="{{ asset('images/videos/city2.mp4') }}" type="video/mp4">
@@ -78,23 +127,25 @@
 
     <section id="contact" class="section-7 form contact">
         <h2 class="text-center">Send a message</h2>
-        <div class="container-fluid p-4 m-2">
+        <div class="container-fluid p-4">
             <div class="row">
                 <div class="col-md-6">
                     <div>
                         <h3>Get in <span class="featured"><span>Touch</span></span></h3>
                         <p>We will respond to your message as soon as possible.</p>
                     </div>
-                    <form action="php/form.php" id="nexgen-simple-form" class="nexgen-simple-form">                               
+                    <form action="php/form.php" id="nexgen-simple-form" class="nexgen-simple-form">
                         <div class="row">
                             <div class="col-md-6 m-0 p-2">
                                 <input type="text" name="name" class="form-control field-name" placeholder="Name">
                             </div>
                             <div class="col-md-6 m-0 p-2">
-                                <input type="email" name="email" class="form-control field-email" placeholder="Email">
+                                <input type="email" name="email" class="form-control field-email"
+                                    placeholder="Email">
                             </div>
                             <div class="col-md-6 m-0 p-2">
-                                <input type="text" name="phone" class="form-control field-phone" placeholder="Phone">
+                                <input type="text" name="phone" class="form-control field-phone"
+                                    placeholder="Phone">
                             </div>
                             <div class="col-md-6 m-0 p-2">
                                 <i class="icon-arrow-down mr-3"></i>
@@ -112,8 +163,9 @@
                             <div class="col-md-12 m-0 p-2">
                                 <textarea name="message" class="form-control" placeholder="Message"></textarea>
                             </div>
-                            <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-primary" type="button">Send</button>
+                            <div class="d-grid gap-2 col-md-12 mx-auto px-2">
+                                <button class="btn btn-primary rounded-0" type="button"> <i
+                                        class="fas fa-envelope pe-2 fs-5"></i> Send email</button>
                             </div>
                         </div>
                     </form>
@@ -123,28 +175,23 @@
                         <h4>Example Inc.</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                         <p>Praesent diam lacus, dapibus sed imperdiet consectetur.</p>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-phone-alt mr-2"></i>
-                                    +880 1322846601
-                                </a>
+                        <ul class="info ps-0">
+                            <li class="item">
+                                <i class="fas fa-phone-alt me-3"></i>
+                                +880 1322846601
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    supremeglobalbd@gmail.com
-                                </a>
+                            <li class="item">
+                                <i class="fas fa-envelope me-3"></i>
+                                supremeglobalbd@gmail.com
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    Main Avenue, 987
-                                </a>
+                            <li class="item">
+                                <i class="fas fa-map-marker-alt me-3"></i>
+                                Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212,
+                                Bangladesh
                             </li>
-                            <li class="nav-item">
-                                <a href="#" class="mt-2 btn outline-button" data-toggle="modal"
-                                    data-target="#map">VIEW MAP</a>
+                            <li class="item">
+                                <a href="#" class="mt-2 btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#map">View map</a>
                             </li>
                         </ul>
                     </div>
@@ -152,4 +199,27 @@
             </div>
         </div>
     </section>
+
+    <!-- Right Slide Modal -->
+    <div class="modal fade" id="map" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-slide-right">
+            <div class="modal-content h-100">
+
+                <!-- Close Button (Top Right) -->
+                <div class="modal-header border-0 justify-content-end">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
+                        Back <i class="fas fa-arrow-right ms-1"></i>
+                    </button>
+                </div>
+
+                <!-- Fullscreen Map -->
+                <div class="modal-body p-0 h-100">
+                    <iframe src="https://www.google.com/maps?q=23.779395286290402,90.42576674365971&z=17&output=embed"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
