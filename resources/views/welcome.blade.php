@@ -44,20 +44,22 @@
                         type="button" role="tab" aria-controls="all" aria-selected="true">All</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="social-tab" data-bs-toggle="pill" data-bs-target="#social"
-                        type="button" role="tab" aria-controls="social" aria-selected="false">Social</button>
+                    <button class="nav-link" id="social-tab" data-bs-toggle="pill" data-bs-target="#social" type="button"
+                        role="tab" aria-controls="social" aria-selected="false">Social</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="event-tab" data-bs-toggle="pill" data-bs-target="#event"
-                        type="button" role="tab" aria-controls="event" aria-selected="false">Event</button>
+                    <button class="nav-link" id="event-tab" data-bs-toggle="pill" data-bs-target="#event" type="button"
+                        role="tab" aria-controls="event" aria-selected="false">Event</button>
                 </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
-                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab"
+                    tabindex="0">
                     <div class="row">
                         @foreach ($images as $index => $img)
                             <div class="col-md-4">
-                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40" alt="Image {{ $index + 1 }}">
+                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40"
+                                    alt="Image {{ $index + 1 }}">
                             </div>
                         @endforeach
                     </div>
@@ -66,16 +68,18 @@
                     <div class="row">
                         @foreach ($images as $index => $img)
                             <div class="col-md-4">
-                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40" alt="Image {{ $index + 1 }}">
+                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40"
+                                    alt="Image {{ $index + 1 }}">
                             </div>
                         @endforeach
                     </div>
                 </div>
                 <div class="tab-pane fade" id="event" role="tabpanel" aria-labelledby="event-tab" tabindex="0">
-                     <div class="row">
+                    <div class="row">
                         @foreach ($images as $index => $img)
                             <div class="col-md-4">
-                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40" alt="Image {{ $index + 1 }}">
+                                <img src="{{ asset('images/' . $img) }}" class="w-100 rounded" data-mask="40"
+                                    alt="Image {{ $index + 1 }}">
                             </div>
                         @endforeach
                     </div>
@@ -124,6 +128,113 @@
             </div>
         </div>
     </section>
+
+    <section class="py-5 bg-cyan" style="background: whitesmoke">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Mission</h2>
+                <p class="text-muted">What drives us every day.</p>
+            </div>
+            <div class="row align-items-center">
+
+                <!-- Left: Key Points -->
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="d-flex mb-4">
+                            <div class="me-3 text-primary fs-4">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-semibold mb-1">Customer-Centric Approach</h6>
+                                <p class="text-muted mb-0">We prioritize our clients’ needs and deliver tailored solutions
+                                    that drive success.</p>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4">
+                            <div class="me-3 text-success fs-4">
+                                <i class="bi bi-lightbulb-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-semibold mb-1">Innovation</h6>
+                                <p class="text-muted mb-0">We embrace creativity and technology to solve modern challenges.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4">
+                            <div class="me-3 text-warning fs-4">
+                                <i class="bi bi-shield-lock-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-semibold mb-1">Integrity</h6>
+                                <p class="text-muted mb-0">We operate with honesty, transparency, and ethical principles in
+                                    everything we do.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right: Image -->
+                <div class="col-md-6 text-center">
+                    <img src="{{ asset('images/img1.jpg') }}" class="img-fluid rounded shadow" alt="Our Mission Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" style="background: mintcream">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Vision</h2>
+                <p class="text-muted">Where we’re going and what we aim to become.</p>
+            </div>
+            <div class="row align-items-center">
+
+                <!-- Left: Image -->
+                <div class="col-md-6 text-center">
+                    <img src="{{ asset('images/img2.jpg') }}" class="img-fluid rounded shadow"
+                        alt="Our Vision Image">
+                </div>
+
+                <!-- Right: Key Points -->
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="d-flex mb-4">
+                            <div class="me-3 text-primary fs-4">
+                                <i class="bi bi-globe-americas"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-semibold mb-1">Global Impact</h6>
+                                <p class="text-muted mb-0">To become a global leader known for innovation, quality, and
+                                    trust.</p>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4">
+                            <div class="me-3 text-success fs-4">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-semibold mb-1">Excellence-Driven Growth</h6>
+                                <p class="text-muted mb-0">We envision a future driven by performance, creativity, and
+                                    excellence.</p>
+                            </div>
+                        </li>
+                        <li class="d-flex mb-4">
+                            <div class="me-3 text-warning fs-4">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-semibold mb-1">Empowered Teams</h6>
+                                <p class="text-muted mb-0">To build a culture where every team member is inspired to
+                                    innovate and lead.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 
     <section id="contact" class="section-7 form contact">
         <h2 class="text-center">Send a message</h2>

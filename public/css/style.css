@@ -102,6 +102,17 @@ section {
     font-weight: 500;
 }
 
+.pre-title {
+    display: inline-block;
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    opacity: 1 !important;
+    transform: none !important;
+    position: relative;
+    z-index: 2;
+}
+
 .radial {
     position: relative;
     width: 70px;
