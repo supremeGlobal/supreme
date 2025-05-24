@@ -22,12 +22,6 @@ i {
     padding: 3px 0;
 }
 
-.navbarMain .navbar-nav .nav-item a:hover {
-    border-radius: 25px;
-    background: rgb(118, 83, 83);
-    color: #fff;
-}
-
 .navbar {
     width: 100%;
     background: transparent;
@@ -46,6 +40,92 @@ i {
 
 .navbar.fixed a {
     color: #fff !important;
+}
+
+/* Navbar Main Styling - Modern Design 2 */
+.navbarMain {
+    background-color: #f8f9fc;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.navbarMain .navbar-nav .nav-link {
+    color: #2c3e50;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.navbarMain .navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #3498db;
+    left: 50%;
+    bottom: 0;
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+
+.navbarMain .navbar-nav .nav-link:hover::after {
+    width: 80%;
+}
+
+.navbarMain .navbar-nav .nav-link:hover,
+.navbarMain .navbar-nav .nav-link:focus,
+.navbarMain .navbar-nav .nav-item.active .nav-link {
+    background-color: lavender;
+    color: #3498db !important;
+}
+
+/* Mobile Nav Toggle */
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Dropdown Menu Styling */
+.navbarMain .dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.navbarMain .dropdown-menu .dropdown-item {
+    padding: 8px 20px;
+    transition: background 0.3s;
+    color: #2c3e50;
+}
+
+.navbarMain .dropdown-menu .dropdown-item:hover {
+    background-color: #2b80d6;
+    color: #3498db;
+}
+
+/* Fixed Nav Scroll Effect */
+.navbarMain.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbarMain.fixed .nav-link {
+    color: #2c3e50 !important;
 }
 
 /* slide section */
@@ -100,124 +180,213 @@ section {
 
 /* projects section */
 
-
-
-.full-image {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 100%;
+.card, #projects .card {
+    border-radius: 12px;
+    overflow: hidden;
     height: 100%;
+    border: 1px solid rgba(34, 34, 34, 0.08); /* Subtle border */
+    box-shadow: 0 4px 12px rgba(0, 0, 10, 0.05); /* Softer shadow */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+    border-color: rgba(52, 50, 50, 0.2); /* Slightly darker border on hover */
+}
+
+.card-img-top,
+#projects .card-img-top {
+    height: 220px;
     object-fit: cover;
-    object-position: top;
+    transition: transform 0.3s ease;
 }
 
-.pre-title {
-    display: inline-block;
-    font-size: 14px;
+.hover-zoom:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-body,
+#projects .card-body {
+    padding: 1rem 0.5rem;
+}
+
+.card-title,
+#projects .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.card-text,
+#projects .card-text {
+    font-size: 0.9rem;
     color: #555;
-    /* example */
-    margin-bottom: 10px;
 }
 
-.pre-title {
-    background: yellow;
+#projects .hover-zoom {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    will-change: transform;
 }
 
-.pre-title {
+#projects .hover-zoom:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    z-index: 2;
     position: relative;
+}
+
+/* Client section */
+.client img {
+    width: 150px;
+    /* Adjust as needed */
+    height: 80px !important;
+    /* Maintain aspect ratio if possible */
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+    border-radius: 10px;
+}
+
+.wrapper {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    width: max-content;
+    animation: scroll 25s linear infinite;
+    padding: 2rem 0;
+}
+
+#client .container-fluid {
+    overflow: hidden;
+    background: #f8f9fa;
+    padding: 2rem 0;
+}
+
+.client img {
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.client img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* footer section */
+.footerContact li {
+    padding: .5rem 0 !important;
+}
+
+.footerContact li i {
+    padding-right: 0.5rem !important;
+}
+
+#footer ul li {
+    list-style: none;
+}
+
+#footer ul {
+    padding-left: 0rem;
+}
+
+.footerSocial li {
+    display: inline;
+}
+
+.footerSocial .social-icon {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    margin: 0 6px;
+    border-radius: 50%;
+    background: #6d6868;
+    color: #f1f1f1;
+    text-align: center;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    overflow: visible;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footerSocial .social-icon i {
+    font-size: 22px;
+    transition: 0.3s ease;
+}
+
+.footerSocial .social-icon:hover {
+    color: #fff;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footerSocial .social-icon:hover i {
+    font-size: 25px;
+}
+
+.footerSocial .social-icon .label {
+    position: absolute;
+    bottom: 100%;
+    /* shows above the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background: #3b3838;
+    color: #fff;
+    padding: 0px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
     z-index: 10;
 }
 
-.container>.row:first-child {
-    padding-top: 2rem;
-    overflow: visible;
+.footerSocial .social-icon:hover .label {
+    opacity: 1;
+    bottom: 140%;
 }
 
-.pre-title {
-    display: block;
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: 500;
+/* Individual hover colors */
+.footerSocial .facebook:hover {
+    background-color: #3b5998;
 }
 
-.pre-title {
-    display: inline-block;
-    color: #000;
-    font-size: 18px;
-    font-weight: 600;
-    opacity: 1 !important;
-    transform: none !important;
-    position: relative;
-    z-index: 2;
+.footerSocial .instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
-.radial {
-    position: relative;
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 10px;
+.footerSocial .linkedin:hover {
+    background-color: #0077b5;
 }
 
-.radial canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
+.footerSocial .youtube:hover {
+    background-color: #ff0000;
 }
 
-.radial span {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    line-height: 70px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
+.footerSocial .twitter:hover {
+    background-color: #1da1f2;
 }
 
-#contact {
-    font-size: 1.2rem;
+.footerSocial .github:hover {
+    background-color: #333;
 }
 
-#contact .form-control {
-    background: no-repeat;
-    box-shadow: none;
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.075);
-    border: none;
-    border-radius: 4px;
-    line-height: 1.2;
-}
-
-#contact textarea {
-    height: 100px;
-}
-
-#contact .info {
-    list-style: none !important;
-    padding-left: unset;
-}
-
-.info .fas::before {
-    color: #1abc9c;
-}
-
-#contact .contacts i {
-    width: 45px;
-    height: 45px;
-    background: rgba(5, 130, 131, 0.15);
-    border-radius: 100px;
-    text-align: center;
-    line-height: 45px;
-    font-size: 20px;
-    margin-right: 1rem;
-}
-
-/* Slide from right modal setup */
+/* Company location map button [right modal] */
 .modal.modal-right .modal-dialog {
     position: fixed;
     right: 0;
