@@ -1,31 +1,26 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Frontend\FrontController;
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::middleware(['auth'])->group(function () {
-    Route::controller(AdminController::class)->group(function () {
-        Route::get('admin/dashboard', 'dashboard')->name('admin.dashboard');
+Route::middleware(['web'])->group(function () {
+	Route::controller(FrontController::class)->group(function () {
+        Route::get('/', 'home')->name('frontend.home');
     });
 });
 
-
+Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('dashboard', 'dashboard')->name('admin.dashboard');
+    });
+});
 
 /*
 | Frontend Routes (No Login Required)
-Route::middleware(['web'])->group(function () {
-    Route::get('/', [FrontendController::class, 'home'])->name('frontend.home');
-    Route::get('/about', [FrontendController::class, 'about'])->name('frontend.about');
-    // Add more public pages
-});
 
 | Admin Routes (Login Required)
 Route::middleware(['web', 'auth'])->group(function () {

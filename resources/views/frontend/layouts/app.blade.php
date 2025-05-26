@@ -13,18 +13,18 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <title>@yield('title', 'My Laravel App')</title>
-    @include('layouts.head')
+    @include('frontend.layouts.head')
     @yield('css')
 </head>
 
 <body>
-    @include('layouts.header')
+    @include('frontend.layouts.header')
    
     <main>
         @yield('content')
     </main>
 
-    @include('layouts.footer')
+    @include('frontend.layouts.footer')
     @yield('js')
 </body>
 
