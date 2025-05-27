@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Media;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,5 +19,11 @@ class AdminController extends Controller
 			],
 		];
 		return view('admin.dashboard', $data);
+	}
+
+	public function slider(){
+		$data['sliders'] = Media::where('type', 'slider')->get();
+
+		return view('admin.pages.slider', $data);
 	}
 }

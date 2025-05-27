@@ -16,6 +16,7 @@ Route::middleware(['web'])->group(function () {
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('admin.dashboard');
+        Route::get('slider', 'slider')->name('admin.slider');
     });
 });
 

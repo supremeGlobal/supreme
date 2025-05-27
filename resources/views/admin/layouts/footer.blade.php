@@ -3,6 +3,9 @@
 <script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('admin/js/adminlte.min.js') }}"></script>
 
+{{-- Datatable --}}
+<script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
+
 {{-- OverlayScrollbars Configure --}}
 <script>
     const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
@@ -26,4 +29,8 @@
             });
         }
     });
+</script>
+
+<script>
+	let table = new DataTable('.table');
 </script>

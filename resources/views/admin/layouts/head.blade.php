@@ -14,5 +14,8 @@
 <link rel="stylesheet" href="{{ asset('admin/css/overlayscrollbars.min.css') }}">
 <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
 
+{{-- datatable --}}
+<link rel="stylesheet" href="//cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css">
+
 {{-- Style.css --}}
 <link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">

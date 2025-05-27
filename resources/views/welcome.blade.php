@@ -59,36 +59,36 @@
                     $company = [
                         [
                             'name' => 'Dar Kafaa Al-Alai',
-                            'image' => 'logo1.png'
+                            'image' => 'logo1.png',
                         ],
                         [
                             'name' => 'A&A Auto Bricks Industries Ltd',
-                            'image' => 'logo2.png'
+                            'image' => 'logo2.png',
                         ],
                         [
                             'name' => 'Supreme Tea Limited',
-                            'image' => 'logo3.png'
+                            'image' => 'logo3.png',
                         ],
                         [
                             'name' => 'ALIF & Co.',
-                            'image' => 'logo4.png'
+                            'image' => 'logo4.png',
                         ],
                         [
                             'name' => 'Garden Inn Resort & Amusement',
-                            'image' => 'logo5.png'
+                            'image' => 'logo5.png',
                         ],
                         [
                             'name' => 'SUPREME AGRO',
-                            'image' => 'logo6.png'
+                            'image' => 'logo6.png',
                         ],
                         [
                             'name' => 'North Point Medical College & Hospital Ltd.',
-                            'image' => 'logo7.png'
+                            'image' => 'logo7.png',
                         ],
                         [
                             'name' => 'North Palace Hotel & Resort Ltd.',
-                            'image' => 'logo8.png'
-                        ]
+                            'image' => 'logo8.png',
+                        ],
                     ];
                 @endphp
 
@@ -96,7 +96,8 @@
                     <div class="col-md-3 py-2 d-flex">
                         <div class="card hover-zoom w-100">
                             <a href="#">
-                                <img src="{{ asset('images/logo/' .$img['image']) }}" class="card-img-top rounded" alt="Image {{ $img['name'] }}">
+                                <img src="{{ asset('images/logo/' . $img['image']) }}" class="card-img-top rounded"
+                                    alt="Image {{ $img['name'] }}">
                             </a>
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $img['name'] }}</h5>
@@ -345,6 +346,92 @@
     </section>
 
     <!-- Right Slide Modal -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-bg-info">
+                    <h1 class="modal-title fs-4" id="exampleModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="row mb-3">
+                            <label for="email"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email"
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password"
+                                class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                        {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary col-md-12">
+                                    {{ __('Login') }}
+                                </button>
+
+								<br>
+
+                                @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between d-none">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">
+                        <i class="fas fa-envelope pe-2"></i>
+                        Send email
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="emailUs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
