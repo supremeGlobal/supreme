@@ -16,4 +16,9 @@ class FrontController extends Controller
     {
         return view('welcome');
     }
+
+	public function tea()
+    {
+        return view('frontend/pages/tea');
+    }
 }

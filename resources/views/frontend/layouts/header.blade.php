@@ -34,10 +34,10 @@
             <!-- Left -->
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Home</a>
+                    <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Pages</a>
+                    <a class="nav-link" href="{{ url('/tea') }}">Supreme tea</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Blog</a>

@@ -9,4 +9,11 @@
             $(".navbarMain").removeClass("fixed");
         }
     });
+
+	// Slide speed
+    var myCarousel = document.querySelector('#mainCarousel');
+    var carousel = new bootstrap.Carousel(myCarousel, {
+        interval: 1500, // 2 seconds
+        ride: 'carousel'
+    });
 </script>
