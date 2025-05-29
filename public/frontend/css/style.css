@@ -240,38 +240,34 @@ section {
 }
 
 /* Client section */
+#client .container-fluid {
+	overflow: hidden;
+	background: #f8f9fa;
+	padding: 2rem 0;
+}
+
+#client .wrapper {
+	display: flex;
+	gap: 2rem;
+	align-items: center;
+	width: max-content;
+	animation: scroll 25s linear infinite;
+	padding: 2rem 0;
+}
+
+
+.client {
+	padding: 1.5rem!important;
+	border: 1px solid #dee2e6 !important;
+	border-radius: 0.25rem !important;
+}
+
 .client img {
     width: 150px;
-    /* Adjust as needed */
     height: 80px !important;
-    /* Maintain aspect ratio if possible */
     object-fit: contain;
-    filter: grayscale(100%);
     transition: filter 0.3s ease, transform 0.3s ease;
     border-radius: 10px;
-}
-
-.wrapper {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    width: max-content;
-    animation: scroll 25s linear infinite;
-    padding: 2rem 0;
-}
-
-#client .container-fluid {
-    overflow: hidden;
-    background: #f8f9fa;
-    padding: 2rem 0;
-}
-
-.client img {
-    max-width: 150px;
-    height: auto;
-    object-fit: contain;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .client img:hover {

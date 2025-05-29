@@ -293,7 +293,7 @@
             <p class="text-muted">Trusted by industry leaders</p>
             <div class="wrapper">
                 @foreach ($company as $img)
-                    <div class="client border rounded-1 p-4">
+                    <div class="client">
                         <img alt="Client Logo" src="{{ asset('images/logo/' . $img['image']) }}">
                     </div>
                 @endforeach
