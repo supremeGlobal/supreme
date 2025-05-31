@@ -36,10 +36,10 @@
     background: #21333e !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
+/* 
 .navbar.fixed a {
     color: #fff !important;
-}
+} */
 
 /* Navbar Main Styling - Modern Design 2 */
 .navbarMain {
@@ -60,7 +60,7 @@
     position: relative;
 }
 
-.navbarMain .m-auto .nav-link::after {
+/* .navbarMain .m-auto .nav-link::after {
     content: '';
     position: absolute;
     width: 0;
@@ -74,13 +74,13 @@
 
 .navbarMain .navbar-nav .nav-link:hover::after {
     width: 80%;
-}
+} */
 
-.navbarMain .m-auto .nav-link:hover,
-.navbarMain .m-auto .nav-link:focus,
-.navbarMain .m-auto .nav-item.active .nav-link {
-    background-color: lavender;
-    color: #3498db !important;
+.navbarMain .navbar-nav .nav-link:hover,
+.navbarMain .navbar-nav .nav-link:focus,
+.navbarMain .navbar-nav .nav-item.active .nav-link {
+    background-color: cyan;
+    color: #000 !important;
 }
 
 /* Mobile Nav Toggle */
@@ -109,7 +109,7 @@
 
 .navbarMain .dropdown-menu .dropdown-item:hover {
     background-color: #2b80d6;
-    color: #3498db;
+    color: #fff;
 }
 
 /* Fixed Nav Scroll Effect */
@@ -129,7 +129,7 @@
 
 /* slide section */
 .carousel-item {
-    height: 80vh;
+    height: 65vh;
     min-height: 500px;
     background: no-repeat center center scroll;
     background-size: cover;
@@ -171,7 +171,7 @@
 section {
     position: relative;
     width: 100%;
-    padding: 50px 0;
+    padding: 30px 0;
     background-size: cover;
     background-attachment: fixed;
     background-position: center;

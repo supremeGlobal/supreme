@@ -18,7 +18,7 @@
 </nav>
 
 <!-- Main Navigation -->
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm navbarMain py-0 my-0">
+<nav class="navbar navbar-expand-md navbar-light shadow-sm navbarMain py-0 my-0">
     <div class="container py-0 my-0">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img style="background: azure !important; border-radius: 50%"
@@ -36,12 +36,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/tea') }}">Supreme tea</a>
+				
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Sister Concerns
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{{url('/tea')}}">Supreme tea</a></li>
+                        <li><a class="dropdown-item" href="#">Auto Bricks</a></li>
+                        <li><a class="dropdown-item" href="#">Dar Kafaa Al-Alai</a></li>
+                        <li><a class="dropdown-item" href="#">ALIF & Co.</a></li>
+                        <li><a class="dropdown-item" href="#">Garden Inn Resort & Amusement</a></li>
+                        <li><a class="dropdown-item" href="#">SUPREME AGRO</a></li>
+                        <li><a class="dropdown-item" href="#">North Point Medical College & Hospital Ltd.</a></li>
+                        <li><a class="dropdown-item" href="#">North Palace Hotel & Resort Ltd.</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">Blog</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="">Contact us</a>
                 </li>
@@ -53,8 +65,8 @@
                     @if (Route::has('login'))
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="modal" data-bs-target="#login" href="#">
-								{{ __('Login') }}
-							</a>
+                                {{ __('Login') }}
+                            </a>
                         </li>
                     @endif
                     @if (Route::has('register'))
@@ -76,9 +88,9 @@
                                 {{ __('Logout') }}
                             </a>
 
-							<a class="dropdown-item text-dark" href="{{ url('/admin/dashboard') }}">
-								Admin dashboard
-							</a>
+                            <a class="dropdown-item text-dark" href="{{ url('/admin/dashboard') }}">
+                                Admin dashboard
+                            </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

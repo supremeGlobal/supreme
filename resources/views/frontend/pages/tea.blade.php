@@ -7,12 +7,12 @@
                 $images = [
                     'pho1.jpg',
                     'pho2.jpg',
-                    'pho3.jpg',
-                    'pho4.jpg',
-                    'pho5.jpg',
-                    'pho6.jpg',
-                    'pho7.jpg',
-                    'pho8.jpg',
+                    // 'pho3.jpg',
+                    // 'pho4.jpg',
+                    // 'pho5.jpg',
+                    // 'pho6.jpg',
+                    // 'pho7.jpg',
+                    // 'pho8.jpg',
                 ];
             @endphp
 
@@ -51,51 +51,51 @@
         </div>
     </section>
 
-	@php
-		$company = [
-			[
-				'name' => 'Dar Kafaa Al-Alai',
-				'image' => 'logo1.png',
-			],
-			[
-				'name' => 'A&A Auto Bricks Industries Ltd',
-				'image' => 'logo2.png',
-			],
-			[
-				'name' => 'Supreme Tea Limited',
-				'image' => 'logo3.png',
-			],
-			[
-				'name' => 'ALIF & Co.',
-				'image' => 'logo4.png',
-			],
-			[
-				'name' => 'Garden Inn Resort & Amusement',
-				'image' => 'logo5.png',
-			],
-			[
-				'name' => 'SUPREME AGRO',
-				'image' => 'logo6.png',
-			],
-			[
-				'name' => 'North Point Medical College & Hospital Ltd.',
-				'image' => 'logo7.png',
-			],
-			[
-				'name' => 'North Palace Hotel & Resort Ltd.',
-				'image' => 'logo8.png',
-			],
-		];
-	@endphp
+    @php
+        $company = [
+            [
+                'name' => 'Dar Kafaa Al-Alai',
+                'image' => 'logo1.png',
+            ],
+            [
+                'name' => 'A&A Auto Bricks Industries Ltd',
+                'image' => 'logo2.png',
+            ],
+            [
+                'name' => 'Supreme Tea Limited',
+                'image' => 'logo3.png',
+            ],
+            [
+                'name' => 'ALIF & Co.',
+                'image' => 'logo4.png',
+            ],
+            [
+                'name' => 'Garden Inn Resort & Amusement',
+                'image' => 'logo5.png',
+            ],
+            [
+                'name' => 'SUPREME AGRO',
+                'image' => 'logo6.png',
+            ],
+            [
+                'name' => 'North Point Medical College & Hospital Ltd.',
+                'image' => 'logo7.png',
+            ],
+            [
+                'name' => 'North Palace Hotel & Resort Ltd.',
+                'image' => 'logo8.png',
+            ],
+        ];
+    @endphp
 
-    <section id="mission" style="background: #dfe6e9">
+    <section id="mission" tyle="background: #dfe6e9">
         <div class="container-fluid">
             <div class="text-center mb-5">
-                <h2 class="fw-bold">About are tea</h2>
+                <h2 class="fw-bold">About our tea</h2>
                 <p class="text-muted">What drives us every day.</p>
             </div>
-            <div class="row align-items-center px-5">
-                <div class="col-md-7">
+            <div class="row align-items-center border">
+                <div class="col-md-7 p-4">
                     <ul class="list-unstyled">
                         <li class="d-flex mb-4">
                             <div class="me-3 text-primary fs-4">
@@ -132,60 +132,86 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-md-5 text-center">
-                    <img src="{{ asset('images/tea/1.png') }}" style="width: 500px; height: 500px; object-fit: cover; border-radius: 50% !important;" class="img-fluid rounded shadow" alt="Our Mission Image">
+                <div class="col-md-5 px-4 text-center">
+                    <img src="{{ asset('images/tea/1.png') }}" class="img-fluid shadow rounded-circle" 
+                        alt="Our Mission Image" style="height: 400px;">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="vision" style="background: #7ed6df">
-        <div class="container-fluid">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Our Vision</h2>
-                <p class="text-muted">Where we're going and what we aim to become.</p>
+    <div class="container-fluid px-4 py-5">
+        @foreach ($images as $index => $product)
+            <div class="row mb-5 p-4 shadow rounded-4 {{ $index % 2 != 0 ? 'bg-light' : '' }}">
+                @if ($index % 2 == 0)
+                    <!-- Even: Image Left -->
+                    <div class="col-12 col-lg-4 mb-4 mb-lg-0 d-flex justify-content-center">
+                        <div class="ratio ratio-1x1 rounded-circle overflow-hidden" style="max-width: 300px;">
+                            <img src="{{ asset('images/tea/1.png') }}" alt="This is name"
+                                class="w-100 h-100 object-fit-cover rounded-circle shadow" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8 d-flex flex-column justify-content-start">
+                        <h3 class="fw-bold">Green tea</h3>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus voluptate cumque voluptates, totam veritatis doloremque nostrum amet dolorum maxime maiores sit, dolorem provident alias adipisci dignissimos animi laudantium similique?</p>
+                        {{-- <p class="h5 text-primary mt-2">৳ {{ number_format(120.50, 2) }}</p> --}}
+                        {{-- <a href="#" class="btn btn-primary mt-3 align-self-start">Buy Now</a> --}}
+                    </div>
+                @else
+                    <!-- Odd: Image Right -->
+                    <div class="col-12 col-lg-4 order-lg-2 mb-4 mb-lg-0 d-flex justify-content-center">
+                        <div class="ratio ratio-1x1 rounded-circle overflow-hidden" style="max-width: 300px;">
+                            <img src="{{ asset('images/tea/1.png') }}" alt="This is name"
+                                class="w-100 h-100 object-fit-cover rounded-circle shadow" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8 order-lg-1 d-flex flex-column justify-content-start">
+                        <h3 class="fw-bold">Black tea</h3>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus voluptate cumque voluptates, totam veritatis doloremque nostrum amet dolorum maxime maiores sit, dolorem provident alias adipisci dignissimos animi laudantium similique?</p>
+                        {{-- <p class="h5 text-primary mt-2">৳ {{ number_format(120.50, 2) }}</p> --}}
+                        {{-- <a href="#" class="btn btn-primary mt-3 align-self-start">Buy Now</a> --}}
+                    </div>
+                @endif
             </div>
-            <div class="row align-items-center px-5">
-                <div class="col-md-5 text-center">
-                    <img src="{{ asset('images/vision.jpg') }}" class="img-fluid rounded shadow" alt="Our Vision Image">
-                </div>
-                <div class="col-md-7">
-                    <ul class="list-unstyled">
-                        <li class="d-flex mb-4">
-                            <div class="me-3 text-primary fs-4">
-                                <i class="bi bi-globe-americas"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-semibold mb-1">Global Impact</h6>
-                                <p class="text-muted mb-0">To become a global leader known for innovation, quality, and
-                                    trust.</p>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4">
-                            <div class="me-3 text-success fs-4">
-                                <i class="bi bi-speedometer2"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-semibold mb-1">Excellence-Driven Growth</h6>
-                                <p class="text-muted mb-0">We envision a future driven by performance, creativity, and
-                                    excellence.</p>
-                            </div>
-                        </li>
-                        <li class="d-flex mb-4">
-                            <div class="me-3 text-warning fs-4">
-                                <i class="bi bi-people-fill"></i>
-                            </div>
-                            <div>
-                                <h6 class="fw-semibold mb-1">Empowered Teams</h6>
-                                <p class="text-muted mb-0">To build a culture where every team member is inspired to
-                                    innovate and lead.</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+        @endforeach
+    </div>
+
+	<div class="container-fluid px-4">
+        {{-- <h2 class="text-center mb-5 fw-bold">Our Products</h2> --}}
+        @foreach ($images as $index => $product)
+            <div class="row mb-5 p-4 shadow rounded-4 {{ $index % 2 != 0 ? 'bg-light' : '' }}">
+                @if ($index % 2 == 0)
+                    <!-- Even: Image Left -->
+                    <div class="col-12 col-lg-4 mb-4 mb-lg-0 d-flex justify-content-center">
+                        <div class="rounded overflow-hidden" style="width: 100%; height: 300px;">
+                            <img src="{{ asset('images/tea/1.png') }}" alt="This is name"
+                                class="w-100 h-100 object-fit-cover rounded shadow" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8 d-flex flex-column justify-content-start">
+                        <h3 class="fw-bold">White tea</h3>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus voluptate cumque voluptates, totam veritatis doloremque nostrum amet dolorum maxime maiores sit, dolorem provident alias adipisci dignissimos animi laudantium similique?</p>
+                        {{-- <p class="h5 text-primary mt-2">৳ {{ number_format(120.50, 2) }}</p> --}}
+                        {{-- <a href="#" class="btn btn-primary mt-3 align-self-start">Buy Now</a> --}}
+                    </div>
+                @else
+                    <!-- Odd: Image Right -->
+                    <div class="col-12 col-lg-4 order-lg-2 mb-4 mb-lg-0 d-flex justify-content-center">
+                        <div class="rounded overflow-hidden" style="width: 100%; height: 300px;">
+                            <img src="{{ asset('images/tea/1.png') }}" alt="This is name"
+                                class="w-100 h-100 object-fit-cover rounded shadow" />
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8 order-lg-1 d-flex flex-column justify-content-start">
+                        <h3 class="fw-bold">Green tea</h3>
+                        <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus voluptate cumque voluptates, totam veritatis doloremque nostrum amet dolorum maxime maiores sit, dolorem provident alias adipisci dignissimos animi laudantium similique?</p>
+                        {{-- <p class="h5 text-primary mt-2">৳ {{ number_format(120.50, 2) }}</p> --}}
+                        {{-- <a href="#" class="btn btn-primary mt-3 align-self-start">Buy Now</a> --}}
+                    </div>
+                @endif
             </div>
-        </div>
-    </section>
+        @endforeach
+    </div>
 
     <section id="client">
         <div class="container-fluid text-center mb-5">
@@ -197,128 +223,6 @@
                         <img alt="Client Logo" src="{{ asset('images/logo/' . $img['image']) }}">
                     </div>
                 @endforeach
-            </div>
-        </div>
-    </section>
-
-    <section id="footer" style="color: #fff; background: #192733">
-        <div class="container-fluid px-5">
-            <div class="row justify-content-between">
-                <div class="col-md-4">
-                    <h4>Company Logo</h4>
-                    <ul>
-                        <li>
-                            <img style="background: azure !important; border-radius: 50%"
-                                src="https://supremeglobal.co/wp-content/uploads/2024/01/logo-5.png" width="100"
-                                height="100" loading="lazy">
-                        </li>
-                        <li class="mt-2">
-                            Supreme Global
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="col-md-4">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li>About</li>
-                        <li>Work</li>
-                        <li>Service</li>
-                    </ul>
-                </div>
-                <div class="col-md-4 footerContact">
-                    <h4>Contract</h4>
-                    <ul>
-                        <li class="item">
-                            <i class="fas fa-phone-alt"></i>
-                            +880 1322846601
-                        </li>
-                        <li class="item">
-                            <i class="fas fa-envelope"></i>
-                            supremeglobalbd@gmail.com
-                        </li>
-                        <li class="item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <Strong>Head office: </Strong>
-                            Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212,
-                            Bangladesh
-                        </li>
-                        <li class="item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <Strong>Saudi office: </Strong>
-                            Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212,
-                            Bangladesh
-                        </li>
-                        <li class="item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <Strong>Factory location: </Strong>
-                            Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212,
-                            Bangladesh
-                        </li>
-                        <li class="item">
-                            <button class="btn btn-success btn-auto rounded-0" data-bs-toggle="modal"
-                                data-bs-target="#map">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Head office location
-                            </button>
-
-                            <button type="button" class="btn btn-primary btn-auto ms-2 rounded-0" data-bs-toggle="modal"
-                                data-bs-target="#emailUs">
-                                <i class="fas fa-envelope"></i>
-                                Send email us
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <hr class="my-4">
-
-            <div class="row justify-content-between">
-                <div class="col-md-6">
-                    <p>© Copyright <?= date('Y') ?>. Supreme Global.</p>
-                </div>
-
-                <div class="col-md-6">
-                    <ul class="text-center footerSocial list-inline mb-0">
-                        <li class="list-inline-item">
-                            <a href="#" class="social-icon facebook">
-                                <i class="fa-brands fa-facebook-f"></i>
-                                <span class="label">Facebook</span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="social-icon instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                                <span class="label">Instagram</span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="social-icon linkedin">
-                                <i class="fa-brands fa-linkedin-in"></i>
-                                <span class="label">LinkedIn</span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="social-icon youtube">
-                                <i class="fa-brands fa-youtube"></i>
-                                <span class="label">YouTube</span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="social-icon twitter">
-                                <i class="fa-brands fa-twitter"></i>
-                                <span class="label">Twitter</span>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="social-icon github">
-                                <i class="fa-brands fa-github"></i>
-                                <span class="label">GitHub</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
@@ -336,43 +240,48 @@
                         @csrf
                         <div class="mb-2">
                             <label for="email" class="form-label">{{ __('Email Address') }}</label>
-							<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-							@error('email')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
+                            <input id="email" type="email"
+                                class="form-control @error('email') is-invalid @enderror" name="email"
+                                value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label">{{ __('Password') }}</label>
-							<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <input id="password" type="password"
+                                class="form-control @error('password') is-invalid @enderror" name="password" required
+                                autocomplete="current-password">
 
-							@error('password')
-								<span class="invalid-feedback" role="alert">
-									<strong>{{ $message }}</strong>
-								</span>
-							@enderror
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="mb-3">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-								<label class="form-check-label" for="remember">
-									{{ __('Remember Me') }}
-								</label>
-							</div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                    {{ old('remember') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Remember Me') }}
+                                </label>
+                            </div>
                         </div>
 
                         <div class="my-1 d-grid col-md-12">
-							<button type="submit" class="btn btn-primary">
-								{{ __('Login') }}
-							</button>
-							@if (Route::has('password.request'))
-								<a class="btn btn-link d-none" href="{{ route('password.request') }}">
-									{{ __('Forgot Your Password?') }}
-								</a>
-							@endif
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Login') }}
+                            </button>
+                            @if (Route::has('password.request'))
+                                <a class="btn btn-link d-none" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
                         </div>
                     </form>
                 </div>
