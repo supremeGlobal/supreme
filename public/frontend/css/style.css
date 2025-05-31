@@ -286,6 +286,11 @@ section {
 }
 
 /* footer section */
+.footerContact a {
+	text-decoration: unset;
+    color: unset;
+}
+
 .footerContact li {
     padding: .5rem 0 !important;
 }
