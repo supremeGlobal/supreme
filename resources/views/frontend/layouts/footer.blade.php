@@ -47,14 +47,12 @@
                     <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Saudi office: </Strong>
-                        Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212,
-                        Bangladesh
+                       	Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545
                     </li>
                     <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Factory location: </Strong>
-                        Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212,
-                        Bangladesh
+                        A&A Auto Bricks Industries Ltd Kamatpara, Sakoa, Boda, Panchagarh, Bangladesh
                     </li>
                 </ul>
             </div>

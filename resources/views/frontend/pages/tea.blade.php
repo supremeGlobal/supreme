@@ -214,7 +214,7 @@
     </div>
 
     <section id="client">
-        <div class="container-fluid text-center mb-5">
+        <div class="container-fluid text-center">
             <h2 class="fw-bold">Our Clients</h2>
             <p class="text-muted">Trusted by industry leaders</p>
             <div class="wrapper">
@@ -224,6 +224,58 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </section>
+
+	<style>
+		#contact .rounded-3{
+			border: 1px solid #dee2e6;
+			border-radius: 0.5rem;
+			padding: 1rem !important;
+			background: #f8f9fa;
+			height: 120px;
+		}
+	</style>
+
+	<section id="contact">
+        <div class="container">
+            <h2 class="fw-bold text-center">Contact supreme tea</h2>
+            <p class="text-muted text-center">Contact our customer care</p>
+			<div class="row justify-content-around">
+				<div class="col-md-4">
+					<div class="rounded-3 p-3">
+						<h5 class="pb-2">
+							<i class="fas fa-map-marker-alt fs-5 pe-2"></i>
+							Address
+						</h5>
+						<p>Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212, Bangladesh</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="rounded-3 p-3">
+						<h5 class="pb-2">
+							<i class="fas fa-phone-alt fs-5 pe-2"></i>
+							Sales Team
+						</h5>
+						<p>
+							<strong>Land line: </strong> +880 123456789
+							<br>
+							<strong class="pt-4">Whatsapp: </strong> +880 123456789
+						</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="rounded-3 p-3">
+						<h5 class="pb-2">
+							<i class="fas fa-envelope fs-5 pe-2"></i>
+							Email
+						</h5>
+						<p>
+							sales@supremetea@gmail.com
+						</p>
+					</div>
+				</div>
+			</div>           
         </div>
     </section>
 
