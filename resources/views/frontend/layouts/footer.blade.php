@@ -5,19 +5,21 @@
                 <h4>Contract</h4>
                 <ul>
                     <li class="item">
-                        <i class="fas fa-phone-alt"></i>
-                        +880 1322846601
+						<a href="tel:+8801322846601">
+							<i class="fas fa-phone-alt"></i>
+							 +880 1322846601
+						</a>
                     </li>
                     <li class="item">
 						<a href="mailto:info@supremeglobalbd@gmail.com">
 							<i class="fas fa-envelope"></i>
-							info@supremeglobalbd@gmail.com
+							info@supremeglobalbd.com
 						</a>
                     </li>
                     <li class="item">
 						<a href="mailto:sales@supremeglobalbd@gmail.com">
 							<i class="fas fa-envelope"></i>
-							sales@supremeglobalbd@gmail.com
+							sales@supremeglobalbd.com
 						</a>
                     </li>
                     <li class="item">

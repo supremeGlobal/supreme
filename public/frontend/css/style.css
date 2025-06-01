@@ -255,7 +255,6 @@ section {
 	padding: 2rem 0;
 }
 
-
 .client {
 	padding: 1.5rem!important;
 	border: 1px solid #dee2e6 !important;
@@ -287,8 +286,8 @@ section {
 
 /* footer section */
 .footerContact a {
-	text-decoration: unset;
-    color: unset;
+	text-decoration: unset !important;
+    color: unset !important;
 }
 
 .footerContact li {
