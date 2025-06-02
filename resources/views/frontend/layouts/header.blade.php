@@ -43,8 +43,8 @@
                         Sister Concerns
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{{url('/tea')}}">Supreme tea</a></li>
-                        <li><a class="dropdown-item" href="#">Auto Bricks</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/tea') }}">Supreme tea</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/auto-bricks')}}">Auto Bricks</a></li>
                         <li><a class="dropdown-item" href="#">Dar Kafaa Al-Alai</a></li>
                         <li><a class="dropdown-item" href="#">ALIF & Co.</a></li>
                         <li><a class="dropdown-item" href="#">Garden Inn Resort & Amusement</a></li>

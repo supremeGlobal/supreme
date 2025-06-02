@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <hr class="my-4">
+        <hr>
 
         <div class="row justify-content-between">
             <div class="col-md-6">

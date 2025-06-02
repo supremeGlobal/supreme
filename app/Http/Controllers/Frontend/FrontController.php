@@ -19,6 +19,11 @@ class FrontController extends Controller
 
 	public function tea()
     {
-        return view('frontend/pages/tea');
+        return view('frontend.pages.tea');
     }
+
+	public function autoBricks()
+    {
+        return view('frontend.pages.auto-bricks');
+    }	
 }
