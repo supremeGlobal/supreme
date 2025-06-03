@@ -12,6 +12,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/', 'home')->name('frontend.home');
         Route::get('/tea', 'tea')->name('frontend.tea');
         Route::get('/auto-bricks', 'autoBricks')->name('frontend.auto-bricks');
+        Route::get('/job', 'job');
     });
 });
 

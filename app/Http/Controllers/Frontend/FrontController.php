@@ -26,4 +26,9 @@ class FrontController extends Controller
     {
         return view('frontend.pages.auto-bricks');
     }	
+
+	public function job()
+    {
+        return view('frontend.pages.job');
+    }
 }
