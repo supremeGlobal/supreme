@@ -42,6 +42,11 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Sister Concerns
                     </a>
+					<style>
+						.dropdown-item{
+							font-size: 17px !important;
+						}
+					</style>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="{{ url('/tea') }}">Supreme tea</a></li>
                         <li><a class="dropdown-item" href="{{ url('/auto-bricks')}}">Auto Bricks</a></li>

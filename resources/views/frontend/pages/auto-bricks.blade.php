@@ -109,36 +109,41 @@
         ];
     @endphp
 
-    <section id="mission" style="background: #dfe6e9">
-        <div class="container">
+    <section tyle="background: #dfe6e9">
+        <div class="container-fluid px-5" style="padding: 0px 150px !important">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">About our auto bricks</h2>
                 <p class="text-muted">What drives us every day.</p>
             </div>
+			<style>
+				.flex-column{
+					background: ivory !important;
+				}
+			</style>
             @foreach ($bricks as $index => $product)
-                <div class="row mb-5 shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-light' : '' }}">
+                <div class="row mb-5 border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }}">
                     @if ($index % 2 == 0)
                         <!-- Even: Image Left -->
                         <div class="col-12 col-lg-4 mb-4 mb-lg-0 p-0">
                             <img src="{{ asset('images/bricks/' . $product['image']) }}" alt="This is name"
                                 class="w-100 h-100 object-fit-cover rounded-start"
-                                style="height: 100%; max-height: 300px;" />
+                                style="height: 100%; max-height: 350px;" />
                         </div>
                         <div class="col-12 col-lg-8 d-flex flex-column justify-content-start p-4">
                             <h3 class="fw-bold">{{$product['name']}}</h3>
-                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus
-                                voluptate cumque voluptates...</p>
+                            <p class="text-muted fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus
+                                voluptate cumque voluptates... Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maxime quis dignissimos. Quas modi, eos recusandae nisi doloremque id quibusdam repellat aliquid laudantium placeat. Repellat autem distinctio nostrum deserunt explicabo?</p>
                         </div>
                     @else
                         <!-- Odd: Image Right -->
                         <div class="col-12 col-lg-4 order-lg-2 mb-4 mb-lg-0 p-0">
                             <img src="{{ asset('images/bricks/' . $product['image']) }}" alt="This is name"
-                                class="w-100 h-100 object-fit-cover rounded-end" style="height: 100%; max-height: 300px;" />
+                                class="w-100 h-100 object-fit-cover rounded-end" style="height: 100%; max-height: 350px;" />
                         </div>
                         <div class="col-12 col-lg-8 order-lg-1 d-flex flex-column justify-content-start p-4">
                             <h3 class="fw-bold">{{$product['name']}}</h3>
-                            <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus
-                                voluptate cumque voluptates...</p>
+                            <p class="text-muted fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus
+                                voluptate cumque voluptates... Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem maxime quis dignissimos. Quas modi, eos recusandae nisi doloremque id quibusdam repellat aliquid laudantium placeat. Repellat autem distinctio nostrum deserunt explicabo?</p>
                         </div>
                     @endif
                 </div>
@@ -147,7 +152,7 @@
     </section>
 
     <section id="client">
-        <div class="container-fluid text-center">
+        <div class="container-fluid text-center px-5">
             <h2 class="fw-bold">Our Clients</h2>
             <p class="text-muted">Trusted by industry leaders</p>
             <div class="wrapper">
@@ -205,146 +210,5 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Right Slide Modal -->
-    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header py-2">
-                    <h4 class="modal-title" id="exampleModalLabel">Login</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-                        <div class="mb-2">
-                            <label for="email" class="form-label">{{ __('Email Address') }}</label>
-                            <input id="email" type="email"
-                                class="form-control @error('email') is-invalid @enderror" name="email"
-                                value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="password" class="form-label">{{ __('Password') }}</label>
-                            <input id="password" type="password"
-                                class="form-control @error('password') is-invalid @enderror" name="password" required
-                                autocomplete="current-password">
-
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                    {{ old('remember') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="my-1 d-grid col-md-12">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Login') }}
-                            </button>
-                            @if (Route::has('password.request'))
-                                <a class="btn btn-link d-none" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            @endif
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer justify-content-between d-none">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">
-                        <i class="fas fa-envelope pe-2"></i>
-                        Send email
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="emailUs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Get in touch</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <strong>
-                        We will respond to your message as soon as possible
-                    </strong>
-                    <form>
-                        <form action="#">
-                            <div class="row">
-                                <div class="col-md-6 m-0 p-2">
-                                    <input type="text" name="name" class="form-control field-name"
-                                        placeholder="Name">
-                                </div>
-                                <div class="col-md-6 m-0 p-2">
-                                    <input type="email" name="email" class="form-control field-email"
-                                        placeholder="Email">
-                                </div>
-                                <div class="col-md-6 m-0 p-2">
-                                    <input type="text" name="phone" class="form-control field-phone"
-                                        placeholder="Phone">
-                                </div>
-                                <div class="col-md-6 m-0 p-2">
-                                    <i class="icon-arrow-down mr-3"></i>
-                                    <select name="info" class="form-control field-info">
-                                        <option value="">Other</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-12 m-0 p-2">
-                                    <textarea name="message" class="form-control" placeholder="Message"></textarea>
-                                </div>
-                            </div>
-                        </form>
-                    </form>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-success">
-                        <i class="fas fa-envelope pe-2"></i>
-                        Send email
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="map" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-slide-right">
-            <div class="modal-content h-100">
-
-                <!-- Close Button (Top Right) -->
-                <div class="modal-header border-0 justify-content-end">
-                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">
-                        Back <i class="fas fa-arrow-right ms-1"></i>
-                    </button>
-                </div>
-
-                <!-- Fullscreen Map -->
-                <div class="modal-body p-0 h-100">
-                    <iframe src="https://www.google.com/maps?q=23.779395286290402,90.42576674365971&z=17&output=embed"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>	
 @endsection

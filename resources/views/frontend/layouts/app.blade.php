@@ -12,7 +12,7 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <title>@yield('title', 'My Laravel App')</title>
+    <title>@yield('title', 'Supreme Global')</title>
     @include('frontend.layouts.head')
     @yield('css')
 </head>
@@ -23,6 +23,8 @@
     <main>
         @yield('content')
     </main>
+	
+	@extends('frontend.pages.common')
 
     @include('frontend.layouts.footer')
     @yield('js')
