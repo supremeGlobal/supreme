@@ -20,7 +20,7 @@
 <!-- Main Navigation -->
 <nav class="navbar navbar-expand-md navbar-light shadow-sm navbarMain py-0 my-0">
     <div class="container py-0 my-0">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand d-none" href="{{ url('/') }}">
             <img style="background: azure !important; border-radius: 50%"
                 src="https://supremeglobal.co/wp-content/uploads/2024/01/logo-5.png" width="50" height="50"
                 loading="lazy">
@@ -48,14 +48,15 @@
 						}
 					</style>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Supreme Global</a></li>
                         <li><a class="dropdown-item" href="{{ url('/tea') }}">Supreme tea</a></li>
-                        <li><a class="dropdown-item" href="{{ url('/auto-bricks')}}">Auto Bricks</a></li>
-                        <li><a class="dropdown-item" href="#">Dar Kafaa Al-Alai</a></li>
-                        <li><a class="dropdown-item" href="#">ALIF & Co.</a></li>
-                        <li><a class="dropdown-item" href="#">Garden Inn Resort & Amusement</a></li>
-                        <li><a class="dropdown-item" href="#">SUPREME AGRO</a></li>
+                        <li><a class="dropdown-item" href="{{ url('/auto-bricks')}}">A&A Auto Bricks Industries Ltd</a></li>
+                        <li><a class="dropdown-item" href="#">Dar Kafaa Al-Alia</a></li>
+                        <li><a class="dropdown-item" href="#">Supreme Agro</a></li>
                         <li><a class="dropdown-item" href="#">North Point Medical College & Hospital Ltd.</a></li>
-                        <li><a class="dropdown-item" href="#">North Palace Hotel & Resort Ltd.</a></li>
+                        <li><a class="dropdown-item" href="#">Garden Inn Resort & Amusement</a></li>
+                        {{-- <li><a class="dropdown-item" href="#">North Palace Hotel & Resort Ltd.</a></li> --}}
+                        <li><a class="dropdown-item" href="#">ALIF & Co.</a></li>
                     </ul>
                 </li>
 

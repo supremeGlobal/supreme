@@ -58,36 +58,40 @@
                 @php
                     $company = [
                         [
-                            'name' => 'Dar Kafaa Al-Alai',
+                            'name' => 'Supreme Global',
+                            'image' => 'mainLogo.png',
+                        ],
+						[
+							'name' => 'Supreme Tea Limited',
+							'image' => 'logo3.png',
+						],
+						[
+							'name' => 'A&A Auto Bricks Industries Ltd',
+							'image' => 'logo2.png',
+						],
+						[
+                            'name' => 'Dar Kafaa Al-Alia',
                             'image' => 'logo1.png',
                         ],
-                        [
-                            'name' => 'A&A Auto Bricks Industries Ltd',
-                            'image' => 'logo2.png',
-                        ],
-                        [
-                            'name' => 'Supreme Tea Limited',
-                            'image' => 'logo3.png',
-                        ],
+						[
+							'name' => 'Supreme Agro',
+							'image' => 'logo6.png',
+						],
+						[
+							'name' => 'North Point Medical College & Hospital Ltd.',
+							'image' => 'logo7.png',
+						],
+						// [
+						// 	'name' => 'North Palace Hotel & Resort Ltd.',
+						// 	'image' => 'logo8.png',
+						// ],
+						[
+							'name' => 'Garden Inn Resort & Amusement',
+							'image' => 'logo5.png',
+						],
                         [
                             'name' => 'ALIF & Co.',
                             'image' => 'logo4.png',
-                        ],
-                        [
-                            'name' => 'Garden Inn Resort & Amusement',
-                            'image' => 'logo5.png',
-                        ],
-                        [
-                            'name' => 'SUPREME AGRO',
-                            'image' => 'logo6.png',
-                        ],
-                        [
-                            'name' => 'North Point Medical College & Hospital Ltd.',
-                            'image' => 'logo7.png',
-                        ],
-                        [
-                            'name' => 'North Palace Hotel & Resort Ltd.',
-                            'image' => 'logo8.png',
                         ],
                     ];
                 @endphp
@@ -101,7 +105,7 @@
                             </a>
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $img['name'] }}</h5>
-                                <p class="card-text mt-0">A short description about this sister concern.</p>
+                                {{-- <p class="card-text mt-0">A short description about this sister concern.</p> --}}
                             </div>
                         </div>
                     </div>
@@ -110,7 +114,7 @@
         </div>
     </section>
 
-    <section id="mission" style="background: #dfe6e9">
+    <section id="mission" style="background: #dfe6e9; display: none !important;">
         <div class="container-fluid">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">Our Mission</h2>
@@ -198,7 +202,7 @@
         </div>
     </section>
 
-    <section id="vision" style="background: #7ed6df">
+    <section id="vision" style="background: #7ed6df; display: none !important;">
         <div class="container-fluid">
             <div class="text-center mb-5">
                 <h2 class="fw-bold">Our Vision</h2>

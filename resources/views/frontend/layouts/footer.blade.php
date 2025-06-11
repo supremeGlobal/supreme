@@ -51,7 +51,7 @@
                         <Strong>Saudi office: </Strong>
                        	Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545
                     </li>
-                    <li class="item">
+                    <li class="item d-none">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Factory location: </Strong>
                         A&A Auto Bricks Industries Ltd Kamatpara, Sakoa, Boda, Panchagarh, Bangladesh

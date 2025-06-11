@@ -420,3 +420,7 @@ section {
 .modal.fade.show .modal-dialog.modal-slide-right {
     transform: translateX(0);
 }
+
+.carousel-caption{
+	display: none !important;
+}
