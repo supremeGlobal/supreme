@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\GlobalPage;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontController extends Controller
 {
@@ -15,6 +16,14 @@ class FrontController extends Controller
     public function home()
     {
         return view('welcome');
+    }
+
+	
+
+	public function global()
+    {
+		$data['global'] = GlobalPage::first();
+        return view('frontend.pages.global', $data);
     }
 
 	public function tea()

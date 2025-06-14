@@ -5,32 +5,31 @@
                 <h4>Contract</h4>
                 <ul>
                     <li class="item">
-						<a href="tel:+8801322846601">
-							<i class="fas fa-phone-alt"></i>
-							 +880 1322846601
-						</a>
+                        <a href="tel:+8801322846601">
+                            <i class="fas fa-phone-alt"></i>
+                            +880 1322846601
+                        </a>
                     </li>
                     <li class="item">
-						<a href="mailto:info@supremeglobalbd@gmail.com">
-							<i class="fas fa-envelope"></i>
-							info@supremeglobalbd.com
-						</a>
+                        <a href="mailto:info@supremeglobalbd@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            info@supremeglobalbd.com
+                        </a>
                     </li>
                     <li class="item">
-						<a href="mailto:sales@supremeglobalbd@gmail.com">
-							<i class="fas fa-envelope"></i>
-							sales@supremeglobalbd.com
-						</a>
+                        <a href="mailto:sales@supremeglobalbd@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                            sales@supremeglobalbd.com
+                        </a>
                     </li>
                     <li class="item">
-                        <button class="btn btn-success btn-auto rounded-1" data-bs-toggle="modal"
-                            data-bs-target="#map">
+                        <button class="btn btn-success btn-auto rounded-1" data-bs-toggle="modal" data-bs-target="#map">
                             <i class="fas fa-map-marker-alt"></i>
                             Head office location
                         </button>
 
-                        <button type="button" class="btn btn-primary btn-auto ms-2 rounded-1"
-                            data-bs-toggle="modal" data-bs-target="#emailUs">
+                        <button type="button" class="btn btn-primary btn-auto ms-2 rounded-1" data-bs-toggle="modal"
+                            data-bs-target="#emailUs">
                             <i class="fas fa-envelope"></i>
                             Send email us
                         </button>
@@ -49,7 +48,7 @@
                     <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Saudi office: </Strong>
-                       	Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545
+                        Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545
                     </li>
                     <li class="item d-none">
                         <i class="fas fa-map-marker-alt"></i>
@@ -113,6 +112,8 @@
 
 <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+{{-- acme-news-ticker --}}
+{{-- <script src="{{ asset('frontend/js/acmeticker.min.js') }}"></script> --}}
 
 <script>
     $(window).on("scroll", function() {
@@ -128,5 +129,27 @@
     var carousel = new bootstrap.Carousel(myCarousel, {
         interval: 1800, // 2 seconds
         ride: 'carousel'
+    });
+
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const ticker = document.getElementById('newsTicker');
+        const toggleBtn = document.getElementById('toggleTicker');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const playIcon = document.getElementById('playIcon');
+        let isPaused = false;
+
+        toggleBtn.addEventListener('click', () => {
+            if (!isPaused) {
+                ticker.classList.add('paused');
+                pauseIcon.classList.add('d-none');
+                playIcon.classList.remove('d-none');
+            } else {
+                ticker.classList.remove('paused');
+                pauseIcon.classList.remove('d-none');
+                playIcon.classList.add('d-none');
+            }
+            isPaused = !isPaused;
+        });
     });
 </script>

@@ -30,7 +30,7 @@
                     @foreach ($images as $index => $img)
                         <div class="carousel-item @if ($index === 0) active @endif"
                             style="background-image: url({{ asset('images/' . $img) }});">
-                            <div class="carousel-caption text-center text-white">
+                            <div class="carousel-caption text-center text-white d-none">
                                 <h5>Slide Title One</h5>
                                 <p>This is a description for slide one. Customize this text as needed.</p>
                             </div>
@@ -53,31 +53,37 @@
 
     <section id="projects">
         <div class="container-fluid">
-            <h3 class="text-center mb-4">Sister Concerns</h3>
+            <h3 class="text-center">Group Entities</h3>
             <div class="row">
                 @php
                     $company = [
                         [
+							'url' => '/global',
                             'name' => 'Supreme Global',
                             'image' => 'mainLogo.png',
                         ],
 						[
+							'url' => '/global',
 							'name' => 'Supreme Tea Limited',
 							'image' => 'logo3.png',
 						],
 						[
+							'url' => '/global',
 							'name' => 'A&A Auto Bricks Industries Ltd',
 							'image' => 'logo2.png',
 						],
 						[
+							'url' => '/global',
                             'name' => 'Dar Kafaa Al-Alia',
                             'image' => 'logo1.png',
                         ],
 						[
+							'url' => '/global',
 							'name' => 'Supreme Agro',
 							'image' => 'logo6.png',
 						],
 						[
+							'url' => '/global',
 							'name' => 'North Point Medical College & Hospital Ltd.',
 							'image' => 'logo7.png',
 						],
@@ -86,10 +92,12 @@
 						// 	'image' => 'logo8.png',
 						// ],
 						[
+							'url' => '/global',
 							'name' => 'Garden Inn Resort & Amusement',
 							'image' => 'logo5.png',
 						],
                         [
+							'url' => '/global',
                             'name' => 'ALIF & Co.',
                             'image' => 'logo4.png',
                         ],
@@ -99,13 +107,12 @@
                 @foreach ($company as $img)
                     <div class="col-md-3 py-2 d-flex">
                         <div class="card hover-zoom w-100">
-                            <a href="#">
+                            <a href="{{ $img['url'] }}">
                                 <img src="{{ asset('images/logo/' . $img['image']) }}" class="card-img-top rounded"
                                     alt="Image {{ $img['name'] }}">
                             </a>
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $img['name'] }}</h5>
-                                {{-- <p class="card-text mt-0">A short description about this sister concern.</p> --}}
                             </div>
                         </div>
                     </div>
