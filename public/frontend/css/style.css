@@ -1,4 +1,4 @@
-@import url('news-ticker.css');
+@import url('part/news-ticker.css');
 
 body {
     font-family: Arial, sans-serif;
@@ -7,44 +7,43 @@ body {
 	font-size: 16px !important;
 }
 
-
 /* navbar section */
 .navbar-expand.top {
-    position: relative;
-    z-index: 5;
-    height: 50px;
-    padding: 0;
-    background-color: #21333e;
+	position: relative;
+	z-index: 5;
+	height: 50px;
+	padding: 0;
+	background-color: #21333e;
 }
 
 .navbar-expand.top, i {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #c0c3d0 !important;
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: #c0c3d0 !important;
 }
 
 .navbar-nav .nav-item {
-    margin: 0 5px;
+	margin: 0 5px;
 }
 
 .navbar-nav .nav-item a {
-    padding: 3px 0;
+	padding: 3px 0;
 }
 
 .navbar {
-    width: 100%;
-    background: transparent;
-    transition: all 0.4s ease;
-    position: relative;
-    z-index: 999;
+	width: 100%;
+	background: transparent;
+	transition: all 0.4s ease;
+	position: relative;
+	z-index: 999;
 }
 
 .navbar.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #21333e !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #21333e !important;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Navbar Main Styling - Modern Design 2 */

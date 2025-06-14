@@ -1,115 +1,70 @@
 @extends('frontend.layouts.app')
 
+@section('title')
+	Supreme Family
+@endsection
+
 @section('content')
-    <section id="slide" class="p-0">
-        <div class="container-fluid p-0">
-            @php
-                $images = [
-                    'pho1.jpg',
-                    'pho2.jpg',
-                    'pho3.jpg',
-                    'pho4.jpg',
-                    'pho5.jpg',
-                    'pho6.jpg',
-                    'pho7.jpg',
-                    'pho8.jpg',
-                ];
-            @endphp
-
-            <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    @foreach ($images as $index => $img)
-                        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="{{ $index }}"
-                            @if ($index === 0) class="active" aria-current="true" @endif aria-current="true"
-                            aria-label="Slide {{ $index + 1 }}"></button>
-                    @endforeach
-                </div>
-
-                <!-- Carousel Items -->
-                <div class="carousel-inner">
-                    @foreach ($images as $index => $img)
-                        <div class="carousel-item @if ($index === 0) active @endif"
-                            style="background-image: url({{ asset('images/' . $img) }});">
-                            <div class="carousel-caption text-center text-white d-none">
-                                <h5>Slide Title One</h5>
-                                <p>This is a description for slide one. Customize this text as needed.</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <!-- Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
+	{{-- slider --}}
+	@include('frontend.partials.slider')	
+	
+	@php
+		$company = [
+			[
+				'url' => '/global',
+				'name' => 'Supreme Global',
+				'image' => 'mainLogo.png',
+			],
+			[
+				'url' => '/global',
+				'name' => 'Supreme Tea Limited',
+				'image' => 'logo3.png',
+			],
+			[
+				'url' => '/global',
+				'name' => 'A&A Auto Bricks Industries Ltd',
+				'image' => 'logo2.png',
+			],
+			[
+				'url' => '/global',
+				'name' => 'Dar Kafaa Al-Alia',
+				'image' => 'logo1.png',
+			],
+			[
+				'url' => '/global',
+				'name' => 'Supreme Agro',
+				'image' => 'logo6.png',
+			],
+			[
+				'url' => '/global',
+				'name' => 'North Point Medical College & Hospital Ltd.',
+				'image' => 'logo7.png',
+			],
+			// [
+			// 	'name' => 'North Palace Hotel & Resort Ltd.',
+			// 	'image' => 'logo8.png',
+			// ],
+			[
+				'url' => '/global',
+				'name' => 'Garden Inn Resort & Amusement',
+				'image' => 'logo5.png',
+			],
+			[
+				'url' => '/global',
+				'name' => 'ALIF & Co.',
+				'image' => 'logo4.png',
+			],
+		];
+	@endphp
     <section id="projects">
         <div class="container-fluid">
             <h3 class="text-center">Group Entities</h3>
-            <div class="row">
-                @php
-                    $company = [
-                        [
-							'url' => '/global',
-                            'name' => 'Supreme Global',
-                            'image' => 'mainLogo.png',
-                        ],
-						[
-							'url' => '/global',
-							'name' => 'Supreme Tea Limited',
-							'image' => 'logo3.png',
-						],
-						[
-							'url' => '/global',
-							'name' => 'A&A Auto Bricks Industries Ltd',
-							'image' => 'logo2.png',
-						],
-						[
-							'url' => '/global',
-                            'name' => 'Dar Kafaa Al-Alia',
-                            'image' => 'logo1.png',
-                        ],
-						[
-							'url' => '/global',
-							'name' => 'Supreme Agro',
-							'image' => 'logo6.png',
-						],
-						[
-							'url' => '/global',
-							'name' => 'North Point Medical College & Hospital Ltd.',
-							'image' => 'logo7.png',
-						],
-						// [
-						// 	'name' => 'North Palace Hotel & Resort Ltd.',
-						// 	'image' => 'logo8.png',
-						// ],
-						[
-							'url' => '/global',
-							'name' => 'Garden Inn Resort & Amusement',
-							'image' => 'logo5.png',
-						],
-                        [
-							'url' => '/global',
-                            'name' => 'ALIF & Co.',
-                            'image' => 'logo4.png',
-                        ],
-                    ];
-                @endphp
-
+            <div class="row px-2">
                 @foreach ($company as $img)
-                    <div class="col-md-3 py-2 d-flex">
+                    <div class="col-md-3 p-3 d-flex">
                         <div class="card hover-zoom w-100">
                             <a href="{{ $img['url'] }}">
-                                <img src="{{ asset('images/logo/' . $img['image']) }}" class="card-img-top rounded"
-                                    alt="Image {{ $img['name'] }}">
+                                <img src="{{ asset('images/logo/' . $img['image']) }}" class="card-img-top rounded" alt="Image {{ $img['name'] }}">
                             </a>
                             <div class="card-body text-center">
                                 <h5 class="card-title">{{ $img['name'] }}</h5>
@@ -298,17 +253,6 @@
         </div>
     </section>
 
-    <section id="client">
-        <div class="container-fluid text-center mb-5">
-            <h2 class="fw-bold">Our Clients</h2>
-            <p class="text-muted">Trusted by industry leaders</p>
-            <div class="wrapper">
-                @foreach ($company as $img)
-                    <div class="client">
-                        <img alt="Client Logo" src="{{ asset('images/logo/' . $img['image']) }}">
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+	{{-- slider --}}
+	@include('frontend.partials.projects')
 @endsection

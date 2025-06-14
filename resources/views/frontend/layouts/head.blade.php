@@ -2,5 +2,3 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-{{-- acme-news-ticker --}}
-{{-- <link rel="stylesheet" href="{{ asset('frontend/css/acmeticker.css') }}"> --}}

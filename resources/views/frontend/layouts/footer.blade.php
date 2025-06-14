@@ -1,7 +1,7 @@
 <section id="footer" style="color: #fff; background: #192733">
     <div class="container-fluid px-5">
         <div class="row justify-content-between">
-            <div class="col-md-6 footerContact">
+            <div class="col-12 col-md-4 footerContact">
                 <h4>Contract</h4>
                 <ul>
                     <li class="item">
@@ -36,16 +36,21 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-6 footerContact">
+            <div class="col-12 col-md-4 footerContact">
                 <h4>Address</h4>
                 <ul>
                     <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Head office: </Strong>
-                        Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212,
-                        Bangladesh
+						<div class="ps-4 pt-1">
+							<p>
+								Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani,
+								<br>						
+								Middle Badda, Dhaka-1212, Bangladesh
+							</p>
+						</div>
                     </li>
-                    <li class="item">
+                    {{-- <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Saudi office: </Strong>
                         Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545
@@ -54,7 +59,7 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Factory location: </Strong>
                         A&A Auto Bricks Industries Ltd Kamatpara, Sakoa, Boda, Panchagarh, Bangladesh
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -112,8 +117,6 @@
 
 <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
-{{-- acme-news-ticker --}}
-{{-- <script src="{{ asset('frontend/js/acmeticker.min.js') }}"></script> --}}
 
 <script>
     $(window).on("scroll", function() {
@@ -152,10 +155,9 @@
             isPaused = !isPaused;
         });
     });
-</script>
 
-<script>
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+	// Remove href from url [localhost/page#footer]
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             const target = document.querySelector(targetId);
@@ -174,4 +176,3 @@
         });
     });
 </script>
-

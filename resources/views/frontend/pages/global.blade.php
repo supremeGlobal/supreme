@@ -1,116 +1,13 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <section id="slide" class="p-0">
-        <div class="container-fluid p-0" style="padding: unset !important">
-            @php
-                $images = [
-                    'pho1.jpg',
-                    'pho2.jpg',
-                    'pho3.jpg',
-                    'pho4.jpg',
-                    'pho5.jpg',
-                    'pho6.jpg',
-                    'pho7.jpg',
-                    'pho8.jpg',
-                ];
-            @endphp
 
-            <style>
-                .carousel-caption.top-left {
-                    position: absolute;
-                    top: 10px;
-                    left: 15px;
-                    text-align: left;
-                    background: unset !important;
-                    /* Optional for readability */
-                    padding: 5px 10px;
-                    border: unset !important;
-                    border-radius: unset !important;
-                    backdrop-filter: unset !important;
-                    background: unset !important;
-                    backdrop-filter: unset !important;
-                    /* Optional: blur effect */
-                }
+	{{-- slider --}}
+	@php
+		$companyName = 'Supreme Global';
+	@endphp
 
-                .carousel-item {
-                    position: relative;
-                    height: 400px;
-                    /* Or whatever height you need */
-                }
-
-				.carousel-item {
-					height: 400px;
-				}
-
-				.carousel h5 {
-					font-weight: bold;
-					font-size: 3rem;
-				}
-
-            </style>
-
-            <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    @foreach ($images as $index => $img)
-                        <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="{{ $index }}"
-                            @if ($index === 0) class="active" aria-current="true" @endif aria-current="true"
-                            aria-label="Slide {{ $index + 1 }}"></button>
-                    @endforeach
-                </div>
-
-                <!-- Carousel Items -->
-                {{-- <div class="carousel-inner">
-                    @foreach ($images as $index => $img)
-                        <div class="carousel-item @if ($index === 0) active @endif"
-                            style="background-image: url({{ asset('images/' . $img) }});">
-                            <div class="carousel-caption text-center text-white">
-                                <h5>Supreme Global</h5>
-                            </div>
-                        </div>
-                    @endforeach
-                </div> --}}
-
-
-                <div id="companyCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
-                    <!-- Fixed Company Name -->
-                    <h5 class="position-absolute top-0 start-0 m-3 text-white bg-dark2 px-3 py-1 rounded-2 z-1">
-                        Supreme Global
-                    </h5>
-
-                    <div class="carousel-inner">
-                        @foreach ($images as $index => $img)
-                            <div class="carousel-item @if ($index === 0) active @endif"
-                                style="background-image: url('{{ asset('images/' . $img) }}'); background-size: cover; background-position: center; height: 400px;">
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-
-                {{-- <div class="carousel-inner">
-                    @foreach ($images as $index => $img)
-                        <div class="carousel-item @if ($index === 0) active @endif"
-                            style="background-image: url({{ asset('images/' . $img) }}); background-size: cover; background-position: center;">
-                            <div class="carousel-caption top-left text-white">
-                                <h5>Supreme Global</h5>
-                            </div>
-                        </div>
-                    @endforeach
-                </div> --}}
-
-                <!-- Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
+	@include('frontend.partials.slider')
 
     @php
         $company = [
@@ -254,19 +151,8 @@
         </div>
     </section>
 
-    <section id="client">
-        <div class="container-fluid text-center px-5">
-            <h2 class="fw-bold">Our Clients</h2>
-            <p class="text-muted">Trusted by industry leaders</p>
-            <div class="wrapper">
-                @foreach ($company as $img)
-                    <div class="client">
-                        <img alt="Client Logo" src="{{ asset('images/logo/' . $img['image']) }}">
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+   	{{-- slider --}}
+	@include('frontend.partials.projects')
 
     <section id="contact">
         <div class="container-fluid">

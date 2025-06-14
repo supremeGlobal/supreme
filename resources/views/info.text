@@ -1,0 +1,19 @@
+resources/views/
+├── layouts/            ← Base layouts (e.g., app.blade.php)
+│   ├── app.blade.php
+│   └── master.blade.php (optional)
+├── partials/           ← Shared partials (header, footer, sidebar, etc.)
+│   ├── header.blade.php
+│   ├── navbar.blade.php
+│   ├── footer.blade.php
+│   ├── sidebar.blade.php
+│   ├── head.blade.php
+│   └── scripts.blade.php
+├── components/         ← Reusable components (buttons, cards, alerts, etc.)
+│   ├── alert.blade.php
+│   ├── card.blade.php
+│   └── modal.blade.php
+├── pages/              ← Page-specific content
+│   ├── home.blade.php
+│   ├── about.blade.php
+│   └── contact.blade.php
