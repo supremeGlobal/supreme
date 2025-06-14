@@ -49,60 +49,10 @@
         </div>
     </div>
 </nav>
+
 <!-- Main Navigation -->
-<style>
-    .news-label {
-        white-space: nowrap;
-    }
-
-    .news-ticker-box {
-        overflow: hidden;
-        width: 100%;
-        min-width: 0;
-        /* prevent flexbox shrinking issues */
-    }
-
-    .news-ticker {
-        display: flex;
-        white-space: nowrap;
-        list-style: none;
-        padding-left: 0;
-        margin-bottom: 0;
-        animation: marquee 20s linear infinite;
-        min-width: 100%;
-        /* Ensure ticker width at least fills container */
-    }
-
-    .news-ticker.paused {
-        animation-play-state: paused !important;
-    }
-
-    .news-ticker li {
-        flex-shrink: 0;
-        margin-right: 1.5rem;
-    }
-
-    .news-ticker li a {
-        text-decoration: none;
-    }
-
-    .news-ticker li a:hover {
-        text-decoration: underline;
-    }
-
-    @keyframes marquee {
-        0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(-50%);
-        }
-    }
-</style>
-
 <nav class="navbar navbar-expand-md navbar-light shadow-sm navbarMain py-0 my-0">
-    <div class="container-fluid py-0 my-0">
+    <div class="container-fluid p-0 m-0">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -112,17 +62,18 @@
             <div class="row w-100 align-items-center g-0">
                 <!-- Left ticker col-md-9 always -->
                 <div class="col-12 col-md-9 d-flex align-items-center p-0">
-                    <div
-                        class="news-ticker-wrapper d-flex align-items-center border border-primary bg-white w-100 overflow-hidden">
-                        <div class="news-label bg-primary text-white px-3 py-2 flex-shrink-0">
+                    <div class="news-ticker-wrapper d-flex align-items-center border border-primary bg-white w-100 overflow-hidden">
+                        <div class="news-label bg-primary text-white px-3 py-2 flex-shrink-0 fs-6">
                             Latest News
                         </div>
 
                         <div class="news-ticker-box flex-grow-1">
-                            <ul class="news-ticker d-flex mb-0" id="newsTicker">
-                                <li class="me-4"><a href="#" class="text-dark">Lorem ipsum dolor sit amet
-                                        consectetur
-                                        adipisicing elit.</a></li>
+                            <ul class="news-ticker d-flex mb-0 fs-6" id="newsTicker">
+                                <li class="me-4">
+									<a href="#" class="text-dark">
+										orem ipsum dolor sit amet consectetur adipisicing elit.
+									</a>
+								</li>
                             </ul>
                         </div>
 
@@ -138,7 +89,7 @@
 
                 <!-- Right nav col-md-3 always -->
                 <div class="col-12 col-md-3 p-0">
-                    <ul class="navbar-nav justify-content-end d-flex">
+                    <ul class="navbar-nav justify-content-center d-flex">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
@@ -148,22 +99,31 @@
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Group Entities
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="/global">Supreme Global</a></li>
-                                <li><a class="dropdown-item" href="{{ url('/tea') }}">Supreme tea</a></li>
-                                <li><a class="dropdown-item" href="{{ url('/auto-bricks') }}">A&A Auto Bricks
+                            <ul class="dropdown-menu rounded-0 py-0 fs-6" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+									<a class="dropdown-item" href="/global">Supreme Global</a></li>
+                                <li>
+									<a class="dropdown-item" href="{{ url('/tea') }}">Supreme tea</a></li>
+                                <li>
+									<a class="dropdown-item" href="{{ url('/auto-bricks') }}">A&A Auto Bricks
                                         Industries Ltd</a></li>
-                                <li><a class="dropdown-item" href="#">Dar Kafaa Al-Alia</a></li>
+                                <li>
+									<a class="dropdown-item" href="#">Dar Kafaa Al-Alia</a></li>
                                 <li><a class="dropdown-item" href="#">Supreme Agro</a></li>
-                                <li><a class="dropdown-item" href="#">North Point Medical College & Hospital
-                                        Ltd.</a></li>
-                                <li><a class="dropdown-item" href="#">Garden Inn Resort & Amusement</a></li>
-                                <li><a class="dropdown-item" href="#">ALIF & Co.</a></li>
+                                <li>
+									<a class="dropdown-item" href="#">North Point Medical College & Hospital Ltd</a>
+								</li>
+                                <li>
+									<a class="dropdown-item" href="#">Garden Inn Resort & Amusement</a>
+								</li>
+                                <li>
+									<a class="dropdown-item" href="#">ALIF & Co.</a>
+								</li>
                             </ul>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="">Contact us</a>
+                            <a class="nav-link" href="#footer">Contact us</a>
                         </li>
                     </ul>
                 </div>

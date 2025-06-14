@@ -39,28 +39,15 @@
                             </a> 
                         </li>
                     </ul>
-                </li>
-                
+                </li>               
                 
 
-                <li class="nav-header">LABELS</li>
-                <li class="nav-item"> 
-                    <a href="#" class="nav-link"> 
+                <li class="nav-header">Sister Concerns</li>
+                <li class="nav-item">
+					 <a href="{{ url('admin/slider') }}" class="nav-link {{ request()->is('slider*') ? 'active' : '' }}"> 
                         <i class="nav-icon fa-regular fa-circle text-danger"></i>
-                        <p class="text">Important</p>
-                    </a> 
-                </li>
-                <li class="nav-item"> 
-                    <a href="#" class="nav-link"> 
-                        <i class="nav-icon fa-regular fa-circle text-warning"></i>
-                        <p>Warning</p>
-                    </a> 
-                </li>
-                <li class="nav-item"> 
-                    <a href="#" class="nav-link"> 
-                        <i class="nav-icon fa-regular fa-circle text-info"></i>
-                        <p>Informational</p>
-                    </a> 
+                        <p>Company list</p>
+                    </a>
                 </li>
             </ul>
         </nav>

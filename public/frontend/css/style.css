@@ -1,3 +1,13 @@
+@import url('news-ticker.css');
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+	font-size: 16px !important;
+}
+
+
 /* navbar section */
 .navbar-expand.top {
     position: relative;
@@ -36,10 +46,6 @@
     background: #21333e !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-/* 
-.navbar.fixed a {
-    color: #fff !important;
-} */
 
 /* Navbar Main Styling - Modern Design 2 */
 .navbarMain {
@@ -52,7 +58,7 @@
 
 .navbarMain .navbar-nav .nav-link {
     color: #2c3e50;
-    padding: 10px 18px;
+    padding: 9px 18px;
     border-radius: 10px;
     font-size: 18px;
     font-weight: 500;
@@ -60,27 +66,10 @@
     position: relative;
 }
 
-/* .navbarMain .m-auto .nav-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: #3498db;
-    left: 50%;
-    bottom: 0;
-    transition: all 0.3s ease-in-out;
-    transform: translateX(-50%);
-}
-
-.navbarMain .navbar-nav .nav-link:hover::after {
-    width: 80%;
-} */
-
 .navbarMain .navbar-nav .nav-link:hover,
 .navbarMain .navbar-nav .nav-link:focus,
 .navbarMain .navbar-nav .nav-item.active .nav-link {
-    background-color: cyan;
-    color: #000 !important;
+    color: blue;
 }
 
 /* Mobile Nav Toggle */
@@ -421,7 +410,3 @@ section {
 .modal.fade.show .modal-dialog.modal-slide-right {
     transform: translateX(0);
 }
-
-/* .carousel-caption{
-	display: none !important;
-} */

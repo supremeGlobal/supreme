@@ -153,3 +153,25 @@
         });
     });
 </script>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+
+            if (target) {
+                e.preventDefault(); // Prevent default anchor behavior (like updating URL)
+                
+                // Scroll smoothly without changing the URL
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Optional: Remove focus outline
+                target.blur();
+            }
+        });
+    });
+</script>
+
