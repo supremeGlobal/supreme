@@ -13,7 +13,7 @@ Route::middleware(['web'])->group(function () {
 		
         Route::get('/global', 'global');
 		
-        Route::get('/tea', 'tea');
+        Route::get('/supreme-tea', 'tea');
         Route::get('/auto-bricks', 'autoBricks');
         Route::get('/job', 'job');
     });
@@ -24,6 +24,10 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::get('dashboard', 'dashboard')->name('admin.dashboard');
         Route::get('slider', 'slider')->name('admin.slider');
     });
+});
+
+Route::fallback(function () {
+   return view('404');
 });
 
 /*

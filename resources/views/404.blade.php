@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>404 : Error Page</title>
-		<link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
 	</head>
 	<body class="container-fluid mt-5 pt-5">
 		<div class="alert alert-danger text-center">

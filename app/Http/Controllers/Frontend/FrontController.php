@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Content;
 use App\Models\GlobalPage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,6 +24,7 @@ class FrontController extends Controller
 	public function global()
     {
 		$data['global'] = GlobalPage::first();
+		$data['contents'] = Content::where('company_id', 1)->orderBy('order')->get();
         return view('frontend.pages.global', $data);
     }
 

@@ -101,15 +101,20 @@
                             </a>
                             <ul class="dropdown-menu rounded-0 py-0 fs-6" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-									<a class="dropdown-item" href="/global">Supreme Global</a></li>
+									<a class="dropdown-item" href="/global">Supreme Global</a>
+								</li>
                                 <li>
-									<a class="dropdown-item" href="{{ url('/tea') }}">Supreme tea</a></li>
+									<a class="dropdown-item" href="{{ url('/supreme-tea') }}">Supreme Tea</a>
+								</li>
                                 <li>
-									<a class="dropdown-item" href="{{ url('/auto-bricks') }}">A&A Auto Bricks
-                                        Industries Ltd</a></li>
+									<a class="dropdown-item" href="{{ url('/auto-bricks') }}">A&A Auto Bricks Industries Ltd</a>
+								</li>
                                 <li>
-									<a class="dropdown-item" href="#">Dar Kafaa Al-Alia</a></li>
-                                <li><a class="dropdown-item" href="#">Supreme Agro</a></li>
+									<a class="dropdown-item" href="#">Dar Kafaa Al-Alia</a>
+								</li>
+                                <li>
+									<a class="dropdown-item" href="#">Supreme Agro</a>
+								</li>
                                 <li>
 									<a class="dropdown-item" href="#">North Point Medical College & Hospital Ltd</a>
 								</li>

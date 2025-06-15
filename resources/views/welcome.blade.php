@@ -254,5 +254,5 @@
     </section>
 
 	{{-- slider --}}
-	@include('frontend.partials.projects')
+	@include('frontend.partials.client')
 @endsection

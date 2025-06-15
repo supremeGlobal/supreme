@@ -1,3 +1,6 @@
+@section('title')
+	{{ $companyName ?? '' }}
+@endsection
 <style>
     .carousel-caption.top-left {
         position: absolute;
@@ -28,7 +31,7 @@
     }
 </style>
 <section id="slide" class="p-0">
-    <div class="container-fluid p-0" tyle="padding: unset !important">
+    <div class="container-fluid p-0">
         @php
            $images = ['pho1.jpg', 'pho2.jpg', 'pho3.jpg', 'pho4.jpg', 'pho5.jpg', 'pho6.jpg', 'pho7.jpg', 'pho8.jpg'];
         @endphp
@@ -43,7 +46,7 @@
             </div>
 
             <div id="companyCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
-                <h5 class="position-absolute top-0 start-0 m-3 text-white bg-dark2 px-3 py-1 rounded-2 z-1">
+                <h5 class="position-absolute top-0 start-0 m-3 text-light px-3 py-1 rounded-2 z-1">
                     {{ $companyName ?? '' }}
                 </h5>
 
