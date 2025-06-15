@@ -35,7 +35,15 @@ class FrontController extends Controller
     {
 		$data['contents'] = Content::where('company_id', 3)->orderBy('order')->get();
         return view('frontend.pages.auto-bricks', $data);
-    }	
+    }
+
+	public function darKafaa()
+    {
+		$data['contents'] = Content::where('company_id', 4)->orderBy('order')->get();
+        return view('frontend.pages.dar-kafaa', $data);
+    }
+
+	
 
 	public function job()
     {

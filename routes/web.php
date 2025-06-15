@@ -12,9 +12,10 @@ Route::middleware(['web'])->group(function () {
         Route::get('/', 'home');
 		
         Route::get('/global', 'global');		
-        Route::get('/supreme-tea', 'supremeTea');
-		
+        Route::get('/supreme-tea', 'supremeTea');		
         Route::get('/auto-bricks', 'autoBricks');
+        Route::get('/dar-kafaa', 'darKafaa');
+		
         Route::get('/job', 'job');
     });
 });
