@@ -17,6 +17,7 @@ return new class extends Migration
 			$table->unsignedInteger('order')->default(1);
 			$table->string('title');
 			$table->longText('details');
+			$table->string('image');
         });
     }
 

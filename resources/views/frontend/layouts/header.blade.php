@@ -71,7 +71,7 @@
                             <ul class="news-ticker d-flex mb-0 fs-6" id="newsTicker">
                                 <li class="me-4">
 									<a href="#" class="text-dark">
-										orem ipsum dolor sit amet consectetur adipisicing elit.
+										We’re excited to share that our company is entering a new chapter focused on innovation, transparency, and sustainable growth.
 									</a>
 								</li>
                             </ul>

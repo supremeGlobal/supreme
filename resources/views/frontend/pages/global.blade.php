@@ -8,13 +8,19 @@
 
 	@include('frontend.partials.slider')    
 
-    {{-- product  & service --}}
+    {{-- about us --}}
 	@php
+		$topHeading = 'About Us';
+		$slogan = 'Innovation | Sustainability | Excellence';
 		$order = 1;
 	@endphp
-	@include('frontend.partials.aboutUs')
+	@include('frontend.partials.default')
 
    	{{-- product  & service --}}
+	@php
+		$heading = 'Our Divisions';
+		$order = 2;
+	@endphp
 	@include('frontend.partials.productService')
 
    	{{-- client --}}

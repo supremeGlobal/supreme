@@ -17,25 +17,24 @@ class FrontController extends Controller
     public function home()
     {
         return view('welcome');
-    }
-
-	
+    }	
 
 	public function global()
     {
-		$data['global'] = GlobalPage::first();
 		$data['contents'] = Content::where('company_id', 1)->orderBy('order')->get();
         return view('frontend.pages.global', $data);
     }
 
-	public function tea()
+	public function supremeTea()
     {
-        return view('frontend.pages.tea');
+		$data['contents'] = Content::where('company_id', 2)->orderBy('order')->get();
+        return view('frontend.pages.tea', $data);
     }
 
 	public function autoBricks()
     {
-        return view('frontend.pages.auto-bricks');
+		$data['contents'] = Content::where('company_id', 3)->orderBy('order')->get();
+        return view('frontend.pages.auto-bricks', $data);
     }	
 
 	public function job()

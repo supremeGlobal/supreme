@@ -1,8 +1,8 @@
 <section id="footer" style="color: #fff; background: #192733">
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-5 fs-5">
         <div class="row justify-content-between">
             <div class="col-12 col-md-4 footerContact">
-                <h4>Contract</h4>
+                <h3>Contract</h3>
                 <ul>
                     <li class="item">
                         <a href="tel:+8801322846601">
@@ -23,33 +23,31 @@
                         </a>
                     </li>
                     <li class="item">
-                        <button class="btn btn-success btn-auto rounded-1" data-bs-toggle="modal" data-bs-target="#map">
+                        <button class="btn btn-success col-md-6 rounded-1" data-bs-toggle="modal" data-bs-target="#map">
                             <i class="fas fa-map-marker-alt"></i>
                             Head office location
-                        </button>
-
-                        <button type="button" class="btn btn-primary btn-auto ms-2 rounded-1" data-bs-toggle="modal"
-                            data-bs-target="#emailUs">
-                            <i class="fas fa-envelope"></i>
-                            Send email us
-                        </button>
+                        </button>                        
                     </li>
                 </ul>
             </div>
             <div class="col-12 col-md-4 footerContact">
-                <h4>Address</h4>
+                <h3>Address</h3>
                 <ul>
                     <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Head office: </Strong>
 						<div class="ps-4 pt-1">
-							<p>
-								Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani,
-								<br>						
-								Middle Badda, Dhaka-1212, Bangladesh
-							</p>
+							<p>Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani,</p>
+							<p>Middle Badda, Dhaka-1212, Bangladesh</p>
 						</div>
                     </li>
+					<li class="item">
+						<button type="button" class="btn btn-primary col-md-6 ms-2 rounded-1" data-bs-toggle="modal"
+                            data-bs-target="#emailUs">
+                            <i class="fas fa-envelope"></i>
+                            Send email us
+                        </button>
+					</li>
                     {{-- <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
                         <Strong>Saudi office: </Strong>

@@ -11,9 +11,9 @@ Route::middleware(['web'])->group(function () {
 	Route::controller(FrontController::class)->group(function () {
         Route::get('/', 'home');
 		
-        Route::get('/global', 'global');
+        Route::get('/global', 'global');		
+        Route::get('/supreme-tea', 'supremeTea');
 		
-        Route::get('/supreme-tea', 'tea');
         Route::get('/auto-bricks', 'autoBricks');
         Route::get('/job', 'job');
     });

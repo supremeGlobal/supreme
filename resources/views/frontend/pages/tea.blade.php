@@ -2,22 +2,23 @@
 
 @section('content')   
 	{{-- slider --}}
-	@php
-		$companyName = 'Supreme tea';
-	@endphp
-
+	@php $companyName = 'Supreme Tea'; @endphp
 	@include('frontend.partials.slider')
 
+	{{-- about us --}}
+	@php
+		$topHeading = 'About Us';
+		$slogan = 'The Cup of Happiness';
+		$order = 3;
+	@endphp
+	@include('frontend.partials.default')
 
-	<h1>
-		About our tea and product
-	</h1>
-
-	{{-- mission --}}
-	@include('frontend.partials.mission')
-
-	{{-- vision --}}
-	@include('frontend.partials.vision')   
+	{{-- product  & service --}}
+	@php 
+		$heading = 'About Our Tea';
+		$order = 4; 
+	@endphp
+	@include('frontend.partials.productService')
 
     {{-- client --}}
 	@include('frontend.partials.client')
