@@ -16,7 +16,7 @@
 	{{-- product  & service --}}
 	@php 
 		$heading = 'About Our Tea';
-		$order = 4; 
+		$order = 4;
 	@endphp
 	@include('frontend.partials.productService')
 
