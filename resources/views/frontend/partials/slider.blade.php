@@ -1,5 +1,5 @@
 @section('title')
-	{{ $companyName ?? '' }}
+    {{ $companyName ?? '' }}
 @endsection
 <style>
     .carousel-caption.top-left {
@@ -16,24 +16,39 @@
         backdrop-filter: unset !important;
     }
 
-    .carousel-item {
+    /* .carousel-item {
         position: relative;
         height: 400px;
     }
 
     .carousel-item {
         height: 400px;
-    }
+    } */
 
     .carousel h5 {
         font-weight: bold;
         font-size: 3rem;
     }
+
+.carousel-item {
+        position: relative;
+        height: 400px;
+        overflow: hidden;
+    }
+
+    .carousel-item img {
+        width: 100%;
+        height: calc(100% + 50px);   /* Make image taller to allow for crop */
+        object-fit: cover;
+        object-position: top;
+        display: block;
+        transform: translateY(-50px); /* Crop top 50px */
+    }
 </style>
 <section id="slide" class="p-0">
     <div class="container-fluid p-0">
         @php
-           $images = ['pho1.jpg', 'pho2.jpg', 'pho3.jpg', 'pho4.jpg', 'pho5.jpg', 'pho6.jpg', 'pho7.jpg', 'pho8.jpg'];
+            $images = ['pho1.jpg', 'pho2.jpg', 'pho3.jpg', 'pho4.jpg', 'pho5.jpg', 'pho6.jpg', 'pho7.jpg', 'pho8.jpg'];
         @endphp
 
         <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -50,13 +65,13 @@
                     {{ $companyName ?? '' }}
                 </h5>
 
-                <div class="carousel-inner">
-                    @foreach ($images as $index => $img)
-                        <div class="carousel-item @if ($index === 0) active @endif"
-                            style="background-image: url('{{ asset('images/' . $img) }}'); background-size: cover; background-position: center;">
-                        </div>
-                    @endforeach
-                </div>
+                 <div class="carousel-inner">
+        @foreach ($images as $index => $img)
+            <div class="carousel-item @if ($index === 0) active @endif">
+                <img src="{{ asset('images/' . $img) }}" alt="Company Image">
+            </div>
+        @endforeach
+    </div>
             </div>
 
             <!-- Controls -->
