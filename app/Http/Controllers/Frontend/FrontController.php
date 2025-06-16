@@ -47,7 +47,25 @@ class FrontController extends Controller
     {
 		$data['contents'] = Content::where('company_id', 5)->orderBy('order')->get();
         return view('frontend.pages.agro', $data);
-    }	
+    }
+
+	public function northPoint()
+    {
+		$data['contents'] = Content::where('company_id', 6)->orderBy('order')->get();
+        return view('frontend.pages.north-point', $data);
+    }
+
+	public function gardenInn()
+    {
+		$data['contents'] = Content::where('company_id', 7)->orderBy('order')->get();
+        return view('frontend.pages.garden-inn', $data);
+    }
+
+	public function alifCo()
+    {
+		$data['contents'] = Content::where('company_id', 8)->orderBy('order')->get();
+        return view('frontend.pages.alif-co', $data);
+    }
 
 	public function job()
     {

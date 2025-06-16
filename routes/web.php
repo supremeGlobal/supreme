@@ -16,8 +16,11 @@ Route::middleware(['web'])->group(function () {
         Route::get('/auto-bricks', 'autoBricks');
         Route::get('/dar-kafaa', 'darKafaa');
         Route::get('/supreme-agro', 'supremeAgro');
-		
-		
+
+        Route::get('/north-point', 'northPoint');
+        Route::get('/garden-inn', 'gardenInn');
+        Route::get('/alif-co', 'alifCo');
+
         Route::get('/job', 'job');
     });
 });

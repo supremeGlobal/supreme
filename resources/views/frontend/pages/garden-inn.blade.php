@@ -3,15 +3,15 @@
 @section('content')
     {{-- slider --}}
     @php
-        $companyName = 'Supreme Agro';
+        $companyName = 'Garden Inn Resort and Amusement';
     @endphp
     @include('frontend.partials.slider')
 
     {{-- about us --}}
     @php
         $topHeading = 'About Us';
-        $slogan = 'Nurturing Nature. Sustaining Lives.';
-        $order = 17;
+        $slogan = 'Where Comfort Meets Adventure';
+        $order = 23;
     @endphp
     @include('frontend.partials.default')
 
@@ -19,7 +19,7 @@
 	@php
 		$heading = 'Our Mission';
 		$slogan = '';
-		$order = 18;
+		$order = 24;
 		$position = 'left';
 	@endphp
 	@include('frontend.partials.singleService')
@@ -28,30 +28,30 @@
 	@php
 		$heading = 'Our Vision';
 		$slogan = '';
-		$order = 19;
+		$order = 25;
 		$position = 'right';
 	@endphp
 	@include('frontend.partials.singleService')
 
     {{-- Other information --}}
     @php
-        $heading = 'Our Core Activities';
-        $order = 20;
+        $heading = 'What We Offer';
+        $order = 26;
     @endphp
-    @include('frontend.partials.productService')    
+    @include('frontend.partials.productService')
 	
     @php
-        $heading = 'Sustainability & Social Responsibility';
+        $heading = 'Why Choose Garden Inn Resort and Amusement?';
         $slogan = '';
-        $order = 21;
+        $order = 27;
         $position = 'left';
     @endphp
     @include('frontend.partials.singleService')
 	
     @php
-        $heading = 'Why Choose Supreme Agro?';
+        $heading = 'Book Your Experience';
         $slogan = '';
-        $order = 22;
+        $order = 28;
         $position = 'right';
     @endphp
     @include('frontend.partials.singleService')

@@ -116,13 +116,13 @@
 									<a class="dropdown-item" href="{{ url('/supreme-agro') }}">Supreme Agro</a>
 								</li>
                                 <li>
-									<a class="dropdown-item" href="#">North Point Medical College & Hospital Ltd</a>
+									<a class="dropdown-item" href="{{ url('/north-point') }}">North Point Medical College & Hospital Ltd</a>
 								</li>
                                 <li>
-									<a class="dropdown-item" href="#">Garden Inn Resort & Amusement</a>
+									<a class="dropdown-item" href="{{ url('/garden-inn') }}">Garden Inn Resort & Amusement</a>
 								</li>
                                 <li>
-									<a class="dropdown-item" href="#">ALIF & Co.</a>
+									<a class="dropdown-item" href="{{ url('/alif-co') }}">ALIF & Co.</a>
 								</li>
                             </ul>
                         </li>
