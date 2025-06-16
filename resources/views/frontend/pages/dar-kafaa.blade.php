@@ -23,7 +23,7 @@
     @endphp
     @include('frontend.partials.productService')
 
-    {{-- mission --}}
+	{{-- mission --}}
     @php
         $heading = 'Our Mission';
         $slogan = '';

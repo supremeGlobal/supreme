@@ -16,27 +16,27 @@
 				'image' => 'mainLogo.png',
 			],
 			[
-				'url' => '/global',
+				'url' => '/supreme-tea',
 				'name' => 'Supreme Tea Limited',
 				'image' => 'logo3.png',
 			],
 			[
-				'url' => '/global',
+				'url' => '/auto-bricks',
 				'name' => 'A&A Auto Bricks Industries Ltd',
 				'image' => 'logo2.png',
 			],
 			[
-				'url' => '/global',
+				'url' => '/dar-kafaa',
 				'name' => 'Dar Kafaa Al-Alia',
 				'image' => 'logo1.png',
 			],
 			[
-				'url' => '/global',
+				'url' => '/supreme-agro',
 				'name' => 'Supreme Agro',
 				'image' => 'logo6.png',
 			],
 			[
-				'url' => '/global',
+				'url' => '/north-point',
 				'name' => 'North Point Medical College & Hospital Ltd.',
 				'image' => 'logo7.png',
 			],
@@ -45,12 +45,12 @@
 			// 	'image' => 'logo8.png',
 			// ],
 			[
-				'url' => '/global',
+				'url' => '/garden-inn',
 				'name' => 'Garden Inn Resort & Amusement',
 				'image' => 'logo5.png',
 			],
 			[
-				'url' => '/global',
+				'url' => '/alif-co',
 				'name' => 'ALIF & Co.',
 				'image' => 'logo4.png',
 			],
