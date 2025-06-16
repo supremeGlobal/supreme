@@ -113,7 +113,7 @@
 									<a class="dropdown-item" href="{{ url('/dar-kafaa') }}">Dar Kafaa Al-Alia</a>
 								</li>
                                 <li>
-									<a class="dropdown-item" href="#">Supreme Agro</a>
+									<a class="dropdown-item" href="{{ url('/supreme-agro') }}">Supreme Agro</a>
 								</li>
                                 <li>
 									<a class="dropdown-item" href="#">North Point Medical College & Hospital Ltd</a>

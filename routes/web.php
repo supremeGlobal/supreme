@@ -15,6 +15,8 @@ Route::middleware(['web'])->group(function () {
         Route::get('/supreme-tea', 'supremeTea');		
         Route::get('/auto-bricks', 'autoBricks');
         Route::get('/dar-kafaa', 'darKafaa');
+        Route::get('/supreme-agro', 'supremeAgro');
+		
 		
         Route::get('/job', 'job');
     });

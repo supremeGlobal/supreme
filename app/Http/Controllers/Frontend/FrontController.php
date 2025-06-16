@@ -43,7 +43,11 @@ class FrontController extends Controller
         return view('frontend.pages.dar-kafaa', $data);
     }
 
-	
+	public function supremeAgro()
+    {
+		$data['contents'] = Content::where('company_id', 5)->orderBy('order')->get();
+        return view('frontend.pages.agro', $data);
+    }	
 
 	public function job()
     {
