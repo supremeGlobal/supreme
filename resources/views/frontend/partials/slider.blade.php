@@ -68,7 +68,7 @@
                  <div class="carousel-inner">
         @foreach ($images as $index => $img)
             <div class="carousel-item @if ($index === 0) active @endif">
-                <img src="{{ asset('images/' . $img) }}" alt="Company Image">
+                <img src="{{ asset('images/slide/' . $img) }}" alt="Company Image">
             </div>
         @endforeach
     </div>
