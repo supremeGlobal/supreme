@@ -1,5 +1,5 @@
 <!-- Top Info Bar -->
-<nav class="navbar navbar-expand small py-2 top">
+<nav class="navbar navbar-expand small py-2 top fs-6">
     <div class="container d-flex justify-content-between">
         <div>
             <i class="fas fa-clock me-2"></i>Open Hours: Sat - Thu - 9:00 am - 6:00 pm
