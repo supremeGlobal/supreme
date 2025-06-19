@@ -100,30 +100,11 @@
                                 Group Entities
                             </a>
                             <ul class="dropdown-menu rounded-0 py-0 fs-6" aria-labelledby="navbarDropdownMenuLink">
-                                <li>
-									<a class="dropdown-item" href="{{ url('/global') }}">Supreme Global</a>
-								</li>
-                                <li>
-									<a class="dropdown-item" href="{{ url('/supreme-tea') }}">Supreme Tea</a>
-								</li>
-                                <li>
-									<a class="dropdown-item" href="{{ url('/auto-bricks') }}">A&A Auto Bricks Industries Ltd</a>
-								</li>
-                                <li>
-									<a class="dropdown-item" href="{{ url('/dar-kafaa') }}">Dar Kafaa Al-Alia</a>
-								</li>
-                                <li>
-									<a class="dropdown-item" href="{{ url('/supreme-agro') }}">Supreme Agro</a>
-								</li>
-                                <li>
-									<a class="dropdown-item" href="{{ url('/north-point') }}">North Point Medical College & Hospital Ltd</a>
-								</li>
-                                <li>
-									<a class="dropdown-item" href="{{ url('/garden-inn') }}">Garden Inn Resort & Amusement</a>
-								</li>
-                                <li>
-									<a class="dropdown-item" href="{{ url('/alif-co') }}">ALIF & Co.</a>
-								</li>
+								@foreach($company as $item)
+									<li>
+										<a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
+									</li>
+								@endforeach
                             </ul>
                         </li>
 

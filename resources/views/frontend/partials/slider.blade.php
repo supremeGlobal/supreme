@@ -3,12 +3,13 @@
 @endsection
 <style>
    .carousel-item {
-    height: 700px;
+    height: 600px;
     background-size: cover;
-    background-position: top center; /* Changed from center to top center */
+    /* background-position: top center;  */
+	/* Changed from center to top center */
     background-repeat: no-repeat;
     background-color: #000;
-    width: 100vw;
+    /* width: 100vw; */
 }
 
     .carousel h5 {

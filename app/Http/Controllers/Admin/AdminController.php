@@ -22,8 +22,12 @@ class AdminController extends Controller
 	}
 
 	public function slider(){
-		$data['sliders'] = Media::where('type', 'slider')->get();
 
+		$data['company'] = User::$company;
+
+		
+	
+		$data['sliders'] = Media::where('type', 'slider')->get();
 		return view('admin.pages.slider', $data);
 	}
 }
