@@ -2,15 +2,14 @@
     {{ $companyName ?? '' }}
 @endsection
 <style>
-   .carousel-item {
-    height: 600px;
-    background-size: cover;
-    /* background-position: top center;  */
-	/* Changed from center to top center */
-    background-repeat: no-repeat;
-    background-color: #000;
-    /* width: 100vw; */
-}
+    .carousel-item {
+		width: 100vw;
+		height: 650px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-color: #000;
+		background-position: center -5px;
+	}
 
     .carousel h5 {
         font-size: 3rem;
@@ -19,7 +18,10 @@
 
 <section id="slide" class="p-0">
     @php
-        $images = ['pho1.jpg', 'pho2.jpg', 'pho3.jpg', 'pho4.jpg', 'pho5.jpg', 'pho6.jpg', 'pho7.jpg', 'pho8.jpg'];
+        $images = [];
+        for ($i = 1; $i <= 14; $i++) {
+            $images[] = $i . '.jpg';
+        }
     @endphp
 
     <div id="companyCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
@@ -34,7 +36,6 @@
                 </div>
             @endforeach
         </div>
-
 
         <button class="carousel-control-prev" type="button" data-bs-target="#companyCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -31,50 +31,51 @@ class User extends Authenticatable
 
 	public static $company = [
 		[
-			'url' => '/global',
+			'url' => 'global',
 			'name' => 'Supreme Global',
-			'image' => 'mainLogo.png',
+			'image' => 'supreme-global.png',
 		],
 		[
-			'url' => '/supreme-tea',
+			'url' => 'supreme-tea',
 			'name' => 'Supreme Tea Limited',
-			'image' => 'logo3.png',
+			'image' => 'supreme-tea.png',
 		],
 		[
-			'url' => '/auto-bricks',
+			'url' => 'auto-bricks',
 			'name' => 'A&A Auto Bricks Industries Ltd',
-			'image' => 'logo2.png',
+			'image' => 'auto-bricks.png',
 		],
 		[
-			'url' => '/dar-kafaa',
+			'url' => 'dar-kafaa',
 			'name' => 'Dar Kafaa Al-Alia',
-			'image' => 'logo1.png',
+			'image' => 'dar-kafaa.png',
 		],
 		[
-			'url' => '/supreme-agro',
+			'url' => 'supreme-agro',
 			'name' => 'Supreme Agro',
-			'image' => 'logo6.png',
+			'image' => 'supreme-agro.png',
 		],
 		[
-			'url' => '/north-point',
-			'name' => 'North Point Medical College & Hospital Ltd.',
-			'image' => 'logo7.png',
+			'url' => 'north-point',
+			'name' => 'North Point Medical College & Hospital Ltd',
+			'image' => 'north-point.png',
 		],
 		/*
 		[
-			'name' => 'North Palace Hotel & Resort Ltd.',
-			'image' => 'logo8.png',
+			'url' => 'north-palace',
+			'name' => 'North Palace Hotel & Resort Ltd',
+			'image' => 'north-palace.png',
 		],
 		*/
 		[
-			'url' => '/garden-inn',
+			'url' => 'garden-inn',
 			'name' => 'Garden Inn Resort & Amusement',
-			'image' => 'logo5.png',
+			'image' => 'garden-inn.png',
 		],
 		[
-			'url' => '/alif-co',
+			'url' => 'alif-co',
 			'name' => 'ALIF & Co.',
-			'image' => 'logo4.png',
+			'image' => 'alif-co.png',
 		],
 	];
 }

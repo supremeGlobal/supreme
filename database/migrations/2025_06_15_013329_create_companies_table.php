@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
 			$table->string('name');
+			$table->tinyText('url');
+			$table->tinyText('image');
+			$table->enum('status', ['active', 'inactive'])->default('active');
+			$table->integer('sort_order')->default(0);
             $table->timestamps();
         });
     }
