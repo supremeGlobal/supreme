@@ -10,3 +10,38 @@
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* Datatable */
+/* Top */
+.dt-layout-row {
+	background-color: gainsboro;
+	padding: 3px;
+	font-size: 17px;
+	margin: 8px 0px !important;
+}
+
+.dt-length label {
+	padding: 5px;
+  	text-transform: capitalize;
+}
+
+.dt-length label:first-letter {
+  	text-transform: capitalize;
+}
+
+div.dt-container select.dt-input,
+div.dt-container .dt-search input {
+	background: #fff !important;
+}
+
+/* Body */
+table.dataTable>thead>tr>th,
+table.dataTable>thead>tr>td {
+    padding: 4px 0px;
+	background-color: aquamarine;
+	font-size: 20px;
+}
+
+.center{
+	text-align: center !important;
+}

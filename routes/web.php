@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\FrontController;
 
@@ -28,12 +29,22 @@ Route::middleware(['web'])->group(function () {
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('admin.dashboard');
-        Route::get('slider', 'slider')->name('admin.slider');
+
+        Route::get('company', 'company')->name('admin.slider');
+
+		// Common code
+        Route::get('status', 'status')->name('status');
     });
 });
 
 Route::fallback(function () {
    return view('404');
+});
+
+// Cache:clear
+Route::get('/clear', function() {
+    Artisan::call('optimize:clear');    
+    return "Cleared!";
 });
 
 /*

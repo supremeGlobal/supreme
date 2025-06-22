@@ -42,9 +42,9 @@
                 </li>               
                 
 
-                <li class="nav-header">Sister Concerns</li>
+                <li class="nav-header">Settings</li>
                 <li class="nav-item">
-					 <a href="{{ url('admin/slider') }}" class="nav-link {{ request()->is('slider*') ? 'active' : '' }}"> 
+					 <a href="{{ url('admin/company') }}" class="nav-link {{ request()->is('company*') ? 'active' : '' }}"> 
                         <i class="nav-icon fa-regular fa-circle text-danger"></i>
                         <p>Company list</p>
                     </a>

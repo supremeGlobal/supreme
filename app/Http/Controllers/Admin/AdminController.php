@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Media;
+use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    public function dashboard()
+	public function dashboard()
 	{
 		$data['types'] = [
 			[
@@ -21,13 +23,23 @@ class AdminController extends Controller
 		return view('admin.dashboard', $data);
 	}
 
-	public function slider(){
+	public function company()
+	{
+		$data['company'] = Company::all();
+		return view('admin.pages.company', $data);
+	}
 
-		$data['company'] = User::$company;
+	// Common code
+	public function status(Request $request)
+	{
+		$model = $request->model;
+		$field = $request->field;
+		$id = $request->id;
+		$tab = $request->tab;
 
-		
-	
-		$data['sliders'] = Media::where('type', 'slider')->get();
-		return view('admin.pages.slider', $data);
+		$itemId = DB::table($model)->find($id);
+		($itemId->$field == 'active') ? $action = $itemId->$field = 'inactive' : $action = $itemId->$field = 'active';
+		DB::table($model)->where('id', $id)->update([$field => $action]);
+		return response()->json(['message' => 'Status updated successfully.']);
 	}
 }
