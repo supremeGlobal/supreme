@@ -12,7 +12,7 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
-                                <th class="center">Order by</th>
+                                <th class="center">SL</th>
                                 <th class="center">Logo</th>
                                 <th class="px-3">Name</th>
                                 <th class="center">Status</th>
@@ -20,7 +20,7 @@
                             <tbody>
                                 @foreach ($company as $item)
                                     <tr>
-                                        <td class="center" width="30">{!! $item->sort_order !!}</td>
+                                        <td class="center" width="30">{!! $loop->iteration !!}</td>
                                         <td class="center border">
                                             <img src="{{ asset($item->image) }}" class="rounded-circle border"
                                                 width="80" height="80" alt="{{ $item->name }}">

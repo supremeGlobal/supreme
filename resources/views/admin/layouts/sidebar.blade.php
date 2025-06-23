@@ -39,8 +39,7 @@
                             </a> 
                         </li>
                     </ul>
-                </li>               
-                
+                </li>
 
                 <li class="nav-header">Settings</li>
                 <li class="nav-item">

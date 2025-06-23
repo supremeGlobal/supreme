@@ -17,7 +17,7 @@
                 ];
 
                 $icon = [
-                    'fa-solid fa-plane-up',
+                    'fa-solid fa-building',
                     'fa-solid fa-bell',
                     'fa-solid fa-lightbulb',
                     'fa-solid fa-user-gear',
@@ -32,7 +32,7 @@
                         <div class="small-box {{ $colors[$key % count($colors)] }} py-3">
                             <div class="inner">
                                 <h3>{{ $item['value'] ?? 0 }}</h3>
-                                <h5>{{ $item['title'] }}</h5>
+                                <h4>{{ $item['title'] }}</h4>
                             </div>
                             <i class="{{ $icon[$key] }} small-box-icon"></i>
                         </div>

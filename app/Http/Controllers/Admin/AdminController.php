@@ -15,9 +15,9 @@ class AdminController extends Controller
 	{
 		$data['types'] = [
 			[
-				'link'  => url('title-1'), // route('auth'),
-				'value' => User::count(),
-				'title' => 'Admin title 1'
+				'link'  => url('admin/company'),
+				'value' => Company::count(),
+				'title' => 'Total Group Entities'
 			],
 		];
 		return view('admin.dashboard', $data);
@@ -27,6 +27,11 @@ class AdminController extends Controller
 	{
 		$data['company'] = Company::all();
 		return view('admin.pages.company', $data);
+	}
+
+	public function slider()
+	{
+		return view('admin.pages.slider');
 	}
 
 	// Common code
