@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Media;
 use App\Models\Company;
+use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -29,9 +30,10 @@ class AdminController extends Controller
 		return view('admin.pages.company', $data);
 	}
 
-	public function slider()
+	public function companyInfo()
 	{
-		return view('admin.pages.slider');
+		$data['companyInfo'] = CompanyInfo::all();
+		return view('admin.pages.company-info', $data);
 	}
 
 	// Common code

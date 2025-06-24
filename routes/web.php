@@ -32,6 +32,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 
         Route::get('slider', 'slider')->name('admin.slider');
         Route::get('company', 'company');
+        Route::get('company-info', 'companyInfo');
 
 		// Common code
         Route::get('status', 'status')->name('status');

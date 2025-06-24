@@ -6,6 +6,17 @@
 {{-- Datatable --}}
 <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
 
+ <!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 200,
+                placeholder: 'Write your text here...'
+            });
+        });
+    </script>
+
 {{-- OverlayScrollbars Configure --}}
 <script>
     const SELECTOR_SIDEBAR_WRAPPER = ".sidebar-wrapper";
@@ -82,3 +93,14 @@
         });
     });
 </script>
+
+<!-- Summernote JS -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 200,
+                placeholder: 'Write your text here...'
+            });
+        });
+    </script>

@@ -19,7 +19,7 @@
 <section id="slide" class="p-0">
     @php
         $images = [];
-        for ($i = 1; $i <= 14; $i++) {
+        for ($i = 1; $i <= 17; $i++) {
             $images[] = $i . '.jpg';
         }
     @endphp

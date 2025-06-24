@@ -48,6 +48,12 @@
                         <p>Company list</p>
                     </a>
                 </li>
+				<li class="nav-item">
+					 <a href="{{ url('admin/company-info') }}" class="nav-link {{ request()->is('company-info*') ? 'active' : '' }}"> 
+                        <i class="nav-icon fa-regular fa-circle text-info"></i>
+                        <p>Company information</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

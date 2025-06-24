@@ -17,10 +17,12 @@
 {{-- datatable --}}
 <link rel="stylesheet" href="//cdn.datatables.net/2.3.1/css/dataTables.dataTables.min.css">
 
-{{-- Style.css --}}
-<link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
-
-
+{{-- switchery & toastr --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+<!-- Summernote CSS -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+
+{{-- Style.css --}}
+<link rel="stylesheet" href="{{ asset('admin/css/style.css') }}">
