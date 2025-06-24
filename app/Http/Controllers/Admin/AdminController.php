@@ -36,6 +36,21 @@ class AdminController extends Controller
 		return view('admin.pages.company-info', $data);
 	}
 
+	public function addInfo(Request $request)
+	{
+		$request->validate([
+			'key' => 'required|string|unique:company_infos,key',
+			'value' => 'required|string',
+		]);
+
+		CompanyInfo::create([
+			'key' => $request->key,
+			'value' => $request->value
+		]);
+
+		return back()->with('success', 'Company information add successfully');
+	}
+
 	// Common code
 	public function status(Request $request)
 	{

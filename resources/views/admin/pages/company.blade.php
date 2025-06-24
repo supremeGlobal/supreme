@@ -31,12 +31,6 @@
                                                 data-field="status" data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        {{-- <td width="auto">
-											<div class="btn-group">
-												<a href="{{ url('patient-report', [$item->id]) }}"
-													class="btn btn-sm btn-info py-1">View</a>
-											</div>
-										</td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

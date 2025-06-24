@@ -30,9 +30,9 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('admin.dashboard');
 
-        Route::get('slider', 'slider')->name('admin.slider');
         Route::get('company', 'company');
         Route::get('company-info', 'companyInfo');
+        Route::post('add-info', 'addInfo');		
 
 		// Common code
         Route::get('status', 'status')->name('status');
