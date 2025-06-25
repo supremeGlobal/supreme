@@ -40,7 +40,7 @@
                 </div>
             @endforeach
 
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6 d-none">
                 <a href="#" class="text-decoration-none">
                     <div class="small-box text-bg-warning py-3">
                         <div class="inner">

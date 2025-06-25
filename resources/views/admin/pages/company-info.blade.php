@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <h4 class="card-header bg-success text-center py-1 text-light">Company information</h4>
+                    <h4 class="card-header bg-success text-center py-2 text-light">Company information</h4>
                     <div class="ms-1 mt-1">
                         <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                             data-bs-target="#addInfo">
@@ -36,10 +36,9 @@
                                                 data-field="status" data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        <td width="auto" class="text-center">
-											<div class="btn-group">
-												<a href="{{ url('', [$item->id]) }}" class="btn btn-info py-1 px-3">View</a>
-											</div>
+                                        <td width="auto" class="text-center">											
+											<a href="{{ url('', [$item->id]) }}" class="btn btn-info py-1 px-3">View</a>
+											<a href="{{ url('', [$item->id]) }}" class="btn btn-danger py-1 px-3">Delete</a>
 										</td>
                                     </tr>
                                 @endforeach
@@ -54,22 +53,20 @@
     <div class="modal fade" id="addInfo" tabindex="-1" aria-labelledby="addInfoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-5" id="addInfoLabel">Company's New Information</h1>
+                    <h1 class="modal-title fs-4" id="addInfoLabel">Company's New Information</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-
                 <form action="{{ url('admin/add-info') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12 mb-3">
-                                <label for="title" class="form-label">Info title</label>
+                                <label for="title" class="form-label fs-5">Info title</label>
                                 <input type="text" name="key" id="title" class="form-control" placeholder="Name">
                             </div>
                             <div class="col-md-12">
-                                <label for="summernote" class="form-label">Description</label>
+                                <label for="summernote" class="form-label fs-5">Description</label>
                                 <textarea id="summernote" name="value" placeholder="Write your text here..."></textarea>
                             </div>
                         </div>
