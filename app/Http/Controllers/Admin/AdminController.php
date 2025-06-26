@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Models\Media;
+use App\Models\Client;
 use App\Models\Company;
 use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
@@ -54,6 +55,12 @@ class AdminController extends Controller
 		]);
 
 		return back()->with('success', 'Company information add successfully');
+	}
+
+	public function client()
+	{
+		$data['client'] = Client::all();
+		return view('admin.pages.client', $data);
 	}
 
 	// Common code

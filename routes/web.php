@@ -31,8 +31,11 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::get('dashboard', 'dashboard')->name('admin.dashboard');
 
         Route::get('company', 'company');
+		
         Route::get('company-info', 'companyInfo');
-        Route::post('add-info', 'addInfo');		
+        Route::post('add-info', 'addInfo');
+		
+        Route::get('client', 'client');
 
 		// Common code
         Route::get('status', 'status')->name('status');
@@ -48,30 +51,3 @@ Route::get('/clear', function() {
     Artisan::call('optimize:clear');    
     return "Cleared!";
 });
-
-/*
-| Frontend Routes (No Login Required)
-
-| Admin Routes (Login Required)
-Route::middleware(['web', 'auth'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
-    // Add more admin routes
-});
-
-// Frontend routes (no login)
-Route::prefix('/')->middleware(['web'])->group(function () {
-    Route::controller(FrontendController::class)->group(function () {
-        Route::get('/', 'home')->name('frontend.home');
-        Route::get('/about', 'about')->name('frontend.about');
-    });
-});
-
-// Admin routes (login required)
-Route::prefix('admin')->middleware(['web', 'auth'])->name('admin.')->group(function () {
-    Route::controller(AdminController::class)->group(function () {
-        Route::get('/dashboard', 'dashboard')->name('dashboard');
-        Route::get('/users', 'users')->name('users');
-    });
-});
-*/

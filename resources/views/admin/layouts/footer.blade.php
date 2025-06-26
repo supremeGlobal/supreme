@@ -5,17 +5,20 @@
 
 {{-- Datatable --}}
 <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
+<script>
+    let table = new DataTable('.table');
+</script>
 
  <!-- Summernote JS -->
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#summernote').summernote({
-                height: 200,
-                placeholder: 'Write your text here...'
-            });
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			height: 200,
+			placeholder: 'Write your text here...'
+		});
+	});
+</script>
 
 {{-- OverlayScrollbars Configure --}}
 <script>
@@ -43,20 +46,10 @@
     });
 </script>
 
-<script>
-    let table = new DataTable('.table');
-</script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
 
 <script>
-    window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 5000);
-
     let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
     elems.forEach(function(html) {
         let switchery = new Switchery(html, {
@@ -92,15 +85,21 @@
             });
         });
     });
+
+	window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function() {
+            $(this).remove();
+        });
+    }, 5000);
 </script>
 
 <!-- Summernote JS -->
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('#summernote').summernote({
-                height: 200,
-                placeholder: 'Write your text here...'
-            });
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			height: 200,
+			placeholder: 'Write your text here...'
+		});
+	});
+</script>
