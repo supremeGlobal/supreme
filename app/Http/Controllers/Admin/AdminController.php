@@ -26,6 +26,11 @@ class AdminController extends Controller
 				'value' => CompanyInfo::count(),
 				'title' => 'Total Company Info'
 			],
+			[
+				'link'  => url('admin/client'),
+				'value' => Client::count(),
+				'title' => 'Total Client'
+			],
 		];
 		return view('admin.dashboard', $data);
 	}
