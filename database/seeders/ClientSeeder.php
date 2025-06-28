@@ -16,7 +16,7 @@ class ClientSeeder extends Seeder
 		foreach (Client::$client as $item) {
 			Client::create([
 				'name' => $item['name'],
-				'image' => $item['image']
+				// 'image' => $item['image'] ?? 'images/clients'
 			]);
 		}
     }

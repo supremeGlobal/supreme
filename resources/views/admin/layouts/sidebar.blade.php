@@ -8,16 +8,8 @@
     <div class="sidebar-wrapper">
         <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">Supreme Global</li>
-				
-				<li class="nav-item"> 
-                    <a href="{{ url('admin/slider') }}" class="nav-link {{ request()->is('slider*') ? 'active' : '' }}"> 
-                        <i class="nav-icon fa-solid fa-arrow-right-to-bracket"></i>
-                        <p>Slider</p>
-                    </a>
-                </li>
-
-                <li class="nav-item d-none"> 
+               
+                <li class="nav-item 1d-none"> 
                     <a href="#" class="nav-link"> 
                         <i class="nav-icon fa-regular fa-bell"></i>
                         <p>
@@ -43,19 +35,19 @@
 
                 <li class="nav-header">Settings</li>
                 <li class="nav-item">
-					 <a href="{{ url('admin/company') }}" class="nav-link {{ request()->is('company*') ? 'active' : '' }}"> 
+					 <a href="{{ url('admin/company') }}" class="nav-link {{ request()->is('admin/company') ? 'active' : '' }}"> 
                         <i class="nav-icon fa-regular fa-circle text-danger"></i>
                         <p>Company list</p>
                     </a>
                 </li>
 				<li class="nav-item">
-					 <a href="{{ url('admin/company-info') }}" class="nav-link {{ request()->is('company-info*') ? 'active' : '' }}"> 
+					 <a href="{{ url('admin/company-info') }}" class="nav-link {{ request()->is('admin/company-info*') ? 'active' : '' }}"> 
                         <i class="nav-icon fa-regular fa-circle text-info"></i>
                         <p>Company information</p>
                     </a>
                 </li>
 				<li class="nav-item">
-					 <a href="{{ url('admin/client') }}" class="nav-link {{ request()->is('client*') ? 'active' : '' }}"> 
+					 <a href="{{ url('admin/client') }}" class="nav-link {{ request()->is('admin/client*') ? 'active' : '' }}"> 
                         <i class="nav-icon fa-regular fa-circle text-info"></i>
                         <p>Client list</p>
                     </a>
