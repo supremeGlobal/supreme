@@ -131,7 +131,6 @@
         interval: 1800, // 2 seconds
         ride: 'carousel'
     });
-
     
     document.addEventListener('DOMContentLoaded', () => {
         const ticker = document.getElementById('newsTicker');
