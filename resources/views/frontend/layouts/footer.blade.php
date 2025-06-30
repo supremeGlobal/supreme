@@ -5,21 +5,21 @@
                 <h3>Contract</h3>
                 <ul>
                     <li class="item">
-                        <a href="tel:+8801322846601">
+                        <a href="tel:{{ $companyInfo['contact_number'] ?? '' }}">
                             <i class="fas fa-phone-alt"></i>
-                            +880 1322846601
+							{{ $companyInfo['contact_number'] ?? '' }}
                         </a>
                     </li>
                     <li class="item">
-                        <a href="mailto:info@supremeglobalbd@gmail.com">
+                        <a href="mailto:{{ $companyInfo['info_email'] ?? '' }}">
                             <i class="fas fa-envelope"></i>
-                            info@supremeglobalbd.com
+                            {{ $companyInfo['info_email'] ?? '' }}
                         </a>
                     </li>
                     <li class="item">
-                        <a href="mailto:sales@supremeglobalbd@gmail.com">
+                        <a href="mailto:{{ $companyInfo['sales_email'] ?? '' }}">
                             <i class="fas fa-envelope"></i>
-                            sales@supremeglobalbd.com
+                            {{ $companyInfo['sales_email'] ?? '' }}
                         </a>
                     </li>
                     <li class="item">
@@ -35,29 +35,18 @@
                 <ul>
                     <li class="item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <Strong>Head office: </Strong>
-						<div class="ps-4 pt-1">
-							<p>Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani,</p>
-							<p>Middle Badda, Dhaka-1212, Bangladesh</p>
+                        <Strong>Head office:</Strong>
+						<div class="mt-2">
+							{{ $companyInfo['head_office_location'] ?? '' }}
 						</div>
                     </li>
 					<li class="item">
-						<button type="button" class="btn btn-primary col-md-6 ms-2 rounded-1" data-bs-toggle="modal"
+						<button type="button" class="btn btn-primary col-md-6 rounded-1" data-bs-toggle="modal"
                             data-bs-target="#emailUs">
                             <i class="fas fa-envelope"></i>
                             Send email us
                         </button>
 					</li>
-                    {{-- <li class="item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <Strong>Saudi office: </Strong>
-                        Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545
-                    </li>
-                    <li class="item d-none">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <Strong>Factory location: </Strong>
-                        A&A Auto Bricks Industries Ltd Kamatpara, Sakoa, Boda, Panchagarh, Bangladesh
-                    </li> --}}
                 </ul>
             </div>
         </div>

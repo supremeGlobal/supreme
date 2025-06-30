@@ -1,76 +1,26 @@
 <!-- Top Info Bar -->
-<nav class="navbar navbar-expand small py-2 top fs-6 d-none">
-    <div class="container d-flex justify-content-between">
-        <div>
-            <i class="fas fa-clock me-2"></i>Open Hours: Sat - Thu - 9:00 am - 6:00 pm
-        </div>
-        <div>
-            <i class="fas fa-phone-alt me-2"></i>+880 1322846601
-            <span class="mx-3">|</span>
-            <i class="fas fa-envelope me-2"></i>supremeglobalbd@gmail.com
-        </div>
-        <div>
-            <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-dark mx-4"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-dark"><i class="fab fa-linkedin-in"></i></a>
-            @guest
-                @if (Route::has('login'))
-                    <a class="text-light ps-4 text-decoration-none" data-bs-toggle="modal" data-bs-target="#login"
-                        href="#">
-                        {{ __('Login') }}
-                    </a>
-                @endif
-                @if (Route::has('register'))
-                    <li class="nav-item d-none">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-            @else
-                <a id="navbarDropdown" class="dropdown-toggle text-light ps-4 text-decoration-none" href="#"
-                    role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item text-light" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-										document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-                    <a class="dropdown-item text-dark" href="{{ url('/admin/dashboard') }}">
-                        Admin dashboard
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-            @endguest
-        </div>
-    </div>
-</nav>
-
-<!-- Top Info Bar -->
 <nav class="navbar py-2 top fs-6 navbar-expand small py-2 top fs-6">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
             <!-- Left Section -->
             <div class="mb-2 mb-md-0 text-center text-md-start">
-                <i class="fas fa-clock me-2"></i>Open Hours: Sat - Thu - 9:00 am - 6:00 pm
+                <i class="fas fa-clock me-2"></i>
+				{{ $companyInfo['office_time'] ?? '' }}
             </div>
 
             <!-- Middle Section -->
             <div class="mb-2 mb-md-0 text-center">
-                <i class="fas fa-phone-alt me-2"></i>+880 1322846601
+                <i class="fas fa-phone-alt me-2"></i>
+				{{ $companyInfo['contact_number'] ?? '' }}
+
                 <span class="d-none d-md-inline mx-3">|</span>
-                <i class="fas fa-envelope me-2"></i>supremeglobalbd@gmail.com
+
+                <i class="fas fa-envelope me-2"></i>
+				{{ $companyInfo['company_email'] ?? '' }}
             </div>
 
             <!-- Right Section -->
             <div class="d-flex justify-content-center justify-content-md-end align-items-center">
-                <a href="#" class="text-dark"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-dark mx-3"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-dark"><i class="fab fa-linkedin-in"></i></a>
                 @guest
                     @if (Route::has('login'))
                         <a class="text-light ps-3 text-decoration-none" data-bs-toggle="modal" data-bs-target="#login"

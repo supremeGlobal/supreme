@@ -24,7 +24,7 @@ class AdminController extends Controller
 			[
 				'link'  => url('admin/company-info'),
 				'value' => CompanyInfo::count(),
-				'title' => 'Total Company Info'
+				'title' => 'Company Basic Information'
 			],
 			[
 				'link'  => url('admin/client'),

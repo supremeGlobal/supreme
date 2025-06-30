@@ -14,7 +14,7 @@ class CompanyInfo extends Model
 			'value' => 'Open Hours: Sat - Thu - 9:00 am - 6:00 pm'
 		],
 		[
-			'key' => 'contact_n',
+			'key' => 'contact_number',
 			'value' => '+880 1322846601'
 		],
 		[

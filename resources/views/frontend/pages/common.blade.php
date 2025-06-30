@@ -130,7 +130,7 @@
 
 			<!-- Fullscreen Map -->
 			<div class="modal-body p-0 h-100">
-				<iframe src="https://www.google.com/maps?q=23.779395286290402,90.42576674365971&z=14&output=embed"
+				<iframe src="{{ $companyInfo['head_office_location_map'] ?? '' }}"
 					width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
 					referrerpolicy="no-referrer-when-downgrade">
 				</iframe>

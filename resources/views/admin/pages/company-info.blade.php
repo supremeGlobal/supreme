@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <h4 class="card-header bg-success text-center py-2 text-light">Company information</h4>
+                    <h4 class="card-header bg-success text-center py-1 text-light">Company information</h4>
                     <div class="ms-1 mt-1">
                         <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                             data-bs-target="#addInfo">
