@@ -464,10 +464,10 @@ section {
 }
 
 #productService img {
-    width: 100%;
-    max-width: 500px; /* optional fixed size */
-    aspect-ratio: 16 / 9; /* maintain proportion */
+    /* width: 100%; */
+    /* max-width: 500px; */
+    aspect-ratio: 10 / 9;
     overflow: hidden;
     position: relative;
-    height: 500px !important;
+    /* height: 500px !important; */
 }

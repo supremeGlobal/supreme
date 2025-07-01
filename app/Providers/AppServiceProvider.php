@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
 		View::share([
 			'company' => Company::where('status', 'active')->orderBy('sort_order', 'asc')->get(),
 			'client' => Client::where('status', 'active')->get(),
-			'companyInfo' => CompanyInfo::where('status', 'active')->get()->pluck('value', 'key')->toArray(),
+			'companyInfo' => CompanyInfo::where('status', 'active')->get()->mapWithKeys(fn($item) => [$item->key => $item->value !== '' ? $item->value : true])->toArray(),
 		]);
 	}
 }

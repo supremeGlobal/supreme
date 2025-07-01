@@ -23,7 +23,7 @@
                                 <th class="px-3">Key</th>
                                 <th class="px-3">Value</th>
                                 <th class="center">Status</th>
-                                <th class="center">Action</th>
+                                {{-- <th class="center d-none">Action</th> --}}
                             </thead>
                             <tbody>
                                 @foreach ($companyInfo as $item)
@@ -36,10 +36,10 @@
                                                 data-field="status" data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        <td width="auto" class="text-center">											
+                                        {{-- <td width="auto" class="text-center">											
 											<a href="{{ url('', [$item->id]) }}" class="btn btn-info py-1 px-3">View</a>
 											<a href="{{ url('', [$item->id]) }}" class="btn btn-danger py-1 px-3">Delete</a>
-										</td>
+										</td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
