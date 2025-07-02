@@ -4,65 +4,66 @@
             <div class="col-12 col-md-4 footerContact">
                 <h3>Contract</h3>
                 <ul>
-					@if (!empty($companyInfo['contact_number']))
-						<li class="item">
-							<a href="tel:{{ $companyInfo['contact_number'] }}">
-								<i class="fas fa-phone-alt"></i>
-								{{ $companyInfo['contact_number'] }}
-							</a>
-						</li>
-					@endif
-					
-					@if (!empty($companyInfo['info_email']))					
-						<li class="item">
-							<a href="mailto:{{ $companyInfo['info_email'] ?? '' }}">
-								<i class="fas fa-envelope"></i>
-								{{ $companyInfo['info_email'] ?? '' }}
-							</a>
-						</li>
-					@endif
-						
-					@if (!empty($companyInfo['sales_email']))				
-						<li class="item">
-							<a href="mailto:{{ $companyInfo['sales_email'] ?? '' }}">
-								<i class="fas fa-envelope"></i>
-								{{ $companyInfo['sales_email'] ?? '' }}
-							</a>
-						</li>
-					@endif
-					
-					@if (!empty($companyInfo['head_office_location_map']))					
-						<li class="item">
-							<button class="btn btn-success col-md-6 rounded-1" data-bs-toggle="modal" data-bs-target="#map">
-								<i class="fas fa-map-marker-alt"></i>
-								Head office location
-							</button>                        
-						</li>
-					@endif
+                    @if (!empty($companyInfo['contact_number']))
+                        <li class="item">
+                            <a href="tel:{{ $companyInfo['contact_number'] }}">
+                                <i class="fas fa-phone-alt"></i>
+                                {{ $companyInfo['contact_number'] }}
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (!empty($companyInfo['info_email']))
+                        <li class="item">
+                            <a href="mailto:{{ $companyInfo['info_email'] ?? '' }}">
+                                <i class="fas fa-envelope"></i>
+                                {{ $companyInfo['info_email'] ?? '' }}
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (!empty($companyInfo['sales_email']))
+                        <li class="item">
+                            <a href="mailto:{{ $companyInfo['sales_email'] ?? '' }}">
+                                <i class="fas fa-envelope"></i>
+                                {{ $companyInfo['sales_email'] ?? '' }}
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (!empty($companyInfo['head_office_location_map']))
+                        <li class="item">
+                            <button class="btn btn-success col-md-6 rounded-1" data-bs-toggle="modal"
+                                data-bs-target="#map">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Head office location
+                            </button>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <div class="col-12 col-md-4 footerContact">
                 <h3>Address</h3>
                 <ul>
-					@if (!empty($companyInfo['head_office_location']))	
-						<li class="item">
-							<i class="fas fa-map-marker-alt"></i>
-							<Strong>Head office:</Strong>
-							<div class="mt-2">
-								{{ $companyInfo['head_office_location'] ?? '' }}
-							</div>
-						</li>
-					@endif
-					
-					@if (!empty($companyInfo['send_email_us']))	
-						<li class="item">
-							<button type="button" class="btn btn-primary col-md-6 rounded-1" data-bs-toggle="modal"
-								data-bs-target="#emailUs">
-								<i class="fas fa-envelope"></i>
-								Send email us
-							</button>
-						</li>
-					@endif
+                    @if (!empty($companyInfo['head_office_location']))
+                        <li class="item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <Strong>Head office:</Strong>
+                            <div class="mt-2">
+                                {{ $companyInfo['head_office_location'] ?? '' }}
+                            </div>
+                        </li>
+                    @endif
+
+                    @if (!empty($companyInfo['send_email_us']))
+                        <li class="item">
+                            <button type="button" class="btn btn-primary col-md-6 rounded-1" data-bs-toggle="modal"
+                                data-bs-target="#emailUs">
+                                <i class="fas fa-envelope"></i>
+                                Send email us
+                            </button>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -76,42 +77,19 @@
 
             <div class="col-md-6">
                 <ul class="text-center footerSocial list-inline mb-0">
-                    <li class="list-inline-item">
-                        <a href="#" class="social-icon facebook">
-                            <i class="fa-brands fa-facebook-f"></i>
-                            <span class="label">Facebook</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="social-icon instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                            <span class="label">Instagram</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="social-icon linkedin">
-                            <i class="fa-brands fa-linkedin-in"></i>
-                            <span class="label">LinkedIn</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="social-icon youtube">
-                            <i class="fa-brands fa-youtube"></i>
-                            <span class="label">YouTube</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="social-icon twitter">
-                            <i class="fa-brands fa-twitter"></i>
-                            <span class="label">Twitter</span>
-                        </a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#" class="social-icon github">
-                            <i class="fa-brands fa-github"></i>
-                            <span class="label">GitHub</span>
-                        </a>
-                    </li>
+                    @php
+                        $socials = ['facebook', 'instagram', 'linkedin', 'youtube', 'twitter', 'github'];
+                    @endphp
+                    @foreach ($socials as $social)
+                        @if (!empty($companyInfo[$social]))
+							<li class="list-inline-item">
+								<a href="#" class="social-icon {{$social}}">
+									<i class="fa-brands fa-{{$social}}"></i>
+									<span class="label">{{$social}}</span>
+								</a>
+							</li>
+                        @endif
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -136,7 +114,7 @@
         interval: 1800, // 2 seconds
         ride: 'carousel'
     });
-    
+
     document.addEventListener('DOMContentLoaded', () => {
         const ticker = document.getElementById('newsTicker');
         const toggleBtn = document.getElementById('toggleTicker');
@@ -158,15 +136,15 @@
         });
     });
 
-	// Remove href from url [localhost/page#footer]
-	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+    // Remove href from url [localhost/page#footer]
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
             const target = document.querySelector(targetId);
 
             if (target) {
                 e.preventDefault(); // Prevent default anchor behavior (like updating URL)
-                
+
                 // Scroll smoothly without changing the URL
                 target.scrollIntoView({
                     behavior: 'smooth'

@@ -1,26 +1,31 @@
-<!-- Top Info Bar -->
-<nav class="navbar py-2 top fs-6 navbar-expand small py-2 top fs-6">
+<nav class="navbar py-2 top fs-6 small navbar-expand">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
-            <!-- Left Section -->
-            <div class="mb-2 mb-md-0 text-center text-md-start">
+
+            <!-- Office Time -->
+            <div class="mb-2 mb-md-0 text-center text-md-start w-100 w-md-auto office_time">
                 <i class="fas fa-clock me-2"></i>
-				{{ $companyInfo['office_time'] ?? '' }}
+                {{ $companyInfo['office_time'] ?? '' }}
             </div>
 
-            <!-- Middle Section -->
-            <div class="mb-2 mb-md-0 text-center">
-                <i class="fas fa-phone-alt me-2"></i>
-				{{ $companyInfo['contact_number'] ?? '' }}
+            <!-- Contact & Email Section -->
+            <div class="d-flex flex-column flex-md-row w-100 contact-mobile">
+                <div class="contact-left">
+                    <i class="fas fa-phone-alt me-1"></i>
+                    {{ $companyInfo['contact_number'] ?? '' }}
+                </div>
 
-                <span class="d-none d-md-inline mx-3">|</span>
+                <span class="d-md-inline mx-1">|</span>
 
-                <i class="fas fa-envelope me-2"></i>
-				{{ $companyInfo['company_email'] ?? '' }}
+                <div class="contact-right">
+                    <i class="fas fa-envelope me-1"></i>
+                    {{ $companyInfo['company_email'] ?? '' }}
+                </div>
             </div>
 
-            <!-- Right Section -->
-            <div class="d-flex justify-content-center justify-content-md-end align-items-center">
+            <!-- Auth Section -->
+            <div
+                class="d-flex justify-content-center justify-content-md-end align-items-center mt-2 mt-md-0 w-100 w-md-auto auth_section">
                 @guest
                     @if (Route::has('login'))
                         <a class="text-light ps-3 text-decoration-none" data-bs-toggle="modal" data-bs-target="#login"
@@ -28,15 +33,10 @@
                             {{ __('Login') }}
                         </a>
                     @endif
-                    @if (Route::has('register'))
-                        <a class="d-none" href="{{ route('register') }}">
-                            {{ __('Register') }}
-                        </a>
-                    @endif
                 @else
                     <div class="dropdown ms-3">
                         <a id="navbarDropdown" class="dropdown-toggle text-light text-decoration-none" href="#"
-                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

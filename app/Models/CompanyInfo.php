@@ -61,5 +61,33 @@ class CompanyInfo extends Model
 			'key' => 'saudi_office_location_map',
 			'value' => ''
 		],
+		[
+			'key' => 'send_email_us',
+			'value' => ''
+		],
+		[
+			'key' => 'facebook',
+			'value' => ''
+		],
+		[
+			'key' => 'instagram',
+			'value' => ''
+		],
+		[
+			'key' => 'linkedin',
+			'value' => ''
+		],
+		[
+			'key' => 'youtube',
+			'value' => ''
+		],
+		[
+			'key' => 'twitter',
+			'value' => ''
+		],
+		[
+			'key' => 'github',
+			'value' => ''
+		],
 	];
 }
