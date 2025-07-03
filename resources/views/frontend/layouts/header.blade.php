@@ -69,11 +69,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="row w-100 align-items-center g-0">
                 <!-- Left ticker col-md-9 always -->
-                <div class="col-12 col-md-9 d-flex align-items-center p-0">
-                    <div
-                        class="news-ticker-wrapper d-flex align-items-center border border-primary bg-white w-100 overflow-hidden">
-                        <div class="news-label bg-primary text-white px-3 py-2 flex-shrink-0 fs-6">
-                            Latest News
+                <div class="col-12 col-md-9 d-flex align-items-center">
+                    <div class="news-ticker-wrapper d-flex align-items-center border border-primary bg-white w-100 overflow-hidden">
+                        <div class="news-label bg-primary text-white p-1 flex-shrink-0 fs-6 fw-bold align-left">
+                            Latest News:
                         </div>
 
                         <div class="news-ticker-box flex-grow-1">

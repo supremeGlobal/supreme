@@ -52,6 +52,12 @@
                         <p>Client list</p>
                     </a>
                 </li>
+				<li class="nav-item">
+					<a href="{{ url('admin/news') }}" class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}"> 
+                        <i class="nav-icon fa-regular fa-circle text-info"></i>
+                        <p>Latest news</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

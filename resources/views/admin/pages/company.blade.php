@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <h4 class="card-header bg-success text-center py-1 text-light">Company list</h4>
+                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company list</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>

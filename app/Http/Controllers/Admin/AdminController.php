@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\News;
 use App\Models\User;
 use App\Models\Media;
 use App\Models\Client;
@@ -13,6 +14,7 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
+	// Dashboard
 	public function dashboard()
 	{
 		$data['types'] = [
@@ -35,12 +37,14 @@ class AdminController extends Controller
 		return view('admin.dashboard', $data);
 	}
 
+	// Company
 	public function company()
 	{
 		$data['company'] = Company::all();
 		return view('admin.pages.company', $data);
 	}
 
+	// Company-info
 	public function companyInfo()
 	{
 		$data['companyInfo'] = CompanyInfo::all();
@@ -62,10 +66,18 @@ class AdminController extends Controller
 		return back()->with('success', 'Company information add successfully');
 	}
 
+	// Client
 	public function client()
 	{
 		$data['client'] = Client::all();
 		return view('admin.pages.client', $data);
+	}
+
+	// News
+	public function news()
+	{
+		$data['news'] = News::all();
+		return view('admin.pages.news', $data);
 	}
 
 	// Common code

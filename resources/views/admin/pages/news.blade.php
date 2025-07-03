@@ -11,7 +11,7 @@
                     <div class="card-header p-1">
 						<button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal" data-bs-target="#addInfo">
 							<i class="fas fa-plus"></i>
-							Add Information
+							Add news
 						</button>
 					</div>
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company information</h4>
@@ -19,26 +19,21 @@
                         <table class="table table-bordered align-middle">
                             <thead>
                                 <th class="center">SL</th>
-                                <th class="px-3">Key</th>
-                                <th class="px-3">Value</th>
+                                <th class="px-3">Company</th>
+                                <th class="px-3">Details</th>
                                 <th class="center">Status</th>
-                                {{-- <th class="center d-none">Action</th> --}}
                             </thead>
                             <tbody>
-                                @foreach ($companyInfo as $item)
+                                @foreach ($news as $item)
                                     <tr>
                                         <td class="center" width="30">{!! $loop->iteration !!}</td>                                        
-                                        <td class="px-3">{!! $item->key !!}</td>
-                                        <td class="px-3">{!! $item->value !!}</td>
+                                        <td class="px-3">{!! $item->company_id !!}</td>
+                                        <td class="px-3">{!! $item->details !!}</td>
                                         <td class="center">
                                             <input type="checkbox" class="js-switch status" data-model="company_infos"
                                                 data-field="status" data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        {{-- <td width="auto" class="text-center">											
-											<a href="{{ url('', [$item->id]) }}" class="btn btn-info py-1 px-3">View</a>
-											<a href="{{ url('', [$item->id]) }}" class="btn btn-danger py-1 px-3">Delete</a>
-										</td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
