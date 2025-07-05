@@ -6,88 +6,41 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompanyInfo extends Model
 {
-    protected $guarded = [];
+	protected $guarded = [];
+
+	public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id')->withDefault();
+    }
 
 	public static $companyInfo = [
-		[
-			'key' => 'office_time',
-			'value' => 'Open Hours: Sat - Thu - 9:00 am - 6:00 pm'
+		1 => [
+			'office_time' => 'Open Hours: Sat - Thu - 9:00 am - 6:00 pm',
+			'contact_number' => '+880 1322846601',
+			'company_email' => 'supremeglobalbd@gmail.com',
+			'info_email' => 'info@supremeglobalbd.com',
+			'sales_email' => 'sales@supremeglobalbd.com',
+			'head_office_location' => 'Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212, Bangladesh',
+			'head_office_location_map' => 'https://www.google.com/maps?q=23.779395286290402,90.42576674365971&z=14&output=embed',
+			'send_email_us' => '',
+			'facebook' => '',
+			'instagram' => '',
+			'linkedin' => '',
+			'youtube' => '',
+			'twitter' => '',
+			'github' => '',
 		],
-		[
-			'key' => 'contact_number',
-			'value' => '+880 1322846601'
+		2 => [
+			'supreme_tea_location' => '',
+			'supreme_tea_location_map' => '',
 		],
-		[
-			'key' => 'company_email',
-			'value' => 'supremeglobalbd@gmail.com'
+		3 => [
+			'auto_bricks_location' => 'A&A Auto Bricks Industries Ltd Kamatpara, Sakoa, Boda, Panchagarh, Bangladesh',
+			'auto_bricks_location_map' => '',
 		],
-		[
-			'key' => 'info_email',
-			'value' => 'info@supremeglobalbd.com'
-		],
-		[
-			'key' => 'sales_email',
-			'value' => 'sales@supremeglobalbd.com'
-		],
-		[
-			'key' => 'head_office_location',
-			'value' => 'Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani, Middle Badda, Dhaka-1212, Bangladesh'
-		],
-		[
-			'key' => 'head_office_location_map',
-			'value' => 'https://www.google.com/maps?q=23.779395286290402,90.42576674365971&z=14&output=embed'
-		],
-		[
-			'key' => 'auto_bricks_location',
-			'value' => 'A&A Auto Bricks Industries Ltd Kamatpara, Sakoa, Boda, Panchagarh, Bangladesh'
-		],
-		[
-			'key' => 'auto_bricks_location_map',
-			'value' => ''
-		],
-		[
-			'key' => 'supreme_tea_location',
-			'value' => ''
-		],
-		[
-			'key' => 'supreme_tea_location_map',
-			'value' => ''
-		],
-		[
-			'key' => 'saudi_office_location',
-			'value' => 'Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545'
-		],
-		[
-			'key' => 'saudi_office_location_map',
-			'value' => ''
-		],
-		[
-			'key' => 'send_email_us',
-			'value' => ''
-		],
-		[
-			'key' => 'facebook',
-			'value' => ''
-		],
-		[
-			'key' => 'instagram',
-			'value' => ''
-		],
-		[
-			'key' => 'linkedin',
-			'value' => ''
-		],
-		[
-			'key' => 'youtube',
-			'value' => ''
-		],
-		[
-			'key' => 'twitter',
-			'value' => ''
-		],
-		[
-			'key' => 'github',
-			'value' => ''
+		4 => [
+			'saudi_office_location' => 'Abdul Rahman Al-Khuzai 5005, Al Marwah Jeddah, Saudi Arabia, 23545',
+			'saudi_office_location_map' => '',
 		],
 	];
 }

@@ -11,13 +11,16 @@ class CompanyInfoSeeder extends Seeder
 {
 	public function run(): void
 	{
-		DB::table('company_infos')->truncate();
+		DB::table('company_infos')->truncate();	
 
-		foreach (CompanyInfo::$companyInfo as $info) {
-			CompanyInfo::create([
-				'key' => $info['key'],
-				'value' => $info['value']
-			]);
-		}
+        foreach (CompanyInfo::$companyInfo as $companyId => $settings) {
+            foreach ($settings as $key => $value) {
+                CompanyInfo::create([
+                    'company_id' => $companyId,
+                    'key' => $key,
+                    'value' => $value,
+                ]);
+            }
+        }
 	}
 }

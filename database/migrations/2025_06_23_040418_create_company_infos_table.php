@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('company_infos', function (Blueprint $table) {
             $table->id();
+			$table->unsignedBigInteger('company_id');
 			$table->tinyText('key');
 			$table->string('value');
 			$table->enum('status', ['active', 'inactive'])->default('active');

@@ -9,25 +9,27 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header p-1">
-						<button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal" data-bs-target="#addInfo">
-							<i class="fas fa-plus"></i>
-							Add Information
-						</button>
-					</div>
+                        <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
+                            data-bs-target="#addInfo">
+                            <i class="fas fa-plus"></i>
+                            Add Information
+                        </button>
+                    </div>
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company information</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
                                 <th class="center">SL</th>
+                                <th class="px-3">Company page</th>
                                 <th class="px-3">Key</th>
                                 <th class="px-3">Value</th>
                                 <th class="center">Status</th>
-                                {{-- <th class="center d-none">Action</th> --}}
                             </thead>
                             <tbody>
-                                @foreach ($companyInfo as $item)
+                                @foreach ($companyInfo->sortBy('company_id') as $item)
                                     <tr>
-                                        <td class="center" width="30">{!! $loop->iteration !!}</td>                                        
+                                        <td class="center" width="30">{!! $loop->iteration !!}</td>
+                                        <td class="px-3">{!! $item->company->name !!}</td>
                                         <td class="px-3">{!! $item->key !!}</td>
                                         <td class="px-3">{!! $item->value !!}</td>
                                         <td class="center">
@@ -35,10 +37,6 @@
                                                 data-field="status" data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        {{-- <td width="auto" class="text-center">											
-											<a href="{{ url('', [$item->id]) }}" class="btn btn-info py-1 px-3">View</a>
-											<a href="{{ url('', [$item->id]) }}" class="btn btn-danger py-1 px-3">Delete</a>
-										</td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -60,6 +58,15 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
+							<div class="col-md-12 mb-3">
+								<label for="company" class="form-label fs-5">Company name</label>
+								<select class="form-select" id="company" name="company_id">
+									<option selected>Select one page</option>
+									@foreach ($company as $item)
+										<option value="{{$item->id}}">{{$item->name}}</option>
+									@endforeach
+								</select>
+                            </div>
                             <div class="col-md-12 mb-3">
                                 <label for="title" class="form-label fs-5">Info title</label>
                                 <input type="text" name="key" id="title" class="form-control" placeholder="Name">
