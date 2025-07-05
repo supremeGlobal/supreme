@@ -9,7 +9,7 @@
         <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                
-                <li class="nav-item 1d-none"> 
+                <li class="nav-item d-none"> 
                     <a href="#" class="nav-link"> 
                         <i class="nav-icon fa-regular fa-bell"></i>
                         <p>

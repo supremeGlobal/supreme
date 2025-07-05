@@ -15,7 +15,7 @@
                             Add Information
                         </button>
                     </div>
-                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company information</h4>
+                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company's information</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
@@ -56,34 +56,32 @@
                 </div>
                 <form action="{{ url('admin/add-info') }}" method="POST">
                     @csrf
-                    <div class="modal-body">
+                    <div class="modal-body py-1">
                         <div class="row">
-							<div class="col-md-12 mb-3">
-								<label for="company" class="form-label fs-5">Company name</label>
-								<select class="form-select" id="company" name="company_id">
-									<option selected>Select one page</option>
+							<div class="col-md-12 mb-2">
+								<label for="company" class="form-label fs-5 mb-0">Company name</label>
+								<select class="form-select" id="company" name="company_id" required>
+									<option value="" selected disabled>Select one page</option>
 									@foreach ($company as $item)
 										<option value="{{$item->id}}">{{$item->name}}</option>
 									@endforeach
 								</select>
                             </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="title" class="form-label fs-5">Info title</label>
-                                <input type="text" name="key" id="title" class="form-control" placeholder="Name">
+                            <div class="col-md-12 mb-2">
+                                <label for="title" class="form-label fs-5 mb-0">Info title</label>
+                                <input type="text" name="key" id="title" class="form-control" placeholder="Name" required>
                             </div>
                             <div class="col-md-12">
-                                <label for="summernote" class="form-label fs-5">Description</label>
+                                <label for="summernote" class="form-label fs-5 mb-0">Description</label>
                                 <textarea id="summernote" name="value" placeholder="Write your text here..."></textarea>
                             </div>
                         </div>
                     </div>
-
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Add now</button>
+                    <div class="modal-footer justify-content-between py-1">
+                        <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success px-4">Add now</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>

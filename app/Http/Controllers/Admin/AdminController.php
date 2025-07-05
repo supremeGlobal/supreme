@@ -54,11 +54,13 @@ class AdminController extends Controller
 	public function addInfo(Request $request)
 	{
 		$request->validate([
+			'company_id' => 'required|exists:companies,id',
 			'key' => 'required|string|unique:company_infos,key',
 			'value' => 'required|string',
 		]);
 
 		CompanyInfo::create([
+			'company_id' => $request->company_id,
 			'key' => $request->key,
 			'value' => $request->value
 		]);
@@ -78,6 +80,23 @@ class AdminController extends Controller
 	{
 		$data['news'] = News::all();
 		return view('admin.pages.news', $data);
+	}
+
+	public function addNews(Request $request)
+	{
+		$request->validate([
+			'company_id' => 'required|exists:companies,id',
+			'subject' => 'required|string',
+			'details' => 'required|string',
+		]);
+
+		News::create([
+			'company_id' => $request->company_id,
+			'subject' => $request->subject,
+			'details' => $request->details
+		]);
+
+		return back()->with('success', 'Company news add successfully');
 	}
 
 	// Common code

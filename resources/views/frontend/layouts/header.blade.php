@@ -77,12 +77,13 @@
 
                         <div class="news-ticker-box flex-grow-1">
                             <ul class="news-ticker d-flex mb-0 fs-6" id="newsTicker">
-                                <li class="me-4">
-                                    <a href="#" class="text-dark">
-                                        We’re excited to share that our company is entering a new chapter focused on
-                                        innovation, transparency, and sustainable growth.
-                                    </a>
-                                </li>
+								@foreach ($news as $item)
+									<li class="me-4">
+										<a href="#" class="text-dark">
+											 {{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}
+										</a>
+									</li>
+                                @endforeach
                             </ul>
                         </div>
 

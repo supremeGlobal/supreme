@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\News;
 use App\Models\Client;
 use App\Models\Company;
 use App\Models\CompanyInfo;
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
 			'company' => Company::where('status', 'active')->orderBy('sort_order', 'asc')->get(),
 			'client' => Client::where('status', 'active')->get(),
 			'companyInfo' => CompanyInfo::where('status', 'active')->get()->mapWithKeys(fn($item) => [$item->key => $item->value !== '' ? $item->value : true])->toArray(),
+			'news' => News::where('status', 'active')->get(),
 		]);
 	}
 }
