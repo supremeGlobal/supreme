@@ -69,11 +69,11 @@
 <div class="modal fade" id="emailUs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-			<div class="modal-header">
-				<h1 class="modal-title fs-5" id="exampleModalLabel">Get in touch</h1>
+			<div class="modal-header py-2">
+				<h1 class="modal-title fs-4" id="exampleModalLabel">Get in touch</h1>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body py-1">
 				<strong>
 					We will respond to your message as soon as possible
 				</strong>
@@ -105,7 +105,7 @@
 					</form>
 				</form>
 			</div>
-			<div class="modal-footer justify-content-between">
+			<div class="modal-footer justify-content-between py-1">
 				<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 				<button type="button" class="btn btn-success">
 					<i class="fas fa-envelope pe-2"></i>
