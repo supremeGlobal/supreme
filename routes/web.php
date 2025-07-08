@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Frontend\FrontController;
+use App\Http\Controllers\Admin\OtherInfoController;
 
 Auth::routes();
 
@@ -42,6 +43,13 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 
 		// Common code
         Route::get('status', 'status')->name('status');
+    });
+});
+
+Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
+    Route::controller(OtherInfoController::class)->group(function () {
+        Route::get('supreme-global/about', 'supremeGlobalAbout');
+        Route::post('supreme-global/about/update', 'supremeGlobalAboutUpdate');
     });
 });
 

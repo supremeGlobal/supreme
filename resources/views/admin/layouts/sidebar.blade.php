@@ -9,31 +9,37 @@
         <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
                
-                <li class="nav-item d-none"> 
+                <li class="nav-item"> 
                     <a href="#" class="nav-link"> 
                         <i class="nav-icon fa-regular fa-bell"></i>
                         <p>
-                            UI Elements
+                            Supreme Global
                             <i class="nav-arrow fa-solid fa-chevron-right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> 
-                            <a href="#" class="nav-link"> 
-                                <i class="nav-icon fa-regular fa-circle text-danger"></i>
-                                <p>General</p>
-                            </a> 
-                        </li>
+						<li class="nav-item">
+							<a href="{{ url('admin/supreme-global/about') }}" class="nav-link {{ request()->is('admin/supreme-global/about') ? 'active' : '' }}"> 
+								<i class="nav-icon fa-regular fa-circle text-danger"></i>
+								<p>About us</p>
+							</a>
+						</li>
                         <li class="nav-item"> 
                             <a href="#" class="nav-link"> 
                                 <i class="nav-icon fa-regular fa-circle text-info"></i>
-                                <p>Icons</p>
+                                <p>Our divisions</p>
                             </a> 
                         </li>
+						<li class="nav-item"> 
+                            <a href="#" class="nav-link"> 
+                                <i class="nav-icon fa-regular fa-circle text-info"></i>
+                                <p>Our Clients</p>
+                            </a> 
+                        </li>						
                     </ul>
                 </li>
 
-                <li class="nav-header">Settings</li>
+                <li class="nav-header fs-5">Settings</li>
                 <li class="nav-item">
 					 <a href="{{ url('admin/company') }}" class="nav-link {{ request()->is('admin/company') ? 'active' : '' }}"> 
                         <i class="nav-icon fa-regular fa-circle text-danger"></i>
@@ -48,13 +54,13 @@
                 </li>
 				<li class="nav-item">
 					 <a href="{{ url('admin/client') }}" class="nav-link {{ request()->is('admin/client*') ? 'active' : '' }}"> 
-                        <i class="nav-icon fa-regular fa-circle text-info"></i>
+                        <i class="nav-icon fa-regular fa-circle text-secondary"></i>
                         <p>Client list</p>
                     </a>
                 </li>
 				<li class="nav-item">
 					<a href="{{ url('admin/news') }}" class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}"> 
-                        <i class="nav-icon fa-regular fa-circle text-info"></i>
+                        <i class="nav-icon fa-regular fa-circle text-success"></i>
                         <p>Latest news</p>
                     </a>
                 </li>
