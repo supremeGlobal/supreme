@@ -5,12 +5,14 @@
             <span class="brand-text fw-light">Supreme Family</span>
         </a>
     </div>
+	@php
+		$check = 'fa-check-circle';
+	@endphp
     <div class="sidebar-wrapper">
         <nav class="mt-2">
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
-               
-                <li class="nav-item"> 
-                    <a href="#" class="nav-link"> 
+                <li class="nav-item {{ request()->is('admin/supreme-global*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('admin/supreme-global*') ? 'active bg-secondary' : '' }}">
                         <i class="nav-icon fa-regular fa-bell"></i>
                         <p>
                             Supreme Global
@@ -18,49 +20,48 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-						<li class="nav-item">
-							<a href="{{ url('admin/supreme-global/about') }}" class="nav-link {{ request()->is('admin/supreme-global/about') ? 'active' : '' }}"> 
-								<i class="nav-icon fa-regular fa-circle text-danger"></i>
-								<p>About us</p>
-							</a>
-						</li>
-                        <li class="nav-item"> 
-                            <a href="#" class="nav-link"> 
-                                <i class="nav-icon fa-regular fa-circle text-info"></i>
-                                <p>Our divisions</p>
-                            </a> 
+                        <li class="nav-item">
+                            <a href="{{ url('admin/supreme-global/about') }}"
+                                class="nav-link {{ request()->is('admin/supreme-global/about') ? 'active' : '' }}">
+                                <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/about') ? $check : 'fa-circle text-danger' }}"></i>
+                                <p>About us</p>
+                            </a>
                         </li>
-						<li class="nav-item"> 
-                            <a href="#" class="nav-link"> 
-                                <i class="nav-icon fa-regular fa-circle text-info"></i>
-                                <p>Our Clients</p>
-                            </a> 
-                        </li>						
+                        <li class="nav-item">
+                            <a href="{{ url('admin/supreme-global/division') }}"
+                                class="nav-link {{ request()->is('admin/supreme-global/division') ? 'active' : '' }}">
+								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/division') ? $check : 'fa-circle text-info' }}"></i>
+                                <p>Our division</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
-
                 <li class="nav-header fs-5">Settings</li>
                 <li class="nav-item">
-					 <a href="{{ url('admin/company') }}" class="nav-link {{ request()->is('admin/company') ? 'active' : '' }}"> 
-                        <i class="nav-icon fa-regular fa-circle text-danger"></i>
+                    <a href="{{ url('admin/company') }}"
+                        class="nav-link {{ request()->is('admin/company') ? 'active' : '' }}">
+                        <i class="nav-icon fa-regular {{ request()->is('admin/company') ? $check : 'fa-circle text-danger' }}"></i>
                         <p>Company list</p>
                     </a>
                 </li>
-				<li class="nav-item">
-					 <a href="{{ url('admin/company-info') }}" class="nav-link {{ request()->is('admin/company-info*') ? 'active' : '' }}"> 
-                        <i class="nav-icon fa-regular fa-circle text-info"></i>
+                <li class="nav-item">
+                    <a href="{{ url('admin/company-info') }}"
+                        class="nav-link {{ request()->is('admin/company-info*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-regular {{ request()->is('admin/company-info') ? $check : 'fa-circle text-info' }}"></i>
                         <p>Company information</p>
                     </a>
                 </li>
-				<li class="nav-item">
-					 <a href="{{ url('admin/client') }}" class="nav-link {{ request()->is('admin/client*') ? 'active' : '' }}"> 
-                        <i class="nav-icon fa-regular fa-circle text-secondary"></i>
+                <li class="nav-item">
+                    <a href="{{ url('admin/client') }}"
+                        class="nav-link {{ request()->is('admin/client*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-regular {{ request()->is('admin/client') ? $check : 'fa-circle text-secondary' }}"></i>
                         <p>Client list</p>
                     </a>
                 </li>
-				<li class="nav-item">
-					<a href="{{ url('admin/news') }}" class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}"> 
-                        <i class="nav-icon fa-regular fa-circle text-success"></i>
+                <li class="nav-item">
+                    <a href="{{ url('admin/news') }}"
+                        class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-regular {{ request()->is('admin/news') ? $check : 'fa-circle text-success' }}"></i>
                         <p>Latest news</p>
                     </a>
                 </li>

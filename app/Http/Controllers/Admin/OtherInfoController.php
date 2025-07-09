@@ -10,7 +10,7 @@ class OtherInfoController extends Controller
 {
 	public function supremeGlobalAbout()
 	{
-		$data['info'] = Content::find(1);
+		$data['info'] = Content::where('company_id', 1)->where('order', 1)->first();
 		return view('admin.pages.global.index', $data);
 	}
 
@@ -19,7 +19,12 @@ class OtherInfoController extends Controller
 		Content::where('id', $request->id)->update([
 			'details' => $request->details
 		]);
-
 		return redirect()->back()->with('success', 'About us updated successfully!');
+	}
+
+	public function supremeGlobalDivision()
+	{
+		$data['info'] = Content::where('company_id', 1)->where('order', 2)->get();
+		return view('admin.pages.global.division', $data);
 	}
 }

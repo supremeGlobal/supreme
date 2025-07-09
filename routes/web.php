@@ -50,6 +50,8 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(OtherInfoController::class)->group(function () {
         Route::get('supreme-global/about', 'supremeGlobalAbout');
         Route::post('supreme-global/about/update', 'supremeGlobalAboutUpdate');
+		
+        Route::get('supreme-global/division', 'supremeGlobalDivision');
     });
 });
 
