@@ -8,6 +8,13 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
+					<div class="card-header p-1">
+                        <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
+                            data-bs-target="#addInfo">
+                            <i class="fas fa-plus"></i>
+                            Add division
+                        </button>
+                    </div>
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Division list</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">

@@ -48,6 +48,12 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(OtherInfoController::class)->group(function () {
+
+		// Route::get('{company}/slider', [OtherInfoController::class, 'dynamicSlider']);
+        Route::get('{company}/slider', 'dynamicSlider');
+
+		// Route::post('supreme-global/slider/add', 'supremeGlobalSliderAdd');
+		
         Route::get('supreme-global/about', 'supremeGlobalAbout');
         Route::post('supreme-global/about/update', 'supremeGlobalAboutUpdate');
 		

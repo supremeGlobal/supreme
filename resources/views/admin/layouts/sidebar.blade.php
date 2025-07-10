@@ -21,6 +21,14 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ url('admin/supreme-global/slider') }}"
+                                class="nav-link {{ request()->is('admin/supreme-global/slider') ? 'active' : '' }}">
+                                <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/slider') ? $check : 'fa-circle text-danger' }}"></i>
+                                <p>Slider image</p>
+                            </a>
+                        </li>
+
+						<li class="nav-item">
                             <a href="{{ url('admin/supreme-global/about') }}"
                                 class="nav-link {{ request()->is('admin/supreme-global/about') ? 'active' : '' }}">
                                 <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/about') ? $check : 'fa-circle text-danger' }}"></i>
