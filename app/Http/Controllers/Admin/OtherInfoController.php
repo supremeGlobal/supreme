@@ -2,38 +2,52 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Slider;
 use App\Models\Content;
 use Illuminate\Http\Request;
+use App\Traits\HandlesImageUpload;
 use App\Http\Controllers\Controller;
 
 class OtherInfoController extends Controller
 {
-	// All slider url
-	function slider($name)
+	use HandlesImageUpload;
+
+	protected $companyMap;
+	public function __construct()
 	{
-		$companyMap = [
-            'supreme-global'              => 1,
-            'supreme-tea'                 => 2,
-            'auto-bricks'                 => 3,
-            'dar-kafaa-Al-Alia'           => 4,
-            'supreme-agro'                => 5,
-            'north-point-medical-college' => 6,
-            'garden-inn-resort'           => 7,
-            'alif-&-co'                   => 8
-		];
-		return $companyMap[$name];
+		$this->companyMap = config('company_map');
 	}
 
-	public function dynamicSlider($company)
+	// Slider
+	public function sliderIndex($company)
 	{
-		// $this->slider($company);
-		return back();
+		$companyId = $this->companyMap[$company] ?? null;
+		if (!$companyId) {
+			return view('404');
+		}
+
+		$data['company'] = $company;
+		$data['companyId'] = $companyId;
+
+		$data['slider'] = Slider::where('company_id', $companyId)->get();
+		return view('admin.pages.global.slider', $data);
 	}
 
-	public function supremeGlobalSliderAdd()
+	public function sliderAdd(Request $request)
 	{
-		$data['info'] = Content::where('company_id', 1)->where('order', 1)->first();
-		return view('admin.pages.global.index', $data);
+		$request->validate([
+			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+		]);
+
+		if ($request->hasFile('image')) {
+            $path = $this->uploadImage($request->image, 'slider/'.$request->company);
+
+            Slider::create([
+                'company_id' => $request->companyId,
+                'image' => $path,
+            ]);
+        }
+		return back()->with('success', 'Image uploaded successfully!');
 	}
 
 	public function supremeGlobalAbout()

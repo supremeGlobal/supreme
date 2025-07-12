@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-			$table->string('type'); //Image type: slider, banner, gallery, etc.
-			$table->string('title')->nullable();
-			$table->text('info')->nullable();
-			$table->string('file_path'); // works for image, video, pdf, etc.
+			$table->unsignedBigInteger('company_id');
+			$table->string('image');
 			$table->enum('status', ['active', 'inactive'])->default('active');
-			$table->integer('order_by')->default(0);
+			$table->unsignedInteger('order')->default(1);
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('sliders');
     }
 };
