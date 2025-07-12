@@ -6,6 +6,7 @@ use App\Models\News;
 use App\Models\User;
 use App\Models\Media;
 use App\Models\Client;
+use App\Models\Slider;
 use App\Models\Company;
 use App\Models\CompanyInfo;
 use Illuminate\Http\Request;
@@ -37,6 +38,11 @@ class AdminController extends Controller
 				'link'  => url('admin/news'),
 				'value' => News::count(),
 				'title' => 'Total news'
+			],
+			[
+				'link'  => '',
+				'value' => Slider::count(),
+				'title' => 'Total slider image'
 			],
 		];
 		return view('admin.dashboard', $data);

@@ -1,10 +1,10 @@
 <section id="productService">
-     <div class="container-fluid px-5">
+     <div class="container-fluid px-3">
          <div class="text-center">
              <h2 class="fw-bold">{{$heading ?? ''}}</h2>
          </div>
          @foreach ($contents->where('order', $order)->values() as $index => $item)
-             <div class="row mb-5 border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }} fs-5">
+             <div class="row {{ !$loop->last ? 'mb-5' : '' }} border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }} fs-5">
                  <div class="d-lg-flex w-100 align-items-stretch px-0">
                      @if ($index % 2 == 0)
                          <!-- Even: Image Left -->

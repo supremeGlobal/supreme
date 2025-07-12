@@ -1,5 +1,5 @@
 <section class="aboutUs">
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-3">
         <div class="text-center">
             <h2 class="fw-bold">{{$topHeading ?? ''}}</h2>
             <p class="text-muted fw-bold">{{ $slogan ?? '' }}</p>

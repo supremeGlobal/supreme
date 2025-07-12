@@ -1,5 +1,5 @@
 <section id="contact">
-    <div class="container-fluid px-5">
+    <div class="container-fluid px-3">
         <h2 class="fw-bold text-center">Contact {{ $companyName ?? '' }}</h2>
         <p class="text-muted text-center">Contact our customer care</p>
         <div class="row justify-content-between">
