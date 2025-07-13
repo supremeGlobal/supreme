@@ -1,18 +1,40 @@
 @section('title')
     {{ $companyName ?? '' }}
 @endsection
+
 <style>
     .carousel-item {
-		width: 100vw;
-		height: 650px;
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-color: #000;
-		background-position: center -5px;
-	}
+        width: 100vw;
+        height: 650px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: #000;
+        background-position: center -5px;
+    }
 
     .carousel h5 {
         font-size: 3rem;
+    }
+
+    /* Responsive adjustment for smaller devices */
+    @media (max-width: 992px) {
+        .carousel-item {
+            height: 450px;
+        }
+
+        .carousel h5 {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .carousel-item {
+            height: 300px;
+        }
+
+        .carousel h5 {
+            font-size: 1.5rem;
+        }
     }
 </style>
 

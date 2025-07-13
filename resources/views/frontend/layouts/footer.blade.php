@@ -1,4 +1,4 @@
-<section id="footer" style="color: #fff; background: #192733">
+<section id="footer" style="color: #fff; background: #192733;" class="pb-0">
     <div class="container-fluid p-3 fs-5">
         <div class="row justify-content-between">
             <div class="col-12 col-md-4 footerContact mb-2 mb-md-0">
@@ -84,9 +84,9 @@
                     @foreach ($socials as $social)
                         @if (!empty($companyInfo[$social]))
                             <li class="list-inline-item">
-                                <a href="{{ $companyInfo[$social] }}" target="_blank" class="social-icon text-white text-decoration-none fs-5">
+                                <a href="{{ $companyInfo[$social] }}" target="_blank" class="social-icon text-white text-decoration-none ">
                                     <i class="fa-brands fa-{{ $social }}"></i>
-                                    <span class="label visually-hidden">{{ $social }}</span>
+                                    <span class="label">{{ $social }}</span>
                                 </a>
                             </li>
                         @endif
