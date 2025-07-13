@@ -34,6 +34,8 @@
 
         .carousel h5 {
             font-size: 1.5rem;
+			margin: unset !important;
+			padding: unset !important;
         }
     }
 </style>
