@@ -1,3 +1,41 @@
+<style>
+    .navbar.top {
+        background-color: #21333e;
+        padding: 0.25rem 0.5rem;
+        height: auto;
+        position: relative;
+        z-index: 5;
+        width: 100%;
+        transition: all 0.4s ease;
+    }
+
+    .navbar.top,
+    i {
+        font-size: 0.9rem;
+        font-weight: 400;
+        color: #c0c3d0 !important;
+    }
+
+    /* Auth nav items spacing (login/register/user menu) */
+    .navbar-nav .nav-item {
+        margin: 0 5px;
+    }
+
+    .navbar-nav .nav-item a {
+        padding: 3px 0;
+    }
+
+    /* Fixed top navbar effect on scroll */
+    .navbar.fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #21333e !important;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+    }
+</style>
+
 <nav class="navbar py-2 top fs-6 small navbar-expand">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
@@ -58,7 +96,83 @@
     </div>
 </nav>
 
-<!-- Main Navigation -->
+<style>
+    .news-ticker-wrapper {
+        display: flex;
+        align-items: center;
+        border: 1px solid #0d6efd;
+        background-color: #fff;
+        width: 100%;
+        overflow: hidden;
+        min-width: 0;
+    }
+
+    .news-label {
+        background-color: #0d6efd;
+        color: #fff;
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: bold;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .news-ticker-box {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+        min-width: 0;
+    }
+
+    .news-ticker-track {
+        display: flex;
+        white-space: nowrap;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .news-ticker-track li {
+        list-style: none;
+        padding-right: 2rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .news-ticker-track a {
+        color: #000;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .ticker-controls {
+        flex-shrink: 0;
+        padding-left: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .col-md-9 {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .col-md-3 {
+            flex: 0 0 100%;
+            max-width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .news-ticker-wrapper {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .ticker-controls {
+            align-self: flex-end;
+        }
+    }
+</style>
+
 <nav class="navbar navbar-expand-md navbar-light shadow-sm navbarMain py-0 my-0">
     <div class="container-fluid p-0 m-0">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -68,28 +182,24 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="row w-100 align-items-center g-0">
-                <!-- Left ticker col-md-9 always -->
-                <div class="col-12 col-md-9 d-flex align-items-center">
-                    <div class="news-ticker-wrapper d-flex align-items-center border border-primary bg-white w-100 overflow-hidden">
-                        <div class="news-label bg-primary text-white p-1 flex-shrink-0 fs-6 fw-bold align-left">
-                            Latest News:
-                        </div>
-
-                        <div class="news-ticker-box flex-grow-1">
-                            <ul class="news-ticker d-flex mb-0 fs-6" id="newsTicker">
-								@foreach ($news as $item)
-									<li class="me-4">
-										<a href="#" class="text-dark">
-											 {{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}
-										</a>
-									</li>
+                <!-- News Ticker (70%) -->
+                <div class="col-12 col-md-9 d-flex align-items-center"
+                    style="flex: 0 0 70%; max-width: 70%; min-width: 0;">
+                    <div class="news-ticker-wrapper">
+                        <div class="news-label">Latest News:</div>
+                        <div class="news-ticker-box" id="tickerBox">
+                            <ul class="news-ticker-track" id="newsTicker">
+                                @foreach ($news as $item)
+                                    <li>
+                                        <a href="#">
+                                            {{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}
+                                        </a>
+                                    </li>
                                 @endforeach
                             </ul>
                         </div>
-
-                        <div class="ticker-controls d-flex align-items-center px-2 flex-shrink-0">
-                            <button id="toggleTicker" class="btn btn-sm p-0 bg-light border-0"
-                                aria-label="Pause news ticker">
+                        <div class="ticker-controls">
+                            <button id="toggleTicker" class="btn btn-sm p-0 bg-light border-0" aria-label="Pause">
                                 <i id="pauseIcon" class="fas fa-pause"></i>
                                 <i id="playIcon" class="fas fa-play d-none"></i>
                             </button>
@@ -97,13 +207,12 @@
                     </div>
                 </div>
 
-                <!-- Right nav col-md-3 always -->
-                <div class="col-12 col-md-3 p-0">
+                <!-- Nav (30%) -->
+                <div class="col-12 col-md-3 p-0" style="flex: 0 0 30%; max-width: 30%;">
                     <ul class="navbar-nav justify-content-center d-flex">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
-
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -111,13 +220,11 @@
                             </a>
                             <ul class="dropdown-menu rounded-0 py-0 fs-6" aria-labelledby="navbarDropdownMenuLink">
                                 @foreach ($company as $item)
-                                    <li>
-                                        <a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
+                                    <li><a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="#footer">Contact us</a>
                         </li>
@@ -127,3 +234,45 @@
         </div>
     </div>
 </nav>
+
+@section('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ticker = document.getElementById('newsTicker');
+            const box = document.getElementById('tickerBox');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const playIcon = document.getElementById('playIcon');
+            const toggleBtn = document.getElementById('toggleTicker');
+
+            let isPaused = false;
+            let speed = 1; // pixels per frame
+            let pos = 0;
+
+            // Clone the ticker for seamless loop
+            const clone = ticker.cloneNode(true);
+            box.appendChild(clone);
+            clone.style.left = `${ticker.scrollWidth}px`;
+            clone.id = '';
+
+            function animateTicker() {
+                if (!isPaused) {
+                    pos -= speed;
+                    if (Math.abs(pos) >= ticker.scrollWidth) {
+                        pos = 0;
+                    }
+                    ticker.style.transform = `translateX(${pos}px)`;
+                    clone.style.transform = `translateX(${pos}px)`;
+                }
+                requestAnimationFrame(animateTicker);
+            }
+
+            toggleBtn.addEventListener('click', () => {
+                isPaused = !isPaused;
+                pauseIcon.classList.toggle('d-none', isPaused);
+                playIcon.classList.toggle('d-none', !isPaused);
+            });
+
+            animateTicker();
+        });
+    </script>
+@endsection
