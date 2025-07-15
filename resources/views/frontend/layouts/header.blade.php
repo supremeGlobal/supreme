@@ -105,6 +105,7 @@
         width: 100%;
         overflow: hidden;
         min-width: 0;
+        height: 40px;
     }
 
     .news-label {
@@ -115,6 +116,9 @@
         font-weight: bold;
         white-space: nowrap;
         flex-shrink: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
 
     .news-ticker-box {
@@ -122,6 +126,7 @@
         overflow: hidden;
         position: relative;
         min-width: 0;
+        height: 100%;
     }
 
     .news-ticker-track {
@@ -130,6 +135,8 @@
         position: absolute;
         top: 0;
         left: 0;
+        height: 100%;
+        align-items: center;
     }
 
     .news-ticker-track li {
@@ -148,6 +155,9 @@
     .ticker-controls {
         flex-shrink: 0;
         padding-left: 0.5rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
     }
 
     @media (max-width: 768px) {
@@ -165,6 +175,7 @@
         .news-ticker-wrapper {
             flex-direction: column;
             align-items: flex-start;
+            height: auto;
         }
 
         .ticker-controls {
@@ -172,6 +183,7 @@
         }
     }
 </style>
+
 
 <nav class="navbar navbar-expand-md navbar-light shadow-sm navbarMain py-0 my-0">
     <div class="container-fluid p-0 m-0">
@@ -193,6 +205,9 @@
                                     <li>
                                         <a href="#">
                                             {{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat impedit
+                                            perferendis culpa odio quo assumenda, ex facere! Maxime similique beatae
+                                            explicabo sit sapiente suscipit nesciunt soluta animi! Ipsum, ullam facilis.
                                         </a>
                                     </li>
                                 @endforeach
@@ -248,11 +263,11 @@
             let speed = 1; // pixels per frame
             let pos = 0;
 
-            // Clone the ticker for seamless loop
+            // Clone for seamless loop
             const clone = ticker.cloneNode(true);
+            clone.id = '';
             box.appendChild(clone);
             clone.style.left = `${ticker.scrollWidth}px`;
-            clone.id = '';
 
             function animateTicker() {
                 if (!isPaused) {
@@ -266,10 +281,19 @@
                 requestAnimationFrame(animateTicker);
             }
 
+            // Play/Pause toggle button
             toggleBtn.addEventListener('click', () => {
                 isPaused = !isPaused;
                 pauseIcon.classList.toggle('d-none', isPaused);
                 playIcon.classList.toggle('d-none', !isPaused);
+            });
+
+            // Pause on hover
+            box.addEventListener('mouseenter', () => {
+                isPaused = true;
+            });
+            box.addEventListener('mouseleave', () => {
+                isPaused = false;
             });
 
             animateTicker();
