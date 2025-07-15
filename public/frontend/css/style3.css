@@ -2,7 +2,92 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 17px !important;
+    font-size: 18px !important;
+}
+
+/* Default: stacked (for md and below) */
+.contact-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Navbar Main Styling - Modern Design 2 */
+.navbarMain {
+    background-color: #f8f9fc;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    transition: all 0.4s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.navbarMain .navbar-nav .nav-link {
+    color: #2c3e50;
+    padding: 5px 18px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+.navbarMain .navbar-nav .nav-link:hover,
+.navbarMain .navbar-nav .nav-link:focus,
+.navbarMain .navbar-nav .nav-item.active .nav-link {
+    color: blue;
+}
+
+/* Mobile Nav Toggle */
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1em !important;
+    height: 1em !important;
+}
+.navbar-toggler {
+    padding: 5px !important;   
+}
+.navbar-toggler:focus
+{   
+    box-shadow: unset !important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Dropdown Menu Styling */
+.navbarMain .dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    border-radius: 10px;
+    padding: 10px 0;
+}
+
+.navbarMain .dropdown-menu .dropdown-item {
+    padding: 8px 20px;
+    transition: background 0.3s;
+    color: #2c3e50;
+}
+
+.navbarMain .dropdown-menu .dropdown-item:hover {
+    background-color: #2b80d6;
+    color: #fff;
+}
+
+/* Fixed Nav Scroll Effect */
+.navbarMain.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbarMain.fixed .nav-link {
+    color: #2c3e50 !important;
 }
 
 /* Common */
@@ -16,6 +101,7 @@ section {
 }
 
 /* projects section */
+
 .card,
 #projects .card {
     border-radius: 12px;

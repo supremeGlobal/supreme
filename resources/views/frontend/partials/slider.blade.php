@@ -49,7 +49,7 @@
     @endphp
 
     <div id="companyCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
-        <h5 class="position-absolute top-0 start-0 m-3 text-info px-3 py-1 rounded-2 z-1 fw-bold">
+        <h5 class="position-absolute top-0 start-0 m-3 text-light px-3 py-1 rounded-2 z-1 fw-bold">
             {{ $companyName ?? '' }}
         </h5>
 
@@ -71,3 +71,16 @@
         </button>
     </div>
 </section>
+
+@section('js')
+    <script>
+        var myCarousel = document.querySelector('#companyCarousel');
+        if (myCarousel) {
+            new bootstrap.Carousel(myCarousel, {
+                interval: 1500,
+                ride: 'carousel'
+            });
+        }
+    </script>
+@endsection
+

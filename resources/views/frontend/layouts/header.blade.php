@@ -1,8 +1,9 @@
+<!-- ====================== CSS ====================== -->
 <style>
+    /* ✅ Top Navbar (office time, contact, auth) */
     .navbar.top {
         background-color: #21333e;
         padding: 0.25rem 0.5rem;
-        height: auto;
         position: relative;
         z-index: 5;
         width: 100%;
@@ -10,13 +11,11 @@
     }
 
     .navbar.top,
-    i {
+    .navbar.top i {
         font-size: 0.9rem;
-        font-weight: 400;
         color: #c0c3d0 !important;
     }
 
-    /* Auth nav items spacing (login/register/user menu) */
     .navbar-nav .nav-item {
         margin: 0 5px;
     }
@@ -25,8 +24,7 @@
         padding: 3px 0;
     }
 
-    /* Fixed top navbar effect on scroll */
-    .navbar.fixed {
+    .navbar.top.fixed {
         position: fixed;
         top: 0;
         left: 0;
@@ -34,69 +32,62 @@
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         z-index: 999;
     }
-</style>
 
-<nav class="navbar py-2 top fs-6 small navbar-expand">
-    <div class="container">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
+    /* ✅ Main Navbar (logo, nav links, news ticker) */
+    .navbarMain {
+        background-color: #f8f9fc;
+        font-family: "Poppins", sans-serif;
+        font-size: 15px;
+        transition: all 0.4s ease;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        z-index: 998;
+    }
 
-            <!-- Office Time -->
-            <div class="mb-2 mb-md-0 text-center text-md-start w-100 w-md-auto office_time">
-                <i class="fas fa-clock me-2"></i>
-                {{ $companyInfo['office_time'] ?? '' }}
-            </div>
+    .navbarMain .navbar-nav .nav-link {
+        color: #2c3e50;
+        padding: 5px 18px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 500;
+        transition: all 0.3s ease-in-out;
+    }
 
-            <!-- Contact & Email Section -->
-            <div class="d-flex flex-column flex-md-row w-100 contact-mobile">
-                <div class="contact-left">
-                    <i class="fas fa-phone-alt me-1"></i>
-                    {{ $companyInfo['contact_number'] ?? '' }}
-                </div>
+    .navbarMain .navbar-nav .nav-link:hover,
+    .navbarMain .navbar-nav .nav-link:focus,
+    .navbarMain .navbar-nav .nav-item.active .nav-link {
+        color: blue;
+    }
 
-                <span class="d-md-inline mx-1">|</span>
+    .navbarMain .dropdown-menu {
+        border: none;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        font-size: 14px;
+        border-radius: 10px;
+        padding: 10px;
+    }
 
-                <div class="contact-right">
-                    <i class="fas fa-envelope me-1"></i>
-                    {{ $companyInfo['company_email'] ?? '' }}
-                </div>
-            </div>
+    .navbarMain .dropdown-item {
+        padding: 8px 20px;
+        transition: background 0.3s;
+        color: #2c3e50;
+    }
 
-            <!-- Auth Section -->
-            <div
-                class="d-flex justify-content-center justify-content-md-end align-items-center mt-2 mt-md-0 w-100 w-md-auto auth_section">
-                @guest
-                    @if (Route::has('login'))
-                        <a class="text-light ps-3 text-decoration-none" data-bs-toggle="modal" data-bs-target="#login"
-                            href="#">
-                            {{ __('Login') }}
-                        </a>
-                    @endif
-                @else
-                    <div class="dropdown ms-3">
-                        <a id="navbarDropdown" class="dropdown-toggle text-light text-decoration-none" href="#"
-                            role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <a class="dropdown-item" href="{{ url('/admin/dashboard') }}">
-                                Admin Dashboard
-                            </a>
-                        </div>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                @endguest
-            </div>
-        </div>
-    </div>
-</nav>
+    .navbarMain .dropdown-item:hover {
+        background-color: #2b80d6;
+        color: #fff;
+    }
 
-<style>
+    .navbarMain.fixed {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        right: 0;
+        background: #ffffff !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        z-index: 998;
+    }
+
+    /* ✅ News Ticker */
     .news-ticker-wrapper {
         display: flex;
         align-items: center;
@@ -149,7 +140,6 @@
     .news-ticker-track a {
         color: #000;
         text-decoration: none;
-        white-space: nowrap;
     }
 
     .ticker-controls {
@@ -160,31 +150,128 @@
         align-items: center;
     }
 
+    .navbar-toggler,
+    .navbar-toggler:focus {
+        box-shadow: unset !important;
+        font-size: 16px;
+    }
+
     @media (max-width: 768px) {
-        .col-md-9 {
-            flex: 0 0 100%;
-            max-width: 100%;
+        .navbar.top {
+            display: none !important;
         }
 
-        .col-md-3 {
-            flex: 0 0 100%;
-            max-width: 100%;
-            margin-top: 0.5rem;
+        .col-md-9,
+        .col-md-3,
+        .navbarMain .col-md-3 {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            padding: 0.5rem 1rem;
+        }
+
+        .news-label,
+        .ticker-controls {
+            display: none !important;
         }
 
         .news-ticker-wrapper {
-            flex-direction: column;
-            align-items: flex-start;
-            height: auto;
+            padding: 0;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: -50px !important;
+            margin-left: 40px !important;
+            z-index: 999;
+            display: flex;
+            overflow: hidden;
+			border: unset !important;
+			background-color: whitesmoke !important;
         }
 
-        .ticker-controls {
-            align-self: flex-end;
+        .news-ticker-box {
+            width: 100%;
+        }
+
+        .news-ticker-track {
+            padding-right: 0;
+        }
+
+        /* Stack nav items vertically */
+        .navbarMain .navbar-nav {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+        }
+
+        .navbarMain .navbar-nav .nav-link {
+            font-size: 14px !important;
+            padding: 3px 0 !important;
+        }
+
+        .navbarMain .dropdown-menu {
+            font-size: 14px !important;
+        }
+
+        .navbarMain .nav-item {
+            margin-bottom: 6px;
+        }
+    }
+
+    @keyframes ticker-scroll {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
         }
     }
 </style>
 
+<!-- ====================== Top Navbar ====================== -->
+<nav class="navbar py-2 top fs-6 small navbar-expand">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center w-100">
+            <div class="text-light mb-2 mb-md-0 w-100 text-center text-md-start">
+                <i class="fas fa-clock me-2"></i> {{ $companyInfo['office_time'] ?? '' }}
+            </div>
 
+            <div class="d-flex flex-column flex-md-row justify-content-center w-100 text-light text-center">
+                <div><i class="fas fa-phone-alt me-1"></i> {{ $companyInfo['contact_number'] ?? '' }}</div>
+                <span class="mx-2 d-none d-md-inline">|</span>
+                <div><i class="fas fa-envelope me-1"></i> {{ $companyInfo['company_email'] ?? '' }}</div>
+            </div>
+
+            <div class="d-flex justify-content-center justify-content-md-end mt-2 mt-md-0 w-100">
+                @guest
+                    @if (Route::has('login'))
+                        <a class="text-light ps-3 text-decoration-none" data-bs-toggle="modal" data-bs-target="#login"
+                            href="#">Login</a>
+                    @endif
+                @else
+                    <div class="dropdown ms-3">
+                        <a id="navbarDropdown" class="dropdown-toggle text-light text-decoration-none" href="#"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <a class="dropdown-item" href="{{ url('/admin/dashboard') }}">
+                                Admin Dashboard
+                            </a>
+                        </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                    </div>
+                @endguest
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ====================== Main Navbar + News Ticker ====================== -->
 <nav class="navbar navbar-expand-md navbar-light shadow-sm navbarMain py-0 my-0">
     <div class="container-fluid p-0 m-0">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -194,21 +281,14 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="row w-100 align-items-center g-0">
-                <!-- News Ticker (70%) -->
-                <div class="col-12 col-md-9 d-flex align-items-center"
-                    style="flex: 0 0 70%; max-width: 70%; min-width: 0;">
+                <div class="col-12 col-md-9 d-flex align-items-center" style="flex: 0 0 70%; max-width: 70%;">
                     <div class="news-ticker-wrapper">
                         <div class="news-label">Latest News:</div>
                         <div class="news-ticker-box" id="tickerBox">
                             <ul class="news-ticker-track" id="newsTicker">
                                 @foreach ($news as $item)
                                     <li>
-                                        <a href="#">
-                                            {{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat impedit
-                                            perferendis culpa odio quo assumenda, ex facere! Maxime similique beatae
-                                            explicabo sit sapiente suscipit nesciunt soluta animi! Ipsum, ullam facilis.
-                                        </a>
+                                        <a href="#">{{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}</a>
                                     </li>
                                 @endforeach
                             </ul>
@@ -222,81 +302,27 @@
                     </div>
                 </div>
 
-                <!-- Nav (30%) -->
+                <!-- Main Menu -->
                 <div class="col-12 col-md-3 p-0" style="flex: 0 0 30%; max-width: 30%;">
                     <ul class="navbar-nav justify-content-center d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">Home</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                data-bs-toggle="dropdown">
                                 Group Entities
                             </a>
-                            <ul class="dropdown-menu rounded-0 py-0 fs-6" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu rounded-0 py-2 fs-6" aria-labelledby="navbarDropdownMenuLink">
                                 @foreach ($company as $item)
-                                    <li><a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
+                                    <li>
+										<a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#footer">Contact us</a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#footer">Contact us</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </nav>
-
-@section('js')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const ticker = document.getElementById('newsTicker');
-            const box = document.getElementById('tickerBox');
-            const pauseIcon = document.getElementById('pauseIcon');
-            const playIcon = document.getElementById('playIcon');
-            const toggleBtn = document.getElementById('toggleTicker');
-
-            let isPaused = false;
-            let speed = 1; // pixels per frame
-            let pos = 0;
-
-            // Clone for seamless loop
-            const clone = ticker.cloneNode(true);
-            clone.id = '';
-            box.appendChild(clone);
-            clone.style.left = `${ticker.scrollWidth}px`;
-
-            function animateTicker() {
-                if (!isPaused) {
-                    pos -= speed;
-                    if (Math.abs(pos) >= ticker.scrollWidth) {
-                        pos = 0;
-                    }
-                    ticker.style.transform = `translateX(${pos}px)`;
-                    clone.style.transform = `translateX(${pos}px)`;
-                }
-                requestAnimationFrame(animateTicker);
-            }
-
-            // Play/Pause toggle button
-            toggleBtn.addEventListener('click', () => {
-                isPaused = !isPaused;
-                pauseIcon.classList.toggle('d-none', isPaused);
-                playIcon.classList.toggle('d-none', !isPaused);
-            });
-
-            // Pause on hover
-            box.addEventListener('mouseenter', () => {
-                isPaused = true;
-            });
-            box.addEventListener('mouseleave', () => {
-                isPaused = false;
-            });
-
-            animateTicker();
-        });
-    </script>
-@endsection

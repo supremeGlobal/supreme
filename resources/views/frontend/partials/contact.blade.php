@@ -37,7 +37,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <iframe src="https://www.google.com/maps?q=23.779395286290402,90.42576674365971&z=14&output=embed"
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">

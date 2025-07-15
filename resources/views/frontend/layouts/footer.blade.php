@@ -58,8 +58,8 @@
 
                     @if (!empty($companyInfo['send_email_us']))
                         <li class="item">
-                            <button type="button" class="btn btn-primary w-100 w-md-50 rounded-1" data-bs-toggle="modal"
-                                data-bs-target="#emailUs">
+                            <button type="button" class="btn btn-primary w-100 w-md-50 rounded-1"
+                                data-bs-toggle="modal" data-bs-target="#emailUs">
                                 <i class="fas fa-envelope me-1"></i>
                                 Send email us
                             </button>
@@ -77,14 +77,16 @@
             </div>
 
             <div class="col-12 col-md-6">
-                <ul class="footerSocial list-inline d-flex justify-content-center justify-content-md-end flex-wrap gap-2 mb-0">
+                <ul
+                    class="footerSocial list-inline d-flex justify-content-center justify-content-md-end flex-wrap gap-2 mb-0">
                     @php
                         $socials = ['facebook', 'instagram', 'linkedin', 'youtube', 'twitter', 'github'];
                     @endphp
                     @foreach ($socials as $social)
                         @if (!empty($companyInfo[$social]))
                             <li class="list-inline-item">
-                                <a href="{{ $companyInfo[$social] }}" target="_blank" class="social-icon text-white text-decoration-none ">
+                                <a href="{{ $companyInfo[$social] }}" target="_blank"
+                                    class="social-icon text-white text-decoration-none ">
                                     <i class="fa-brands fa-{{ $social }}"></i>
                                     <span class="label">{{ $social }}</span>
                                 </a>
@@ -97,64 +99,93 @@
     </div>
 </section>
 
-
 <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
 <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
 
+<!-- ====================== Nav JS ====================== -->
 <script>
-    $(window).on("scroll", function() {
-        if ($(window).scrollTop() > 100) {
-            $(".navbarMain").addClass("fixed");
-        } else {
-            $(".navbarMain").removeClass("fixed");
-        }
-    });
-
-    // Slide speed
-    var myCarousel = document.querySelector('#mainCarousel');
-    var carousel = new bootstrap.Carousel(myCarousel, {
-        interval: 1800, // 2 seconds
-        ride: 'carousel'
-    });
-
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', function() {
         const ticker = document.getElementById('newsTicker');
-        const toggleBtn = document.getElementById('toggleTicker');
+        const box = document.getElementById('tickerBox');
         const pauseIcon = document.getElementById('pauseIcon');
         const playIcon = document.getElementById('playIcon');
-        let isPaused = false;
+        const toggleBtn = document.getElementById('toggleTicker');
 
-        toggleBtn.addEventListener('click', () => {
+        let isPaused = false;
+        let speed = 1; // pixels per frame, adjust for faster/slower scroll
+        let pos = 0;
+
+        // Clone ticker content to create infinite scroll effect
+        const clone = ticker.cloneNode(true);
+        clone.id = '';
+        box.appendChild(clone);
+        clone.style.left = `${ticker.scrollWidth}px`;
+
+        function animateTicker() {
             if (!isPaused) {
-                ticker.classList.add('paused');
-                pauseIcon.classList.add('d-none');
-                playIcon.classList.remove('d-none');
-            } else {
-                ticker.classList.remove('paused');
-                pauseIcon.classList.remove('d-none');
-                playIcon.classList.add('d-none');
+                pos -= speed;
+                if (Math.abs(pos) >= ticker.scrollWidth) {
+                    pos = 0;
+                }
+                ticker.style.transform = `translateX(${pos}px)`;
+                clone.style.transform = `translateX(${pos}px)`;
             }
+            requestAnimationFrame(animateTicker);
+        }
+
+        // Toggle pause/play button functionality
+        toggleBtn.addEventListener('click', () => {
             isPaused = !isPaused;
+            pauseIcon.classList.toggle('d-none', isPaused);
+            playIcon.classList.toggle('d-none', !isPaused);
         });
+
+        // Pause on mouse enter, resume on mouse leave
+        box.addEventListener('mouseenter', () => {
+            isPaused = true;
+            pauseIcon.classList.add('d-none');
+            playIcon.classList.remove('d-none');
+        });
+        box.addEventListener('mouseleave', () => {
+            isPaused = false;
+            pauseIcon.classList.remove('d-none');
+            playIcon.classList.add('d-none');
+        });
+
+        // Start animation immediately
+        animateTicker();
     });
 
-    // Remove href from url [localhost/page#footer]
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const targetId = this.getAttribute('href');
             const target = document.querySelector(targetId);
-
             if (target) {
-                e.preventDefault(); // Prevent default anchor behavior (like updating URL)
-
-                // Scroll smoothly without changing the URL
+                e.preventDefault();
                 target.scrollIntoView({
                     behavior: 'smooth'
                 });
-
-                // Optional: Remove focus outline
                 target.blur();
             }
         });
+    });
+
+	// Navbar fixed
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainNav = document.querySelector('.navbarMain');
+
+        function toggleFixedClass() {
+            if (window.scrollY > 48) {
+                mainNav.classList.add('fixed');
+            } else {
+                mainNav.classList.remove('fixed');
+            }
+        }
+        // Run once on page load
+        toggleFixedClass();
+
+        // Run on scroll
+        window.addEventListener('scroll', toggleFixedClass);
     });
 </script>
