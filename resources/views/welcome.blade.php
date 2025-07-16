@@ -4,6 +4,17 @@
 	Supreme Family
 @endsection
 
+@section('css')
+	<style>
+		 @media (max-width: 768px) {
+			#projects .row {
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			}
+		}
+	</style>
+@endsection
+
 @section('content')
 	{{-- slider --}}
 	@include('frontend.partials.slider')	
