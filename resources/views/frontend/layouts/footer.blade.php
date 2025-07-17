@@ -1,5 +1,52 @@
-<section id="footer" style="color: #fff; background: #192733;" class="pb-0">
-    <div class="container-fluid p-3 fs-5">
+<style>
+	/* Base footer styling */
+	.footer-section {
+		font-size: 1.25rem;
+		/* ~fs-5 */
+	}
+
+	/* Mobile responsiveness */
+	@media (max-width: 768px) {
+		.footer-section {
+			font-size: 0.95rem;
+			/* Smaller font size on mobile */
+		}
+
+		.footer-section .container-fluid {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+
+		.footer-section h3 {
+			font-size: 1.1rem;
+		}
+
+		.footer-section ul {
+			padding-left: 0;
+		}
+
+		.footer-section .btn {
+			font-size: 0.95rem;
+			padding: 0.4rem 0.75rem;
+		}
+
+		.footer-section .footerSocial .social-icon i {
+			font-size: 1rem;
+		}
+
+		.footer-section .footerSocial .label {
+			display: none;
+			/* hide label text on social icons in small screen */
+		}
+
+		.footer-section .text-md-start {
+			text-align: center !important;
+		}
+	}
+</style>
+
+<section id="footer" style="color: #fff; background: #192733;" class="footer-section pb-0">
+    <div class="container-fluid p-3">
         <div class="row justify-content-between">
             <div class="col-12 col-md-4 footerContact mb-2 mb-md-0">
                 <h3>Contract</h3>
@@ -171,7 +218,7 @@
         });
     });
 
-	// Navbar fixed
+    // Navbar fixed
     document.addEventListener('DOMContentLoaded', function() {
         const mainNav = document.querySelector('.navbarMain');
 
