@@ -303,11 +303,3 @@ section {
     max-height: 350px !important;
 }
 
-#productService img {
-    /* width: 100%; */
-    /* max-width: 500px; */
-    aspect-ratio: 10 / 9;
-    overflow: hidden;
-    position: relative;
-    /* height: 500px !important; */
-}

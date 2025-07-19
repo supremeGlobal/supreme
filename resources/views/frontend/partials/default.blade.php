@@ -39,14 +39,14 @@
     }
 </style>
 
-<section class="aboutUs py-5">
+<section class="aboutUs py-3">
     <div class="container-fluid px-3">
         <div class="text-center">
             <h2 class="fw-bold">{{ $topHeading ?? '' }}</h2>
             <p class="text-muted fw-semibold fs-6 fs-md-5 slogan">{{ $slogan ?? '' }}</p>
         </div>
         <div class="row border shadow rounded-2 overflow-hidden">
-            <div class="col-12 p-3 p-md-4 about-text">
+            <div class="col-12 p-2 about-text">
                 @foreach ($contents->where('order', $order) as $item)
                     <p class="mb-3">{!! $item->details !!}</p>
                 @endforeach

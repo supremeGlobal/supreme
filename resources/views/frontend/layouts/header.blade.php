@@ -208,7 +208,11 @@
 
 		.navbarMain .dropdown-menu {
             font-size: 14px !important;
-			padding-left: 1.5rem !important;
+			padding-left: 1rem !important;
+        }
+		
+		.navbarMain .dropdown-menu li a{
+			padding-left: 1rem !important;
         }
 
         .navbarMain .nav-item {
