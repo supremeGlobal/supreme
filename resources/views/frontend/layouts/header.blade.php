@@ -197,19 +197,18 @@
             padding-right: 0;
         }
 
-        /* Stack nav items vertically */
-        .navbarMain .navbar-nav {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-        }
-
         .navbarMain .navbar-nav .nav-link {
             font-size: 14px !important;
             padding: 3px 0 !important;
         }
 
-        .navbarMain .dropdown-menu {
+        .navbarMain .dropdown {
+			width: 95% !important;
+        }
+
+		.navbarMain .dropdown-menu {
             font-size: 14px !important;
+			padding-left: 1.5rem !important;
         }
 
         .navbarMain .nav-item {
