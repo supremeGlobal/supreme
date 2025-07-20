@@ -7,11 +7,10 @@
 		{{-- <meta http-equiv="refresh" content="6"> --}}
 
 		<link rel="dns-prefetch" href="//fonts.bunny.net">
-		<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
-		<title>
-			@yield('title')
-		</title>
+		<title> @yield('title') </title>
 		@include('frontend.layouts.head')
 		@yield('css')
 	</head>

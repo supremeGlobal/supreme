@@ -1,9 +1,15 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
     margin: 0;
     padding: 0;
-    font-size: 17px !important;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+}
+
 
 /* Common */
 section {
@@ -75,85 +81,6 @@ section {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     z-index: 2;
     position: relative;
-}
-
-/* Client section */
-#client .container-fluid {
-    overflow: hidden;
-    background: #f8f9fa;
-    padding: 2rem 0;
-}
-
-#client .wrapper {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    width: max-content;
-    animation: scroll 25s linear infinite;
-    padding: 2rem 0;
-}
-
-.client {
-    padding: 0.2rem !important;
-    border: 1px solid #dee2e6 !important;
-    border-radius: 0.25rem !important;
-    transition: transform 0.3s ease;
-}
-
-.client:hover {
-    transform: scale(1.03);
-}
-
-.client-box {
-    width: 180px;
-    height: 120px;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-}
-
-.client-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 10px;
-    transition: filter 0.3s ease, transform 0.3s ease;
-}
-
-.client-box img:hover {
-    filter: grayscale(0%);
-    transform: scale(1.1);
-}
-
-.fallback-logo {
-    width: 100%;
-    height: 100%;
-    /* background-color: whitesmoke; */
-    font-weight: 600;
-    font-size: 16px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.5;
-    padding: 5px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-/* Animation for scrolling */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
 }
 
 /* footer section */
