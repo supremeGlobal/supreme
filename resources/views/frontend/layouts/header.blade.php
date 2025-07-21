@@ -166,12 +166,15 @@
         .navbarMain .col-md-3 {
             flex: 0 0 100% !important;
             max-width: 100% !important;
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 0.5rem 0rem;
         }
 
-        .news-label,
-        .ticker-controls {
-            display: none !important;
+        .first-news {
+            display: none;
+        }
+
+		.first-news .news-label, .first-news .ticker-controls {
+            display: none;
         }
 
         .news-ticker-wrapper {
@@ -185,8 +188,8 @@
             z-index: 999;
             display: flex;
             overflow: hidden;
-			border: unset !important;
-			background-color: whitesmoke !important;
+            border: unset !important;
+            background-color: whitesmoke !important;
         }
 
         .news-ticker-box {
@@ -203,16 +206,16 @@
         }
 
         .navbarMain .dropdown {
-			width: 95% !important;
+            width: 95% !important;
         }
 
-		.navbarMain .dropdown-menu {
+        .navbarMain .dropdown-menu {
             font-size: 14px !important;
-			padding-left: 1rem !important;
+            padding-left: 1rem !important;
         }
-		
-		.navbarMain .dropdown-menu li a{
-			padding-left: 1rem !important;
+
+        .navbarMain .dropdown-menu li a {
+            padding-left: 1rem !important;
         }
 
         .navbarMain .nav-item {
@@ -285,21 +288,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="row w-100 align-items-center g-0">
                 <div class="col-12 col-md-9 d-flex align-items-center" style="flex: 0 0 70%; max-width: 70%;">
-                    <div class="news-ticker-wrapper">
+                    <div class="news-ticker-wrapper first-news">
                         <div class="news-label">Latest News:</div>
-                        <div class="news-ticker-box" id="tickerBox">
-                            <ul class="news-ticker-track" id="newsTicker">
+                        <div class="news-ticker-box">
+                            <ul class="news-ticker-track">
                                 @foreach ($news as $item)
                                     <li>
-                                        <a href="#">{{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}</a>
+                                        <a
+                                            href="#">{{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
                         <div class="ticker-controls">
-                            <button id="toggleTicker" class="btn btn-sm p-0 bg-light border-0" aria-label="Pause">
-                                <i id="pauseIcon" class="fas fa-pause"></i>
-                                <i id="playIcon" class="fas fa-play d-none"></i>
+                            <button class="toggle-ticker btn btn-sm p-0 bg-light border-0" aria-label="Pause">
+                                <i class="pause-icon fas fa-pause"></i>
+                                <i class="play-icon fas fa-play d-none"></i>
                             </button>
                         </div>
                     </div>
@@ -317,13 +321,33 @@
                             <ul class="dropdown-menu rounded-0 py-2 fs-6" aria-labelledby="navbarDropdownMenuLink">
                                 @foreach ($company as $item)
                                     <li>
-										<a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
+                                        <a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
                                     </li>
                                 @endforeach
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="#footer">Contact us</a></li>
                     </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-9 d-flex align-items-center secondNews d-none" style="flex: 0 0 70%; max-width: 70%;">
+            <div class="news-ticker-wrapper second-news">
+                <div class="news-ticker-box">
+                    <ul class="news-ticker-track">
+                        @foreach ($news as $item)
+                            <li>
+                                <a href="#">{{ strip_tags(preg_replace('/\s+/', ' ', $item->details)) }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="ticker-controls d-none">
+                    <button class="toggle-ticker btn btn-sm p-0 bg-light border-0" aria-label="Pause">
+                        <i class="pause-icon fas fa-pause"></i>
+                        <i class="play-icon fas fa-play d-none"></i>
+                    </button>
                 </div>
             </div>
         </div>

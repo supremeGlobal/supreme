@@ -1,48 +1,48 @@
 <style>
-	/* Base footer styling */
-	.footer-section {
-		font-size: 1.25rem;
-		/* ~fs-5 */
-	}
+    /* Base footer styling */
+    .footer-section {
+        font-size: 1.25rem;
+        /* ~fs-5 */
+    }
 
-	/* Mobile responsiveness */
-	@media (max-width: 768px) {
-		.footer-section {
-			font-size: 0.95rem;
-			/* Smaller font size on mobile */
-		}
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .footer-section {
+            font-size: 0.95rem;
+            /* Smaller font size on mobile */
+        }
 
-		.footer-section .container-fluid {
-			padding-left: 1rem;
-			padding-right: 1rem;
-		}
+        .footer-section .container-fluid {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
 
-		.footer-section h3 {
-			font-size: 1.1rem;
-		}
+        .footer-section h3 {
+            font-size: 1.1rem;
+        }
 
-		.footer-section ul {
-			padding-left: 0;
-		}
+        .footer-section ul {
+            padding-left: 0;
+        }
 
-		.footer-section .btn {
-			font-size: 0.95rem;
-			padding: 0.4rem 0.75rem;
-		}
+        .footer-section .btn {
+            font-size: 0.95rem;
+            padding: 0.4rem 0.75rem;
+        }
 
-		.footer-section .footerSocial .social-icon i {
-			font-size: 1rem;
-		}
+        .footer-section .footerSocial .social-icon i {
+            font-size: 1rem;
+        }
 
-		.footer-section .footerSocial .label {
-			display: none;
-			/* hide label text on social icons in small screen */
-		}
+        .footer-section .footerSocial .label {
+            display: none;
+            /* hide label text on social icons in small screen */
+        }
 
-		.footer-section .text-md-start {
-			text-align: center !important;
-		}
-	}
+        .footer-section .text-md-start {
+            text-align: center !important;
+        }
+    }
 </style>
 
 <section id="footer" style="color: #fff; background: #192733;" class="footer-section pb-0">
@@ -152,55 +152,76 @@
 <!-- ====================== Nav JS ====================== -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const ticker = document.getElementById('newsTicker');
-        const box = document.getElementById('tickerBox');
-        const pauseIcon = document.getElementById('pauseIcon');
-        const playIcon = document.getElementById('playIcon');
-        const toggleBtn = document.getElementById('toggleTicker');
+        document.querySelectorAll('.news-ticker-wrapper').forEach(wrapper => {
+            const ticker = wrapper.querySelector('.news-ticker-track');
+            const box = wrapper.querySelector('.news-ticker-box');
+            const pauseIcon = wrapper.querySelector('.pause-icon');
+            const playIcon = wrapper.querySelector('.play-icon');
+            const toggleBtn = wrapper.querySelector('.toggle-ticker');
 
-        let isPaused = false;
-        let speed = 1; // pixels per frame, adjust for faster/slower scroll
-        let pos = 0;
+            let isPaused = false;
+            let speed = 1;
+            let pos = 0;
 
-        // Clone ticker content to create infinite scroll effect
-        const clone = ticker.cloneNode(true);
-        clone.id = '';
-        box.appendChild(clone);
-        clone.style.left = `${ticker.scrollWidth}px`;
+            const clone = ticker.cloneNode(true);
+            clone.classList.add('ticker-clone');
+            box.appendChild(clone);
+            clone.style.left = `${ticker.scrollWidth}px`;
 
-        function animateTicker() {
-            if (!isPaused) {
-                pos -= speed;
-                if (Math.abs(pos) >= ticker.scrollWidth) {
-                    pos = 0;
+            function animate() {
+                if (!isPaused) {
+                    pos -= speed;
+                    if (Math.abs(pos) >= ticker.scrollWidth) {
+                        pos = 0;
+                    }
+                    ticker.style.transform = `translateX(${pos}px)`;
+                    clone.style.transform = `translateX(${pos}px)`;
                 }
-                ticker.style.transform = `translateX(${pos}px)`;
-                clone.style.transform = `translateX(${pos}px)`;
+                requestAnimationFrame(animate);
             }
-            requestAnimationFrame(animateTicker);
-        }
 
-        // Toggle pause/play button functionality
-        toggleBtn.addEventListener('click', () => {
-            isPaused = !isPaused;
-            pauseIcon.classList.toggle('d-none', isPaused);
-            playIcon.classList.toggle('d-none', !isPaused);
-        });
+            toggleBtn.addEventListener('click', () => {
+                isPaused = !isPaused;
+                pauseIcon.classList.toggle('d-none', isPaused);
+                playIcon.classList.toggle('d-none', !isPaused);
+            });
 
-        // Pause on mouse enter, resume on mouse leave
-        box.addEventListener('mouseenter', () => {
-            isPaused = true;
-            pauseIcon.classList.add('d-none');
-            playIcon.classList.remove('d-none');
-        });
-        box.addEventListener('mouseleave', () => {
-            isPaused = false;
-            pauseIcon.classList.remove('d-none');
-            playIcon.classList.add('d-none');
-        });
+            box.addEventListener('mouseenter', () => {
+                isPaused = true;
+                pauseIcon.classList.add('d-none');
+                playIcon.classList.remove('d-none');
+            });
 
-        // Start animation immediately
-        animateTicker();
+            box.addEventListener('mouseleave', () => {
+                isPaused = false;
+                pauseIcon.classList.remove('d-none');
+                playIcon.classList.add('d-none');
+            });
+
+            animate();
+        });
+    });
+
+	// News show after click navbar-toggler
+    document.addEventListener('DOMContentLoaded', function() {
+		const collapseMenu = document.getElementById('navbarSupportedContent');
+		const news1 = document.querySelector('.first-news');
+		const news2 = document.querySelector('.second-news');
+		const outerCol = news2.closest('.secondNews');		
+
+		if(window.innerWidth <= 768) {
+			outerCol.classList.remove('d-none');
+		}
+
+        collapseMenu.addEventListener('shown.bs.collapse', function() {
+            news1.style.display = 'block';
+            news2.style.display = 'none';
+        });
+		
+        collapseMenu.addEventListener('hidden.bs.collapse', function() {
+            news1.style.display = 'none';
+            news2.style.display = 'block';
+        });
     });
 
     // Smooth scroll for anchor links
