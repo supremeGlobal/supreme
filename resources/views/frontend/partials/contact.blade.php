@@ -9,9 +9,8 @@
                         <i class="fas fa-map-marker-alt fs-5 pe-2"></i>
                         Address
                     </h5>
-                    <p>Tropical Mollah Tower, Level 13th, 15/1-5 Pragati Sarani,
-						<br>
-						Middle Badda, Dhaka-1212, Bangladesh
+                    <p>
+						 {{ $companyInfo['head_office_location'] }}
                     </p>
                 </div>
 
@@ -21,9 +20,9 @@
                         Help desk
                     </h5>
                     <p>
-                        <strong>Phone: </strong> +880 123456789
+                        <strong>Phone: </strong> {{ $companyInfo['contact_number'] ?? '' }}
                         <br>
-                        <strong class="pt-4">Whatsapp: </strong> +880 123456789
+                        <strong class="pt-4">Whatsapp: </strong> {{ $companyInfo['contact_number'] ?? '' }}
                     </p>
                 </div>
 
@@ -32,12 +31,12 @@
                         <i class="fas fa-envelope fs-5 pe-2"></i>
                         Email
                     </h5>
-                    <p>
-                        sales@autobricks.com
-                    </p>
+					<a href="mailto:{{ $companyInfo['info_email'] }}" class="text-dark text-decoration-none">
+						{{ $companyInfo['info_email'] }}
+					</a>
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8 py-1">
                 <iframe src="https://www.google.com/maps?q=23.779395286290402,90.42576674365971&z=14&output=embed"
                     width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade">
