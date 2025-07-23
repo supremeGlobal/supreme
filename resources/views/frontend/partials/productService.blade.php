@@ -88,6 +88,16 @@
             max-height: 300px;
         }
     }
+
+    @media (max-width: 576px) {
+        #productService .image-col {
+            order: 1 !important;
+        }
+
+        #productService .text-col {
+            order: 2 !important;
+        }
+    }
 </style>
 
 <section id="productService" class="product-service py-3">
@@ -95,30 +105,20 @@
         <div class="text-center mb-4">
             <h2 class="fw-bold">{{ $heading ?? '' }}</h2>
         </div>
-
         @foreach ($contents->where('order', $order)->values() as $index => $item)
             <div
                 class="row align-items-stretch {{ !$loop->last ? 'mb-3' : '' }} border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }}">
-                @if ($index % 2 == 0)
-                    <div class="col-lg-4 p-0">
-                        <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['title'] }}"
-                            class="w-100 h-100 object-fit-cover" />
-                    </div>
-                    <div class="col-lg-8 px-4 py-2 d-flex flex-column justify-content-start product-text">
-                        <h3 class="fw-bold">{{ $item['title'] }}</h3>
-                        {!! $item['details'] !!}
-                    </div>
-                @else
-                    <div
-                        class="col-lg-8 px-4 py-2 d-flex flex-column justify-content-start product-text order-2 order-lg-1">
-                        <h3 class="fw-bold">{{ $item['title'] }}</h3>
-                        {!! $item['details'] !!}
-                    </div>
-                    <div class="col-lg-4 p-0 order-1 order-lg-2">
-                        <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['title'] }}"
-                            class="w-100 h-100 object-fit-cover w-100 h-100 object-fit-cover" />
-                    </div>
-                @endif
+
+                <div class="col-lg-4 p-0 image-col {{ $index % 2 != 0 ? 'order-lg-2' : '' }}">
+                    <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['title'] }}"
+                        class="w-100 h-100 object-fit-cover" />
+                </div>
+
+                <div
+                    class="col-lg-8 px-4 py-2 d-flex flex-column justify-content-start product-text text-col {{ $index % 2 != 0 ? 'order-lg-1' : '' }}">
+                    <h3 class="fw-bold">{{ $item['title'] }}</h3>
+                    {!! $item['details'] !!}
+                </div>
             </div>
         @endforeach
     </div>
