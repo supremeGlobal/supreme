@@ -95,14 +95,3 @@
         });
     }, 5000);
 </script>
-
-<!-- Summernote JS -->
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
-<script>
-	$(document).ready(function() {
-		$('#summernote').summernote({
-			height: 200,
-			placeholder: 'Write your text here...'
-		});
-	});
-</script>

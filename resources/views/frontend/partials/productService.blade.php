@@ -66,30 +66,29 @@
         }
     }
 
-    @media (min-width: 577px) and (max-width: 768px) {
+    @media (max-width: 768px) {
         .product-text {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .product-service h2 {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
 
         .product-service h3 {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
         }
 
         .product-text p,
         .product-text li {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         #productService img {
-            max-height: 300px;
+            height: auto;
+            max-height: 250px;
         }
-    }
 
-    @media (max-width: 576px) {
         #productService .image-col {
             order: 1 !important;
         }
