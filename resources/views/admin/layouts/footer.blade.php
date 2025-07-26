@@ -6,21 +6,24 @@
 {{-- Datatable --}}
 <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
 <script>
-	$('.table').DataTable({
-		"pageLength": 15,
-		"lengthMenu": [ [15, 25, 50, -1], [15, 25, 50, "All"] ]
-	});
+    $('.table').DataTable({
+        "pageLength": 15,
+        "lengthMenu": [
+            [15, 25, 50, -1],
+            [15, 25, 50, "All"]
+        ]
+    });
 </script>
 
- <!-- Summernote JS -->
+<!-- Summernote JS -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 <script>
-	$(document).ready(function() {
-		$('#summernote').summernote({
-			height: 200,
-			placeholder: 'Write your text here...'
-		});
-	});
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            height: 200,
+            placeholder: 'Write your text here...'
+        });
+    });
 </script>
 
 {{-- OverlayScrollbars Configure --}}
@@ -62,12 +65,19 @@
 
     // Status change
     $(document).ready(function() {
+        // Reusable toastr alert function
+        function showToastr(type, message) {
+            toastr.options = {
+                closeButton: true,
+                closeMethod: 'fadeOut',
+                closeDuration: 100
+            };
+            toastr[type](message);
+        }
         $('.status').change(function() {
-
             let model = $(this).data('model');
-            let field = $(this).data('field');
+            let field = 'status';
             let id = $(this).data('id');
-            let tab = $(this).data('tab');
 
             $.ajax({
                 type: "GET",
@@ -76,20 +86,20 @@
                 data: {
                     'model': model,
                     'field': field,
-                    'id': id,
-                    'tab': tab
+                    'id': id
                 },
                 success: function(data) {
-                    toastr.options.closeButton = true;
-                    toastr.options.closeMethod = 'fadeOut';
-                    toastr.options.closeDuration = 100;
-                    toastr.success(data.message);
+					showToastr('success', data.message);
+                },
+                error: function(xhr) {
+                    let message = xhr.responseJSON?.message || 'Something went wrong';
+	                showToastr('error', message);
                 }
             });
         });
     });
 
-	window.setTimeout(function() {
+    window.setTimeout(function() {
         $(".alert").fadeTo(500, 0).slideUp(500, function() {
             $(this).remove();
         });

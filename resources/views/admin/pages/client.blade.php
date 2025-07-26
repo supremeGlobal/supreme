@@ -35,8 +35,8 @@
 
                                         <td class="px-3">{!! $item->name !!}</td>
                                         <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="clients"
-                                                data-field="status" data-id="{{ $item->id }}" data-tab="tabName"
+                                            <input type="checkbox" class="js-switch status" data-model="Client"
+                                                data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
                                         <td width="auto" class="text-center">

@@ -41,8 +41,10 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::get('news', 'news');
         Route::post('add-news', 'addNews');
 
-		// Common code
+		// Common code		
         Route::get('status', 'status')->name('status');
+		Route::get('itemDelete/{model}/{id}/{tab}', 'itemDelete')->name('itemDelete');  
+
     });
 });
 
@@ -60,11 +62,17 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 });
 
 Route::fallback(function () {
-   return view('404');
+	return view('404');
 });
 
 // Cache:clear
 Route::get('/clear', function() {
-    Artisan::call('optimize:clear');    
-    return "Cleared!";
+	Artisan::call('cache:clear');
+	Artisan::call('config:clear');
+	Artisan::call('config:cache');
+	Artisan::call('view:clear');
+	Artisan::call('route:clear');
+	Artisan::call('optimize:clear'); 	    
+
+	return 'Clear';
 });

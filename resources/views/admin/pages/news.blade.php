@@ -33,8 +33,8 @@
                                         <td class="px-3" width="15%">{!! $item->subject !!}</td>
                                         <td class="px-3">{{ strip_tags($item->details) }}</td>
                                         <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="news"
-                                                data-field="status" data-id="{{ $item->id }}" data-tab="tabName"
+                                            <input type="checkbox" class="js-switch status" data-model="News"
+                                                data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
                                     </tr>

@@ -9,9 +9,11 @@ use App\Models\Client;
 use App\Models\Slider;
 use App\Models\Company;
 use App\Models\CompanyInfo;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Schema;
 
 class AdminController extends Controller
 {
@@ -113,14 +115,32 @@ class AdminController extends Controller
 	// Common code
 	public function status(Request $request)
 	{
-		$model = $request->model;
-		$field = $request->field;
-		$id = $request->id;
-		$tab = $request->tab;
+		$modelClass = "App\\Models\\{$request->model}";
 
-		$itemId = DB::table($model)->find($id);
-		($itemId->$field == 'active') ? $action = $itemId->$field = 'inactive' : $action = $itemId->$field = 'active';
-		DB::table($model)->where('id', $id)->update([$field => $action]);
+		if (!class_exists($modelClass) || !($item = $modelClass::find($request->id))) {
+			return response()->json(['message' => 'Table or column not found.'], 404);
+		}
+
+		$field = $request->field;
+		$item->$field = $item->$field === 'active' ? 'inactive' : 'active';
+		$item->save();
+
 		return response()->json(['message' => 'Status updated successfully.']);
+	}
+
+	public function itemDelete($model, $id, $tab)
+	{
+		$modelClass = "App\\Models\\$model";
+
+		if (!class_exists($modelClass) || !$item = $modelClass::find($id)) {
+			return back()->with('danger', 'Table or column not found.');
+		}
+
+		if (Schema::hasColumn($item->getTable(), 'image') && $item->image && file_exists(public_path($item->image))) {
+			unlink(public_path($item->image));
+		}
+
+		$item->delete();
+		return back()->with('success', "$model deleted successfully")->withInput(['tab' => $tab]);
 	}
 }

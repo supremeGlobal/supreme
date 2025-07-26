@@ -24,32 +24,29 @@
                             @foreach ($slider->sortBy('company_id') as $item)
                                 <div class="col-6 col-md-4 col-lg-3 mb-3">
                                     <div class="border rounded shadow-sm h-100 d-flex flex-column overflow-hidden">
-
-                                        {{-- Top: Number --}}
                                         <div class="bg-light text-center py-1 border-bottom">
                                             <strong>#{{ $loop->iteration }}</strong>
                                         </div>
 
-                                        {{-- Middle: Image --}}
                                         <div class="bg-white d-flex align-items-center justify-content-center"
                                             style="height: 180px;">
-                                            <img src="{{ asset($item->image) }}" alt="{{ $item->name }}"
-                                                class="img-fluid w-100 h-100" style="object-fit: contain; padding: 5px;">
+                                            <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="img-fluid w-100 h-100" style="object-fit: contain; padding: 5px;">
                                         </div>
 
-                                        {{-- Bottom: Controls --}}
                                         <div class="p-2 border-top bg-light d-flex flex-column gap-2">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <div class="form-group mb-0 d-flex align-items-center justify-content-between btn btn-outline-primary py-1 px-3 w-50"
+                                                <div class="form-group mb-0 d-flex align-items-center justify-content-between border border-primary rounded-1 py-1 px-3 w-50"
                                                     style="gap: 10px; min-width: 120px;">
                                                     <label class="mb-0 small">Status</label>
-                                                    <input type="checkbox" class="js-switch status" data-model="sliders"
-                                                        data-field="status" data-id="{{ $item->id }}"
-                                                        {{ $item->status == 'active' ? 'checked' : '' }} />
+                                                    <input type="checkbox" class="js-switch status" 
+														data-model="Slider"
+														data-id="{{ $item->id }}"
+                                                        {{ $item->status == 'active' ? 'checked' : '' }}
+													/>
                                                 </div>
 
-                                                <a href="{{ url('sliders.delete', $item->id) }}"
-                                                    onclick="return confirm('Are you sure you want to delete this image?')"
+                                                <a href="{{ url('admin/itemDelete', ['Slider', $item->id, 'tabName'])}}"
+                                                    onclick="return confirm('Are you want to delete this?')"
                                                     class="btn btn-sm btn-outline-danger w-50 ms-1">
                                                     Delete
                                                 </a>
