@@ -28,7 +28,7 @@ class Client extends Model
 			'name' => 'Equ Jute Process',
 		],
 		[
-			'name' => 'Shayamoly Cement Seat Company',
+			'name' => 'Shamoli Cement Sheet Mills Ltd',
 		],
 		[
 			'name' => 'Classical Handmade Products BD Kirtaniapara',
@@ -64,7 +64,7 @@ class Client extends Model
 			'name' => 'Ishpahani ltd',
 		],
 		[
-			'name' => 'BRAC NGP',
+			'name' => 'BRAC NGO',
 		],
 		[
 			'name' => 'Buro Bangladesh',

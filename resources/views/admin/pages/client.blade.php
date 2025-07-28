@@ -8,6 +8,13 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
+                    <div class="card-header p-1">
+                        <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
+                            data-bs-target="#addClient">
+                            <i class="fas fa-plus"></i>
+                            Add client
+                        </button>
+                    </div>
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Client list</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
@@ -49,6 +56,36 @@
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addClient" tabindex="-1" aria-labelledby="addClientLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h1 class="modal-title fs-4" id="addClientLabel">Create client</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ url('admin/addClient') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body py-1">
+                        <div class="row">
+                            <div class="col-md-12 mb-2">
+                                <label for="client" class="form-label fs-5 mb-0">Client name</label>
+                                <input type="text" class="form-control" name="companyId" value="">
+                            </div>
+							<div class="col-md-12 mb-2">
+                                <label for="image" class="form-label fs-5 mb-0">Client image</label>
+                                <input type="file" name="image" id="image" class="form-control" placeholder="Subject" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between py-1">
+                        <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success px-4">Add now</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
