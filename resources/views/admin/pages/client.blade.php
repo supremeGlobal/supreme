@@ -67,17 +67,17 @@
                     <h1 class="modal-title fs-4" id="addClientLabel">Create client</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/addClient') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/add-client') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
                             <div class="col-md-12 mb-2">
                                 <label for="client" class="form-label fs-5 mb-0">Client name</label>
-                                <input type="text" class="form-control" name="companyId" value="">
+                                <input type="text" class="form-control" name="name" required>
                             </div>
 							<div class="col-md-12 mb-2">
                                 <label for="image" class="form-label fs-5 mb-0">Client image</label>
-                                <input type="file" name="image" id="image" class="form-control" placeholder="Subject" required>
+                                <input type="file" name="image" id="image" class="form-control">
                             </div>
                         </div>
                     </div>

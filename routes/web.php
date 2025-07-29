@@ -37,6 +37,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::post('add-info', 'addInfo');
 		
         Route::get('client', 'client');
+        Route::post('add-client', 'addClient');
 		
         Route::get('news', 'news');
         Route::post('add-news', 'addNews');

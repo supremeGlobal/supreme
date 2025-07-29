@@ -11,12 +11,15 @@ use App\Models\Company;
 use App\Models\CompanyInfo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Traits\HandlesImageUpload;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
 
 class AdminController extends Controller
 {
+	use HandlesImageUpload;
+
 	// Dashboard
 	public function dashboard()
 	{
@@ -86,6 +89,26 @@ class AdminController extends Controller
 	{
 		$data['client'] = Client::all();
 		return view('admin.pages.client', $data);
+	}
+
+	public function addClient(Request $request)
+	{
+		$request->validate([
+			'name' => 'required',
+			'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+		]);
+
+		$path = null;
+
+		if ($request->hasFile('image')) {
+			$path = $this->uploadImage($request->image, 'clients/');
+		}
+
+		Client::create([
+			'name' => $request->name,
+			'image' => $path,
+		]);
+		return back()->with('success', 'Client add successfully!');
 	}
 
 	// News
