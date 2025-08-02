@@ -28,27 +28,27 @@
                             <tbody>
                                 @foreach ($client as $item)
                                     <tr>
-                                        <td class="center" width="30">{!! $loop->iteration !!}</td>
+                                        <td width="5%" class="center">{!! $loop->iteration !!}</td>
                                         @php
                                             $imagePath = public_path($item->image);
                                             $imageExists = $item->image && file_exists($imagePath);
                                         @endphp
 
-                                        <td class="center border" width="80">
+                                        <td width="10%" class="center border">
                                             @if ($imageExists)
                                                 <img src="{{ asset($item->image) }}" class="rounded-circle border" width="80" height="80" alt="{{ $item->name }}">
                                             @endif
                                         </td>
 
                                         <td class="px-3">{!! $item->name !!}</td>
-                                        <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="Client"
-                                                data-id="{{ $item->id }}" data-tab="tabName"
-                                                {{ $item->status == 'active' ? 'checked' : '' }} />
+                                        <td width="8%" class="center">
+                                            <input type="checkbox" class="js-switch status" data-model="Client" data-id="{{ $item->id }}" data-tab="tabName" {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        <td width="auto" class="text-center">
-                                            <a href="{{ url('', [$item->id]) }}" class="btn btn-info py-1 px-3">View</a>
-                                            <a href="{{ url('', [$item->id]) }}" class="btn btn-danger py-1 px-3">Delete</a>
+                                        <td width="8%" class="text-center">
+                                            <a href="{{ url('admin/itemDelete', ['Client', $item->id, 'tabName']) }}" onclick="return confirm('Are you want to delete this?')"
+                                                class="btn btn-outline-danger">
+                                                <i class="fa-solid fa-trash me-1"></i> Delete
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -75,7 +75,7 @@
                                 <label for="client" class="form-label fs-5 mb-0">Client name</label>
                                 <input type="text" class="form-control" name="name" required>
                             </div>
-							<div class="col-md-12 mb-2">
+                            <div class="col-md-12 mb-2">
                                 <label for="image" class="form-label fs-5 mb-0">Client image</label>
                                 <input type="file" name="image" id="image" class="form-control">
                             </div>
