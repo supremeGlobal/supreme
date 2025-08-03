@@ -25,10 +25,10 @@
     }
 
     #productService img {
-        width: 100%;
+		width: 100%;
+        height: 400px;
         object-fit: cover;
-        aspect-ratio: 10 / 9;
-        height: 400px !important;
+		transform: translateY(-50px);
     }
 
     @media (max-width: 576px) {
