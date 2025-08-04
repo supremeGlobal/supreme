@@ -225,8 +225,3 @@ section {
 .modal.fade.show .modal-dialog.modal-slide-right {
     transform: translateX(0);
 }
-
-#singleService img {
-    max-height: 350px !important;
-}
-

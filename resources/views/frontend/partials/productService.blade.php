@@ -59,11 +59,6 @@
             flex: 0 0 100% !important;
             order: unset !important;
         }
-
-        #productService img {
-            height: auto;
-            max-height: 250px;
-        }
     }
 
     @media (max-width: 768px) {
@@ -85,8 +80,8 @@
         }
 
         #productService img {
-            height: auto;
-            max-height: 250px;
+            height: 300px;
+			transform: translateY(-10px);
         }
 
         #productService .image-col {
