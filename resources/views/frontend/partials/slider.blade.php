@@ -42,8 +42,13 @@
 
 <section id="slide" class="p-0">
     @php
+		if(isset($imgOrder)){
+			$j = $imgOrder;
+		}else{
+			$j = 1;
+		}
         $images = [];
-        for ($i = 1; $i <= 21; $i++) {
+        for ($i = $j; $i <= 21; $i++) {
             $images[] = $i . '.jpg';
         }
     @endphp
@@ -77,7 +82,7 @@
         var myCarousel = document.querySelector('#companyCarousel');
         if (myCarousel) {
             new bootstrap.Carousel(myCarousel, {
-                interval: 1500,
+                interval: 2500,
                 ride: 'carousel'
             });
         }
