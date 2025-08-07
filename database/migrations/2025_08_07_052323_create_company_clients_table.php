@@ -15,6 +15,8 @@ return new class extends Migration
 			$table->id();
             $table->foreignId('company_id')->constrained()->onDelete('cascade');
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
+			$table->enum('status', ['active', 'inactive'])->default('active');
+			
             $table->timestamps();
 
             // Optional: prevent duplicate pairs

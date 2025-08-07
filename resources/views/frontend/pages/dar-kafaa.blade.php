@@ -4,7 +4,7 @@
     {{-- slider --}}
     @php
         $companyName = 'Dar Kafaa Al-Alia';
-		$imgOrder = 21;
+		$imgOrder = 18;
     @endphp
 
     @include('frontend.partials.slider')

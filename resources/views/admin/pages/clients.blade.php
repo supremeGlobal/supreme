@@ -26,7 +26,7 @@
                                 <th class="center">Action</th>
                             </thead>
                             <tbody>
-                                @foreach ($client as $item)
+                                @foreach ($clients as $item)
                                     <tr>
                                         <td width="5%" class="center">{!! $loop->iteration !!}</td>
                                         @php

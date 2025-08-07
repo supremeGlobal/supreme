@@ -48,7 +48,7 @@
 			$j = 1;
 		}
         $images = [];
-        for ($i = $j; $i <= 21; $i++) {
+        for ($i = $j; $i <= 30; $i++) {
             $images[] = $i . '.jpg';
         }
     @endphp

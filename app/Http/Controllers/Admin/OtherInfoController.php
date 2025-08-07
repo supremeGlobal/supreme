@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Client;
 use App\Models\Slider;
+use App\Models\Company;
 use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Traits\HandlesImageUpload;
@@ -40,13 +42,13 @@ class OtherInfoController extends Controller
 		]);
 
 		if ($request->hasFile('image')) {
-            $path = $this->uploadImage($request->image, 'slider/'.$request->company);
+			$path = $this->uploadImage($request->image, 'slider/' . $request->company);
 
-            Slider::create([
-                'company_id' => $request->companyId,
-                'image' => $path,
-            ]);
-        }
+			Slider::create([
+				'company_id' => $request->companyId,
+				'image' => $path,
+			]);
+		}
 		return back()->with('success', 'Image uploaded successfully!');
 	}
 
@@ -68,5 +70,46 @@ class OtherInfoController extends Controller
 	{
 		$data['info'] = Content::where('company_id', 1)->where('order', 2)->get();
 		return view('admin.pages.global.division', $data);
+	}
+
+	// Show clients page for given company slug
+	public function showClients($company)
+	{
+		$companyId = $this->companyMap[$company] ?? null;
+		if (!$companyId) {
+			abort(404, 'Company not found');
+		}
+
+		$company = Company::findOrFail($companyId);
+
+		// get clients for this company
+		$companyClients = $company->clients;
+
+		// clients not yet assigned to this company
+		$otherClients = Client::whereNotIn('id', $companyClients->pluck('id'))->get();
+
+		return view('admin.pages.global.my-client', compact('company', 'companyClients', 'otherClients'));
+	}
+
+	// Add client to company
+	public function addClient(Request $request, $companySlug)
+	{
+		$companyId = $this->companyMap[$companySlug] ?? null;
+		if (!$companyId) {
+			abort(404, 'Company not found');
+		}
+
+		$request->validate([
+			'client_id' => 'required|exists:clients,id',
+		]);
+
+		$company = Company::findOrFail($companyId);
+
+		// Attach client, avoid duplicates by checking first
+		if (!$company->clients()->where('clients.id', $request->client_id)->exists()) {
+			$company->clients()->attach($request->client_id);
+		}
+
+		return back()->with('success', 'Client added successfully.');
 	}
 }

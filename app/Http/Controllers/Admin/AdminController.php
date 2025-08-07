@@ -87,8 +87,8 @@ class AdminController extends Controller
 	// Client
 	public function client()
 	{
-		$data['client'] = Client::all();
-		return view('admin.pages.client', $data);
+		$data['clients'] = Client::all();
+		return view('admin.pages.clients', $data);
 	}
 
 	public function addClient(Request $request)

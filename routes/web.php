@@ -59,6 +59,9 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::post('supreme-global/about/update', 'supremeGlobalAboutUpdate');
 		
         Route::get('supreme-global/division', 'supremeGlobalDivision');
+
+		Route::get('{company}/clients', 'showClients');
+		Route::post('{company}/clients', 'addClient')->name('admin.clients.add');
     });
 });
 

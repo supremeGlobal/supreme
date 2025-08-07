@@ -8,6 +8,11 @@ class Client extends Model
 {
 	protected $guarded = [];
 
+	public function companies()
+	{
+		return $this->belongsToMany(Company::class, 'company_clients');
+	}
+
 	public static $client = [
 		[
 			'name' => 'Cod BD Limited',
