@@ -8,58 +8,29 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header p-1">
-                        <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                            data-bs-target="#addClient">
-                            <i class="fas fa-plus"></i>
-                            Add client
-                        </button>
-                    </div>
-                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Client list</h4>
-                    <div class="card-body px-1 py-0">
-                        <h2>Clients for {{ $company->name }}</h2>
-
-                        <ul>
-                            @forelse($companyClients as $client)
-                                <li>{{ $client->name }}</li>
-                            @empty
-                                <li>No clients assigned yet.</li>
-                            @endforelse
-                        </ul>
-
-                        <hr>
-
-                        <h3>Add Client</h3>
-                        <form action="{{ route('admin.clients.add', 'supreme-global') }}" method="POST">
-                            @csrf
-                            <select name="client_id">
-                                @foreach ($otherClients as $client)
-                                    <option value="{{ $client->id }}">{{ $client->name }}</option>
-                                @endforeach
-                            </select>
-                            <button type="submit">Add</button>
-                        </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid mt-2">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header p-1">
-                        <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                            data-bs-target="#addImage">
-                            <i class="fas fa-plus"></i>
-                            Add image
-                        </button>
+                    <div class="card-header py-2">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <form action="{{ route('admin.clients.add', 'supreme-global') }}" method="POST"
+                                    class="d-flex gap-2 mb-0">
+                                    @csrf
+                                    <label for="clientSelect" class="d-flex align-items-center fw-bold fs-6 col-auto">Add
+                                        Client:</label>
+                                    <select name="client_id" id="clientSelect" class="form-select" required
+                                        style="min-width: 180px;">
+                                        <option value="" disabled selected>Select client</option>
+                                        @foreach ($otherClients as $client)
+                                            <option value="{{ $client->id }}">{{ $client->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" class="btn btn-primary px-4">Add</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                        {{-- {{ ucwords(str_replace('-', ' ', $company)) }}'s Slider --}}
-                    </h4>
+                        {{ ucwords(str_replace('-', ' ', $company->name)) }}'s client list</h4>
+
                     <div class="card-body p-2">
                         <div class="row">
                             @foreach ($companyClients as $item)
@@ -123,7 +94,6 @@
                                     });
                                 </script>
                             @endforeach
-
                         </div>
                     </div>
                 </div>
