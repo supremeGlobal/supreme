@@ -36,16 +36,27 @@
 
                                         <td width="10%" class="center border">
                                             @if ($imageExists)
-                                                <img src="{{ asset($item->image) }}" class="rounded-circle border" width="80" height="80" alt="{{ $item->name }}">
+                                                <img src="{{ asset($item->image) }}" class="rounded-circle border"
+                                                    width="80" height="80" alt="{{ $item->name }}">
                                             @endif
                                         </td>
 
                                         <td class="px-3">{!! $item->name !!}</td>
-                                        <td width="8%" class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="Client" data-id="{{ $item->id }}" data-tab="tabName" {{ $item->status == 'active' ? 'checked' : '' }} />
+                                        <td width="6%" class="center">
+                                            <input type="checkbox" class="js-switch status" data-model="Client" 
+                                                data-id="{{ $item->id }}" data-tab="tabName"
+                                                {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        <td width="8%" class="text-center">
-                                            <a href="{{ url('admin/itemDelete', ['Client', $item->id, 'tabName']) }}" onclick="return confirm('Are you want to delete this?')"
+                                        <td width="12%" class="text-center 2btn-group">
+                                            <button type="button" class="btn btn-outline-primary btn-edit"
+                                                data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                                                data-image="{{ asset($item->image) }}" data-bs-toggle="modal"
+                                                data-bs-target="#editClientModal">
+                                                <i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                                            </button>
+
+                                            <a href="{{ url('admin/itemDelete', ['Client', $item->id, 'tabName']) }}"
+                                                onclick="return confirm('Are you want to delete this?')"
                                                 class="btn btn-outline-danger">
                                                 <i class="fa-solid fa-trash me-1"></i> Delete
                                             </a>
@@ -64,7 +75,7 @@
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="addClientLabel">Create client</h1>
+                    <h4 class="modal-title" id="addClientLabel">Create client</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ url('admin/add-client') }}" method="POST" enctype="multipart/form-data">
@@ -89,7 +100,70 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="editClientModal" tabindex="-1" aria-labelledby="editClientModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h4 class="modal-title" id="editClientModalLabel">Edit Client</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="editClientForm" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="id" id="edit_client_id">
+                    <div class="modal-body py-1">
+                        <div class="mb-2">
+                            <label for="edit_client_name" class="form-label fs-5 mb-0">Client Name</label>
+                            <input type="text" name="name" id="edit_client_name" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label for="edit_client_image" class="form-label fs-5 mb-0">Client Image</label>
+                            <input type="file" name="image" id="edit_client_image" class="form-control">
+                            <div id="currentImagePreview" class="mt-2"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between py-1">
+                        <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success px-4">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('js')
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const editButtons = document.querySelectorAll('.btn-edit');
+            const form = document.getElementById('editClientForm');
+            const inputId = document.getElementById('edit_client_id');
+            const inputName = document.getElementById('edit_client_name');
+            const inputImage = document.getElementById('edit_client_image');
+            const imagePreview = document.getElementById('currentImagePreview');
+
+            editButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const name = button.dataset.name;
+                    const image = button.dataset.image;
+
+                    inputId.value = id;
+                    inputName.value = name;
+
+                    if (image) {
+                        imagePreview.innerHTML =
+                            `<img src="${image}" alt="Client Image" class="rounded-circle border" width="80" height="80">`;
+                        imagePreview.style.display = 'block';
+                    } else {
+                        imagePreview.innerHTML = '';
+                        imagePreview.style.display = 'none';
+                    }
+
+                    inputImage.value = '';
+                    form.action = `/admin/update-client/${id}`;
+                });
+            });
+        });
+    </script>
 @endsection

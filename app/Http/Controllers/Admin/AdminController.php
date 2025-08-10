@@ -84,7 +84,7 @@ class AdminController extends Controller
 		return back()->with('success', 'Company information add successfully');
 	}
 
-	// Client
+	// Client section
 	public function client()
 	{
 		$data['clients'] = Client::all();
@@ -111,7 +111,33 @@ class AdminController extends Controller
 		return back()->with('success', 'Client add successfully!');
 	}
 
-	// News
+	public function updateClient(Request $request, $id)
+	{
+		$client = Client::findOrFail($id);
+
+		$request->validate([
+			'name' => 'required|string|max:255',
+			'image' => 'nullable|image|max:2048',
+		]);
+
+		$client->name = $request->name;
+
+		if ($request->hasFile('image')){
+			if ($client->image && file_exists(public_path($client->image))) {
+				unlink(public_path($client->image));
+			}
+
+			// Upload new image via your helper
+			$path = $this->uploadImage($request->image, 'clients/');
+			$client->image = $path;
+		}
+
+		$client->save();
+
+		return redirect()->back()->with('success', 'Client updated successfully.');
+	}
+
+	// News section
 	public function news()
 	{
 		$data['news'] = News::all();

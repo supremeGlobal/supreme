@@ -38,14 +38,14 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 		
         Route::get('client', 'client');
         Route::post('add-client', 'addClient');
+		Route::post('update-client/{id}', 'updateClient');
 		
         Route::get('news', 'news');
         Route::post('add-news', 'addNews');
 
 		// Common code		
         Route::get('status', 'status')->name('status');
-		Route::get('itemDelete/{model}/{id}/{tab}', 'itemDelete')->name('itemDelete');  
-
+		Route::get('itemDelete/{model}/{id}/{tab}', 'itemDelete')->name('itemDelete');
     });
 });
 
