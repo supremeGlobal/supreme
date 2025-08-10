@@ -43,9 +43,9 @@
                             </a>
                         </li>
 						<li class="nav-item">
-                            <a href="{{ url('admin/supreme-global/clients') }}"
-                                class="nav-link {{ request()->is('admin/supreme-global/clients') ? 'active' : '' }}">
-								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/clients') ? $check : 'fa-circle text-warning' }}"></i>
+                            <a href="{{ url('admin/supreme-global/client') }}"
+                                class="nav-link {{ request()->is('admin/supreme-global/client') ? 'active' : '' }}">
+								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/client') ? $check : 'fa-circle text-warning' }}"></i>
                                 <p>My client</p>
                             </a>
                         </li>

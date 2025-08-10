@@ -10,6 +10,6 @@ class Company extends Model
 
 	public function clients()
 	{
-		return $this->belongsToMany(Client::class, 'company_clients');
+		return $this->belongsToMany(Client::class, 'company_clients')->withPivot('id', 'status');
 	}
 }

@@ -24,7 +24,7 @@ class Client extends Model
 			'name' => 'Section Seven International Limited',
 		],
 		[
-			'name' => 'Ahmed Wood & Board',
+			'name' => 'Ahmed Wood and Board',
 		],
 		[
 			'name' => 'Win champion BD Limited',

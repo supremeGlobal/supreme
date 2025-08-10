@@ -73,30 +73,30 @@ class OtherInfoController extends Controller
 	}
 
 	// Show clients page for given company slug
-	public function showClients($company)
+	public function companyClient($company)
 	{
+		$data['company'] = $company;
+
 		$companyId = $this->companyMap[$company] ?? null;
 		if (!$companyId) {
-			abort(404, 'Company not found');
+			return view('404');
 		}
 
-		$company = Company::findOrFail($companyId);
-
 		// get clients for this company
-		$companyClients = $company->clients;
+		$data['companyClients'] = $companyClients = Company::findOrFail($companyId)->clients;
 
 		// clients not yet assigned to this company
-		$otherClients = Client::whereNotIn('id', $companyClients->pluck('id'))->get();
+		$data['otherClients'] = Client::whereNotIn('id', $companyClients->pluck('id'))->get();
 
-		return view('admin.pages.global.my-client', compact('company', 'companyClients', 'otherClients'));
+		return view('admin.pages.global.my-client', $data);
 	}
 
 	// Add client to company
-	public function addClient(Request $request, $companySlug)
+	public function addCompanyClient(Request $request, $company)
 	{
-		$companyId = $this->companyMap[$companySlug] ?? null;
+		$companyId = $this->companyMap[$company] ?? null;
 		if (!$companyId) {
-			abort(404, 'Company not found');
+			return view('404');
 		}
 
 		$request->validate([
