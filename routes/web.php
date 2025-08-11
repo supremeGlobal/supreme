@@ -42,7 +42,8 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 		
         Route::get('news', 'news');
         Route::post('add-news', 'addNews');
-
+        Route::post('update-news/{id}', 'updateNews');
+		
 		// Common code		
         Route::get('status', 'status')->name('status');
 		Route::get('itemDelete/{model}/{id}/{tab}', 'itemDelete')->name('itemDelete');

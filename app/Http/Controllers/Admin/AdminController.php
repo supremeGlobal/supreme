@@ -160,6 +160,14 @@ class AdminController extends Controller
 
 		return back()->with('success', 'Company news add successfully');
 	}
+	
+	public function updateNews(Request $request, $id)
+	{
+		$news = News::findOrFail($id);
+		$news->update($request->all());
+
+		return redirect()->back()->with('success', 'News updated successfully!');
+	}
 
 	// Common code
 	public function status(Request $request)
