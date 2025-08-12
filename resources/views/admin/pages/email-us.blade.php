@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Company\'s news')
+@section('title', 'Email us')
 
 @section('content')
     @include('admin.layouts.alertMessage')

@@ -169,6 +169,13 @@ class AdminController extends Controller
 		return redirect()->back()->with('success', 'News updated successfully!');
 	}
 
+	// Email us
+	public function emailUs()
+	{
+		$data['news'] = News::all();
+		return view('admin.pages.news', $data);
+	}
+
 	// Common code
 	public function status(Request $request)
 	{

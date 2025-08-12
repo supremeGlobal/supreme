@@ -43,6 +43,8 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::get('news', 'news');
         Route::post('add-news', 'addNews');
         Route::post('update-news/{id}', 'updateNews');
+
+		Route::get('email-us', 'emailUs');
 		
 		// Common code		
         Route::get('status', 'status')->name('status');

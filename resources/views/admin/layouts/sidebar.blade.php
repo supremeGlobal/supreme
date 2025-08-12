@@ -80,6 +80,13 @@
                         <p>Latest news</p>
                     </a>
                 </li>
+				<li class="nav-item">
+                    <a href="{{ url('admin/email-us') }}"
+                        class="nav-link {{ request()->is('admin/email-us*') ? 'active' : '' }}">
+                        <i class="nav-icon fa-regular {{ request()->is('admin/email-us') ? $check : 'fa-circle text-secondary' }}"></i>
+                        <p>Send email us</p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>
