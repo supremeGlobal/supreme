@@ -136,6 +136,7 @@
             <div class="modal-body py-1">
                 <small class="fw-bold">
                     We will respond to your message as soon as possible
+					{{-- We will reply to your message as soon as possible. --}}
                 </small>
                 <form>
                     <form action="#">
@@ -152,10 +153,8 @@
                                     placeholder="Phone">
                             </div>
                             <div class="col-md-6 m-0 p-2">
-                                <i class="icon-arrow-down mr-3"></i>
-                                <select name="info" class="form-control field-info">
-                                    <option value="">Other</option>
-                                </select>
+                                 <input type="text" name="phone" class="form-control field-phone"
+                                    placeholder="Subject">
                             </div>
                             <div class="col-md-12 m-0 p-2">
                                 <textarea name="message" class="form-control" placeholder="Message"></textarea>
