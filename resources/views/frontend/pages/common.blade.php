@@ -149,8 +149,8 @@
                                     placeholder="Email">
                             </div>
                             <div class="col-md-6 m-0 p-2">
-                                <input type="text" name="phone" class="form-control field-phone"
-                                    placeholder="Phone">
+                                <input type="text" name="mobile" class="form-control field-phone"
+                                    placeholder="Mobile number">
                             </div>
                             <div class="col-md-6 m-0 p-2">
                                  <input type="text" name="phone" class="form-control field-phone"

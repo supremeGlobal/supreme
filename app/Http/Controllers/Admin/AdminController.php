@@ -8,6 +8,7 @@ use App\Models\Media;
 use App\Models\Client;
 use App\Models\Slider;
 use App\Models\Company;
+use App\Models\EmailUs;
 use App\Models\CompanyInfo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -172,8 +173,8 @@ class AdminController extends Controller
 	// Email us
 	public function emailUs()
 	{
-		$data['news'] = News::all();
-		return view('admin.pages.news', $data);
+		$data['emailUs'] = EmailUs::all();
+		return view('admin.pages.email-us', $data);
 	}
 
 	// Common code

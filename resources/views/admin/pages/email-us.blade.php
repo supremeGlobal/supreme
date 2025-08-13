@@ -8,45 +8,33 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header p-1">
-                        <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                            data-bs-target="#addNews">
-                            <i class="fas fa-plus"></i>
-                            Add News
-                        </button>
-                    </div>
-                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company's news</h4>
+                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Email us list</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
-                            <thead>
+                            <thead>                                
                                 <th class="center">SL</th>
-                                <th class="px-3">Company page</th>
+                                <th class="px-3">Name</th>
+                                <th class="px-3">Email</th>
+                                <th class="px-3">Mobile</th>
                                 <th class="px-3">Subject</th>
-                                <th class="px-3">Details</th>
-                                <th class="center">Status</th>
                                 <th class="center">Action</th>
                             </thead>
                             <tbody>
-                                @foreach ($news->sortBy('company_id') as $item)
+                                @foreach ($emailUs->sortByDesc('id') as $item)
                                     <tr>
                                         <td class="center" width="2%">{!! $loop->iteration !!}</td>
-                                        <td class="px-3" width="10%">{!! $item->company->name !!}</td>
-                                        <td class="px-3" width="15%">{!! $item->subject !!}</td>
-                                        <td class="px-3">{{ strip_tags($item->details) }}</td>
-
-                                        <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="News"
-                                                data-id="{{ $item->id }}" data-tab="tabName"
-                                                {{ $item->status == 'active' ? 'checked' : '' }} />
-
-										</td>
+                                        <td class="px-3" width="10%">{!! $item->name !!}</td>
+                                        <td class="px-3" width="10%">{!! $item->email !!}</td>
+                                        <td class="px-3" width="15%">{!! $item->mobile !!}</td>
+                                        <td class="px-3">{{ strip_tags($item->subject) }}</td>
 										<td width="15%" class="center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
-                                                data-id="{{ $item->id }}" data-company_id="{{ $item->company_id }}"
+                                                {{-- data-id="{{ $item->id }}" data-company_id="{{ $item->company_id }}"
                                                 data-subject="{{ $item->subject }}"
                                                 data-details="{{ htmlspecialchars($item->details) }}" data-bs-toggle="modal"
-                                                data-bs-target="#editNews">
-												<i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                                                data-bs-target="#editNews" --}}
+												>
+												<i class="fa-solid fa-eye me-1"></i> View
                                             </button>
 
                                             <a href="{{ url('admin/itemDelete', ['News', $item->id, 'tabName']) }}"
@@ -64,6 +52,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="modal fade" id="addNews" tabindex="-1" aria-labelledby="addNewsLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -147,22 +136,6 @@
 
 @section('js')
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.btn-edit').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    let id = btn.dataset.id;
-                    let companyId = btn.dataset.company_id;
-                    let subject = btn.dataset.subject;
-                    let details = btn.dataset.details;
-
-                    document.getElementById('edit_company').value = companyId;
-                    document.getElementById('edit_subject').value = subject;
-                    $('#edit_summernote').summernote('code', details);
-
-                    // Set form action dynamically
-                    document.getElementById('editNewsForm').action = `/admin/update-news/${id}`;
-                });
-            });
-        });
+        
     </script>
 @endsection
