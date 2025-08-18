@@ -21,13 +21,15 @@
                             </thead>
                             <tbody>
                                 @foreach ($emailUs->sortByDesc('id') as $item)
-                                    <tr>
-                                        <td class="center" width="2%">{!! $loop->iteration !!}</td>
-                                        <td class="px-3" width="10%">{!! $item->name !!}</td>
-                                        <td class="px-3" width="10%">{!! $item->email !!}</td>
-                                        <td class="px-3 center" width="15%">{!! $item->mobile !!}</td>
+                                    <tr id="email_row_{{ $item->id }}"
+                                        class="{{ $item->status == 'unseen' ? 'table-secondary fw-bold' : '' }}">
+                                        <td class="center" width="2%">{{ $loop->iteration }}</td>
+                                        <td class="px-3" width="10%">{{ $item->name }}</td>
+                                        <td class="px-3" width="10%">{{ $item->email }}</td>
+                                        <td class="px-3 center" width="15%">{{ $item->mobile }}</td>
                                         <td class="px-3">{{ strip_tags($item->subject) }}</td>
                                         <td width="15%" class="center">
+
                                             <button type="button" class="btn btn-outline-primary btn-view"
                                                 data-id="{{ $item->id }}" data-name="{{ $item->name }}"
                                                 data-email="{{ $item->email }}" data-mobile="{{ $item->mobile }}"
@@ -102,6 +104,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.btn-view').forEach(btn => {
                 btn.addEventListener('click', () => {
+                    let id = btn.dataset.id;
+
+                    // Fill modal fields
                     document.getElementById('view_name').textContent = btn.dataset.name;
                     document.getElementById('view_email').textContent = btn.dataset.email;
                     document.getElementById('view_mobile').textContent = btn.dataset.mobile;
@@ -110,6 +115,22 @@
                     let messageSelector = btn.dataset.message;
                     let messageHtml = document.querySelector(messageSelector).innerHTML;
                     document.getElementById('view_details').innerHTML = messageHtml;
+
+                    fetch(`/admin/email-seen/${id}`, {
+						method: "POST",
+						headers: {
+							"X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content,
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({})
+					})
+					.then(res => res.json())
+					.then(data => {
+						if (data.success) {
+							let row = document.getElementById('email_row_' + id);
+							row.classList.remove('table-secondary', 'fw-bold');
+						}
+					});
                 });
             });
         });

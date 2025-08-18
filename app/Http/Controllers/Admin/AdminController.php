@@ -123,7 +123,7 @@ class AdminController extends Controller
 
 		$client->name = $request->name;
 
-		if ($request->hasFile('image')){
+		if ($request->hasFile('image')) {
 			if ($client->image && file_exists(public_path($client->image))) {
 				unlink(public_path($client->image));
 			}
@@ -161,7 +161,7 @@ class AdminController extends Controller
 
 		return back()->with('success', 'Company news add successfully');
 	}
-	
+
 	public function updateNews(Request $request, $id)
 	{
 		$news = News::findOrFail($id);
@@ -175,6 +175,16 @@ class AdminController extends Controller
 	{
 		$data['emailUs'] = EmailUs::all();
 		return view('admin.pages.email-us', $data);
+	}
+
+	public function markAsSeen($id)
+	{
+		$email = EmailUs::findOrFail($id);
+		if ($email->status === 'unseen') {
+			$email->status = 'seen';
+			$email->save();
+		}
+		return response()->json(['success' => true]);
 	}
 
 	// Common code

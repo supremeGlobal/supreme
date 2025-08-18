@@ -45,6 +45,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::post('update-news/{id}', 'updateNews');
 
 		Route::get('email-us', 'emailUs');
+		Route::post('/email-seen/{id}', 'markAsSeen');
 		
 		// Common code		
         Route::get('status', 'status')->name('status');
