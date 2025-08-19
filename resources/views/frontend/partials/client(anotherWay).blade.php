@@ -10,11 +10,10 @@
         gap: 2rem;
         align-items: center;
         width: max-content;
-        will-change: transform;
+        animation: scroll linear infinite;
     }
 
     .client {
-        flex-shrink: 0;
         padding: 0.2rem !important;
         border: 1px solid #dee2e6 !important;
         border-radius: 0.25rem !important;
@@ -64,6 +63,15 @@
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
+
+    @keyframes scroll {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
 </style>
 
 <section id="client">
@@ -76,10 +84,24 @@
                     <div class="client">
                         <div class="client-box">
                             <img src="{{ asset($item->image) }}" alt="{{ $item->name }}"
-                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                                loading="lazy">
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                 loading="lazy">
                             <div class="fallback-logo" style="display: none;">
                                 {{ $item->name }}
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+                {{-- duplicate for seamless loop --}}
+                @foreach ($client as $item)
+                    <div class="client">
+                        <div class="client-box">
+                            <img src="{{ asset($item->image) }}" alt="{{ $item->name }}"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                 loading="lazy">
+                            <div class="fallback-logo" style="display: none;">
+                                2nd {{ $item->name }}
                             </div>
                         </div>
                     </div>
@@ -90,31 +112,14 @@
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const track = document.getElementById("client-track");
-        const speed = 80; // pixels per second
-        let lastTime = null;
-        let pos = 0;
+	// JS ensures speed is constant no matter how many clients
+	document.addEventListener("DOMContentLoaded", () => {
+		const track = document.getElementById("client-track");
+		const speed = 100; // px per second (adjust as you like)
 
-        function animate(time) {
-            if (lastTime !== null) {
-                const delta = (time - lastTime) / 1000; // seconds since last frame
-                pos -= speed * delta; // move at constant px/sec
-                track.style.transform = `translateX(${pos}px)`;
+		let trackWidth = track.scrollWidth / 2; // since duplicated
+		let duration = trackWidth / speed;
 
-                // check if first element is fully outside left
-                const first = track.children[0];
-                const firstWidth = first.offsetWidth + 32; // width + gap (2rem ≈ 32px)
-                if (pos <= -firstWidth) {
-                    pos += firstWidth;
-                    track.appendChild(first); // move smoothly to end
-                    track.style.transform = `translateX(${pos}px)`;
-                }
-            }
-            lastTime = time;
-            requestAnimationFrame(animate);
-        }
-
-        requestAnimationFrame(animate);
-    });
+		track.style.animationDuration = duration + "s";
+	});
 </script>
