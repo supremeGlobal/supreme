@@ -23,6 +23,8 @@ Route::middleware(['web'])->group(function () {
         Route::get('/garden-inn', 'gardenInn');
         Route::get('/alif-co', 'alifCo');
 
+		Route::post('send-email', 'sendEmail');
+
         Route::get('/job', 'job');
     });
 });

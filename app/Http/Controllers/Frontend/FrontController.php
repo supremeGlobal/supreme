@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Content;
+use App\Models\EmailUs;
 use App\Models\GlobalPage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -66,6 +67,28 @@ class FrontController extends Controller
 		$data['contents'] = Content::where('company_id', 8)->orderBy('order')->get();
         return view('frontend.pages.alif-co', $data);
     }
+
+	// Email us	
+	public function sendEmail(Request $request)
+	{
+		$request->validate([
+			'name' => 'required',
+			'email' => 'required|string',
+			'mobile' => 'required|string',
+			'subject' => 'required|string',
+			'message' => 'required|string',
+		]);
+
+		EmailUs::create([
+			'name' => $request->name,
+			'email' => $request->email,
+			'mobile' => $request->mobile,
+			'subject' => $request->subject,
+			'message' => $request->message
+		]);
+
+		return back()->with('success', 'Company email send successfully');
+	}
 
 	public function job()
     {
