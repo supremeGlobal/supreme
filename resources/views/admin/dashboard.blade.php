@@ -18,11 +18,11 @@
 
                 $icon = [
                     'fa-solid fa-building',
-                    'fa-solid fa-bell',
-                    'fa-solid fa-lightbulb',
-                    'fa-solid fa-user-gear',
-                    'fa-solid fa-wifi',
-                    'fa-solid fa-globe',
+					'fa-solid fa-circle-info',
+					'fa-solid fa-users',
+					'fa-solid fa-newspaper',
+					'fa-solid fa-camera',
+					'fa-solid fa-envelope',
                 ];
             @endphp
 

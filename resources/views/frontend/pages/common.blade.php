@@ -143,17 +143,17 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6 m-0 p-2">
-                            <input type="text" name="name" class="form-control field-name" placeholder="Name">
+                            <input type="text" name="name" class="form-control" placeholder="Name">
                         </div>
                         <div class="col-md-6 m-0 p-2">
-                            <input type="email" name="email" class="form-control field-email" placeholder="Email">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="col-md-6 m-0 p-2">
-                            <input type="text" name="mobile" class="form-control field-phone"
+                            <input type="text" name="mobile" class="form-control"
                                 placeholder="Mobile number">
                         </div>
                         <div class="col-md-6 m-0 p-2">
-                            <input type="text" name="subject" class="form-control field-phone" placeholder="Subject">
+                            <input type="text" name="subject" class="form-control" placeholder="Subject">
                         </div>
                         <div class="col-md-12 m-0 p-2">
                             <textarea name="message" class="form-control" placeholder="Message"></textarea>

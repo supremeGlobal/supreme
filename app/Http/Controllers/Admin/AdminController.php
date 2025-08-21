@@ -33,7 +33,7 @@ class AdminController extends Controller
 			[
 				'link'  => url('admin/company-info'),
 				'value' => CompanyInfo::count(),
-				'title' => 'Company Basic Information'
+				'title' => 'Company\'s Information'
 			],
 			[
 				'link'  => url('admin/client'),
@@ -50,6 +50,11 @@ class AdminController extends Controller
 				'value' => Slider::count(),
 				'title' => 'Total slider image'
 			],
+			[
+				'link'  => url('admin/email-us'),
+				'value' => EmailUs::count(),
+				'title' => 'Total email'
+			],			
 		];
 		return view('admin.dashboard', $data);
 	}
