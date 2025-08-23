@@ -25,6 +25,7 @@
 		@extends('frontend.pages.common')
 
 		@include('frontend.layouts.footer')
+        @include('admin.layouts.alertMessage')
 		@yield('js')
 	</body>
 </html>

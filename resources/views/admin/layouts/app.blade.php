@@ -26,6 +26,7 @@
             </footer>
         </div>
         @include('admin.layouts.footer')
+        @include('admin.layouts.alertMessage')
         @yield('js')
     </body>
 </html>

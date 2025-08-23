@@ -2,8 +2,6 @@
 @section('title', $company . '\'s slider')
 
 @section('content')
-    @include('admin.layouts.alertMessage')
-
     <div class="container-fluid mt-2">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -17,36 +15,35 @@
                     </div>
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
                         {{ ucwords(str_replace('-', ' ', $company)) }}'s Slider
-					</h4>
+                    </h4>
                     <div class="card-body p-2">
                         <div class="row">
                             @foreach ($slider->sortBy('company_id') as $item)
-                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                <div class="col-6 col-md-4 col-lg-3 my-1">
                                     <div class="border rounded shadow-sm h-100 d-flex flex-column overflow-hidden">
-                                        <div class="bg-white d-flex align-items-center justify-content-center"
-                                            tyle="height: 180px;">
-                                            <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="img-fluid w-100 h-100" style="object-fit: contain; padding: 5px;">
+                                        <div class="bg-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                            <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="img-fluid" style="object-fit: contain;">
                                         </div>
-                                        <div class="p-2 border-top bg-light d-flex flex-column gap-2">
+
+                                        <div class="p-1 border-top bg-light d-flex flex-column gap-2">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <a class="btn btn-sm text-dark border border-primary rounded-1 py-1 px-3 w-10">
-                                                   <strong>{{ $loop->iteration }}</strong>
+                                                <a
+                                                    class="btn btn-sm text-dark border border-primary rounded-1 py-1 px-3 w-10">
+                                                    <strong>{{ $loop->iteration }}</strong>
                                                 </a>
-												
-												<div class="form-group mb-0 d-flex align-items-center justify-content-between border border-primary rounded-1 py-1 px-3 w-50 mx-1"
+
+                                                <div class="form-group mb-0 d-flex align-items-center justify-content-between border border-primary rounded-1 py-1 px-3 w-50 mx-1"
                                                     style="gap: 10px; min-width: 120px;">
                                                     <label class="small">Status</label>
-                                                    <input type="checkbox" class="js-switch status" 
-														data-model="Slider"
-														data-id="{{ $item->id }}"
-                                                        {{ $item->status == 'active' ? 'checked' : '' }}
-													/>
+                                                    <input type="checkbox" class="js-switch status" data-model="Slider"
+                                                        data-id="{{ $item->id }}"
+                                                        {{ $item->status == 'active' ? 'checked' : '' }} />
                                                 </div>
 
-                                                <a href="{{ url('admin/itemDelete', ['Slider', $item->id, 'tabName'])}}"
+                                                <a href="{{ url('admin/itemDelete', ['Slider', $item->id, 'tabName']) }}"
                                                     onclick="return confirm('Are you want to delete this?')"
                                                     class="btn btn-sm btn-outline-danger w-50">
-													<i class="fa-solid fa-trash me-1"></i>
+                                                    <i class="fa-solid fa-trash me-1"></i>
                                                     Delete
                                                 </a>
                                             </div>
@@ -92,4 +89,3 @@
 @endsection
 
 @section('js')
-@endsection

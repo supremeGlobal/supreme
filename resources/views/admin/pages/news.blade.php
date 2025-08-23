@@ -2,8 +2,6 @@
 @section('title', 'Company\'s news')
 
 @section('content')
-    @include('admin.layouts.alertMessage')
-
     <div class="container-fluid mt-3">
         <div class="row justify-content-center">
             <div class="col-md-12">
