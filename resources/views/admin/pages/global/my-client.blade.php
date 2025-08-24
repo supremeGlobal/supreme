@@ -29,7 +29,7 @@
                     <div class="card-body p-2">
                         <div class="row">
                             @foreach ($companyClients as $item)
-                                <div class="col-6 col-md-4 col-lg-3 mb-3">
+                                <div class="col-6 col-md-4 col-lg-3 my-1">
                                     <div class="border rounded shadow-sm h-100 d-flex flex-column overflow-hidden">
                                         <div class="bg-white d-flex align-items-center justify-content-center" style="height: 100px; position: relative;">
                                             <img src="{{ asset($item->image) }}" alt="{{ $item->name }}" class="img-fluid w-100 h-100" style="object-fit: contain; padding: 5px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
@@ -43,11 +43,11 @@
                                             {!! $item->name !!}
                                         </div>
 
-                                        <div class="p-2 border-top bg-light d-flex flex-column gap-2 mt-auto">
+                                        <div class="p-1 border-top bg-light d-flex flex-column gap-2 mt-auto">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <a class="btn btn-sm text-dark border border-primary rounded-1 py-1 px-3 w-10">
+                                                <div class="btn btn-sm text-dark border border-primary rounded-1 py-1 px-3 w-10">
                                                     <strong>{{ $loop->iteration }}</strong>
-                                                </a>
+                                                </div>
 
                                                 <div class="form-group mb-0 d-flex align-items-center justify-content-between border border-primary rounded-1 py-1 px-3 w-50 mx-1" style="gap: 10px; min-width: 120px;">
                                                     <label class="small mb-0">Status</label>

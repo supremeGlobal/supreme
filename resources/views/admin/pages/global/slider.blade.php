@@ -27,10 +27,9 @@
 
                                         <div class="p-1 border-top bg-light d-flex flex-column gap-2">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <a
-                                                    class="btn btn-sm text-dark border border-primary rounded-1 py-1 px-3 w-10">
+                                                <div class="btn btn-sm text-dark border border-primary rounded-1 py-1 px-3 w-10">
                                                     <strong>{{ $loop->iteration }}</strong>
-                                                </a>
+                                                </div>
 
                                                 <div class="form-group mb-0 d-flex align-items-center justify-content-between border border-primary rounded-1 py-1 px-3 w-50 mx-1"
                                                     style="gap: 10px; min-width: 120px;">

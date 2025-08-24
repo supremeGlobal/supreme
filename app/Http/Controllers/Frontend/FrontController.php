@@ -6,7 +6,9 @@ use App\Models\Content;
 use App\Models\EmailUs;
 use App\Models\GlobalPage;
 use Illuminate\Http\Request;
+use App\Mail\ClientAutoReply;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -79,15 +81,23 @@ class FrontController extends Controller
 			'message' => 'required|string',
 		]);
 
-		EmailUs::create([
-			'name' => $request->name,
-			'email' => $request->email,
-			'mobile' => $request->mobile,
-			'subject' => $request->subject,
-			'message' => $request->message
-		]);
+		// EmailUs::create([
+		// 	'name' => $request->name,
+		// 	'email' => $request->email,
+		// 	'mobile' => $request->mobile,
+		// 	'subject' => $request->subject,
+		// 	'message' => $request->message
+		// ]);
 
-		return back()->with('success', 'Company email send successfully');
+		EmailUs::create($request->only(['name', 'email', 'mobile', 'subject', 'message']));
+
+		// Send client auto-reply (Markdown styled)
+    	Mail::to($request->email)->send(new ClientAutoReply($request->all()));
+
+
+		// return back()->with('success', 'Company email send successfully');
+		    return back()->with('success', 'Your message has been sent. Please check your email for confirmation.');
+
 	}
 
 	public function job()
