@@ -1,19 +1,17 @@
-<x-mail::message>
-    # Hello {{ $name }}
+@component('mail::message')
+# Welcome to Supreme Global, {{ $name }}! 🎉
 
-    Thank you for contacting us regarding **{{ $subject }}**.
+Thank you for contacting us. We have received your message and will get back to you shortly.
 
-    <x-mail::panel>
-        Your message:
-        {{ $message }}
-    </x-mail::panel>
+---
 
-    We will get back to you shortly.
+<div style="text-align:center; margin:20px 0;">
+    <a href="https://supremeglobalbd.com/" target="_blank" 
+       style="display:inline-block; padding:10px 20px; background-color:#2d3748; color:#fff; text-decoration:none; border-radius:5px;">
+       Visit Our Website
+    </a>
+</div>
 
-    <x-mail::button :url="'https://yourcompany.com/contact'">
-        View Details
-    </x-mail::button>
-
-    Thanks,<br>
-    {{ config('app.name') }}
-</x-mail::message>
+Thanks,  
+**Supreme Global Team**
+@endcomponent

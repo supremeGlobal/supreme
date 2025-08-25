@@ -81,23 +81,12 @@ class FrontController extends Controller
 			'message' => 'required|string',
 		]);
 
-		// EmailUs::create([
-		// 	'name' => $request->name,
-		// 	'email' => $request->email,
-		// 	'mobile' => $request->mobile,
-		// 	'subject' => $request->subject,
-		// 	'message' => $request->message
-		// ]);
-
 		EmailUs::create($request->only(['name', 'email', 'mobile', 'subject', 'message']));
 
-		// Send client auto-reply (Markdown styled)
-    	Mail::to($request->email)->send(new ClientAutoReply($request->all()));
+    	// Mail::to($request->email)->send(new ClientAutoReply($request->all()));
+		Mail::to($request->email)->later(now()->addSeconds(5), new ClientAutoReply($request->all()));
 
-
-		// return back()->with('success', 'Company email send successfully');
-		    return back()->with('success', 'Your message has been sent. Please check your email for confirmation.');
-
+		return back()->with('success', 'Your message has been sent. We will respond you soon.');
 	}
 
 	public function job()
