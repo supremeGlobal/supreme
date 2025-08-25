@@ -41,14 +41,18 @@
 </style>
 
 <section id="slide" class="p-0">
-    @php
-		if(isset($imgOrder)){
-			$j = $imgOrder;
+     @php
+		if(isset($imgStart)){
+			$i = $imgStart;
+            $j = $imgEnd;
+            
 		}else{
-			$j = 1;
+			$imgStart = 1;
+			$imgEnd = 27;
 		}
+		
         $images = [];
-        for ($i = $j; $i <= 30; $i++) {
+        for ($i = $imgStart; $i <= $imgEnd; $i++) {
             $images[] = $i . '.jpg';
         }
     @endphp
