@@ -321,7 +321,7 @@
                             <ul class="dropdown-menu rounded-0 py-2 fs-6" aria-labelledby="navbarDropdownMenuLink">
                                 @foreach ($company as $item)
                                     <li>
-                                        <a class="dropdown-item" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
+                                        <a class="dropdown-item ps-2" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
                                     </li>
                                 @endforeach
                             </ul>

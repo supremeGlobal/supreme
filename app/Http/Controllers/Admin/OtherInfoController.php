@@ -52,6 +52,7 @@ class OtherInfoController extends Controller
 		return back()->with('success', 'Image uploaded successfully!');
 	}
 
+	// About us
 	public function supremeGlobalAbout()
 	{
 		$data['info'] = Content::where('company_id', 1)->where('order', 1)->first();
