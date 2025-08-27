@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('title')
-	Supreme Family
+	Supreme Global
 @endsection
 
 @section('css')

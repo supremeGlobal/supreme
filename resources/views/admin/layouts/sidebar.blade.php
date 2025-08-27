@@ -2,7 +2,7 @@
     <div class="sidebar-brand">
         <a href="{{ url('admin/dashboard') }}" class="brand-link">
             {{-- <img src="{{ asset('images/supreme.png') }}" alt="Company logo" class="brand-image opacity-75 shadow text-bg-light"> --}}
-            <span class="brand-text fw-light">Supreme Family</span>
+            <span class="brand-text fw-light">Supreme Global</span>
         </a>
     </div>
 	@php

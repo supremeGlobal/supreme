@@ -1,4 +1,27 @@
 <style>
+    #productService .row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;   /* force equal height */
+        min-height: 350px;      /* row never smaller */
+    }
+
+    /* both columns stretch equally */
+    #productService .image-col,
+    #productService .text-col {
+        display: flex;
+        flex-direction: column;
+        min-height: 350px;
+    }
+
+    /* image fills its column */
+    #productService .image-col img {
+        width: 100%;
+        height: 80%;
+        object-fit: cover;
+    }
+
+    /* --- text styles --- */
     .product-service {
         background-color: #f8f9fa;
     }
@@ -24,13 +47,7 @@
         text-align: justify;
     }
 
-    #productService img {
-		width: 100%;
-        height: 100%;
-        object-fit: cover;
-		transform: translateY(-50px);
-    }
-
+    /* --- responsive rules --- */
     @media (max-width: 576px) {
         .product-text {
             font-size: 1rem;
@@ -58,6 +75,11 @@
             width: 100% !important;
             flex: 0 0 100% !important;
             order: unset !important;
+            min-height: auto !important; /* reset for mobile */
+        }
+
+        #productService .image-col img {
+            height: 300px; /* fixed smaller height on mobile */
         }
     }
 
@@ -79,11 +101,6 @@
             font-size: 0.95rem;
         }
 
-        #productService img {
-            height: 300px;
-			transform: translateY(-10px);
-        }
-
         #productService .image-col {
             order: 1 !important;
         }
@@ -99,17 +116,17 @@
         <div class="text-center mb-4">
             <h2 class="fw-bold">{{ $heading ?? '' }}</h2>
         </div>
-        @foreach ($contents->where('order', $order)->values() as $index => $item)
-            <div
-                class="row align-items-stretch {{ !$loop->last ? 'mb-3' : '' }} border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }}">
 
-                <div class="col-lg-4 p-0 image-col {{ $index % 2 != 0 ? 'order-lg-2' : '' }}">
-                    <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['title'] }}"
-                        class="w-100 h-100 object-fit-cover" />
+        @foreach ($contents->where('order', $order)->values() as $index => $item)
+            <div class="row {{ !$loop->last ? 'mb-3' : '' }} border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }}">
+
+                <!-- Image Column -->
+                <div class="col-lg-4 p-0 image-col h-100 {{ $index % 2 != 0 ? 'order-lg-2' : '' }}">
+                    <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['title'] }}" tyle="height: 400px !important;" />
                 </div>
 
-                <div
-                    class="col-lg-8 px-4 py-2 d-flex flex-column justify-content-start product-text text-col {{ $index % 2 != 0 ? 'order-lg-1' : '' }}">
+                <!-- Text Column -->
+                <div class="col-lg-8 px-4 py-2 d-flex flex-column justify-content-start product-text text-col h-100 {{ $index % 2 != 0 ? 'order-lg-1' : '' }}">
                     <h3 class="fw-bold">{{ $item['title'] }}</h3>
                     {!! $item['details'] !!}
                 </div>
