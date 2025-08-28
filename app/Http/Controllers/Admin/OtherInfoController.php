@@ -9,6 +9,7 @@ use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Traits\HandlesImageUpload;
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
 
 class OtherInfoController extends Controller
 {
@@ -53,18 +54,30 @@ class OtherInfoController extends Controller
 	}
 
 	// About us
-	public function supremeGlobalAbout()
+	public function aboutIndex($company)
 	{
-		$data['info'] = Content::where('company_id', 1)->where('order', 1)->first();
-		return view('admin.pages.global.index', $data);
+		$companyId = $this->companyMap[$company] ?? null;
+		if (!$companyId) {
+			return view('404');
+		}
+
+		$data['company'] = $company;
+		$data['companyId'] = $companyId;
+
+		$data['about'] = AboutUs::where('company_id', $companyId)->first();
+		return view('admin.pages.global.about-us', $data);
 	}
 
-	public function supremeGlobalAboutUpdate(Request $request)
+	public function aboutUpdate(Request $request)
 	{
-		Content::where('id', $request->id)->update([
-			'details' => $request->details
-		]);
-		return redirect()->back()->with('success', 'About us updated successfully!');
+		AboutUs::updateOrCreate(
+			['company_id' => $request->companyId],
+			[
+				'details' => $request->details
+			]
+		);
+
+		return redirect()->back()->with('success', 'About us update successfully!');
 	}
 
 	public function supremeGlobalDivision()

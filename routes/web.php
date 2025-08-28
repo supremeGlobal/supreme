@@ -65,9 +65,6 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 		Route::get('{company}/about', 'aboutIndex');
         Route::post('{company}/about/update', 'aboutUpdate');
 
-        // Route::get('supreme-global/about', 'supremeGlobalAbout');
-        // Route::post('supreme-global/about/update', 'supremeGlobalAboutUpdate');
-		
         Route::get('supreme-global/division', 'supremeGlobalDivision');
 
 		Route::get('{company}/client', 'companyClient');

@@ -6,15 +6,17 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">About us</h4>
+                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
+						{{ ucwords(str_replace('-', ' ', $company)) }}'s about us
+					</h4>
                     <div class="card-body px-1 py-0">
                         <form action="{{ url('admin/supreme-global/about/update') }}" method="POST">
                             @csrf
                             <div class="modal-body py-1">
                                 <div class="row">
                                     <div class="col-md-12">
-										<input type="hidden" name="id" value="{{ $info->id }}">
-                                        <textarea id="summernote" name="details" placeholder="Write your text here...">{{$info->details}}</textarea>
+										<input type="hidden" name="companyId" value="{{ $companyId ?? '' }}">
+                                        <textarea id="summernote" name="details" placeholder="Write your text here...">{{ $about->details ?? '' }}</textarea>
                                     </div>
                                 </div>
                             </div>
