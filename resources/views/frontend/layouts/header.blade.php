@@ -40,7 +40,7 @@
         font-size: 15px;
         transition: all 0.4s ease;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-        z-index: 998;
+        /* z-index: 998; */
     }
 
     .navbarMain .navbar-nav .nav-link {

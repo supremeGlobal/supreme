@@ -43,6 +43,13 @@
                             </a>
                         </li>
 						<li class="nav-item">
+                            <a href="{{ url('admin/supreme-global/mission-vision') }}"
+                                class="nav-link {{ request()->is('admin/supreme-global/mission-vision') ? 'active' : '' }}">
+								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/mission-vision') ? $check : 'fa-circle text-info' }}"></i>
+                                <p>Mission & Vision</p>
+                            </a>
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('admin/supreme-global/client') }}"
                                 class="nav-link {{ request()->is('admin/supreme-global/client') ? 'active' : '' }}">
 								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/client') ? $check : 'fa-circle text-warning' }}"></i>

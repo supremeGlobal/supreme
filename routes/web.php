@@ -64,8 +64,11 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 		
 		Route::get('{company}/about', 'aboutIndex');
         Route::post('{company}/about/update', 'aboutUpdate');
-
+		
         Route::get('supreme-global/division', 'supremeGlobalDivision');
+		
+        Route::get('{company}/mission-vision', 'mission');
+        Route::post('{company}/mission/add', 'missionAdd');
 
 		Route::get('{company}/client', 'companyClient');
 		Route::post('{company}/client', 'addCompanyClient');

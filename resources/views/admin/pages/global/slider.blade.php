@@ -64,13 +64,12 @@
                     <h1 class="modal-title fs-4" id="addImageLabel">Slider image</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' . $company . '/slider/add') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/' .$company. '/slider/add') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
                             <div class="col-md-12 mb-2">
                                 <label for="image" class="form-label fs-5 mb-0">Add image</label>
-                                <input type="hidden" name="company" value="{{ $company }}">
                                 <input type="hidden" name="companyId" value="{{ $companyId }}">
                                 <input type="file" name="image" id="image" class="form-control"
                                     placeholder="Subject" required>

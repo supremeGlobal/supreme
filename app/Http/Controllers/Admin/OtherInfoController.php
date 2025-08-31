@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Client;
 use App\Models\Slider;
+use App\Models\AboutUs;
 use App\Models\Company;
 use App\Models\Content;
 use Illuminate\Http\Request;
+use App\Models\MissionVision;
 use App\Traits\HandlesImageUpload;
 use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
 
 class OtherInfoController extends Controller
 {
@@ -36,14 +37,14 @@ class OtherInfoController extends Controller
 		return view('admin.pages.global.slider', $data);
 	}
 
-	public function sliderAdd(Request $request)
+	public function sliderAdd(Request $request, $company)
 	{
 		$request->validate([
 			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
 		]);
 
 		if ($request->hasFile('image')) {
-			$path = $this->uploadImage($request->image, 'slider/' . $request->company);
+			$path = $this->uploadImage($request->image, 'slider/' . $company);
 
 			Slider::create([
 				'company_id' => $request->companyId,
@@ -78,6 +79,42 @@ class OtherInfoController extends Controller
 		);
 
 		return redirect()->back()->with('success', 'About us update successfully!');
+	}
+
+	// Mission vision
+	public function mission($company)
+	{
+		$companyId = $this->companyMap[$company] ?? null;
+		if (!$companyId) {
+			return view('404');
+		}
+
+		$data['company'] = $company;
+		$data['companyId'] = $companyId;
+
+		$data['missionVision'] = MissionVision::where('company_id', $companyId)->get();
+		return view('admin.pages.global.mission-vision', $data);
+	}
+
+	public function missionAdd(Request $request, $company)
+	{
+		$request->validate([
+			'title' => 'required',
+			'details' => 'required',
+			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+		]);
+
+		if ($request->hasFile('image')) {
+			$path = $this->uploadImage($request->image, 'mission/' . $request->company);
+
+			MissionVision::create([
+				'company_id' => $request->companyId,
+				'title' => $request->title,
+				'details' => $request->details,
+				'image' => $path,
+			]);
+		}
+		return back()->with('success', 'Mission or vision add successfully!');
 	}
 
 	public function supremeGlobalDivision()
