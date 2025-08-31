@@ -173,7 +173,8 @@
             display: none;
         }
 
-		.first-news .news-label, .first-news .ticker-controls {
+        .first-news .news-label,
+        .first-news .ticker-controls {
             display: none;
         }
 
@@ -320,8 +321,13 @@
                             </a>
                             <ul class="dropdown-menu rounded-0 py-2 fs-6" aria-labelledby="navbarDropdownMenuLink">
                                 @foreach ($company as $item)
+									@php
+										$slug = Str::slug($item['url']);
+									@endphp
                                     <li>
-                                        <a class="dropdown-item ps-2" href="{{ $item['url'] }}">{{ $item['name'] }}</a>
+                                        <a class="dropdown-item px-2 rounded {{ request()->is($slug) ? 'active text-light' : '' }}" href="{{ url($slug) }}">
+                                            {{ $item['name'] }}
+                                        </a>
                                     </li>
                                 @endforeach
                             </ul>
