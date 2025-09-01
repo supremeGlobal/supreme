@@ -45,7 +45,7 @@
                                                 data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
-                                        <td width="15%" class="text-center 2btn-group">
+                                        <td width="15%" class="text-center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}" data-name="{{ $item->name }}"
                                                 data-image="{{ asset($item->image) }}" data-bs-toggle="modal"
