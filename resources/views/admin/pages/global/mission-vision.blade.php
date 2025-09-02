@@ -44,9 +44,12 @@
                                         </td>
                                         <td width="12%" class="text-center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
-                                                data-id="{{ $item->id }}" data-title="{{ $item->title }}"
+                                                data-id="{{ $item->id }}" 
+												data-title="{{ $item->title }}"
                                                 data-image="{{ asset($item->image) }}"
-                                                data-details="{{ htmlspecialchars($item->details) }}" data-bs-toggle="modal"
+                                                data-details={{ htmlspecialchars($item->details) }}
+												
+												data-bs-toggle="modal"
                                                 data-bs-target="#editMission">
                                                 <i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                             </button>
@@ -74,7 +77,7 @@
                     <h1 class="modal-title fs-4" id="addMissionLabel">Create mission or vision</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' . $company . '/mission/add') }}" method="POST"
+                <form action="{{ url('admin/' .$company. '/mission/add') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
@@ -89,7 +92,7 @@
                             <div class="col-md-12 mb-2">
                                 <label for="title" class="form-label fs-5 mb-0">Title</label>
                                 <input type="text" name="title" id="title" class="form-control"
-                                    placeholder="Our mission" required>
+                                    placeholder="Our mission or vision" required>
                             </div>
                             <div class="col-md-12 mb-2">
                                 <label for="image" class="form-label fs-5 mb-0">Add image</label>
@@ -122,7 +125,7 @@
                 <form id="editMissionForm" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="edit_id">
-                    <input type="hidden" name="companyId" id="edit_companyId" value="{{ $companyId }}">
+                    <input type="hidden" name="company" id="edit_companyId" value="{{ $company }}">
 
                     <div class="modal-body py-1">
                         <div class="row">
@@ -172,7 +175,6 @@
             const inputTitle = document.getElementById('edit_title');
             const inputImage = document.getElementById('edit_mission_image');
             const imagePreview = document.getElementById('missionImagePreview');
-            const inputCompanyId = document.getElementById('edit_companyId');
 
             editButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -183,10 +185,9 @@
 
                     inputId.value = id;
                     inputTitle.value = title;
-                    inputCompanyId.value = "{{ $companyId }}"; // optional, if dynamic per row
 
                     // Summernote content
-                    $('#edit_mission').summernote('code', details || '');
+                    $('#edit_mission').summernote('code', details);
 
                     // Show old image preview
                     if (image) {

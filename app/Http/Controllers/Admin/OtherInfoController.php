@@ -105,7 +105,7 @@ class OtherInfoController extends Controller
 		]);
 
 		if ($request->hasFile('image')) {
-			$path = $this->uploadImage($request->image, 'mission/' . $request->company);
+			$path = $this->uploadImage($request->image, 'mission/' . $company);
 
 			MissionVision::create([
 				'company_id' => $request->companyId,
@@ -115,6 +115,31 @@ class OtherInfoController extends Controller
 			]);
 		}
 		return back()->with('success', 'Mission or vision add successfully!');
+	}
+
+	public function updateMission(Request $request, $id)
+	{
+		$mission = MissionVision::findOrFail($id);
+
+		$mission->title   = $request->title;
+		$mission->details = $request->details;
+
+		// Handle image only if a new one is uploaded
+		if ($request->hasFile('image')) {
+			// Remove old image if exists
+			if ($mission->image && file_exists(public_path($mission->image))) {
+				unlink(public_path($mission->image));
+			}
+
+			// Upload new image
+			$path = $this->uploadImage($request->image, 'mission/' . $request->company);
+
+			// Save new path
+			$mission->image = $path;
+		}
+		$mission->save();
+
+		return redirect()->back()->with('success', 'Mission or vision updated successfully!');
 	}
 
 	public function supremeGlobalDivision()
