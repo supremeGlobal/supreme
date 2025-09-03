@@ -148,6 +148,23 @@ class OtherInfoController extends Controller
 		return view('admin.pages.global.division', $data);
 	}
 
+	// Management team
+	public function management($company)
+	{
+		$companyId = $this->companyMap[$company] ?? null;
+		if (!$companyId) {
+			return view('404');
+		}
+
+		$data['company'] = $company;
+		$data['companyId'] = $companyId;
+
+		$data['missionVision'] = MissionVision::where('company_id', $companyId)->get();
+		return view('admin.pages.global.management-team', $data);
+	}
+
+
+
 	// Show clients page for given company slug
 	public function companyClient($company)
 	{

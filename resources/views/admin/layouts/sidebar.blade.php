@@ -23,7 +23,7 @@
                         <li class="nav-item">
                             <a href="{{ url('admin/supreme-global/slider') }}"
                                 class="nav-link {{ request()->is('admin/supreme-global/slider') ? 'active' : '' }}">
-                                <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/slider') ? $check : 'fa-circle text-danger' }}"></i>
+                                <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/slider') ? $check : 'fa-circle text-primary' }}"></i>
                                 <p>Slider image</p>
                             </a>
                         </li>
@@ -31,14 +31,14 @@
 						<li class="nav-item">
                             <a href="{{ url('admin/supreme-global/about') }}"
                                 class="nav-link {{ request()->is('admin/supreme-global/about') ? 'active' : '' }}">
-                                <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/about') ? $check : 'fa-circle text-danger' }}"></i>
+                                <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/about') ? $check : 'fa-circle text-secondary' }}"></i>
                                 <p>About us</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ url('admin/supreme-global/division') }}"
                                 class="nav-link {{ request()->is('admin/supreme-global/division') ? 'active' : '' }}">
-								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/division') ? $check : 'fa-circle text-info' }}"></i>
+								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/division') ? $check : 'fa-circle text-success' }}"></i>
                                 <p>Our division</p>
                             </a>
                         </li>
@@ -50,9 +50,16 @@
                             </a>
                         </li>
 						<li class="nav-item">
+							<a href="{{ url('admin/supreme-global/management-team') }}"
+								class="nav-link {{ request()->is('admin/supreme-global/management-team') ? 'active' : '' }}">
+								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/management-team') ? $check : 'fa-circle text-warning' }}"></i>
+								<p>Management Team</p>
+							</a>
+						</li>
+						<li class="nav-item">
                             <a href="{{ url('admin/supreme-global/client') }}"
                                 class="nav-link {{ request()->is('admin/supreme-global/client') ? 'active' : '' }}">
-								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/client') ? $check : 'fa-circle text-warning' }}"></i>
+								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/client') ? $check : 'fa-circle text-danger' }}"></i>
                                 <p>My client</p>
                             </a>
                         </li>
