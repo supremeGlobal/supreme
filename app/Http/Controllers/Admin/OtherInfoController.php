@@ -9,6 +9,7 @@ use App\Models\Company;
 use App\Models\Content;
 use Illuminate\Http\Request;
 use App\Models\MissionVision;
+use App\Models\ManagementTeam;
 use App\Traits\HandlesImageUpload;
 use App\Http\Controllers\Controller;
 
@@ -159,8 +160,27 @@ class OtherInfoController extends Controller
 		$data['company'] = $company;
 		$data['companyId'] = $companyId;
 
-		$data['missionVision'] = MissionVision::where('company_id', $companyId)->get();
+		$data['managementTeam'] = ManagementTeam::where('company_id', $companyId)->get();
 		return view('admin.pages.global.management-team', $data);
+	}	
+
+	public function managementAdd(Request $request, $company)
+	{
+		$request->validate([
+			'details' => 'required',
+			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+		]);
+
+		if ($request->hasFile('image')) {
+			$path = $this->uploadImage($request->image, 'management-team/' . $company);
+
+			ManagementTeam::create([
+				'company_id' => $request->companyId,
+				'details' => $request->details,
+				'image' => $path,
+			]);
+		}
+		return back()->with('success', 'Management team add successfully!');
 	}
 
 

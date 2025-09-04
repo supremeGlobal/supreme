@@ -8,34 +8,32 @@
                 <div class="card">
                     <div class="card-header p-1">
                         <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                            data-bs-target="#addMission">
+                            data-bs-target="#addManagement">
                             <i class="fas fa-plus"></i>
-                            Add mission & vision
+                            Add management team
                         </button>
                     </div>
 
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                        {{ ucwords(str_replace('-', ' ', $company)) }}'s mission & vision
+                        {{ ucwords(str_replace('-', ' ', $company)) }}'s management team
                     </h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
                                 <th class="px-1 center">SL</th>
                                 <th class="px-2 center">Image</th>
-                                <th class="px-2">Title</th>
                                 <th class="px-2">Details</th>
                                 <th class="px-1 center">Status</th>
                                 <th class="px-1 center">Action</th>
                             </thead>
                             <tbody>
-                                @foreach ($missionVision as $item)
+                                @foreach ($managementTeam as $item)
                                     <tr>
                                         <td class="center" width="30">{!! $loop->iteration !!}</td>
                                         <td class="center border">
                                             <img src="{{ asset($item->image) }}" class="border" width="150"
                                                 height="120" alt="{{ $item->title }}">
                                         </td>
-                                        <td>{!! $item->title !!}</td>
                                         <td>{!! $item->details !!}</td>
                                         <td class="center">
                                             <input type="checkbox" class="js-switch status" data-model="MissionVision"
@@ -70,15 +68,14 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addMission" tabindex="-1" aria-labelledby="addMissionLabel" aria-hidden="true">
+    <div class="modal fade" id="addManagement" tabindex="-1" aria-labelledby="addManagementLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="addMissionLabel">Create mission or vision</h1>
+                    <h1 class="modal-title fs-4" id="addManagementLabel">Create management team</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' .$company. '/mission/add') }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ url('admin/' .$company. '/management/add') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -90,14 +87,8 @@
                                 </label>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <label for="title" class="form-label fs-5 mb-0">Title</label>
-                                <input type="text" name="title" id="title" class="form-control"
-                                    placeholder="Our mission or vision" required>
-                            </div>
-                            <div class="col-md-12 mb-2">
                                 <label for="image" class="form-label fs-5 mb-0">Add image</label>
-                                <input type="file" name="image" id="image" class="form-control"
-                                    placeholder="Add image" required>
+                                <input type="file" name="image" id="image" class="form-control" placeholder="Add image" required>
                             </div>
                             <div class="col-md-12">
                                 <label for="summernote" class="form-label fs-5 mb-0">Details</label>
@@ -129,12 +120,6 @@
 
                     <div class="modal-body py-1">
                         <div class="row">
-                            <!-- Mission Title -->
-                            <div class="col-md-12 mb-2">
-                                <label for="edit_title" class="form-label fs-5 mb-0">Title</label>
-                                <input type="text" name="title" id="edit_title" class="form-control" required>
-                            </div>
-
                             <!-- Image -->
                             <div class="col-md-12 mb-2">
                                 <label for="edit_mission_image" class="form-label fs-5 mb-0">Mission Image</label>

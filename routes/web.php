@@ -72,8 +72,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::post('update-mission/{id}', 'updateMission');
 
         Route::get('{company}/management-team', 'management');
-
-		
+        Route::post('{company}/management/add', 'managementAdd');		
 
 		Route::get('{company}/client', 'companyClient');
 		Route::post('{company}/client', 'addCompanyClient');
