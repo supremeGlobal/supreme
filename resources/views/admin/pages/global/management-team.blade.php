@@ -36,23 +36,22 @@
                                         </td>
                                         <td>{!! $item->details !!}</td>
                                         <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="MissionVision"
+                                            <input type="checkbox" class="js-switch status" data-model="ManagementTeam"
                                                 data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
                                         <td width="12%" class="text-center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
-                                                data-id="{{ $item->id }}" 
-												data-title="{{ $item->title }}"
+                                                data-id="{{ $item->id }}"
                                                 data-image="{{ asset($item->image) }}"
                                                 data-details={{ htmlspecialchars($item->details) }}
 												
 												data-bs-toggle="modal"
-                                                data-bs-target="#editMission">
+                                                data-bs-target="#editManagement">
                                                 <i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                             </button>
 
-                                            <a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
+                                            <a href="{{ url('admin/itemDelete', ['ManagementTeam', $item->id, 'tabName']) }}"
                                                 onclick="return confirm('Are you want to delete this?')"
                                                 class="btn btn-outline-danger">
                                                 <i class="fa-solid fa-trash me-1"></i> Delete
@@ -105,15 +104,15 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editMission" tabindex="-1" aria-labelledby="editMissionLabel" aria-hidden="true">
+    <div class="modal fade" id="editManagement" tabindex="-1" aria-labelledby="editManagementLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="editMissionLabel">Edit mission or vision</h1>
+                    <h1 class="modal-title fs-4" id="editManagementLabel">Edit mission or vision</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form id="editMissionForm" method="POST" enctype="multipart/form-data">
+                <form id="editManagementForm" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="edit_id">
                     <input type="hidden" name="company" id="edit_companyId" value="{{ $company }}">
@@ -122,15 +121,15 @@
                         <div class="row">
                             <!-- Image -->
                             <div class="col-md-12 mb-2">
-                                <label for="edit_mission_image" class="form-label fs-5 mb-0">Mission Image</label>
-                                <input type="file" name="image" id="edit_mission_image" class="form-control">
-                                <div id="missionImagePreview" class="mt-2"></div>
+                                <label for="edit_image" class="form-label fs-5 mb-0">Mission Image</label>
+                                <input type="file" name="image" id="edit_image" class="form-control">
+                                <div id="imagePreview" class="mt-2"></div>
                             </div>
 
                             <!-- Details (Summernote) -->
                             <div class="col-md-12">
-                                <label for="edit_mission" class="form-label fs-5 mb-0">Details</label>
-                                <textarea id="edit_mission" name="details"></textarea>
+                                <label for="edit_details" class="form-label fs-5 mb-0">Details</label>
+                                <textarea id="edit_details" name="details"></textarea>
                             </div>
                         </div>
                     </div>
@@ -149,30 +148,27 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Initialize Summernote
-            $('#edit_mission').summernote({
+            $('#edit_details').summernote({
                 height: 200,
                 placeholder: "Write your mission or vision here..."
             });
 
             const editButtons = document.querySelectorAll('.btn-edit');
-            const form = document.getElementById('editMissionForm');
+            const form = document.getElementById('editManagementForm');
             const inputId = document.getElementById('edit_id');
-            const inputTitle = document.getElementById('edit_title');
-            const inputImage = document.getElementById('edit_mission_image');
-            const imagePreview = document.getElementById('missionImagePreview');
+            const inputImage = document.getElementById('edit_image');
+            const imagePreview = document.getElementById('imagePreview');
 
             editButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const id = button.dataset.id;
-                    const title = button.dataset.title;
                     const image = button.dataset.image;
                     const details = button.dataset.details;
 
                     inputId.value = id;
-                    inputTitle.value = title;
 
                     // Summernote content
-                    $('#edit_mission').summernote('code', details);
+                    $('#edit_details').summernote('code', details);
 
                     // Show old image preview
                     if (image) {
@@ -188,7 +184,7 @@
                     inputImage.value = '';
 
                     // Set dynamic form action
-                    form.action = `/admin/update-mission/${id}`;
+                    form.action = `/admin/update-management/${id}`;
                 });
             });
         });

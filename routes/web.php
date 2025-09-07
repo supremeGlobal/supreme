@@ -70,9 +70,10 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::get('{company}/mission-vision', 'mission');
         Route::post('{company}/mission/add', 'missionAdd');
         Route::post('update-mission/{id}', 'updateMission');
-
+		
         Route::get('{company}/management-team', 'management');
-        Route::post('{company}/management/add', 'managementAdd');		
+        Route::post('{company}/management/add', 'managementAdd');
+        Route::post('update-management/{id}', 'updateManagement');		
 
 		Route::get('{company}/client', 'companyClient');
 		Route::post('{company}/client', 'addCompanyClient');

@@ -182,6 +182,30 @@ class OtherInfoController extends Controller
 		}
 		return back()->with('success', 'Management team add successfully!');
 	}
+	
+	public function updateManagement(Request $request, $id)
+	{
+		$management = ManagementTeam::findOrFail($id);
+
+		$management->details = $request->details;
+
+		// Handle image only if a new one is uploaded
+		if ($request->hasFile('image')) {
+			// Remove old image if exists
+			if ($management->image && file_exists(public_path($management->image))) {
+				unlink(public_path($management->image));
+			}
+
+			// Upload new image
+			$path = $this->uploadImage($request->image, 'management-team/' . $request->company);
+
+			// Save new path
+			$management->image = $path;
+		}
+		$management->save();
+
+		return redirect()->back()->with('success', 'Management updated successfully!');
+	}
 
 
 
