@@ -63,9 +63,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::post('{company}/slider/add', 'sliderAdd');
 		
 		Route::get('{company}/about', 'aboutIndex');
-        Route::post('{company}/about/update', 'aboutUpdate');
-		
-        Route::get('supreme-global/division', 'supremeGlobalDivision');
+        Route::post('{company}/about/update', 'aboutUpdate');		
 		
         Route::get('{company}/mission-vision', 'mission');
         Route::post('{company}/mission/add', 'missionAdd');
@@ -73,7 +71,11 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 		
         Route::get('{company}/management-team', 'management');
         Route::post('{company}/management/add', 'managementAdd');
-        Route::post('update-management/{id}', 'updateManagement');		
+        Route::post('update-management/{id}', 'updateManagement');
+
+		Route::get('{company}/content', 'content');
+        Route::post('{company}/content/add', 'addContent');
+        Route::post('update-content/{id}', 'updateContent');
 
 		Route::get('{company}/client', 'companyClient');
 		Route::post('{company}/client', 'addCompanyClient');

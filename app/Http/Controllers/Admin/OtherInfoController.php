@@ -142,13 +142,7 @@ class OtherInfoController extends Controller
 
 		return redirect()->back()->with('success', 'Mission or vision updated successfully!');
 	}
-
-	public function supremeGlobalDivision()
-	{
-		$data['info'] = Content::where('company_id', 1)->where('order', 2)->get();
-		return view('admin.pages.global.division', $data);
-	}
-
+	
 	// Management team
 	public function management($company)
 	{
@@ -206,8 +200,6 @@ class OtherInfoController extends Controller
 
 		return redirect()->back()->with('success', 'Management updated successfully!');
 	}
-
-
 
 	// Show clients page for given company slug
 	public function companyClient($company)
