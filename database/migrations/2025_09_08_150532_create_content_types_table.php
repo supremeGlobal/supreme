@@ -11,22 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('content_types', function (Blueprint $table) {
             $table->id();
 			$table->unsignedBigInteger('company_id');
-			$table->unsignedInteger('order')->default(1);
 			$table->string('title');
-			$table->longText('details');
-			$table->string('image');
+			$table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
     }
-
+ 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('content_types');
     }
 };
