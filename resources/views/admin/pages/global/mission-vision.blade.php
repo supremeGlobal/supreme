@@ -2,11 +2,107 @@
 @section('title', 'Our division')
 
 @section('content')
-    <div class="container-fluid mt-3">
+
+    {{-- <div class="content-wrapper p-3">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card border border-danger">
+                    <div class="card-header px-1 pt-1 pb-0 border-bottom-0">
+                        <ul class="nav nav-pills float-left">
+                            <li class="nav-item">
+                                <a class="nav-link active btn-sm py-1 m-1" data-toggle="pill" href="#fileList">All file</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn-sm py-1 m-1" data-toggle="pill" href="#category">All category</a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav nav-pills float-right">
+                            <li class="nav-item">
+                                <button class="btn btn-sm btn-primary py-1 m-1" data-toggle="modal"
+                                    data-original-title="test" data-target="#addFile">
+                                    <i class="fas fa-plus-square nav-icon pr-2"></i>Add file
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="btn btn-sm btn-success btn-sm py-1 m-1" data-toggle="modal"
+                                    data-original-title="test" data-target="#addCategory">
+                                    <i class="fas fa-plus-square nav-icon pr-2"></i>Add category
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card-body p-1">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade active show" id="fileList">
+                                <h6 class="card-header bg-primary text-center py-1 mx-1">File list</h6>
+                                <div class="card-body p-1">
+                                    <table class="table table-bordered p-2">
+                                        <thead class="bg-info">
+                                            <th>Sl</th>
+                                            <th>Category</th>
+                                            <th>File name</th>
+                                            <th>File</th>
+                                            <th>Status</th>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade show" id="category">
+                                <h6 class="card-header bg-success text-center py-1 mx-1">Category list</h6>
+                                <div class="card-body p-1">
+                                    <table class="table table-bordered">
+                                        <thead class="bg-info">
+                                            <th>Sl</th>
+                                            <th>Category</th>
+                                            <th>Status</th>
+                                        </thead>
+                                        <tbody>
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+    {{-- <div class="container-fluid mt-3">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header p-1">
+						<ul class="nav nav-pills float-start">
+                            <li class="nav-item">
+                                <a class="nav-link active btn-sm py-1 m-1" data-toggle="pill" href="#a1">All file</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn-sm py-1 m-1" data-toggle="pill" href="#a2">All category</a>
+                            </li>
+                        </ul>
+
+                        <ul class="nav nav-pills float-end">
+                            <li class="nav-item">
+                                <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
+                            data-bs-target="#addMission">
+                            <i class="fas fa-plus"></i>
+                            Add mission & vision
+                        </button>
+                            </li>
+                            <li class="nav-item">
+                                
+                            </li>
+                        </ul>
+
+
                         <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
                             data-bs-target="#addMission">
                             <i class="fas fa-plus"></i>
@@ -14,61 +110,150 @@
                         </button>
                     </div>
 
-                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                        {{ ucwords(str_replace('-', ' ', $company)) }}'s mission & vision
-                    </h4>
                     <div class="card-body px-1 py-0">
-                        <table class="table table-bordered align-middle">
-                            <thead>
-                                <th class="px-1 center">SL</th>
-                                <th class="px-2 center">Image</th>
-                                <th class="px-2">Title</th>
-                                <th class="px-2">Details</th>
-                                <th class="px-1 center">Status</th>
-                                <th class="px-1 center">Action</th>
-                            </thead>
-                            <tbody>
-                                @foreach ($missionVision as $item)
-                                    <tr>
-                                        <td class="center" width="30">{!! $loop->iteration !!}</td>
-                                        <td class="center border">
-                                            <img src="{{ asset($item->image) }}" class="border" width="150"
-                                                height="120" alt="{{ $item->title }}">
-                                        </td>
-                                        <td>{!! $item->title !!}</td>
-                                        <td>{!! $item->details !!}</td>
-                                        <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="MissionVision"
-                                                data-id="{{ $item->id }}" data-tab="tabName"
-                                                {{ $item->status == 'active' ? 'checked' : '' }} />
-                                        </td>
-                                        <td width="12%" class="text-center">
-                                            <button type="button" class="btn btn-outline-primary btn-edit"
-                                                data-id="{{ $item->id }}" 
-												data-title="{{ $item->title }}"
-                                                data-image="{{ asset($item->image) }}"
-                                                data-details={{ htmlspecialchars($item->details) }}
-												
-												data-bs-toggle="modal"
-                                                data-bs-target="#editMission">
-                                                <i class="fa-solid fa-pen-to-square me-1"></i> Edit
-                                            </button>
+						<div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade active show" id="a1">
+								<h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
+									{{ ucwords(str_replace('-', ' ', $company)) }}'s mission & vision
+								</h4>
+								<table class="table table-bordered align-middle">
+									<thead>
+										<th class="px-1 center">SL</th>
+										<th class="px-2 center">Image</th>
+										<th class="px-2">Title</th>
+										<th class="px-2">Details</th>
+										<th class="px-1 center">Status</th>
+										<th class="px-1 center">Action</th>
+									</thead>
+									<tbody>
+										@foreach ($missionVision as $item)
+											<tr>
+												<td class="center" width="30">{!! $loop->iteration !!}</td>
+												<td class="center border">
+													<img src="{{ asset($item->image) }}" class="border" width="150"
+														height="120" alt="{{ $item->title }}">
+												</td>
+												<td>{!! $item->title !!}</td>
+												<td>{!! $item->details !!}</td>
+												<td class="center">
+													<input type="checkbox" class="js-switch status" data-model="MissionVision"
+														data-id="{{ $item->id }}" data-tab="tabName"
+														{{ $item->status == 'active' ? 'checked' : '' }} />
+												</td>
+												<td width="12%" class="text-center">
+													<button type="button" class="btn btn-outline-primary btn-edit"
+														data-id="{{ $item->id }}" data-title="{{ $item->title }}"
+														data-image="{{ asset($item->image) }}"
+														data-details={{ htmlspecialchars($item->details) }} data-bs-toggle="modal"
+														data-bs-target="#editMission">
+														<i class="fa-solid fa-pen-to-square me-1"></i> Edit
+													</button>
 
-                                            <a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
-                                                onclick="return confirm('Are you want to delete this?')"
-                                                class="btn btn-outline-danger">
-                                                <i class="fa-solid fa-trash me-1"></i> Delete
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+													<a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
+														onclick="return confirm('Are you want to delete this?')"
+														class="btn btn-outline-danger">
+														<i class="fa-solid fa-trash me-1"></i> Delete
+													</a>
+												</td>
+											</tr>
+										@endforeach
+									</tbody>
+								</table>
+							</div>
+							<div class="tab-pane fade active show" id="a2">
+								addMission2
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="container-fluid mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header p-1 d-flex justify-content-between align-items-center">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active btn-sm py-1 m-1" data-bs-toggle="pill" href="#a1">All file</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn-sm py-1 m-1" data-bs-toggle="pill" href="#a2">All category</a>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
+                            data-bs-target="#addMission">
+                            <i class="fas fa-plus"></i> Add mission & vision
+                        </button>
+                    </div>
+
+                    <div class="card-body px-1 py-0">
+                        <div class="tab-content" id="pills-tabContent">
+                            <!-- Tab 1 -->
+                            <div class="tab-pane fade show active" id="a1">
+                                <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
+                                    {{ ucwords(str_replace('-', ' ', $company)) }}'s mission & vision
+                                </h4>
+                                <table class="table table-bordered align-middle">
+                                    <thead>
+                                        <th class="px-1 center">SL</th>
+                                        <th class="px-2 center">Image</th>
+                                        <th class="px-2">Title</th>
+                                        <th class="px-2">Details</th>
+                                        <th class="px-1 center">Status</th>
+                                        <th class="px-1 center">Action</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($missionVision as $item)
+                                            <tr>
+                                                <td class="center" width="30">{{ $loop->iteration }}</td>
+                                                <td class="center border">
+                                                    <img src="{{ asset($item->image) }}" class="border" width="150"
+                                                        height="120" alt="{{ $item->title }}">
+                                                </td>
+                                                <td>{{ $item->title }}</td>
+                                                <td>{{ $item->details }}</td>
+                                                <td class="center">
+                                                    <input type="checkbox" class="js-switch status"
+                                                        data-model="MissionVision" data-id="{{ $item->id }}"
+                                                        data-tab="tabName"
+                                                        {{ $item->status == 'active' ? 'checked' : '' }} />
+                                                </td>
+                                                <td width="12%" class="text-center">
+                                                    <button type="button" class="btn btn-outline-primary btn-edit"
+                                                        data-id="{{ $item->id }}" data-title="{{ $item->title }}"
+                                                        data-image="{{ asset($item->image) }}"
+                                                        data-details="{{ htmlspecialchars($item->details) }}"
+                                                        data-bs-toggle="modal" data-bs-target="#editMission">
+                                                        <i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                                                    </button>
+
+                                                    <a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
+                                                        onclick="return confirm('Are you sure you want to delete this?')"
+                                                        class="btn btn-outline-danger">
+                                                        <i class="fa-solid fa-trash me-1"></i> Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Tab 2 -->
+                            <div class="tab-pane fade" id="a2">
+                                addMission2
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="modal fade" id="addMission" tabindex="-1" aria-labelledby="addMissionLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -77,7 +262,7 @@
                     <h1 class="modal-title fs-4" id="addMissionLabel">Create mission or vision</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' .$company. '/mission/add') }}" method="POST"
+                <form action="{{ url('admin/' . $company . '/mission/add') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
