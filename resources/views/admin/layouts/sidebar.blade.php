@@ -34,27 +34,21 @@
                                 <i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/about') ? $check : 'fa-circle text-secondary' }}"></i>
                                 <p>About us</p>
                             </a>
-                        </li> 
+                        </li>						
 
-						<li class="nav-item">
-                            <a href="{{ url('admin/supreme-global/mission-vision') }}"
-                                class="nav-link {{ request()->is('admin/supreme-global/mission-vision') ? 'active' : '' }}">
-								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/mission-vision') ? $check : 'fa-circle text-success' }}"></i>
-                                <p>Mission & Vision</p>
-                            </a>
-                        </li>
 						<li class="nav-item">
 							<a href="{{ url('admin/supreme-global/management-team') }}"
 								class="nav-link {{ request()->is('admin/supreme-global/management-team') ? 'active' : '' }}">
 								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/management-team') ? $check : 'fa-circle text-info' }}"></i>
-								<p>Management Team</p>
+								<p>Management team</p>
 							</a>
 						</li>
+
 						<li class="nav-item">
 							<a href="{{ url('admin/supreme-global/content') }}"
 								class="nav-link {{ request()->is('admin/supreme-global/content') ? 'active' : '' }}">
 								<i class="nav-icon fa-regular {{ request()->is('admin/supreme-global/content') ? $check : 'fa-circle text-warning' }}"></i>
-								<p>Our all content</p>
+								<p>Our content</p>
 							</a>
 						</li>
 

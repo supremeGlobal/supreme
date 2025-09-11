@@ -62,21 +62,21 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::get('{company}/slider', 'sliderIndex');
         Route::post('{company}/slider/add', 'sliderAdd');
 		
+		// About us
 		Route::get('{company}/about', 'aboutIndex');
         Route::post('{company}/about/update', 'aboutUpdate');		
 		
-        Route::get('{company}/mission-vision', 'mission');
-        Route::post('{company}/mission/add', 'missionAdd');
-        Route::post('update-mission/{id}', 'updateMission');
-		
+		// Management-team
         Route::get('{company}/management-team', 'management');
         Route::post('{company}/management/add', 'managementAdd');
         Route::post('update-management/{id}', 'updateManagement');
-
+		
+		// Content
 		Route::get('{company}/content', 'content');
         Route::post('{company}/content/add', 'addContent');
         Route::post('update-content/{id}', 'updateContent');
 
+		// Client
 		Route::get('{company}/client', 'companyClient');
 		Route::post('{company}/client', 'addCompanyClient');
     });

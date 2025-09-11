@@ -81,67 +81,6 @@ class OtherInfoController extends Controller
 
 		return redirect()->back()->with('success', 'About us update successfully!');
 	}
-
-	// Mission vision
-	public function mission($company)
-	{
-		$companyId = $this->companyMap[$company] ?? null;
-		if (!$companyId) {
-			return view('404');
-		}
-
-		$data['company'] = $company;
-		$data['companyId'] = $companyId;
-
-		$data['missionVision'] = MissionVision::where('company_id', $companyId)->get();
-		return view('admin.pages.global.mission-vision', $data);
-	}
-
-	public function missionAdd(Request $request, $company)
-	{
-		$request->validate([
-			'title' => 'required',
-			'details' => 'required',
-			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
-		]);
-
-		if ($request->hasFile('image')) {
-			$path = $this->uploadImage($request->image, 'mission/' . $company);
-
-			MissionVision::create([
-				'company_id' => $request->companyId,
-				'title' => $request->title,
-				'details' => $request->details,
-				'image' => $path,
-			]);
-		}
-		return back()->with('success', 'Mission or vision add successfully!');
-	}
-
-	public function updateMission(Request $request, $id)
-	{
-		$mission = MissionVision::findOrFail($id);
-
-		$mission->title   = $request->title;
-		$mission->details = $request->details;
-
-		// Handle image only if a new one is uploaded
-		if ($request->hasFile('image')) {
-			// Remove old image if exists
-			if ($mission->image && file_exists(public_path($mission->image))) {
-				unlink(public_path($mission->image));
-			}
-
-			// Upload new image
-			$path = $this->uploadImage($request->image, 'mission/' . $request->company);
-
-			// Save new path
-			$mission->image = $path;
-		}
-		$mission->save();
-
-		return redirect()->back()->with('success', 'Mission or vision updated successfully!');
-	}
 	
 	// Management team
 	public function management($company)
@@ -201,7 +140,68 @@ class OtherInfoController extends Controller
 		return redirect()->back()->with('success', 'Management updated successfully!');
 	}
 
-	// Show clients page for given company slug
+	// Our content
+	public function content($company)
+	{
+		$companyId = $this->companyMap[$company] ?? null;
+		if (!$companyId) {
+			return view('404');
+		}
+
+		$data['company'] = $company;
+		$data['companyId'] = $companyId;
+
+		$data['missionVision'] = MissionVision::where('company_id', $companyId)->get();
+		return view('admin.pages.global.content', $data);
+	}
+
+	public function addContent(Request $request, $company)
+	{
+		$request->validate([
+			'title' => 'required',
+			'details' => 'required',
+			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+		]);
+
+		if ($request->hasFile('image')) {
+			$path = $this->uploadImage($request->image, 'mission/' . $company);
+
+			MissionVision::create([
+				'company_id' => $request->companyId,
+				'title' => $request->title,
+				'details' => $request->details,
+				'image' => $path,
+			]);
+		}
+		return back()->with('success', 'Mission or vision add successfully!');
+	}
+
+	public function updateContent(Request $request, $id)
+	{
+		$mission = MissionVision::findOrFail($id);
+
+		$mission->title   = $request->title;
+		$mission->details = $request->details;
+
+		// Handle image only if a new one is uploaded
+		if ($request->hasFile('image')) {
+			// Remove old image if exists
+			if ($mission->image && file_exists(public_path($mission->image))) {
+				unlink(public_path($mission->image));
+			}
+
+			// Upload new image
+			$path = $this->uploadImage($request->image, 'mission/' . $request->company);
+
+			// Save new path
+			$mission->image = $path;
+		}
+		$mission->save();
+
+		return redirect()->back()->with('success', 'Mission or vision updated successfully!');
+	}
+
+	// My client
 	public function companyClient($company)
 	{
 		$data['company'] = $company;
@@ -220,7 +220,6 @@ class OtherInfoController extends Controller
 		return view('admin.pages.global.my-client', $data);
 	}
 
-	// Add client to company
 	public function addCompanyClient(Request $request, $company)
 	{
 		$companyId = $this->companyMap[$company] ?? null;
