@@ -11,20 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('content_types', function (Blueprint $table) {
+        Schema::create('content_categories', function (Blueprint $table) {
             $table->id();
 			$table->unsignedBigInteger('company_id');
 			$table->string('title');
 			$table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
+
+			$table->unique(['company_id', 'title']);
         });
     }
- 
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('content_types');
+        Schema::dropIfExists('content_categories');
     }
 };

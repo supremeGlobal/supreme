@@ -7,9 +7,11 @@ use App\Models\Slider;
 use App\Models\AboutUs;
 use App\Models\Company;
 use App\Models\Content;
+use App\Models\ContentCategory;
 use Illuminate\Http\Request;
 use App\Models\MissionVision;
 use App\Models\ManagementTeam;
+use Illuminate\Validation\Rule;
 use App\Traits\HandlesImageUpload;
 use App\Http\Controllers\Controller;
 
@@ -151,7 +153,7 @@ class OtherInfoController extends Controller
 		$data['company'] = $company;
 		$data['companyId'] = $companyId;
 
-		$data['missionVision'] = MissionVision::where('company_id', $companyId)->get();
+		$data['contentCategory'] = ContentCategory::where('company_id', $companyId)->get();
 		return view('admin.pages.global.content', $data);
 	}
 
@@ -199,6 +201,27 @@ class OtherInfoController extends Controller
 		$mission->save();
 
 		return redirect()->back()->with('success', 'Mission or vision updated successfully!');
+	}
+
+	// Content category
+	public function addCategory(Request $request, $company)
+	{
+		$request->validate([
+			'title' => [
+				'required',
+				Rule::unique('content_categories')->where('company_id', $request->companyId),
+			],
+		]);
+
+		ContentCategory::create([
+			'company_id' => $request->companyId,
+			'title' => $request->title
+		]);
+
+		// return back()->with('success', 'Content category add successfully!');
+		return back()
+		->with('success', 'Content category added successfully!')
+		->with('activeTab', 'allContentCategory');
 	}
 
 	// My client

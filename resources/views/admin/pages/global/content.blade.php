@@ -9,25 +9,22 @@
                     <div class="card-header p-1">
                         <ul class="nav nav-pills float-start">
                             <li class="nav-item">
-                                <a class="nav-link active btn-sm py-1 m-1" data-bs-toggle="pill" href="#a1">All content</a>
+                                <a class="nav-link active btn-sm" data-bs-toggle="pill" href="#allContent">All content</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn-sm py-1 m-1" data-bs-toggle="pill" href="#a2">All content
-                                    category</a>
+                            <li class="nav-item ms-2">
+                                <a class="nav-link btn-sm" data-bs-toggle="pill" href="#allContentCategory">All content category</a>
                             </li>
                         </ul>
 
                         <ul class="nav nav-pills float-end">
                             <li class="nav-item">
-                                <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                                    data-bs-target="#addMission">
+                                <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal" data-bs-target="#addContent">
                                     <i class="fas fa-plus"></i> Add content
                                 </button>
                             </li>
-                            <li class="nav-item">
-                                <button type="button" class="btn btn-success rounded-1 ms-2" data-bs-toggle="modal"
-                                    data-bs-target="#addCategory">
-                                    <i class="fas fa-plus"></i> Add content category
+                            <li class="nav-item ms-2">
+                                <button type="button" class="btn btn-success rounded-1" data-bs-toggle="modal" data-bs-target="#addCategory">
+                                    <i class="fas fa-plus"></i> Add content's category
                                 </button>
                             </li>
                         </ul>
@@ -35,11 +32,11 @@
 
                     <div class="card-body px-1 py-0">
                         <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="a1">
+                            <div class="tab-pane fade show active" id="allContent">
                                 <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
                                     {{ ucwords(str_replace('-', ' ', $company)) }}'s content
                                 </h4>
-                                <table class="table table-bordered align-middle">
+                                {{-- <table class="table table-bordered align-middle">
                                     <thead>
                                         <th class="px-1 center">SL</th>
                                         <th class="px-2 center">Image</th>
@@ -82,32 +79,25 @@
                                             </tr>
                                         @endforeach
                                     </tbody>
-                                </table>
+                                </table> --}}
                             </div>
 
-                            <div class="tab-pane fade" id="a2">
+                            <div class="tab-pane fade" id="allContentCategory">
                                 <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
                                     {{ ucwords(str_replace('-', ' ', $company)) }}'s content category
                                 </h4>
                                 <table class="table table-bordered align-middle">
                                     <thead>
                                         <th class="px-1 center">SL</th>
-                                        <th class="px-2 center">Image</th>
-                                        <th class="px-2">Title</th>
-                                        <th class="px-2">Details</th>
+                                        <th class="px-2 ">Category</th>
                                         <th class="px-1 center">Status</th>
                                         <th class="px-1 center">Action</th>
                                     </thead>
                                     <tbody>
-                                        @foreach ($missionVision as $item)
+                                        @foreach ($contentCategory as $item)
                                             <tr>
                                                 <td class="center" width="30">{{ $loop->iteration }}</td>
-                                                <td class="center border">
-                                                    <img src="{{ asset($item->image) }}" class="border" width="150"
-                                                        height="120" alt="{{ $item->title }}">
-                                                </td>
                                                 <td>{{ $item->title }}</td>
-                                                <td>{{ $item->details }}</td>
                                                 <td class="center">
                                                     <input type="checkbox" class="js-switch status"
                                                         data-model="MissionVision" data-id="{{ $item->id }}"
@@ -141,11 +131,11 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addMission" tabindex="-1" aria-labelledby="addMissionLabel" aria-hidden="true">
+    <div class="modal fade" id="addContent" tabindex="-1" aria-labelledby="addContentLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="addMissionLabel">Create mission or vision</h1>
+                    <h1 class="modal-title fs-4" id="addContentLabel">Create mission or vision</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ url('admin/' . $company . '/mission/add') }}" method="POST"
@@ -189,7 +179,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="addCategoryLabel">Create new category</h1>
+                    <h1 class="modal-title fs-4" id="addCategoryLabel">Create category</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{ url('admin/' . $company . '/category/add') }}" method="POST" enctype="multipart/form-data">
@@ -204,18 +194,8 @@
                                 </label>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <label for="title" class="form-label fs-5 mb-0">Title</label>
-                                <input type="text" name="title" id="title" class="form-control"
-                                    placeholder="Our mission or vision" required>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <label for="image" class="form-label fs-5 mb-0">Add image</label>
-                                <input type="file" name="image" id="image" class="form-control"
-                                    placeholder="Add image" required>
-                            </div>
-                            <div class="col-md-12">
-                                <label for="summernote" class="form-label fs-5 mb-0">Details</label>
-                                <textarea id="summernote" name="details" placeholder="Write your text here..."></textarea>
+                                <label for="title" class="form-label fs-5 mb-0">Category name</label>
+                                <input type="text" name="title" id="title" class="form-control" placeholder="Mission, Vision, Our product etc..." required>
                             </div>
                         </div>
                     </div>

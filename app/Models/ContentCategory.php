@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContentType extends Model
+class ContentCategory extends Model
 {
-	protected $guarded = [];
+    protected $guarded = [];
 }
