@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mission_visions', function (Blueprint $table) {
+        Schema::create('contents', function (Blueprint $table) {
             $table->id();
-			$table->unsignedBigInteger('company_id');
-			$table->string('title');
 			$table->longText('details');
 			$table->string('image');
+			$table->unsignedBigInteger('company_id');
+			$table->unsignedBigInteger('content_category_id');
 			$table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mission_visions');
+        Schema::dropIfExists('contents');
     }
 };

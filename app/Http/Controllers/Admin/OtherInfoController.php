@@ -9,7 +9,6 @@ use App\Models\Company;
 use App\Models\Content;
 use App\Models\ContentCategory;
 use Illuminate\Http\Request;
-use App\Models\MissionVision;
 use App\Models\ManagementTeam;
 use Illuminate\Validation\Rule;
 use App\Traits\HandlesImageUpload;
@@ -154,33 +153,35 @@ class OtherInfoController extends Controller
 		$data['companyId'] = $companyId;
 
 		$data['contentCategory'] = ContentCategory::where('company_id', $companyId)->get();
+		$data['content'] = Content::where('company_id', $companyId)->get();
+
 		return view('admin.pages.global.content', $data);
 	}
 
 	public function addContent(Request $request, $company)
 	{
 		$request->validate([
-			'title' => 'required',
-			'details' => 'required',
+			'content_category_id' => 'required',
 			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+			'details' => 'required',
 		]);
 
 		if ($request->hasFile('image')) {
-			$path = $this->uploadImage($request->image, 'mission/' . $company);
+			$path = $this->uploadImage($request->image, 'content/' . $company);
 
-			MissionVision::create([
-				'company_id' => $request->companyId,
-				'title' => $request->title,
-				'details' => $request->details,
-				'image' => $path,
+			Content::create([
+                'details'             => $request->details,
+                'image'               => $path,
+                'company_id'          => $request->companyId,
+                'content_category_id' => $request->content_category_id
 			]);
 		}
-		return back()->with('success', 'Mission or vision add successfully!');
+		return back()->with('success', 'Content add successfully!');
 	}
 
 	public function updateContent(Request $request, $id)
 	{
-		$mission = MissionVision::findOrFail($id);
+		$mission = Content::findOrFail($id);
 
 		$mission->title   = $request->title;
 		$mission->details = $request->details;
@@ -207,7 +208,7 @@ class OtherInfoController extends Controller
 	public function addCategory(Request $request, $company)
 	{
 		$request->validate([
-			'title' => [
+			'name' => [
 				'required',
 				Rule::unique('content_categories')->where('company_id', $request->companyId),
 			],
@@ -215,13 +216,10 @@ class OtherInfoController extends Controller
 
 		ContentCategory::create([
 			'company_id' => $request->companyId,
-			'title' => $request->title
+			'name' => $request->name
 		]);
 
-		// return back()->with('success', 'Content category add successfully!');
-		return back()
-		->with('success', 'Content category added successfully!')
-		->with('activeTab', 'allContentCategory');
+		return back()->with('success', 'Content category added successfully!')->with('activeTab', 'allContentCategory');
 	}
 
 	// My client

@@ -12,18 +12,21 @@
                                 <a class="nav-link active btn-sm" data-bs-toggle="pill" href="#allContent">All content</a>
                             </li>
                             <li class="nav-item ms-2">
-                                <a class="nav-link btn-sm" data-bs-toggle="pill" href="#allContentCategory">All content category</a>
+                                <a class="nav-link btn-sm" data-bs-toggle="pill" href="#allContentCategory">All content
+                                    category</a>
                             </li>
                         </ul>
 
                         <ul class="nav nav-pills float-end">
                             <li class="nav-item">
-                                <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal" data-bs-target="#addContent">
+                                <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
+                                    data-bs-target="#addContent">
                                     <i class="fas fa-plus"></i> Add content
                                 </button>
                             </li>
                             <li class="nav-item ms-2">
-                                <button type="button" class="btn btn-success rounded-1" data-bs-toggle="modal" data-bs-target="#addCategory">
+                                <button type="button" class="btn btn-success rounded-1" data-bs-toggle="modal"
+                                    data-bs-target="#addCategory">
                                     <i class="fas fa-plus"></i> Add content's category
                                 </button>
                             </li>
@@ -36,68 +39,24 @@
                                 <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
                                     {{ ucwords(str_replace('-', ' ', $company)) }}'s content
                                 </h4>
-                                {{-- <table class="table table-bordered align-middle">
+                                <table class="table table-bordered align-middle">
                                     <thead>
                                         <th class="px-1 center">SL</th>
+                                        <th class="px-2">Category</th>
                                         <th class="px-2 center">Image</th>
-                                        <th class="px-2">Title</th>
                                         <th class="px-2">Details</th>
                                         <th class="px-1 center">Status</th>
                                         <th class="px-1 center">Action</th>
                                     </thead>
                                     <tbody>
-                                        @foreach ($missionVision as $item)
+                                        @foreach ($content as $item)
                                             <tr>
                                                 <td class="center" width="30">{{ $loop->iteration }}</td>
+												<td>{{ $item->contentCategory->name }}</td>
                                                 <td class="center border">
-                                                    <img src="{{ asset($item->image) }}" class="border" width="150"
-                                                        height="120" alt="{{ $item->title }}">
+                                                    <img src="{{ asset($item->image) }}" class="border" width="150" height="120" alt="{{ $item->contentCategory->name }}">
                                                 </td>
-                                                <td>{{ $item->title }}</td>
                                                 <td>{{ $item->details }}</td>
-                                                <td class="center">
-                                                    <input type="checkbox" class="js-switch status"
-                                                        data-model="MissionVision" data-id="{{ $item->id }}"
-                                                        data-tab="tabName"
-                                                        {{ $item->status == 'active' ? 'checked' : '' }} />
-                                                </td>
-                                                <td width="12%" class="text-center">
-                                                    <button type="button" class="btn btn-outline-primary btn-edit"
-                                                        data-id="{{ $item->id }}" data-title="{{ $item->title }}"
-                                                        data-image="{{ asset($item->image) }}"
-                                                        data-details="{{ htmlspecialchars($item->details) }}"
-                                                        data-bs-toggle="modal" data-bs-target="#editMission">
-                                                        <i class="fa-solid fa-pen-to-square me-1"></i> Edit
-                                                    </button>
-
-                                                    <a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
-                                                        onclick="return confirm('Are you sure you want to delete this?')"
-                                                        class="btn btn-outline-danger">
-                                                        <i class="fa-solid fa-trash me-1"></i> Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table> --}}
-                            </div>
-
-                            <div class="tab-pane fade" id="allContentCategory">
-                                <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                                    {{ ucwords(str_replace('-', ' ', $company)) }}'s content category
-                                </h4>
-                                <table class="table table-bordered align-middle">
-                                    <thead>
-                                        <th class="px-1 center">SL</th>
-                                        <th class="px-2 ">Category</th>
-                                        <th class="px-1 center">Status</th>
-                                        <th class="px-1 center">Action</th>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($contentCategory as $item)
-                                            <tr>
-                                                <td class="center" width="30">{{ $loop->iteration }}</td>
-                                                <td>{{ $item->title }}</td>
                                                 <td class="center">
                                                     <input type="checkbox" class="js-switch status"
                                                         data-model="MissionVision" data-id="{{ $item->id }}"
@@ -124,6 +83,49 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div class="tab-pane fade" id="allContentCategory">
+                                <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
+                                    {{ ucwords(str_replace('-', ' ', $company)) }}'s content category
+                                </h4>
+                                <table class="table table-bordered align-middle">
+                                    <thead>
+                                        <th class="px-1 center">SL</th>
+                                        <th class="px-2 ">Category</th>
+                                        <th class="px-1 center">Status</th>
+                                        <th class="px-1 center">Action</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($contentCategory as $item)
+                                            <tr>
+                                                <td class="center" width="30">{{ $loop->iteration }}</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td class="center">
+                                                    <input type="checkbox" class="js-switch status"
+                                                        data-model="MissionVision" data-id="{{ $item->id }}"
+                                                        data-tab="tabName"
+                                                        {{ $item->status == 'active' ? 'checked' : '' }} />
+                                                </td>
+                                                <td width="12%" class="text-center">
+                                                    <button type="button" class="btn btn-outline-primary btn-edit"
+                                                        data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                                                        data-image="{{ asset($item->image) }}"
+                                                        data-details="{{ htmlspecialchars($item->details) }}"
+                                                        data-bs-toggle="modal" data-bs-target="#editMission">
+                                                        <i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                                                    </button>
+
+                                                    <a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
+                                                        onclick="return confirm('Are you sure you want to delete this?')"
+                                                        class="btn btn-outline-danger">
+                                                        <i class="fa-solid fa-trash me-1"></i> Delete
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -131,15 +133,15 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addContent" tabindex="-1" aria-labelledby="addContentLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+	{{-- Modal call --}}
+	<div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="addCategoryLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="addContentLabel">Create mission or vision</h1>
+                    <h1 class="modal-title fs-4" id="addCategoryLabel">Create category</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' . $company . '/mission/add') }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ url('admin/' . $company . '/category/add') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -151,10 +153,51 @@
                                 </label>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <label for="title" class="form-label fs-5 mb-0">Title</label>
-                                <input type="text" name="title" id="title" class="form-control"
-                                    placeholder="Our mission or vision" required>
+                                <label for="name" class="form-label fs-5 mb-0">Category name</label>
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="Mission, Vision, Our product etc..." required>
                             </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between py-1">
+                        <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success px-4">Add now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addContent" tabindex="-1" aria-labelledby="addContentLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header py-2">
+                    <h1 class="modal-title fs-4" id="addContentLabel">Create content</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="{{ url('admin/' . $company . '/content/add') }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body py-1">
+                        <div class="row">
+                            <input type="hidden" name="companyId" value="{{ $companyId }}">
+                            <div class="col-md-12 mb-2">
+                                <label for="company" class="form-label fs-5 mb-0">
+                                    Company name
+                                    <strong>[{{ ucwords(str_replace('-', ' ', $company)) }}]</strong>
+                                </label>
+                            </div>
+
+							<div class="col-md-12 mb-2">
+								<label for="category_id" class="form-label fs-5 mb-0">Content category</label>
+								<select class="form-select" id="category_id" name="content_category_id" required>
+									<option value="" selected disabled>Select category</option>
+									@foreach ($contentCategory as $item)
+										<option value="{{$item->id}}">{{$item->name}}</option>
+									@endforeach
+								</select>
+                            </div>
+
                             <div class="col-md-12 mb-2">
                                 <label for="image" class="form-label fs-5 mb-0">Add image</label>
                                 <input type="file" name="image" id="image" class="form-control"
@@ -173,40 +216,7 @@
                 </form>
             </div>
         </div>
-    </div>
-
-	<div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="addCategoryLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="addCategoryLabel">Create category</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ url('admin/' . $company . '/category/add') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body py-1">
-                        <div class="row">
-                            <input type="hidden" name="companyId" value="{{ $companyId }}">
-                            <div class="col-md-12 mb-2">
-                                <label for="company" class="form-label fs-5 mb-0">
-                                    Company name
-                                    <strong>[{{ ucwords(str_replace('-', ' ', $company)) }}]</strong>
-                                </label>
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <label for="title" class="form-label fs-5 mb-0">Category name</label>
-                                <input type="text" name="title" id="title" class="form-control" placeholder="Mission, Vision, Our product etc..." required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between py-1">
-                        <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success px-4">Add now</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>	
+    </div>   
 
     <div class="modal fade" id="editMission" tabindex="-1" aria-labelledby="editMissionLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -302,4 +312,13 @@
             });
         });
     </script>
+
+    @if (session('activeTab') === 'allContentCategory')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var tab = document.querySelector('[href="#allContentCategory"]');
+                if (tab) new bootstrap.Tab(tab).show();
+            });
+        </script>
+    @endif
 @endsection

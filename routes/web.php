@@ -78,7 +78,6 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 
 		// Content category
         Route::post('{company}/category/add', 'addCategory');
-        Route::post('update-content/{id}', 'updateContent');
 
 		// Client
 		Route::get('{company}/client', 'companyClient');
