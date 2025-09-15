@@ -208,7 +208,7 @@ class AdminController extends Controller
 		return response()->json(['message' => 'Status updated successfully.']);
 	}
 
-	public function itemDelete($model, $id, $tab)
+	public function itemDelete($model, $id)
 	{
 		$modelClass = "App\\Models\\$model";
 
@@ -221,6 +221,6 @@ class AdminController extends Controller
 		}
 
 		$item->delete();
-		return back()->with('success', "$model deleted successfully")->withInput(['tab' => $tab]);
+		return back()->with('success', "$model deleted successfully");
 	}
 }

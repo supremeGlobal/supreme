@@ -182,8 +182,6 @@ class OtherInfoController extends Controller
 	public function updateContent(Request $request, $id)
 	{
 		$mission = Content::findOrFail($id);
-
-		$mission->title   = $request->title;
 		$mission->details = $request->details;
 
 		// Handle image only if a new one is uploaded
@@ -194,14 +192,14 @@ class OtherInfoController extends Controller
 			}
 
 			// Upload new image
-			$path = $this->uploadImage($request->image, 'mission/' . $request->company);
+			$path = $this->uploadImage($request->image, 'content/' . $request->company);
 
 			// Save new path
 			$mission->image = $path;
 		}
 		$mission->save();
 
-		return redirect()->back()->with('success', 'Mission or vision updated successfully!');
+		return redirect()->back()->with('success', 'Content updated successfully!');
 	}
 
 	// Content category

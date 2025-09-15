@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Our division')
+@section('title', 'Our content')
 
 @section('content')
     <div class="container-fluid mt-3">
@@ -12,8 +12,7 @@
                                 <a class="nav-link active btn-sm" data-bs-toggle="pill" href="#allContent">All content</a>
                             </li>
                             <li class="nav-item ms-2">
-                                <a class="nav-link btn-sm" data-bs-toggle="pill" href="#allContentCategory">All content
-                                    category</a>
+                                <a class="nav-link btn-sm" data-bs-toggle="pill" href="#allContentCategory">All content category</a>
                             </li>
                         </ul>
 
@@ -52,14 +51,15 @@
                                         @foreach ($content as $item)
                                             <tr>
                                                 <td class="center" width="30">{{ $loop->iteration }}</td>
-												<td>{{ $item->contentCategory->name }}</td>
+                                                <td>{{ $item->contentCategory->name }}</td>
                                                 <td class="center border">
-                                                    <img src="{{ asset($item->image) }}" class="border" width="150" height="120" alt="{{ $item->contentCategory->name }}">
+                                                    <img src="{{ asset($item->image) }}" class="border" width="150"
+                                                        height="120" alt="{{ $item->contentCategory->name }}">
                                                 </td>
-                                                <td>{{ $item->details }}</td>
+                                                <td>{!! $item->details !!}</td>
                                                 <td class="center">
                                                     <input type="checkbox" class="js-switch status"
-                                                        data-model="MissionVision" data-id="{{ $item->id }}"
+                                                        data-model="{{ class_basename($item) }}" data-id="{{ $item->id }}"
                                                         data-tab="tabName"
                                                         {{ $item->status == 'active' ? 'checked' : '' }} />
                                                 </td>
@@ -68,11 +68,11 @@
                                                         data-id="{{ $item->id }}" data-title="{{ $item->title }}"
                                                         data-image="{{ asset($item->image) }}"
                                                         data-details="{{ htmlspecialchars($item->details) }}"
-                                                        data-bs-toggle="modal" data-bs-target="#editMission">
+                                                        data-bs-toggle="modal" data-bs-target="#editContent">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                                     </button>
 
-                                                    <a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
+                                                    <a href="{{ url('admin/itemDelete', [class_basename($item), $item->id, 'tabName']) }}"
                                                         onclick="return confirm('Are you sure you want to delete this?')"
                                                         class="btn btn-outline-danger">
                                                         <i class="fa-solid fa-trash me-1"></i> Delete
@@ -102,20 +102,20 @@
                                                 <td>{{ $item->name }}</td>
                                                 <td class="center">
                                                     <input type="checkbox" class="js-switch status"
-                                                        data-model="MissionVision" data-id="{{ $item->id }}"
+                                                        data-model="{{ class_basename($item) }}" data-id="{{ $item->id }}"
                                                         data-tab="tabName"
                                                         {{ $item->status == 'active' ? 'checked' : '' }} />
                                                 </td>
                                                 <td width="12%" class="text-center">
                                                     <button type="button" class="btn btn-outline-primary btn-edit"
-                                                        data-id="{{ $item->id }}" data-name="{{ $item->name }}"
+                                                        data-id="{{ $item->id }}"
                                                         data-image="{{ asset($item->image) }}"
                                                         data-details="{{ htmlspecialchars($item->details) }}"
-                                                        data-bs-toggle="modal" data-bs-target="#editMission">
+                                                        data-bs-toggle="modal" data-bs-target="#editContent">
                                                         <i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                                     </button>
 
-                                                    <a href="{{ url('admin/itemDelete', ['MissionVision', $item->id, 'tabName']) }}"
+                                                    <a href="{{ url('admin/itemDelete', [class_basename($item), $item->id, 'tabName']) }}"
                                                         onclick="return confirm('Are you sure you want to delete this?')"
                                                         class="btn btn-outline-danger">
                                                         <i class="fa-solid fa-trash me-1"></i> Delete
@@ -133,15 +133,16 @@
         </div>
     </div>
 
-	{{-- Modal call --}}
-	<div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="addCategoryLabel" aria-hidden="true">
+    {{-- Modal call --}}
+    <div class="modal fade" id="addCategory" tabindex="-1" aria-labelledby="addCategoryLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header py-2">
                     <h1 class="modal-title fs-4" id="addCategoryLabel">Create category</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' . $company . '/category/add') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('admin/' . $company . '/category/add') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -188,14 +189,14 @@
                                 </label>
                             </div>
 
-							<div class="col-md-12 mb-2">
-								<label for="category_id" class="form-label fs-5 mb-0">Content category</label>
-								<select class="form-select" id="category_id" name="content_category_id" required>
-									<option value="" selected disabled>Select category</option>
-									@foreach ($contentCategory as $item)
-										<option value="{{$item->id}}">{{$item->name}}</option>
-									@endforeach
-								</select>
+                            <div class="col-md-12 mb-2">
+                                <label for="category_id" class="form-label fs-5 mb-0">Content category</label>
+                                <select class="form-select" id="category_id" name="content_category_id" required>
+                                    <option value="" selected disabled>Select category</option>
+                                    @foreach ($contentCategory as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="col-md-12 mb-2">
@@ -216,29 +217,23 @@
                 </form>
             </div>
         </div>
-    </div>   
+    </div>
 
-    <div class="modal fade" id="editMission" tabindex="-1" aria-labelledby="editMissionLabel" aria-hidden="true">
+    <div class="modal fade" id="editContent" tabindex="-1" aria-labelledby="editContentLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="editMissionLabel">Edit mission or vision</h1>
+                    <h1 class="modal-title fs-4" id="editContentLabel">Edit mission or vision</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
-                <form id="editMissionForm" method="POST" enctype="multipart/form-data">
+                <form id="editContentForm" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" id="edit_id">
                     <input type="hidden" name="company" id="edit_companyId" value="{{ $company }}">
 
                     <div class="modal-body py-1">
                         <div class="row">
-                            <!-- Mission Title -->
-                            <div class="col-md-12 mb-2">
-                                <label for="edit_title" class="form-label fs-5 mb-0">Title</label>
-                                <input type="text" name="title" id="edit_title" class="form-control" required>
-                            </div>
-
                             <!-- Image -->
                             <div class="col-md-12 mb-2">
                                 <label for="edit_mission_image" class="form-label fs-5 mb-0">Mission Image</label>
@@ -274,9 +269,8 @@
             });
 
             const editButtons = document.querySelectorAll('.btn-edit');
-            const form = document.getElementById('editMissionForm');
+            const form = document.getElementById('editContentForm');
             const inputId = document.getElementById('edit_id');
-            const inputTitle = document.getElementById('edit_title');
             const inputImage = document.getElementById('edit_mission_image');
             const imagePreview = document.getElementById('missionImagePreview');
 
@@ -288,7 +282,6 @@
                     const details = button.dataset.details;
 
                     inputId.value = id;
-                    inputTitle.value = title;
 
                     // Summernote content
                     $('#edit_mission').summernote('code', details);
@@ -307,7 +300,7 @@
                     inputImage.value = '';
 
                     // Set dynamic form action
-                    form.action = `/admin/update-mission/${id}`;
+                    form.action = `/admin/update-content/${id}`;
                 });
             });
         });

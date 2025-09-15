@@ -24,11 +24,8 @@
                                                 width="80" height="80" alt="{{ $item->name }}">
                                         </td>
                                         <td class="px-3">{!! $item->name !!}</td>
-                                        <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="Company"
-                                                data-id="{{ $item->id }}" data-tab="tabName"
-                                                {{ $item->status == 'active' ? 'checked' : '' }} />
-                                        </td>
+										
+										@include('admin.common.status')                                        
                                     </tr>
                                 @endforeach
                             </tbody>

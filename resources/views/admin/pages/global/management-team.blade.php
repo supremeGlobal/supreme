@@ -36,7 +36,7 @@
                                         </td>
                                         <td>{!! $item->details !!}</td>
                                         <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="ManagementTeam"
+                                            <input type="checkbox" class="js-switch status" data-model="{{ class_basename($item) }}"
                                                 data-id="{{ $item->id }}" data-tab="tabName"
                                                 {{ $item->status == 'active' ? 'checked' : '' }} />
                                         </td>
@@ -51,7 +51,7 @@
                                                 <i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                             </button>
 
-                                            <a href="{{ url('admin/itemDelete', ['ManagementTeam', $item->id, 'tabName']) }}"
+                                            <a href="{{ url('admin/itemDelete', [class_basename($item), $item->id, 'tabName']) }}"
                                                 onclick="return confirm('Are you want to delete this?')"
                                                 class="btn btn-outline-danger">
                                                 <i class="fa-solid fa-trash me-1"></i> Delete

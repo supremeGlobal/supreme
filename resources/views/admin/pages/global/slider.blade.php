@@ -34,12 +34,12 @@
                                                 <div class="form-group mb-0 d-flex align-items-center justify-content-between border border-primary rounded-1 py-1 px-3 w-50 mx-1"
                                                     style="gap: 10px; min-width: 120px;">
                                                     <label class="small">Status</label>
-                                                    <input type="checkbox" class="js-switch status" data-model="Slider"
+                                                    <input type="checkbox" class="js-switch status" data-model="{{ class_basename($item) }}"
                                                         data-id="{{ $item->id }}"
                                                         {{ $item->status == 'active' ? 'checked' : '' }} />
                                                 </div>
 
-                                                <a href="{{ url('admin/itemDelete', ['Slider', $item->id, 'tabName']) }}"
+                                                <a href="{{ url('admin/itemDelete', [class_basename($item), $item->id, 'tabName']) }}"
                                                     onclick="return confirm('Are you want to delete this?')"
                                                     class="btn btn-sm btn-outline-danger w-50">
                                                     <i class="fa-solid fa-trash me-1"></i>

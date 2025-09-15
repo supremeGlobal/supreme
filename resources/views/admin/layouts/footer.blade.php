@@ -64,44 +64,38 @@
     });
 
     // Status change
-    $(document).ready(function() {
-        // Reusable toastr alert function
-        function showToastr(type, message) {
-            toastr.options = {
-                closeButton: true,
-                closeMethod: 'fadeOut',
-                closeDuration: 100
-            };
-            toastr[type](message);
-        }
-        $('.status').change(function() {
-            let model = $(this).data('model');
-            let field = 'status';
-            let id = $(this).data('id');
+    $('.js-switch').change(function() {
+        let model = $(this).data('model');
+        let field = 'status';
+        let id = $(this).data('id');
 
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: '{{ route('status') }}',
-                data: {
-                    'model': model,
-                    'field': field,
-                    'id': id
-                },
-                success: function(data) {
-					showToastr('success', data.message);
-                },
-                error: function(xhr) {
-                    let message = xhr.responseJSON?.message || 'Something went wrong';
-	                showToastr('error', message);
-                }
-            });
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('status') }}',
+            data: {
+                model,
+                field,
+                id
+            },
+            success: function(data) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.message,
+                    timer: 1500,
+                    showConfirmButton: false
+                });
+            },
+            error: function(xhr) {
+                let message = xhr.responseJSON?.message || 'Something went wrong';
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: message,
+                    confirmButtonText: 'OK'
+                });
+            }
         });
     });
-
-    window.setTimeout(function() {
-        $(".alert").fadeTo(500, 0).slideUp(500, function() {
-            $(this).remove();
-        });
-    }, 5000);
 </script>
