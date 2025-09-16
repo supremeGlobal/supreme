@@ -40,12 +40,9 @@
                                         </td>
 
                                         <td class="px-3">{!! $item->name !!}</td>
-                                        <td width="6%" class="center">
-                                            <input type="checkbox" class="js-switch status" 
-												data-model="{{ class_basename($item) }}" 
-                                                data-id="{{ $item->id }}" data-tab="tabName"
-                                                {{ $item->status == 'active' ? 'checked' : '' }} />
-                                        </td>
+										
+                                        @include('admin.common.status')
+
                                         <td width="15%" class="text-center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}" data-name="{{ $item->name }}"

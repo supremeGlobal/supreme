@@ -57,12 +57,9 @@
                                                         height="120" alt="{{ $item->contentCategory->name }}">
                                                 </td>
                                                 <td>{!! $item->details !!}</td>
-                                                <td class="center">
-                                                    <input type="checkbox" class="js-switch status"
-                                                        data-model="{{ class_basename($item) }}" data-id="{{ $item->id }}"
-                                                        data-tab="tabName"
-                                                        {{ $item->status == 'active' ? 'checked' : '' }} />
-                                                </td>
+												
+                                                @include('admin.common.status')
+
                                                 <td width="12%" class="text-center">
                                                     <button type="button" class="btn btn-outline-primary btn-edit"
                                                         data-id="{{ $item->id }}" data-title="{{ $item->title }}"
@@ -99,13 +96,10 @@
                                         @foreach ($contentCategory as $item)
                                             <tr>
                                                 <td class="center" width="30">{{ $loop->iteration }}</td>
-                                                <td>{{ $item->name }}</td>
-                                                <td class="center">
-                                                    <input type="checkbox" class="js-switch status"
-                                                        data-model="{{ class_basename($item) }}" data-id="{{ $item->id }}"
-                                                        data-tab="tabName"
-                                                        {{ $item->status == 'active' ? 'checked' : '' }} />
-                                                </td>
+                                                <td>{{ $item->name }}</td>                                                
+
+                                        		@include('admin.common.status')
+
                                                 <td width="12%" class="text-center">
                                                     <button type="button" class="btn btn-outline-primary btn-edit"
                                                         data-id="{{ $item->id }}"

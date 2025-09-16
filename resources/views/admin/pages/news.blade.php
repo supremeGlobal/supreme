@@ -32,11 +32,8 @@
                                         <td class="px-3" width="15%">{!! $item->subject !!}</td>
                                         <td class="px-3">{{ strip_tags($item->details) }}</td>
 
-                                        <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="News"
-                                                data-id="{{ $item->id }}" data-tab="tabName"
-                                                {{ $item->status == 'active' ? 'checked' : '' }} />
-										</td>
+										@include('admin.common.status')
+
 										<td width="15%" class="center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}" data-company_id="{{ $item->company_id }}"

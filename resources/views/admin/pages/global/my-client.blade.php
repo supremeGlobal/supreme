@@ -18,7 +18,7 @@
                                             <option value="{{ $client->id }}">{{ $client->name }}</option>
                                         @endforeach
                                     </select>
-                                    <button type="submit" class="btn btn-primary px-4 col-auto">Add client</button>
+                                    <button type="submit" class="btn btn-primary px-3 col-auto">Add client</button>
                                 </form>
                             </div>
                         </div>
@@ -39,10 +39,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="text-center fs-5 mt-2" style="display: none;" id="name-below-{{ $item->id }}">
-                                            {!! $item->name !!}
-                                        </div>
-
                                         <div class="p-1 border-top bg-light d-flex flex-column gap-2 mt-auto">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn btn-sm text-dark border border-primary rounded-1 py-1 px-3 w-10">
@@ -50,13 +46,15 @@
                                                 </div>
 
                                                 <div class="form-group mb-0 d-flex align-items-center justify-content-between border border-primary rounded-1 py-1 px-3 w-50 mx-1" style="gap: 10px; min-width: 120px;">
-                                                    <label class="small mb-0">Status</label>
-                                                    <input type="checkbox" class="js-switch status" data-model="CompanyClient" data-id="{{ $item->pivot->id }}"
+                                                    <label class="small mb-0 fw-bold">Status</label>
+                                                    <input type="checkbox" class="js-switch status" 
+														data-model="CompanyClient" 
+														data-id="{{ $item->pivot->id }}"
                                                         {{ $item->pivot->status == 'active' ? 'checked' : '' }} />
                                                 </div>
 
                                                 <a href="{{ url('admin/itemDelete', ['CompanyClient', $item->pivot->id, 'tabName']) }}" onclick="return confirm('Are you want to delete this?')"
-                                                    class="btn btn-sm btn-outline-danger w-50">
+                                                    class="btn btn-sm btn-outline-danger w-50 fw-bold">
                                                     <i class="fa-solid fa-trash me-1"></i> Delete
                                                 </a>
                                             </div>

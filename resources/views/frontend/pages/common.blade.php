@@ -110,7 +110,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-2 d-grid col-md-12">
+                    <div class="mt-3 d-grid col-md-12">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Login') }}
                         </button>

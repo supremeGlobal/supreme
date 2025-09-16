@@ -25,7 +25,7 @@
                                         </td>
                                         <td class="px-3">{!! $item->name !!}</td>
 										
-										@include('admin.common.status')                                        
+										@include('admin.common.status')                                     
                                     </tr>
                                 @endforeach
                             </tbody>

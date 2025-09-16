@@ -205,7 +205,7 @@ class AdminController extends Controller
 		$item->$field = $item->$field === 'active' ? 'inactive' : 'active';
 		$item->save();
 
-		return response()->json(['message' => 'Status updated successfully.']);
+		return response()->json(['message' => 'Status updated successfully']);
 	}
 
 	public function itemDelete($model, $id)

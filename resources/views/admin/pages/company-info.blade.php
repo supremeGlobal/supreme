@@ -30,10 +30,8 @@
                                         <td class="px-3">{!! $item->company->name !!}</td>
                                         <td class="px-3">{!! $item->key !!}</td>
                                         <td class="px-3">{!! $item->value !!}</td>
-                                        <td class="center">
-                                            <input type="checkbox" class="js-switch status" data-model="CompanyInfo" data-id="{{ $item->id }}" data-tab="tabName"
-                                                {{ $item->status == 'active' ? 'checked' : '' }} />
-                                        </td>
+
+                                        @include('admin.common.status')
                                     </tr>
                                 @endforeach
                             </tbody>
