@@ -52,36 +52,65 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 		
 		// Common code		
         Route::get('status', 'status')->name('status');
-		Route::get('itemDelete/{model}/{id}', 'itemDelete')->name('itemDelete');
+		Route::get('itemDelete/{model}/{id}/{tab}', 'itemDelete')->name('itemDelete');
     });
 });
 
+// Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
+//     Route::controller(OtherInfoController::class)->group(function () {
+// 		// Slider
+//         Route::get('{company}/slider', 'sliderIndex');
+//         Route::post('{company}/slider/add', 'sliderAdd');
+		
+// 		// About us
+// 		Route::get('{company}/about', 'aboutIndex');
+//         Route::post('{company}/about/update', 'aboutUpdate');		
+		
+// 		// Management-team
+//         Route::get('{company}/management-team', 'management');
+//         Route::post('{company}/management/add', 'managementAdd');
+//         Route::post('update-management/{id}', 'updateManagement');
+		
+// 		// Content
+// 		Route::get('{company}/content', 'content');
+//         Route::post('{company}/content/add', 'addContent');
+//         Route::post('update-content/{id}', 'updateContent');
+
+// 		// Content category
+//         Route::post('{company}/category/add', 'addCategory');
+
+// 		// Client
+// 		Route::get('{company}/client', 'companyClient');
+// 		Route::post('{company}/client', 'addCompanyClient');
+//     });
+// });
+
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(OtherInfoController::class)->group(function () {
-		// Slider
-        Route::get('{company}/slider', 'sliderIndex');
-        Route::post('{company}/slider/add', 'sliderAdd');
-		
-		// About us
-		Route::get('{company}/about', 'aboutIndex');
-        Route::post('{company}/about/update', 'aboutUpdate');		
-		
-		// Management-team
-        Route::get('{company}/management-team', 'management');
-        Route::post('{company}/management/add', 'managementAdd');
-        Route::post('update-management/{id}', 'updateManagement');
-		
-		// Content
-		Route::get('{company}/content', 'content');
-        Route::post('{company}/content/add', 'addContent');
-        Route::post('update-content/{id}', 'updateContent');
+        // Slider
+        Route::get('{company}/slider', 'sliderIndex')->name('slider.index');
+        Route::post('{company}/slider/add', 'sliderAdd')->name('slider.add');
 
-		// Content category
-        Route::post('{company}/category/add', 'addCategory');
+        // About us
+        Route::get('{company}/about', 'aboutIndex')->name('about.index');
+        Route::post('{company}/about/update', 'aboutUpdate')->name('about.update');
 
-		// Client
-		Route::get('{company}/client', 'companyClient');
-		Route::post('{company}/client', 'addCompanyClient');
+        // Management-team
+        Route::get('{company}/management-team', 'management')->name('management.index');
+        Route::post('{company}/management/add', 'managementAdd')->name('management.add');
+        Route::post('update-management/{id}', 'updateManagement')->name('management.update');
+
+        // Content
+        Route::get('{company}/content', 'content')->name('content.index');
+        Route::post('{company}/content/add', 'addContent')->name('content.add');
+        Route::post('update-content/{id}', 'updateContent')->name('content.update');
+
+        // Content category
+        Route::post('{company}/category/add', 'addCategory')->name('category.add');
+
+        // Client
+        Route::get('{company}/client', 'companyClient')->name('client.index');
+        Route::post('{company}/client', 'addCompanyClient')->name('client.add');
     });
 });
 

@@ -25,36 +25,11 @@ class AdminController extends Controller
 	public function dashboard()
 	{
 		$data['types'] = [
-			[
-				'link'  => url('admin/company'),
-				'value' => Company::count(),
-				'title' => 'Total Group Entities'
-			],
-			[
-				'link'  => url('admin/company-info'),
-				'value' => CompanyInfo::count(),
-				'title' => 'Company\'s Information'
-			],
-			[
-				'link'  => url('admin/client'),
-				'value' => Client::count(),
-				'title' => 'Total Client'
-			],
-			[
-				'link'  => url('admin/news'),
-				'value' => News::count(),
-				'title' => 'Total news'
-			],
-			[
-				'link'  => '',
-				'value' => Slider::count(),
-				'title' => 'Total slider image'
-			],
-			[
-				'link'  => url('admin/email-us'),
-				'value' => EmailUs::count(),
-				'title' => 'Total email'
-			],			
+			[ 'link'  => url('admin/company'), 'value' => Company::count(), 'title' => 'Total Group Entities' ],
+			[ 'link'  => url('admin/company-info'), 'value' => CompanyInfo::count(), 'title' => 'Company\'s Information' ],
+			[ 'link'  => url('admin/client'), 'value' => Client::count(), 'title' => 'Total Client' ],
+			[ 'link'  => url('admin/news'), 'value' => News::count(), 'title' => 'Total news' ],
+			[ 'link'  => url('admin/email-us'), 'value' => EmailUs::count(), 'title' => 'Total email' ]			
 		];
 		return view('admin.dashboard', $data);
 	}
