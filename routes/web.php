@@ -56,61 +56,32 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     });
 });
 
-// Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
-//     Route::controller(OtherInfoController::class)->group(function () {
-// 		// Slider
-//         Route::get('{company}/slider', 'sliderIndex');
-//         Route::post('{company}/slider/add', 'sliderAdd');
-		
-// 		// About us
-// 		Route::get('{company}/about', 'aboutIndex');
-//         Route::post('{company}/about/update', 'aboutUpdate');		
-		
-// 		// Management-team
-//         Route::get('{company}/management-team', 'management');
-//         Route::post('{company}/management/add', 'managementAdd');
-//         Route::post('update-management/{id}', 'updateManagement');
-		
-// 		// Content
-// 		Route::get('{company}/content', 'content');
-//         Route::post('{company}/content/add', 'addContent');
-//         Route::post('update-content/{id}', 'updateContent');
-
-// 		// Content category
-//         Route::post('{company}/category/add', 'addCategory');
-
-// 		// Client
-// 		Route::get('{company}/client', 'companyClient');
-// 		Route::post('{company}/client', 'addCompanyClient');
-//     });
-// });
-
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(OtherInfoController::class)->group(function () {
         // Slider
-        Route::get('{company}/slider', 'sliderIndex')->name('slider.index');
-        Route::post('{company}/slider/add', 'sliderAdd')->name('slider.add');
+        Route::get('{company}/slider', 'slider')->name('slider.index');
+        Route::post('{company}/slider', 'storeSlider')->name('slider.store');
 
         // About us
-        Route::get('{company}/about', 'aboutIndex')->name('about.index');
-        Route::post('{company}/about/update', 'aboutUpdate')->name('about.update');
+        Route::get('{company}/about', 'about')->name('about.index');
+		Route::post('{company}/about', 'updateAbout')->name('about.update');
 
         // Management-team
         Route::get('{company}/management-team', 'management')->name('management.index');
-        Route::post('{company}/management/add', 'managementAdd')->name('management.add');
+        Route::post('{company}/management-team', 'storeManagement')->name('management.store');
         Route::post('update-management/{id}', 'updateManagement')->name('management.update');
 
-        // Content
+        // Content category
+        Route::post('{company}/category', 'storeCategory')->name('category.store');
+        
+		// Content
         Route::get('{company}/content', 'content')->name('content.index');
-        Route::post('{company}/content/add', 'addContent')->name('content.add');
+        Route::post('{company}/content', 'storeContent')->name('content.store');
         Route::post('update-content/{id}', 'updateContent')->name('content.update');
 
-        // Content category
-        Route::post('{company}/category/add', 'addCategory')->name('category.add');
-
         // Client
-        Route::get('{company}/client', 'companyClient')->name('client.index');
-        Route::post('{company}/client', 'addCompanyClient')->name('client.add');
+        Route::get('{company}/client', 'client')->name('client.index');
+        Route::post('{company}/client', 'storeClient')->name('client.store');
     });
 });
 

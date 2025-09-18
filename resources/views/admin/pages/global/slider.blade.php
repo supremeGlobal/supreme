@@ -14,7 +14,7 @@
                         </button>
                     </div>
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                        {{ ucwords(str_replace('-', ' ', $company)) }}'s Slider
+                        {{ Str::title(str_replace('-', ' ', $company)) }}'s Slider
                     </h4>
                     <div class="card-body p-2">
                         <div class="row">
@@ -62,7 +62,7 @@
                     <h1 class="modal-title fs-4" id="addImageLabel">Slider image</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' .$company. '/slider/add') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('slider.store', $company) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">

@@ -25,7 +25,7 @@ class OtherInfoController extends Controller
 	}
 
 	// Slider
-	public function sliderIndex($company)
+	public function slider($company)
 	{
 		$companyId = $this->companyMap[$company] ?? null;
 		if (!$companyId) {
@@ -39,7 +39,7 @@ class OtherInfoController extends Controller
 		return view('admin.pages.global.slider', $data);
 	}
 
-	public function sliderAdd(Request $request, $company)
+	public function storeSlider(Request $request, $company)
 	{
 		$request->validate([
 			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
@@ -57,7 +57,7 @@ class OtherInfoController extends Controller
 	}
 
 	// About us
-	public function aboutIndex($company)
+	public function about($company)
 	{
 		$companyId = $this->companyMap[$company] ?? null;
 		if (!$companyId) {
@@ -71,18 +71,22 @@ class OtherInfoController extends Controller
 		return view('admin.pages.global.about-us', $data);
 	}
 
-	public function aboutUpdate(Request $request)
+	public function updateAbout(Request $request, $company)
 	{
+		$companyId = $this->companyMap[$company] ?? null;
+
+		if (!$companyId) {
+			abort(404);
+		}
+
 		AboutUs::updateOrCreate(
-			['company_id' => $request->companyId],
-			[
-				'details' => $request->details
-			]
+			['company_id' => $companyId],
+			['details' => $request->details]
 		);
 
-		return redirect()->back()->with('success', 'About us update successfully!');
+		return redirect()->back()->with('success', 'About us updated successfully!');
 	}
-	
+
 	// Management team
 	public function management($company)
 	{
@@ -96,9 +100,9 @@ class OtherInfoController extends Controller
 
 		$data['managementTeam'] = ManagementTeam::where('company_id', $companyId)->get();
 		return view('admin.pages.global.management-team', $data);
-	}	
+	}
 
-	public function managementAdd(Request $request, $company)
+	public function storeManagement(Request $request, $company)
 	{
 		$request->validate([
 			'details' => 'required',
@@ -116,7 +120,7 @@ class OtherInfoController extends Controller
 		}
 		return back()->with('success', 'Management team add successfully!');
 	}
-	
+
 	public function updateManagement(Request $request, $id)
 	{
 		$management = ManagementTeam::findOrFail($id);
@@ -158,7 +162,7 @@ class OtherInfoController extends Controller
 		return view('admin.pages.global.content', $data);
 	}
 
-	public function addContent(Request $request, $company)
+	public function storeContent(Request $request, $company)
 	{
 		$request->validate([
 			'content_category_id' => 'required',
@@ -170,10 +174,10 @@ class OtherInfoController extends Controller
 			$path = $this->uploadImage($request->image, 'content/' . $company);
 
 			Content::create([
-                'details'             => $request->details,
-                'image'               => $path,
-                'company_id'          => $request->companyId,
-                'content_category_id' => $request->content_category_id
+				'details'             => $request->details,
+				'image'               => $path,
+				'company_id'          => $request->companyId,
+				'content_category_id' => $request->content_category_id
 			]);
 		}
 		return back()->with('success', 'Content add successfully!');
@@ -203,7 +207,7 @@ class OtherInfoController extends Controller
 	}
 
 	// Content category
-	public function addCategory(Request $request, $company)
+	public function storeCategory(Request $request, $company)
 	{
 		$request->validate([
 			'name' => [
@@ -221,7 +225,7 @@ class OtherInfoController extends Controller
 	}
 
 	// My client
-	public function companyClient($company)
+	public function client($company)
 	{
 		$data['company'] = $company;
 
@@ -239,7 +243,7 @@ class OtherInfoController extends Controller
 		return view('admin.pages.global.my-client', $data);
 	}
 
-	public function addCompanyClient(Request $request, $company)
+	public function storeClient(Request $request, $company)
 	{
 		$companyId = $this->companyMap[$company] ?? null;
 		if (!$companyId) {

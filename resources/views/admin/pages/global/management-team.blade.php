@@ -15,7 +15,7 @@
                     </div>
 
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                        {{ ucwords(str_replace('-', ' ', $company)) }}'s management team
+                        {{ Str::title(str_replace('-', ' ', $company)) }}'s management team
                     </h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
@@ -72,15 +72,15 @@
                     <h1 class="modal-title fs-4" id="addManagementLabel">Create management team</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' .$company. '/management/add') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                <form action="{{ route('management.store', $company) }}" method="POST" enctype="multipart/form-data">
+					@csrf
                     <div class="modal-body py-1">
                         <div class="row">
                             <input type="hidden" name="companyId" value="{{ $companyId }}">
                             <div class="col-md-12 mb-2">
                                 <label for="company" class="form-label fs-5 mb-0">
                                     Company name
-                                    <strong>[{{ ucwords(str_replace('-', ' ', $company)) }}]</strong>
+                                    <strong>[{{ Str::title(str_replace('-', ' ', $company)) }}]</strong>
                                 </label>
                             </div>
                             <div class="col-md-12 mb-2">

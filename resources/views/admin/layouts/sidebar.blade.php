@@ -27,8 +27,7 @@
 
                 @foreach ($companies as $slug => $id)
                     <li class="nav-item {{ request()->is('admin/' . $slug . '*') ? 'menu-open' : '' }}">
-                        <a href="#"
-                            class="nav-link {{ request()->is('admin/' . $slug . '*') ? 'active bg-secondary' : '' }}">
+                        <a href="#" class="nav-link {{ request()->is('admin/' . $slug . '*') ? 'active bg-secondary' : '' }}">
                             <i class="nav-icon {{ $icons[$slug] ?? 'fa-solid fa-circle' }}"></i>
                             <p>
                                 {{ Str::title(str_replace('-', ' ', $slug)) }}
@@ -40,8 +39,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('slider.index', $slug) }}"
                                     class="nav-link {{ request()->is('admin/' . $slug . '/slider') ? 'active' : '' }}">
-                                    <i
-                                        class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/slider') ? $check : 'fa-circle text-primary' }}"></i>
+                                    <i class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/slider') ? $check : 'fa-circle text-primary' }}"></i>
                                     <p>Slider image</p>
                                 </a>
                             </li>
@@ -49,8 +47,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('about.index', $slug) }}"
                                     class="nav-link {{ request()->is('admin/' . $slug . '/about') ? 'active' : '' }}">
-                                    <i
-                                        class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/about') ? $check : 'fa-circle text-secondary' }}"></i>
+                                    <i class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/about') ? $check : 'fa-circle text-secondary' }}"></i>
                                     <p>About us</p>
                                 </a>
                             </li>
@@ -58,8 +55,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('management.index', $slug) }}"
                                     class="nav-link {{ request()->is('admin/' . $slug . '/management-team') ? 'active' : '' }}">
-                                    <i
-                                        class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/management-team') ? $check : 'fa-circle text-success' }}"></i>
+                                    <i class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/management-team') ? $check : 'fa-circle text-success' }}"></i>
                                     <p>Management team</p>
                                 </a>
                             </li>
@@ -67,8 +63,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('content.index', $slug) }}"
                                     class="nav-link {{ request()->is('admin/' . $slug . '/content') ? 'active' : '' }}">
-                                    <i
-                                        class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/content') ? $check : 'fa-circle text-info' }}"></i>
+                                    <i class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/content') ? $check : 'fa-circle text-info' }}"></i>
                                     <p>Our content</p>
                                 </a>
                             </li>
@@ -76,8 +71,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('client.index', $slug) }}"
                                     class="nav-link {{ request()->is('admin/' . $slug . '/client') ? 'active' : '' }}">
-                                    <i
-                                        class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/client') ? $check : 'fa-circle text-warning' }}"></i>
+                                    <i class="nav-icon fa-regular {{ request()->is('admin/' . $slug . '/client') ? $check : 'fa-circle text-warning' }}"></i>
                                     <p>My client</p>
                                 </a>
                             </li>

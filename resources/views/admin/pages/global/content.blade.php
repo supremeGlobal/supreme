@@ -36,7 +36,7 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="allContent">
                                 <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                                    {{ ucwords(str_replace('-', ' ', $company)) }}'s content
+                                    {{ Str::title(str_replace('-', ' ', $company)) }}'s content
                                 </h4>
                                 <table class="table table-bordered align-middle">
                                     <thead>
@@ -83,7 +83,7 @@
 
                             <div class="tab-pane fade" id="allContentCategory">
                                 <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">
-                                    {{ ucwords(str_replace('-', ' ', $company)) }}'s content category
+                                    {{ Str::title(str_replace('-', ' ', $company)) }}'s content category
                                 </h4>
                                 <table class="table table-bordered align-middle">
                                     <thead>
@@ -135,8 +135,7 @@
                     <h1 class="modal-title fs-4" id="addCategoryLabel">Create category</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' . $company . '/category/add') }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('category.store', $company) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -144,7 +143,7 @@
                             <div class="col-md-12 mb-2">
                                 <label for="company" class="form-label fs-5 mb-0">
                                     Company name
-                                    <strong>[{{ ucwords(str_replace('-', ' ', $company)) }}]</strong>
+                                    <strong>[{{ Str::title(str_replace('-', ' ', $company)) }}]</strong>
                                 </label>
                             </div>
                             <div class="col-md-12 mb-2">
@@ -170,8 +169,7 @@
                     <h1 class="modal-title fs-4" id="addContentLabel">Create content</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/' . $company . '/content/add') }}" method="POST"
-                    enctype="multipart/form-data">
+                <form action="{{ route('content.store', $company) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -179,7 +177,7 @@
                             <div class="col-md-12 mb-2">
                                 <label for="company" class="form-label fs-5 mb-0">
                                     Company name
-                                    <strong>[{{ ucwords(str_replace('-', ' ', $company)) }}]</strong>
+                                    <strong>[{{ Str::title(str_replace('-', ' ', $company)) }}]</strong>
                                 </label>
                             </div>
 
