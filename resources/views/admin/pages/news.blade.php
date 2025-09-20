@@ -17,7 +17,7 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
-                                <th class="center">SL</th>
+                                <th class="center" width="3%">SL</th>
                                 <th class="px-3">Company page</th>
                                 <th class="px-3">Subject</th>
                                 <th class="px-3">Details</th>
@@ -27,7 +27,7 @@
                             <tbody>
                                 @foreach ($news->sortBy('company_id') as $item)
                                     <tr>
-                                        <td class="center" width="2%">{!! $loop->iteration !!}</td>
+                                        <td class="center" width="30">{!! $loop->iteration !!}</td>
                                         <td class="px-3" width="10%">{!! $item->company->name !!}</td>
                                         <td class="px-3" width="15%">{!! $item->subject !!}</td>
                                         <td class="px-3">{{ strip_tags($item->details) }}</td>
@@ -42,12 +42,8 @@
                                                 data-bs-target="#editNews">
 												<i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                             </button>
-
-                                            <a href="{{ url('admin/itemDelete', ['News', $item->id, 'tabName']) }}"
-                                                onclick="return confirm('Are you want to delete this?')"
-                                                class="btn btn-outline-danger">
-                                                <i class="fa-solid fa-trash me-1"></i> Delete
-                                            </a>
+                                            
+                                            @include('admin.common.delete.btn')
                                         </td>
                                     </tr>
                                 @endforeach

@@ -10,7 +10,7 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
-                                <th class="center">SL</th>
+                                <th class="center" width="4%">SL</th>
                                 <th class="px-3">Name</th>
                                 <th class="px-3">Email</th>
                                 <th class="center">Mobile</th>
@@ -21,7 +21,7 @@
                             <tbody>
                                 @foreach ($emailUs->sortByDesc('id') as $item)
                                     <tr id="email_row_{{ $item->id }}" class="{{ $item->status == 'unseen' ? 'table-secondary fw-bold' : '' }}">
-                                        <td class="center" width="2%">{{ $loop->iteration }}</td>
+                                        <td class="center" width="30">{{ $loop->iteration }}</td>
                                         <td class="px-3" width="10%">{{ $item->name }}</td>
                                         <td class="px-3" width="10%">{{ $item->email }}</td>
                                         <td class="px-3 center" width="15%">{{ $item->mobile }}</td>

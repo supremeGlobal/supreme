@@ -17,7 +17,7 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
-                                <th class="center">SL</th>
+                                <th class="center" width="3%">SL</th>
                                 <th class="px-3">Company page</th>
                                 <th class="px-3">Key</th>
                                 <th class="px-3">Value</th>

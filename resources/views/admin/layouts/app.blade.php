@@ -27,6 +27,7 @@
         </div>
         @include('admin.layouts.footer')
         @include('admin.layouts.alertMessage')
+    	@include('admin.common.delete.modal')
         @yield('js')
     </body>
 </html>

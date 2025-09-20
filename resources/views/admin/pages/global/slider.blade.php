@@ -37,7 +37,7 @@
                                         			@include('admin.common.status')
                                                 </div>
 
-                                                <a href="{{ url('admin/itemDelete', [class_basename($item), $item->id, 'tabName']) }}"
+                                                <a href="{{ url('admin/itemDelete', [class_basename($item), $item->id]) }}"
                                                     onclick="return confirm('Are you want to delete this?')"
                                                     class="btn btn-sm btn-outline-danger w-50">
                                                     <i class="fa-solid fa-trash me-1"></i>

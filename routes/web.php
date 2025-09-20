@@ -52,7 +52,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 		
 		// Common code		
         Route::get('status', 'status')->name('status');
-		Route::get('itemDelete/{model}/{id}/{tab}', 'itemDelete')->name('itemDelete');
+		Route::get('itemDelete/{model}/{id}', 'itemDelete')->name('itemDelete');
     });
 });
 

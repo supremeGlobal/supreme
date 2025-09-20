@@ -20,7 +20,10 @@
 								</div>
 							</div>
 							<div class="modal-footer justify-content-center py-1">
-								<button type="submit" class="btn btn-primary px-4">Update About Us</button>
+								<button type="submit" class="btn btn-primary px-4">
+									<i class="fa-solid fa-pen-to-square me-1"></i>
+									Update About Us
+								</button>
 							</div>
 						</form>
                     </div>
