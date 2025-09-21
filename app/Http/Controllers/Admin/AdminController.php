@@ -7,11 +7,16 @@ use App\Models\User;
 use App\Models\Media;
 use App\Models\Client;
 use App\Models\Slider;
+use App\Models\AboutUs;
 use App\Models\Company;
+use App\Models\Content;
 use App\Models\EmailUs;
 use App\Models\CompanyInfo;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CompanyClient;
+use App\Models\ManagementTeam;
+use App\Models\ContentCategory;
 use App\Traits\HandlesImageUpload;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -24,12 +29,57 @@ class AdminController extends Controller
 	// Dashboard
 	public function dashboard()
 	{
-		$data['types'] = [
-			[ 'link'  => url('admin/company'), 'value' => Company::count(), 'title' => 'Total Group Entities' ],
-			[ 'link'  => url('admin/company-info'), 'value' => CompanyInfo::count(), 'title' => 'Company\'s Information' ],
-			[ 'link'  => url('admin/client'), 'value' => Client::count(), 'title' => 'Total Client' ],
-			[ 'link'  => url('admin/news'), 'value' => News::count(), 'title' => 'Total news' ],
-			[ 'link'  => url('admin/email-us'), 'value' => EmailUs::count(), 'title' => 'Total email' ]			
+		// Company-wise stats
+		$companies = config('company_map');
+		$companyData = [];
+
+		foreach ($companies as $slug => $companyId) {
+			$companyData[$slug] = [
+				'name'  => ucwords(str_replace('-', ' ', $slug)),
+				'slug'  => $slug,
+				'types' => [
+					[
+						'link'  => route('slider.index', $slug),
+						'value' => Slider::where('company_id', $companyId)->count(),
+						'title' => 'Total slider',
+					],
+					[
+						'link'  => route('about.index', $slug),
+						'value' => AboutUs::where('company_id', $companyId)->count(),
+						'title' => 'Total About us',
+					],
+					[
+						'link'  => route('management.index', $slug),
+						'value' => ManagementTeam::where('company_id', $companyId)->count(),
+						'title' => 'Total Management team',
+					],
+					[
+						'link'  => route('content.index', $slug),
+						'value' => ContentCategory::where('company_id', $companyId)->count(),
+						'title' => 'Total content category',
+					],
+					[
+						'link'  => route('content.index', $slug),
+						'value' => Content::where('company_id', $companyId)->count(),
+						'title' => 'Total content',
+					],
+					[
+						'link'  => route('client.index', $slug),
+						'value' => CompanyClient::where('company_id', $companyId)->count(),
+						'title' => 'Total client',
+					],
+				]
+			];
+		}
+
+		$data['companies'] = $companyData;
+
+		$data['settings'] = [
+			['link'  => url('admin/company'), 'value' => Company::count(), 'title' => 'Total Group Entities'],
+			['link'  => url('admin/company-info'), 'value' => CompanyInfo::count(), 'title' => 'Company\'s Information'],
+			['link'  => url('admin/client'), 'value' => Client::count(), 'title' => 'Total Client'],
+			['link'  => url('admin/news'), 'value' => News::count(), 'title' => 'Total news'],
+			['link'  => url('admin/email-us'), 'value' => EmailUs::count(), 'title' => 'Total email']
 		];
 		return view('admin.dashboard', $data);
 	}

@@ -25,10 +25,29 @@
 			];
 		@endphp
 
-		<h3 class="mb-3">Supreme global</h3>
+		{{-- Company-wise stats --}}
+		@foreach ($companies as $company)
+			<h3 class="mb-3">{{ $company['name'] }}</h3>
+			<div class="row mb-4">
+				@foreach ($company['types'] as $key => $item)
+					<div class="col-lg-3 col-6">
+						<a href="{{ $item['link'] }}" class="text-decoration-none">
+							<div class="small-box {{ $colors[$key % count($colors)] }} p-2">
+								<div class="inner">
+									<h3>{{ $item['value'] ?? 0 }}</h3>
+									<h4>{{ $item['title'] }}</h4>
+								</div>
+								<i class="{{ $icon[$key % count($icon)] }} small-box-icon"></i>
+							</div>
+						</a>
+					</div>
+				@endforeach
+			</div>
+		@endforeach
 
+		<h3 class="mb-3">Other setting info</h3>
         <div class="row">
-            @foreach ($types as $key => $item)
+            @foreach ($settings as $key => $item)
                 <div class="col-lg-3 col-6">
                     <a href="{{ $item['link'] }}" class="text-decoration-none">
                         <div class="small-box {{ $colors[$key % count($colors)] }} p-2">

@@ -145,6 +145,24 @@ class OtherInfoController extends Controller
 		return redirect()->back()->with('success', 'Management updated successfully!');
 	}
 
+	// Content category
+	public function storeCategory(Request $request, $company)
+	{
+		$request->validate([
+			'name' => [
+				'required',
+				Rule::unique('content_categories')->where('company_id', $request->companyId),
+			],
+		]);
+
+		ContentCategory::create([
+			'company_id' => $request->companyId,
+			'name' => $request->name
+		]);
+
+		return back()->with('success', 'Content category added successfully!')->with('activeTab', 'allContentCategory');
+	}
+
 	// Our content
 	public function content($company)
 	{
@@ -204,24 +222,6 @@ class OtherInfoController extends Controller
 		$mission->save();
 
 		return redirect()->back()->with('success', 'Content updated successfully!');
-	}
-
-	// Content category
-	public function storeCategory(Request $request, $company)
-	{
-		$request->validate([
-			'name' => [
-				'required',
-				Rule::unique('content_categories')->where('company_id', $request->companyId),
-			],
-		]);
-
-		ContentCategory::create([
-			'company_id' => $request->companyId,
-			'name' => $request->name
-		]);
-
-		return back()->with('success', 'Content category added successfully!')->with('activeTab', 'allContentCategory');
 	}
 
 	// My client
