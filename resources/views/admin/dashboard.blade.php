@@ -16,19 +16,19 @@
 			];
 
 			$icon = [
-				'fa-solid fa-building',
+				'fa-solid fa-camera',
 				'fa-solid fa-circle-info',
-				'fa-solid fa-users',
+				'fa-solid fa-building',
 				'fa-solid fa-newspaper',
-				// 'fa-solid fa-camera',
 				'fa-solid fa-envelope',
+				'fa-solid fa-users',
 			];
 		@endphp
 
 		{{-- Company-wise stats --}}
 		@foreach ($companies as $company)
-			<h3 class="mb-3">{{ $company['name'] }}</h3>
-			<div class="row mb-4">
+			<h3 class="mb-2">{{ $company['name'] }}</h3>
+			<div class="row mb-1">
 				@foreach ($company['types'] as $key => $item)
 					<div class="col-lg-3 col-6">
 						<a href="{{ $item['link'] }}" class="text-decoration-none">

@@ -46,7 +46,7 @@ class AdminController extends Controller
 					[
 						'link'  => route('about.index', $slug),
 						'value' => AboutUs::where('company_id', $companyId)->count(),
-						'title' => 'Total About us',
+						'title' => 'About us',
 					],
 					[
 						'link'  => route('management.index', $slug),
@@ -66,7 +66,7 @@ class AdminController extends Controller
 					[
 						'link'  => route('client.index', $slug),
 						'value' => CompanyClient::where('company_id', $companyId)->count(),
-						'title' => 'Total client',
+						'title' => 'My client',
 					],
 				]
 			];

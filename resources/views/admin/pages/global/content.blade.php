@@ -83,7 +83,7 @@
                                 </h4>
                                 <table class="table table-bordered align-middle">
                                     <thead>
-                                        <th class="px-1 center">SL</th>
+                                        <th class="px-1 center" width="3%">SL</th>
                                         <th class="px-2 ">Category</th>
                                         <th class="px-1 center">Status</th>
                                         <th class="px-1 center">Action</th>

@@ -12,7 +12,7 @@ class CompanySeeder extends Seeder
 {
 	public function run(): void
 	{
-		DB::table('companies')->truncate();
+		// DB::table('companies')->truncate();
 
 		foreach (User::$company as $company) {
 			Company::create([

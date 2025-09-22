@@ -11,7 +11,7 @@ class CompanyInfoSeeder extends Seeder
 {
 	public function run(): void
 	{
-		DB::table('company_infos')->truncate();	
+		// DB::table('company_infos')->truncate();	
 
         foreach (CompanyInfo::$companyInfo as $companyId => $settings) {
             foreach ($settings as $key => $value) {
