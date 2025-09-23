@@ -115,6 +115,14 @@ class AdminController extends Controller
 		return back()->with('success', 'Company information add successfully');
 	}
 
+	public function updateInfo(Request $request, $id)
+	{
+		$info = CompanyInfo::findOrFail($id);
+		$info->update($request->all());
+
+		return redirect()->back()->with('success', 'Company info updated successfully!');
+	}
+
 	// Client section
 	public function client()
 	{
