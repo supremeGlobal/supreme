@@ -10,8 +10,8 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
-                                <th class="center" width="4%">SL</th>
-                                <th class="center">Logo</th>
+                                <th class="center" width="3%">SL</th>
+                                <th class="center" width="8%">Logo</th>
                                 <th class="px-3">Name</th>
                                 <th class="center">Status</th>
                             </thead>

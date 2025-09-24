@@ -4,9 +4,9 @@ use App\Mail\ClientAutoReply;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Frontend\FrontController;
-use App\Http\Controllers\Admin\OtherInfoController;
+use App\Http\Controllers\Admin\SettingController;
 
 Auth::routes();
 
@@ -30,8 +30,22 @@ Route::middleware(['web'])->group(function () {
     });
 });
 
+/*	Tast list
+	[edit/delete] category content not working
+	[edit/delete] content not working
+	
+	Buttom part need route add 
+	PageController(it can convert Setting controller), SettingController both should connect one controller
+	Every group code store view/global folder it may be need change
+	Summernote not working sometime all option
+
+
+	Optional: FrontController can add route code
+	Frontend all code should add dynamic	
+*/
+
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
-    Route::controller(AdminController::class)->group(function () {
+    Route::controller(SettingController::class)->group(function () {
         Route::get('dashboard', 'dashboard')->name('admin.dashboard');
 
         Route::get('company', 'company');
@@ -58,7 +72,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
 });
 
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
-    Route::controller(OtherInfoController::class)->group(function () {
+    Route::controller(PageController::class)->group(function () {
         // Slider
         Route::get('{company}/slider', 'slider')->name('slider.index');
         Route::post('{company}/slider', 'storeSlider')->name('slider.store');

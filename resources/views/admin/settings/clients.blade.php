@@ -18,10 +18,10 @@
                         <table class="table table-bordered align-middle">
                             <thead>
                                 <th class="center" width="3%">SL</th>
-                                <th class="center">Logo</th>
+                                <th class="center" width="8%">Logo</th>
                                 <th class="px-3">Name</th>
                                 <th class="center">Status</th>
-                                <th class="center">Action</th>
+                                <th class="center" width="12%">Action</th>
                             </thead>
                             <tbody>
                                 @foreach ($clients as $item)
@@ -32,7 +32,7 @@
                                             $imageExists = $item->image && file_exists($imagePath);
                                         @endphp
 
-                                        <td width="10%" class="center border">
+                                        <td class="center border">
                                             @if ($imageExists)
                                                 <img src="{{ asset($item->image) }}" class="rounded-circle border"
                                                     width="80" height="80" alt="{{ $item->name }}">
@@ -43,7 +43,7 @@
 										
                                         @include('admin.common.status')
 
-                                        <td width="15%" class="text-center">
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}" data-name="{{ $item->name }}"
                                                 data-image="{{ asset($item->image) }}" data-bs-toggle="modal"

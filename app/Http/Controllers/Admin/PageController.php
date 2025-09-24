@@ -14,7 +14,7 @@ use Illuminate\Validation\Rule;
 use App\Traits\HandlesImageUpload;
 use App\Http\Controllers\Controller;
 
-class OtherInfoController extends Controller
+class PageController extends Controller
 {
 	use HandlesImageUpload;
 
@@ -36,7 +36,7 @@ class OtherInfoController extends Controller
 		$data['companyId'] = $companyId;
 
 		$data['slider'] = Slider::where('company_id', $companyId)->get();
-		return view('admin.pages.global.slider', $data);
+		return view('admin.pages.slider', $data);
 	}
 
 	public function storeSlider(Request $request, $company)
@@ -68,7 +68,7 @@ class OtherInfoController extends Controller
 		$data['companyId'] = $companyId;
 
 		$data['about'] = AboutUs::where('company_id', $companyId)->first();
-		return view('admin.pages.global.about-us', $data);
+		return view('admin.pages.about-us', $data);
 	}
 
 	public function updateAbout(Request $request, $company)
@@ -99,7 +99,7 @@ class OtherInfoController extends Controller
 		$data['companyId'] = $companyId;
 
 		$data['managementTeam'] = ManagementTeam::where('company_id', $companyId)->get();
-		return view('admin.pages.global.management-team', $data);
+		return view('admin.pages.management-team', $data);
 	}
 
 	public function storeManagement(Request $request, $company)
@@ -177,7 +177,7 @@ class OtherInfoController extends Controller
 		$data['contentCategory'] = ContentCategory::where('company_id', $companyId)->get();
 		$data['content'] = Content::where('company_id', $companyId)->get();
 
-		return view('admin.pages.global.content', $data);
+		return view('admin.pages.content', $data);
 	}
 
 	public function storeContent(Request $request, $company)
@@ -240,7 +240,7 @@ class OtherInfoController extends Controller
 		// clients not yet assigned to this company
 		$data['otherClients'] = Client::whereNotIn('id', $companyClients->pluck('id'))->get();
 
-		return view('admin.pages.global.my-client', $data);
+		return view('admin.pages.my-client', $data);
 	}
 
 	public function storeClient(Request $request, $company)

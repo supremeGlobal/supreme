@@ -16,7 +16,7 @@
                                 <th class="center">Mobile</th>
                                 <th class="px-3">Subject</th>
                                 <th class="center">Action</th>
-                                <th class="px-3 center">Time</th>
+                                <th class="px-3 center">Date</th>
                             </thead>
                             <tbody>
                                 @foreach ($emailUs->sortByDesc('id') as $item)

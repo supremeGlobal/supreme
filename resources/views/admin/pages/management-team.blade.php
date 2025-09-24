@@ -20,11 +20,11 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
-                                <th class="px-1 center" width="3%">SL</th>
-                                <th class="px-2 center">Image</th>
+                                <th class="center" width="3%">SL</th>
+                                <th class="center" width="10%">Image</th>
                                 <th class="px-2">Details</th>
-                                <th class="px-1 center">Status</th>
-                                <th class="px-1 center">Action</th>
+                                <th class="center">Status</th>
+                                <th class="center" width="12%">Action</th>
                             </thead>
                             <tbody>
                                 @foreach ($managementTeam as $item)
@@ -38,7 +38,7 @@
                                         
 										@include('admin.common.status')
 
-                                        <td width="12%" class="text-center">
+                                        <td class="text-center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}"
                                                 data-image="{{ asset($item->image) }}"

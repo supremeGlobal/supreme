@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Schema;
 
-class AdminController extends Controller
+class SettingController extends Controller
 {
 	use HandlesImageUpload;
 
@@ -88,14 +88,14 @@ class AdminController extends Controller
 	public function company()
 	{
 		$data['company'] = Company::all();
-		return view('admin.pages.company', $data);
+		return view('admin.settings.company', $data);
 	}
 
 	// Company-info
 	public function companyInfo()
 	{
 		$data['companyInfo'] = CompanyInfo::all();
-		return view('admin.pages.company-info', $data);
+		return view('admin.settings.company-info', $data);
 	}
 
 	public function addInfo(Request $request)
@@ -127,7 +127,7 @@ class AdminController extends Controller
 	public function client()
 	{
 		$data['clients'] = Client::all();
-		return view('admin.pages.clients', $data);
+		return view('admin.settings.clients', $data);
 	}
 
 	public function addClient(Request $request)
@@ -180,7 +180,7 @@ class AdminController extends Controller
 	public function news()
 	{
 		$data['news'] = News::all();
-		return view('admin.pages.news', $data);
+		return view('admin.settings.news', $data);
 	}
 
 	public function addNews(Request $request)
@@ -212,7 +212,7 @@ class AdminController extends Controller
 	public function emailUs()
 	{
 		$data['emailUs'] = EmailUs::all();
-		return view('admin.pages.email-us', $data);
+		return view('admin.settings.email-us', $data);
 	}
 
 	public function markAsSeen($id)

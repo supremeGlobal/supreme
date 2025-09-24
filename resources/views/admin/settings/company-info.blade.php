@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Company\'s news')
+@section('title', 'Company\'s information')
 
 @section('content')
     <div class="container-fluid mt-3">
@@ -8,41 +8,43 @@
                 <div class="card">
                     <div class="card-header p-1">
                         <button type="button" class="btn btn-primary rounded-1" data-bs-toggle="modal"
-                            data-bs-target="#addNews">
+                            data-bs-target="#addInfo">
                             <i class="fas fa-plus"></i>
-                            Add News
+                            Add Information
                         </button>
                     </div>
-                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company's news</h4>
+                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Company's information</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
                                 <th class="center" width="3%">SL</th>
                                 <th class="px-3">Company page</th>
-                                <th class="px-3">Subject</th>
-                                <th class="px-3">Details</th>
+                                <th class="px-3">Key</th>
+                                <th class="px-3">Value</th>
                                 <th class="center">Status</th>
                                 <th class="center">Action</th>
                             </thead>
                             <tbody>
-                                @foreach ($news->sortBy('company_id') as $item)
+                                @foreach ($companyInfo->sortBy('company_id') as $item)
                                     <tr>
                                         <td class="center" width="30">{!! $loop->iteration !!}</td>
-                                        <td class="px-3" width="10%">{!! $item->company->name !!}</td>
-                                        <td class="px-3" width="15%">{!! $item->subject !!}</td>
-                                        <td class="px-3">{{ strip_tags($item->details) }}</td>
+                                        <td class="px-3">{!! $item->company->name !!}</td>
+                                        <td class="px-3">{!! $item->key !!}</td>
+                                        <td class="px-3">{!! $item->value !!}</td>
 
-										@include('admin.common.status')
+                                        @include('admin.common.status')
 
-										<td width="15%" class="center">
+                                        <td class="center">
                                             <button type="button" class="btn btn-outline-primary btn-edit"
-                                                data-id="{{ $item->id }}" data-company_id="{{ $item->company_id }}"
-                                                data-subject="{{ $item->subject }}"
-                                                data-details="{{ htmlspecialchars($item->details) }}" data-bs-toggle="modal"
-                                                data-bs-target="#editNews">
-												<i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                                                data-id="{{ $item->id }}" 
+												data-company_id="{{ $item->company_id }}"
+                                                data-key="{{ $item->key }}"
+                                                data-value="{{ htmlspecialchars($item->value) }}" 
+												data-bs-toggle="modal"
+                                                data-bs-target="#editInfo">
+                                                <i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                             </button>
-                                            
+
                                             @include('admin.common.delete.btn')
                                         </td>
                                     </tr>
@@ -55,14 +57,14 @@
         </div>
     </div>
 
-    <div class="modal fade" id="addNews" tabindex="-1" aria-labelledby="addNewsLabel" aria-hidden="true">
+    <div class="modal fade" id="addInfo" tabindex="-1" aria-labelledby="addInfoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="addNewsLabel">Company's News</h1>
+                    <h1 class="modal-title fs-4" id="addInfoLabel">Company's Information</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/add-news') }}" method="POST">
+                <form action="{{ url('admin/add-info') }}" method="POST">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -76,13 +78,13 @@
                                 </select>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <label for="title" class="form-label fs-5 mb-0">Subject</label>
-                                <input type="text" name="subject" id="title" class="form-control"
-                                    placeholder="Subject" required>
+                                <label for="title" class="form-label fs-5 mb-0">Info title</label>
+                                <input type="text" name="key" id="title" class="form-control" placeholder="Name"
+                                    required>
                             </div>
                             <div class="col-md-12">
                                 <label for="summernote" class="form-label fs-5 mb-0">Description</label>
-                                <textarea id="summernote" name="details" placeholder="Write your text here..."></textarea>
+                                <textarea id="summernote" name="value" placeholder="Write your text here..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -95,14 +97,14 @@
         </div>
     </div>
 
-    <div class="modal fade" id="editNews" tabindex="-1" aria-labelledby="editNewsLabel" aria-hidden="true">
+	<div class="modal fade" id="editInfo" tabindex="-1" aria-labelledby="editInfoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="editNewsLabel">Edit Company News</h1>
+                    <h1 class="modal-title fs-4" id="editInfoLabel">Edit Company's Information</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="editNewsForm" method="POST" enctype="multipart/form-data">
+                <form id="editInfoForm" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -116,12 +118,12 @@
                                 </select>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <label for="edit_subject" class="form-label fs-5 mb-0">Subject</label>
-                                <input type="text" name="subject" id="edit_subject" class="form-control" required>
+                                <label for="edit_key" class="form-label fs-5 mb-0">key</label>
+                                <input type="text" name="key" id="edit_key" class="form-control" required>
                             </div>
                             <div class="col-md-12">
                                 <label for="edit_summernote" class="form-label fs-5 mb-0">Description</label>
-                                <textarea id="edit_summernote" name="details"></textarea>
+                                <textarea id="edit_summernote" name="value"></textarea>
                             </div>
                         </div>
                     </div>
@@ -142,15 +144,15 @@
                 btn.addEventListener('click', () => {
                     let id = btn.dataset.id;
                     let companyId = btn.dataset.company_id;
-                    let subject = btn.dataset.subject;
-                    let details = btn.dataset.details;
+                    let key = btn.dataset.key;
+                    let value = btn.dataset.value;
 
                     document.getElementById('edit_company').value = companyId;
-                    document.getElementById('edit_subject').value = subject;
-                    $('#edit_summernote').summernote('code', details);
+                    document.getElementById('edit_key').value = key;
+                    $('#edit_summernote').summernote('code', value);
 
                     // Set form action dynamically
-                    document.getElementById('editNewsForm').action = `/admin/update-news/${id}`;
+                    document.getElementById('editInfoForm').action = `/admin/update-info/${id}`;
                 });
             });
         });
