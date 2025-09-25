@@ -139,7 +139,7 @@
                     We will respond to your message as soon as possible
                     {{-- We will reply to your message as soon as possible. --}}
                 </small>
-                <form action="{{ url('send-email') }}" method="POST">
+                <form action="{{ route('email-us.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 m-0 p-2">

@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Content;
-use App\Models\EmailUs;
 use App\Models\GlobalPage;
 use Illuminate\Http\Request;
-use App\Mail\ClientAutoReply;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -69,26 +66,7 @@ class FrontController extends Controller
 		$data['contents'] = Content::where('company_id', 8)->orderBy('order')->get();
         return view('frontend.pages.alif-co', $data);
     }
-
-	// Email us	
-	public function sendEmail(Request $request)
-	{
-		$request->validate([
-			'name' => 'required',
-			'email' => 'required|string',
-			'mobile' => 'required|string',
-			'subject' => 'required|string',
-			'message' => 'required|string',
-		]);
-
-		EmailUs::create($request->only(['name', 'email', 'mobile', 'subject', 'message']));
-
-    	// Mail::to($request->email)->send(new ClientAutoReply($request->all()));
-		// Mail::to($request->email)->later(now()->addSeconds(5), new ClientAutoReply($request->all()));
-
-		return back()->with('success', 'Your message has been sent. We will respond you soon.');
-	}
-
+	
 	public function job()
     {
         return view('frontend.pages.job');

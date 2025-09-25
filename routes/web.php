@@ -24,8 +24,6 @@ Route::middleware(['web'])->group(function () {
         Route::get('/garden-inn', 'gardenInn');
         Route::get('/alif-co', 'alifCo');
 
-		Route::post('send-email', 'sendEmail');
-
         Route::get('/job', 'job');
     });
 });
@@ -36,36 +34,41 @@ Route::middleware(['web'])->group(function () {
 	
 	Buttom part need route add 
 	PageController(it can convert Setting controller), SettingController both should connect one controller
-	Every group code store view/global folder it may be need change
 	Summernote not working sometime all option
-
-
+	
 	Optional: FrontController can add route code
 	Frontend all code should add dynamic	
 */
 
+// Route::middleware(['web', 'auth'])->group(function () {
 Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     Route::controller(SettingController::class)->group(function () {
+		// Main dashboard
         Route::get('dashboard', 'dashboard')->name('admin.dashboard');
 
-        Route::get('company', 'company');
-		
-        Route::get('company-info', 'companyInfo');
-        Route::post('add-info', 'addInfo');
-        Route::post('update-info/{id}', 'updateInfo');
-		
-        Route::get('client', 'client');
-        Route::post('add-client', 'addClient');
-		Route::post('update-client/{id}', 'updateClient');
-		
-        Route::get('news', 'news');
-        Route::post('add-news', 'addNews');
-        Route::post('update-news/{id}', 'updateNews');
+		// Company-list
+        Route::get('company-list', 'company')->name('company.index');
 
-		Route::get('email-us', 'emailUs');
-		Route::post('/email-seen/{id}', 'markAsSeen');
+		// Company-information
+        Route::get('company-info', 'companyInfo')->name('company-info.index');
+        Route::post('add-info', 'storeCompanyInfo')->name('company-info.store');
+        Route::post('update-info/{id}', 'updateCompanyInfo')->name('company-info.update');
+		// All client
+        Route::get('client-list', 'allClient')->name('all-client.index');
+        Route::post('store-client', 'storeAllClient')->name('all-client.store');
+		Route::post('update-all-client/{id}', 'updateAllClient')->name('all-client.update');
 		
-		// Common code		
+		// All new
+        Route::get('news', 'news')->name('news.index');
+        Route::post('add-news', 'storeNews')->name('news.store');
+        Route::post('update-news/{id}', 'updateNews')->name('news.update');
+		
+		// Email-us
+		Route::get('email-us', 'emailUs')->name('email-us.index');
+		Route::post('email-us', 'storeEmail')->withoutMiddleware(['auth'])->name('email-us.store');
+		Route::post('email-seen/{id}', 'markAsSeen')->name('email-us.seen');
+		
+		// Common code
         Route::get('status', 'status')->name('status');
 		Route::get('itemDelete/{model}/{id}', 'itemDelete')->name('itemDelete');
     });

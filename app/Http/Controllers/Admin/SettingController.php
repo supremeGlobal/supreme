@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\News;
-use App\Models\User;
-use App\Models\Media;
 use App\Models\Client;
 use App\Models\Slider;
 use App\Models\AboutUs;
@@ -12,14 +10,14 @@ use App\Models\Company;
 use App\Models\Content;
 use App\Models\EmailUs;
 use App\Models\CompanyInfo;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\ClientAutoReply;
 use App\Models\CompanyClient;
 use App\Models\ManagementTeam;
 use App\Models\ContentCategory;
 use App\Traits\HandlesImageUpload;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Schema;
 
 class SettingController extends Controller
@@ -98,7 +96,7 @@ class SettingController extends Controller
 		return view('admin.settings.company-info', $data);
 	}
 
-	public function addInfo(Request $request)
+	public function storeCompanyInfo(Request $request)
 	{
 		$request->validate([
 			'company_id' => 'required|exists:companies,id',
@@ -115,22 +113,22 @@ class SettingController extends Controller
 		return back()->with('success', 'Company information add successfully');
 	}
 
-	public function updateInfo(Request $request, $id)
+	public function updateCompanyInfo(Request $request, $id)
 	{
 		$info = CompanyInfo::findOrFail($id);
 		$info->update($request->all());
 
-		return redirect()->back()->with('success', 'Company info updated successfully!');
+		return redirect()->back()->with('success', 'Company info updated successfully');
 	}
 
-	// Client section
-	public function client()
+	// Client
+	public function allClient()
 	{
 		$data['clients'] = Client::all();
 		return view('admin.settings.clients', $data);
 	}
 
-	public function addClient(Request $request)
+	public function storeAllClient(Request $request)
 	{
 		$request->validate([
 			'name' => 'required',
@@ -150,7 +148,7 @@ class SettingController extends Controller
 		return back()->with('success', 'Client add successfully!');
 	}
 
-	public function updateClient(Request $request, $id)
+	public function updateAllClient(Request $request, $id)
 	{
 		$client = Client::findOrFail($id);
 
@@ -173,17 +171,17 @@ class SettingController extends Controller
 
 		$client->save();
 
-		return redirect()->back()->with('success', 'Client updated successfully.');
+		return redirect()->back()->with('success', 'Client updated successfully');
 	}
 
-	// News section
+	// News
 	public function news()
 	{
 		$data['news'] = News::all();
 		return view('admin.settings.news', $data);
 	}
 
-	public function addNews(Request $request)
+	public function storeNews(Request $request)
 	{
 		$request->validate([
 			'company_id' => 'required|exists:companies,id',
@@ -205,7 +203,7 @@ class SettingController extends Controller
 		$news = News::findOrFail($id);
 		$news->update($request->all());
 
-		return redirect()->back()->with('success', 'News updated successfully!');
+		return redirect()->back()->with('success', 'News updated successfully');
 	}
 
 	// Email us
@@ -213,6 +211,25 @@ class SettingController extends Controller
 	{
 		$data['emailUs'] = EmailUs::all();
 		return view('admin.settings.email-us', $data);
+	}
+
+	// Email us	
+	public function storeEmail(Request $request)
+	{
+		$request->validate([
+			'name' => 'required',
+			'email' => 'required|string',
+			'mobile' => 'required|string',
+			'subject' => 'required|string',
+			'message' => 'required|string',
+		]);
+
+		EmailUs::create($request->only(['name', 'email', 'mobile', 'subject', 'message']));
+
+    	// Mail::to($request->email)->send(new ClientAutoReply($request->all()));
+		// Mail::to($request->email)->later(now()->addSeconds(5), new ClientAutoReply($request->all()));
+
+		return back()->with('success', 'Your message has been sent. We will respond you soon.');
 	}
 
 	public function markAsSeen($id)

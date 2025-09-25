@@ -70,7 +70,7 @@
                     <h4 class="modal-title" id="addClientLabel">Create client</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/add-client') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('all-client.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">
@@ -153,7 +153,7 @@
                     }
 
                     inputImage.value = '';
-                    form.action = `/admin/update-client/${id}`;
+                    form.action = `/admin/update-all-client/${id}`;
                 });
             });
         });

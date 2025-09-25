@@ -10,23 +10,23 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
-                                <th class="center" width="4%">SL</th>
+                                <th class="center" width="3%">SL</th>
                                 <th class="px-3">Name</th>
                                 <th class="px-3">Email</th>
                                 <th class="center">Mobile</th>
                                 <th class="px-3">Subject</th>
-                                <th class="center">Action</th>
+                                <th class="center" width="12%">Action</th>
                                 <th class="px-3 center">Date</th>
                             </thead>
                             <tbody>
                                 @foreach ($emailUs->sortByDesc('id') as $item)
                                     <tr id="email_row_{{ $item->id }}" class="{{ $item->status == 'unseen' ? 'table-secondary fw-bold' : '' }}">
-                                        <td class="center" width="30">{{ $loop->iteration }}</td>
-                                        <td class="px-3" width="10%">{{ $item->name }}</td>
-                                        <td class="px-3" width="10%">{{ $item->email }}</td>
-                                        <td class="px-3 center" width="15%">{{ $item->mobile }}</td>
+                                        <td class="center">{{ $loop->iteration }}</td>
+                                        <td class="px-3">{{ $item->name }}</td>
+                                        <td class="px-3">{{ $item->email }}</td>
+                                        <td class="px-3 center">{{ $item->mobile }}</td>
                                         <td class="px-3">{{ strip_tags($item->subject) }}</td>
-                                        <td width="12%" class="center">
+                                        <td class="center">
                                             <button type="button" class="btn btn-sm btn-outline-primary btn-view"
                                                 data-id="{{ $item->id }}" data-name="{{ $item->name }}"
                                                 data-email="{{ $item->email }}" data-mobile="{{ $item->mobile }}"
@@ -44,7 +44,7 @@
                                             <a href="{{ url('admin/itemDelete', ['EmailUs', $item->id, 'tabName']) }}"
                                                 onclick="return confirm('Are you want to delete this?')"
                                                 class="btn btn-sm btn-outline-danger">
-                                                <i class="fa-solid fa-trash me-1"></i> Delete
+                                                <i class="fa-solid fa-trash pe-2"></i> Delete
                                             </a>
                                         </td>
                                         <td class="px-3 center" width="8%">{{ optional($item->created_at)->format('M-d, Y') }}</td>

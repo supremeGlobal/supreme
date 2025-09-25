@@ -62,7 +62,7 @@
                     <h1 class="modal-title fs-4" id="addNewsLabel">Company's News</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="{{ url('admin/add-news') }}" method="POST">
+                <form action="{{ route('news.store') }}" method="POST">
                     @csrf
                     <div class="modal-body py-1">
                         <div class="row">

@@ -79,62 +79,41 @@
                     </li>
                 @endforeach
 
-
-
-
-                {{-- @foreach (config('company_map') as $slug => $id)
-                    <li class="nav-item">
-                        <a href="{{ route('slider.index', $slug) }}"
-                            class="nav-link {{ request()->routeIs('slider.index') && request()->route('company') === $slug ? 'active' : '' }}">
-                            <i
-                                class="nav-icon fa-regular {{ request()->routeIs('slider.index') && request()->route('company') === $slug ? $check : 'fa-circle text-primary' }}"></i>
-                            <p>Slider ({{ $slug }})</p>
-                        </a>
-                    </li>
-                @endforeach --}}
-
-
-
-                <li class="nav-header fs-5">Settings</li>
+                <li class="nav-header fs-5">Settings</li>				
                 <li class="nav-item">
-                    <a href="{{ url('admin/company') }}"
-                        class="nav-link {{ request()->is('admin/company') ? 'active' : '' }}">
-                        <i
-                            class="nav-icon fa-regular {{ request()->is('admin/company') ? $check : 'fa-circle text-primary' }}"></i>
-                        <p>Company list</p>
-                    </a>
+					<a href="{{ route('company.index') }}" 
+						class="nav-link {{ request()->routeIs('company.index') ? 'active' : '' }}">
+						<i class="nav-icon fa-regular {{ request()->routeIs('company.index') ? $check : 'fa-circle text-primary' }}"></i>
+						<p>Company list</p>
+					</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/company-info') }}"
-                        class="nav-link {{ request()->is('admin/company-info*') ? 'active' : '' }}">
-                        <i
-                            class="nav-icon fa-regular {{ request()->is('admin/company-info') ? $check : 'fa-circle text-secondary' }}"></i>
-                        <p>Company information</p>
-                    </a>
+					<a href="{{ route('company-info.index') }}"
+						class="nav-link {{ request()->routeIs('company-info.index') ? 'active' : '' }}">
+						<i class="nav-icon fa-regular {{ request()->routeIs('company-info.index') ? $check : 'fa-circle text-secondary' }}"></i>
+						<p>Company's information</p>
+					</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/client') }}"
-                        class="nav-link {{ request()->is('admin/client*') ? 'active' : '' }}">
-                        <i
-                            class="nav-icon fa-regular {{ request()->is('admin/client') ? $check : 'fa-circle text-success' }}"></i>
-                        <p>Client list</p>
-                    </a>
+					<a href="{{ route('all-client.index') }}"
+						class="nav-link {{ request()->routeIs('all-client.index') ? 'active' : '' }}">
+						<i class="nav-icon fa-regular {{ request()->routeIs('all-client.index') ? $check : 'fa-circle text-success' }}"></i>
+						<p>All Client list</p>
+					</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/news') }}"
-                        class="nav-link {{ request()->is('admin/news*') ? 'active' : '' }}">
-                        <i
-                            class="nav-icon fa-regular {{ request()->is('admin/news') ? $check : 'fa-circle text-info' }}"></i>
-                        <p>Latest news</p>
-                    </a>
+					<a href="{{ route('news.index') }}"
+						class="nav-link {{ request()->routeIs('news.index') ? 'active' : '' }}">
+						<i class="nav-icon fa-regular {{ request()->routeIs('news.index') ? $check : 'fa-circle text-info' }}"></i>
+						<p>Latest news</p>
+					</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url('admin/email-us') }}"
-                        class="nav-link {{ request()->is('admin/email-us*') ? 'active' : '' }}">
-                        <i
-                            class="nav-icon fa-regular {{ request()->is('admin/email-us') ? $check : 'fa-circle text-warning' }}"></i>
-                        <p>Send email us</p>
-                    </a>
+					<a href="{{ route('email-us.index') }}"
+						class="nav-link {{ request()->routeIs('email-us.index') ? 'active' : '' }}">
+						<i class="nav-icon fa-regular {{ request()->routeIs('email-us.index') ? $check : 'fa-circle text-warning' }}"></i>
+						<p>Send email us</p>
+					</a>
                 </li>
             </ul>
         </nav>
