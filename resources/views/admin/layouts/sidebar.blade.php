@@ -79,7 +79,7 @@
                     </li>
                 @endforeach
 
-                <li class="nav-header fs-5">Settings</li>				
+                <li class="nav-header fs-5">Settings</li>
                 <li class="nav-item">
 					<a href="{{ route('company.index') }}" 
 						class="nav-link {{ request()->routeIs('company.index') ? 'active' : '' }}">
@@ -113,6 +113,15 @@
 						class="nav-link {{ request()->routeIs('email-us.index') ? 'active' : '' }}">
 						<i class="nav-icon fa-regular {{ request()->routeIs('email-us.index') ? $check : 'fa-circle text-warning' }}"></i>
 						<p>Send email us</p>
+					</a>
+                </li>
+
+				<li class="nav-header fs-5">Job portal</li>
+                <li class="nav-item">
+					<a href="{{ route('job.index') }}" 
+						class="nav-link {{ request()->routeIs('job.index') ? 'active' : '' }}">
+						<i class="nav-icon fa-regular {{ request()->routeIs('job.index') ? $check : 'fa-circle text-primary' }}"></i>
+						<p>Job list</p>
 					</a>
                 </li>
             </ul>
