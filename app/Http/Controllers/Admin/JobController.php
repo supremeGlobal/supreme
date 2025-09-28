@@ -18,24 +18,24 @@ class JobController extends Controller
 	{
 		$request->validate([
 			'company_id' => 'required|exists:companies,id',
-			'name' => 'required|string|unique:job_lists,name',
+			'title' => 'required|string|unique:job_lists,title',
 			'details' => 'required|string',
 		]);
 
 		JobList::create([
 			'company_id' => $request->company_id,
-			'name' => $request->name,
+			'title' => $request->title,
 			'details' => $request->details
 		]);
 
 		return back()->with('success', 'Job created successfully');
 	}
 
-	public function updateCompanyInfo(Request $request, $id)
+	public function updateJob(Request $request, $id)
 	{
 		$info = JobList::findOrFail($id);
 		$info->update($request->all());
 
-		return redirect()->back()->with('success', 'Company info updated successfully');
+		return redirect()->back()->with('success', 'Job updated successfully');
 	}
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('job_lists', function (Blueprint $table) {
             $table->id();
 			$table->unsignedBigInteger('company_id');
-			$table->string('name');
+			$table->string('title');
 			$table->longText('details');
 			$table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();

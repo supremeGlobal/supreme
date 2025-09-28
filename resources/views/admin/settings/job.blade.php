@@ -28,7 +28,7 @@
                                     <tr>
                                         <td class="center" width="30">{!! $loop->iteration !!}</td>
                                         <td class="px-3">{!! $item->company->name !!}</td>
-                                        <td class="px-3">{!! $item->name !!}</td>
+                                        <td class="px-3">{!! $item->title !!}</td>
 
                                         @include('admin.common.status')
 
@@ -36,11 +36,12 @@
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}" 
 												data-company_id="{{ $item->company_id }}"
-                                                data-key="{{ $item->key }}"
-                                                data-value="{{ htmlspecialchars($item->value) }}" 
+                                                data-title="{{ $item->title }}"
+                                                data-details="{{ htmlspecialchars($item->details) }}" 
 												data-bs-toggle="modal"
-                                                data-bs-target="#editInfo">
-                                                <i class="fa-solid fa-pen-to-square me-1"></i> Edit
+                                                data-bs-target="#editJob">
+                                                <i class="fa-solid fa-pen-to-square me-1"></i> Edit or view
+												<i class="fa-solid fa-eye ms-1"></i>
                                             </button>
 
                                             @include('admin.common.delete.btn')
@@ -76,12 +77,11 @@
                                 </select>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <label for="title" class="form-label fs-5 mb-0">Info title</label>
-                                <input type="text" name="name" id="title" class="form-control" placeholder="Name"
-                                    required>
+                                <label for="title" class="form-label fs-5 mb-0">Job title</label>
+                                <input type="text" name="title" id="title" class="form-control" placeholder="Ex: Civil engineering" required>
                             </div>
                             <div class="col-md-12">
-                                <label for="summernote" class="form-label fs-5 mb-0">Description</label>
+                                <label for="summernote" class="form-label fs-5 mb-0">Job details</label>
                                 <textarea id="summernote" name="details" placeholder="Write your text here..."></textarea>
                             </div>
                         </div>
@@ -95,11 +95,11 @@
         </div>
     </div>
 
-	<div class="modal fade" id="editInfo" tabindex="-1" aria-labelledby="editInfoLabel" aria-hidden="true">
+	<div class="modal fade" id="editJob" tabindex="-1" aria-labelledby="editInfoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header py-2">
-                    <h1 class="modal-title fs-4" id="editInfoLabel">Edit Company's Information</h1>
+                    <h1 class="modal-title fs-4" id="editInfoLabel">Edit job</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form id="editInfoForm" method="POST" enctype="multipart/form-data">
@@ -116,12 +116,12 @@
                                 </select>
                             </div>
                             <div class="col-md-12 mb-2">
-                                <label for="edit_key" class="form-label fs-5 mb-0">key</label>
-                                <input type="text" name="key" id="edit_key" class="form-control" required>
+                                <label for="edit_title" class="form-label fs-5 mb-0">Job title</label>
+                                <input type="text" name="title" id="edit_title" class="form-control" required>
                             </div>
                             <div class="col-md-12">
-                                <label for="edit_summernote" class="form-label fs-5 mb-0">Description</label>
-                                <textarea id="edit_summernote" name="value"></textarea>
+                                <label for="edit_summernote" class="form-label fs-5 mb-0">Job details</label>
+                                <textarea id="edit_summernote" name="details"></textarea>
                             </div>
                         </div>
                     </div>
@@ -142,15 +142,15 @@
                 btn.addEventListener('click', () => {
                     let id = btn.dataset.id;
                     let companyId = btn.dataset.company_id;
-                    let key = btn.dataset.key;
-                    let value = btn.dataset.value;
+                    let title = btn.dataset.title;
+                    let details = btn.dataset.details;
 
                     document.getElementById('edit_company').value = companyId;
-                    document.getElementById('edit_key').value = key;
-                    $('#edit_summernote').summernote('code', value);
+                    document.getElementById('edit_title').value = title;
+                    $('#edit_summernote').summernote('code', details);
 
                     // Set form action dynamically
-                    document.getElementById('editInfoForm').action = `/admin/update-info/${id}`;
+                    document.getElementById('editInfoForm').action = `/admin/update-job/${id}`;
                 });
             });
         });
