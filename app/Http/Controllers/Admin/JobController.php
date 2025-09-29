@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\JobList;
+use App\Models\JobRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,5 +38,11 @@ class JobController extends Controller
 		$info->update($request->all());
 
 		return redirect()->back()->with('success', 'Job updated successfully');
+	}
+
+	public function jobRequest()
+	{
+		$data['jobRequest'] = JobRequest::all();
+		return view('admin.settings.job-request', $data);
 	}
 }

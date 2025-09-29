@@ -21,7 +21,7 @@
                                 <th class="px-3">Company name</th>
                                 <th class="px-3">Job title</th>
                                 <th class="center">Status</th>
-                                <th class="center">Action</th>
+                                <th class="center" width="17%">Action</th>
                             </thead>
                             <tbody>
                                 @foreach ($jobs->sortBy('company_id') as $item)
@@ -37,7 +37,7 @@
                                                 data-id="{{ $item->id }}" 
 												data-company_id="{{ $item->company_id }}"
                                                 data-title="{{ $item->title }}"
-                                                data-details="{{ htmlspecialchars($item->details) }}" 
+                                                data-details="{{ $item->details }}" 
 												data-bs-toggle="modal"
                                                 data-bs-target="#editJob">
                                                 <i class="fa-solid fa-pen-to-square me-1"></i> Edit or view

@@ -124,6 +124,13 @@
 						<p>Job list</p>
 					</a>
                 </li>
+				<li class="nav-item">
+					<a href="{{ route('job-request.index') }}" 
+						class="nav-link {{ request()->routeIs('job-request.index') ? 'active' : '' }}">
+						<i class="nav-icon fa-regular {{ request()->routeIs('job-request.index') ? $check : 'fa-circle text-secondary' }}"></i>
+						<p>Job request</p>
+					</a>
+                </li>
             </ul>
         </nav>
     </div>
