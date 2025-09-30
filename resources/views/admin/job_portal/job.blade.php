@@ -21,7 +21,7 @@
                                 <th class="px-3">Company name</th>
                                 <th class="px-3">Job title</th>
                                 <th class="center">Status</th>
-                                <th class="center" width="17%">Action</th>
+                                <th class="center" width="17%">Manage Job</th>
                             </thead>
                             <tbody>
                                 @foreach ($jobs->sortBy('company_id') as $item)
@@ -40,11 +40,18 @@
                                                 data-details="{{ $item->details }}" 
 												data-bs-toggle="modal"
                                                 data-bs-target="#editJob">
-                                                <i class="fa-solid fa-pen-to-square me-1"></i> Edit or view
-												<i class="fa-solid fa-eye ms-1"></i>
+												<i class="fa-solid fa-eye me-1"></i>
+												View / Edit
                                             </button>
 
-                                            @include('admin.common.delete.btn')
+											@if ($item->requests->count())
+												<a class="btn btn-outline-success" href="{{ route('cvs.index', $item->id) }}">
+													<i class="fa-solid fa-eye me-1"></i>
+													All CVs [{{ $item->requests->count() }}]
+												</a>
+											@else
+												@include('admin.common.delete.btn')
+											@endif
                                         </td>
                                     </tr>
                                 @endforeach

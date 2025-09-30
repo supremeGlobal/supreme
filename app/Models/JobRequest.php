@@ -8,13 +8,8 @@ class JobRequest extends Model
 {
 	protected $guarded = [];
 
-	public function jobInfo()
+	public function job()
     {
-        return $this->belongsTo(JobList::class)->withDefault();
-    }
-	
-	public function company()
-    {
-        return $this->belongsTo(Company::class)->withDefault();
+        return $this->belongsTo(JobList::class, 'job_id')->withDefault();
     }
 }

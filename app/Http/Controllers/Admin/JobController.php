@@ -11,8 +11,8 @@ class JobController extends Controller
 {
     public function job()
 	{
-		$data['jobs'] = JobList::all();
-		return view('admin.settings.job', $data);
+		$data['jobs'] = JobList::with('company')->get();
+		return view('admin.job_portal.job', $data);
 	}
 
 	public function storeJob(Request $request)
@@ -42,7 +42,21 @@ class JobController extends Controller
 
 	public function jobRequest()
 	{
-		$data['jobRequest'] = JobRequest::all();
-		return view('admin.settings.job-request', $data);
+		$data['jobRequest'] = JobRequest::with('job')->get();
+
+		return view('admin.job_portal.job-request', $data);
 	}
+
+	// public function jobList($jobId)
+	// {
+	// 	$data['job'] = JobRequest::where('job_id', $jobId)->get();
+	// 	return view('admin.job_portal.cvs', $data);
+	// }
+
+	public function jobList($jobId)
+	{
+		$data['job'] = JobList::with('requests')->findOrFail($jobId);
+		return view('admin.job_portal.cvs', $data);
+	}
+
 }

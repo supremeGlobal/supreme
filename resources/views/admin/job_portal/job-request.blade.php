@@ -6,11 +6,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Job list</h4>
+                    <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Job request</h4>
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle">
                             <thead>
                                 <th class="center" width="3%">SL</th>
+                                <th class="px-3">Job title</th>
                                 <th class="px-3">Name</th>
                                 <th class="px-3">Email</th>
                                 <th class="px-3 center">Mobile</th>
@@ -21,6 +22,7 @@
                                 @foreach ($jobRequest->sortBy('company_id') as $item)
                                     <tr>
                                         <td class="center" width="30">{!! $loop->iteration !!}</td>
+                                        <td class="px-3">{!! $item->job->title !!}</td>
                                         <td class="px-3">{!! $item->name !!}</td>
                                         <td class="px-3">{!! $item->email !!}</td>
                                         <td class="px-3 center">{!! $item->mobile !!}</td>

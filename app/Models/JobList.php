@@ -12,4 +12,9 @@ class JobList extends Model
     {
         return $this->belongsTo(Company::class)->withDefault();
     }
+
+    public function requests()
+    {
+        return $this->hasMany(JobRequest::class, 'job_id');
+    }
 }
