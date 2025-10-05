@@ -116,7 +116,7 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
         Route::get('job-request', 'jobRequest')->name('job-request.index');
 
         Route::get('job-list/{id}', 'jobList')->name('cvs.index');
-
+		Route::post('cvs/update-status', 'updateStatus')->name('cvs.updateStatus');
     });
 });
 

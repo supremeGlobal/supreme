@@ -24,9 +24,9 @@
                                 <th class="center" width="17%">Manage Job</th>
                             </thead>
                             <tbody>
-                                @foreach ($jobs->sortBy('company_id') as $item)
+                                @foreach ($jobs->sortByDesc('id') as $item)
                                     <tr>
-                                        <td class="center" width="30">{!! $loop->iteration !!}</td>
+                                        <td class="center" width="30">{!! $item->id !!}</td>
                                         <td class="px-3">{!! $item->company->name !!}</td>
                                         <td class="px-3">{!! $item->title !!}</td>
 
@@ -161,5 +161,14 @@
                 });
             });
         });
-    </script>
+
+		$(document).ready(function() {
+			$('.table').DataTable({
+				order: [
+					[0, 'desc']
+				],
+				destroy: true
+			});
+		});
+    </script>	
 @endsection

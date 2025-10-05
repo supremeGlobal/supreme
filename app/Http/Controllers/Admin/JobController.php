@@ -47,16 +47,21 @@ class JobController extends Controller
 		return view('admin.job_portal.job-request', $data);
 	}
 
-	// public function jobList($jobId)
-	// {
-	// 	$data['job'] = JobRequest::where('job_id', $jobId)->get();
-	// 	return view('admin.job_portal.cvs', $data);
-	// }
-
 	public function jobList($jobId)
 	{
 		$data['job'] = JobList::with('requests')->findOrFail($jobId);
 		return view('admin.job_portal.cvs', $data);
 	}
 
+	public function updateStatus(Request $request)
+	{
+		$cv = JobRequest::findOrFail($request->id);
+		$cv->status = $request->status;
+		$cv->save();
+
+		return response()->json([
+        'success' => true,
+        'message' => 'Status updated to ' . ucfirst($cv->status)
+    ]);
+	}
 }

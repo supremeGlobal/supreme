@@ -55,4 +55,14 @@
 @endsection
 
 @section('js')
+	<script>
+		$(document).ready(function() {
+			$('.table').DataTable({
+				order: [
+					[0, 'desc']
+				],
+				destroy: true
+			});
+		});
+	</script>
 @endsection

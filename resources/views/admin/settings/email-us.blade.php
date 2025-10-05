@@ -47,7 +47,10 @@
                                                 <i class="fa-solid fa-trash pe-2"></i> Delete
                                             </a>
                                         </td>
-                                        <td class="px-3 center" width="8%">{{ optional($item->created_at)->format('M-d, Y') }}</td>
+										<td class="center" width="12%">
+											{{ optional($item->created_at)->format('M-d, Y') }}
+											(<strong>{{ optional($item->created_at)->format('h:i A') }}</strong>)
+										</td>
                                     </tr>
                                 @endforeach
                             </tbody>
