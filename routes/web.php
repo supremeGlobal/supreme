@@ -120,6 +120,10 @@ Route::prefix('admin')->middleware(['web', 'auth'])->group(function () {
     });
 });
 
+Route::get('/jobs2', [JobController::class, 'job2'])->name('jobs.list');
+Route::get('/jobs/{id}', [JobController::class, 'show'])->name('jobs.show');
+Route::post('/jobs/apply', [JobController::class, 'apply'])->name('jobs.apply');
+
 Route::fallback(function () {
 	return view('404');
 });

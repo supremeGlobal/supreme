@@ -64,4 +64,44 @@ class JobController extends Controller
         'message' => 'Status updated to ' . ucfirst($cv->status)
     ]);
 	}
+
+
+	// Frontend
+    public function job2()
+    {
+        $data['jobs'] = JobList::with('company')->where('status', 'active')->get();
+        return view('frontend.pages.job2', $data);
+    }
+
+    public function show($id)
+    {
+        $job = JobList::with('company')->findOrFail($id);
+        return response()->json($job);
+    }
+
+    public function apply(Request $request)
+    {
+        $validated = $request->validate([
+            'job_id' => 'required|exists:job_lists,id',
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'mobile' => 'required|string|max:20',
+            'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+        ]);
+
+        $path = null;
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('cv_uploads', 'public');
+        }
+
+        JobRequest::create([
+            'job_id' => $validated['job_id'],
+            'name' => $validated['name'],
+            'email' => $validated['email'] ?? null,
+            'mobile' => $validated['mobile'],
+            'file' => $path,
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Application submitted successfully!']);
+    }
 }
