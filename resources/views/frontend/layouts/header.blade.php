@@ -332,6 +332,12 @@
                                 @endforeach
                             </ul>
                         </li>
+                        <li class="nav-item">
+							<a class="nav-link" href="{{ url('/career') }}" target="_blank">
+								<i class="fa-solid fa-briefcase pe-1"></i>
+								Career
+							</a>
+						</li>
                         <li class="nav-item"><a class="nav-link" href="#footer">Contact us</a></li>
                     </ul>
                 </div>

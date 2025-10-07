@@ -14,9 +14,10 @@ return new class extends Migration
 		Schema::create('job_requests', function (Blueprint $table) {
 			$table->id();
 			$table->unsignedBigInteger('job_id');
-			$table->string('name');
+			$table->string('name')->nullable();
 			$table->string('email')->nullable();     // applicant email
-			$table->string('mobile');
+			$table->string('mobile')->nullable();
+			$table->string('salary')->nullable();
 			$table->string('file')->nullable();      // CV/resume file path
 			$table->enum('status', ['pending', 'reviewed', 'accepted', 'rejected'])->default('pending');
 			$table->timestamps();

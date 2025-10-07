@@ -23,6 +23,7 @@
                                 <th class="px-3">Name</th>
                                 <th class="px-3">Email</th>
                                 <th class="px-3 center">Mobile</th>
+                                <th class="px-3 center">Expected salary</th>
                                 <th class="center">Status</th>
                                 <th class="center">File type</th>
                                 <th class="center">Action</th>
@@ -35,7 +36,7 @@
                                         <td class="px-3">{!! $item->name !!}</td>
                                         <td class="px-3">{!! $item->email !!}</td>
                                         <td class="px-3 center">{!! $item->mobile !!}</td>
-                                        {{-- <td class="px-3 center">{!! $item->status !!}</td> --}}
+                                        <td class="px-3 center">{!! $item->salary !!}</td>
 
 										<td class="text-center align-middle">
 											<div class="d-inline-block">

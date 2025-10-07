@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class JobController extends Controller
 {
-    public function job()
+	public function job()
 	{
 		$data['jobs'] = JobList::with('company')->get();
 		return view('admin.job_portal.job', $data);
@@ -60,48 +60,57 @@ class JobController extends Controller
 		$cv->save();
 
 		return response()->json([
-        'success' => true,
-        'message' => 'Status updated to ' . ucfirst($cv->status)
-    ]);
+			'success' => true,
+			'message' => 'Status updated to ' . ucfirst($cv->status)
+		]);
+	}
+
+	// Frontend
+	public function career()
+	{
+		$jobs = JobList::with('company')->where('status', 'active')->get();
+
+		if ($jobs->isNotEmpty()) {
+			// Redirect to the first active job
+			return redirect()->route('jobs.show', $jobs->first()->id);
+		}
+
+		// fallback if no jobs
+		return view('frontend.pages.career', compact('jobs'));
 	}
 
 
-	// Frontend
-    public function job2()
-    {
-        $data['jobs'] = JobList::with('company')->where('status', 'active')->get();
-        return view('frontend.pages.job2', $data);
-    }
+	public function careerShow($id)
+	{
+		$jobs = JobList::with('company')->where('status', 'active')->get();
+		$job = JobList::with('company')->findOrFail($id);
+		return view('frontend.pages.career', compact('jobs', 'job'));
+	}
 
-    public function show($id)
-    {
-        $job = JobList::with('company')->findOrFail($id);
-        return response()->json($job);
-    }
+	public function apply(Request $request)
+	{
+		$validated = $request->validate([
+			'job_id' => 'required|exists:job_lists,id',
+			'name' => 'required|string|max:255',
+			'email' => 'nullable|email|max:255',
+			'mobile' => 'required|string|max:20',
+			'salary' => 'required|string|max:20',
+			'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+		]);
 
-    public function apply(Request $request)
-    {
-        $validated = $request->validate([
-            'job_id' => 'required|exists:job_lists,id',
-            'name' => 'required|string|max:255',
-            'email' => 'nullable|email|max:255',
-            'mobile' => 'required|string|max:20',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
-        ]);
+		$path = $request->hasFile('file')
+			? $request->file('file')->store('cv_uploads', 'public')
+			: null;
 
-        $path = null;
-        if ($request->hasFile('file')) {
-            $path = $request->file('file')->store('cv_uploads', 'public');
-        }
+		JobRequest::create([
+			'job_id' => $validated['job_id'],
+			'name' => $validated['name'],
+			'email' => $validated['email'] ?? null,
+			'mobile' => $validated['mobile'],
+			'salary' => $validated['salary'],
+			'file' => $path,
+		]);
 
-        JobRequest::create([
-            'job_id' => $validated['job_id'],
-            'name' => $validated['name'],
-            'email' => $validated['email'] ?? null,
-            'mobile' => $validated['mobile'],
-            'file' => $path,
-        ]);
-
-        return response()->json(['success' => true, 'message' => 'Application submitted successfully!']);
-    }
+		return back()->with('success', 'Application submitted successfully');
+	}
 }
