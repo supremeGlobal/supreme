@@ -6,9 +6,12 @@ use App\Models\JobList;
 use App\Models\JobRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Traits\HandlesImageUpload;
 
 class JobController extends Controller
 {
+	use HandlesImageUpload;
+
 	public function job()
 	{
 		$data['jobs'] = JobList::with('company')->get();
@@ -98,9 +101,13 @@ class JobController extends Controller
 			'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
 		]);
 
-		$path = $request->hasFile('file')
-			? $request->file('file')->store('cv_uploads', 'public')
-			: null;
+		// $path = $request->hasFile('file')
+		// 	? $request->file('file')->store('cv_uploads', 'public')
+		// 	: null;
+
+		if ($request->hasFile('file')) {
+			$path = $this->uploadImage($request->file, 'job_portal/');
+		}
 
 		JobRequest::create([
 			'job_id' => $validated['job_id'],

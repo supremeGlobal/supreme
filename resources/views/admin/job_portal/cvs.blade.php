@@ -68,7 +68,7 @@
 												Download
 											</a>
                                         </td>
-                                        <td class="center" width="12%">
+                                        <td class="center" width="15%">
 											{{ optional($item->created_at)->format('M-d, Y') }}
 											(<strong>{{ optional($item->created_at)->format('h:i A') }}</strong>)
 										</td>

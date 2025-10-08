@@ -56,7 +56,7 @@
         {{-- Main Content --}}
         <main class="app-main">
             <div class="app-content p-2">
-                @if ($job)
+                @if ($jobs->isNotEmpty())
                     <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <h4 class="fw-bold">{{ $job->title }}</h4>
