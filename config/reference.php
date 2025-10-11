@@ -1,17 +1,6 @@
 <?php
 
-return [
-
-	// 'companies' => [
-    //     1 => 'supreme-global',
-    //     2 => 'supreme-tea',
-    //     3 => 'auto-bricks',
-    //     4 => 'dar-kafaa-Al-Alia',
-    //     5 => 'supreme-agro',
-    //     6 => 'north-point-medical-college',
-    //     7 => 'garden-inn-resort',
-    //     8 => 'alif-&-co',
-    // ],
+return [	
 
 	'companies' => [
 		[
@@ -61,5 +50,34 @@ return [
 			'name' => 'ALIF & Co.',
 			'image' => 'alif-co.png',
 		],
+	],
+
+	'clients' => [
+		'Cod BD Limited',
+		'Ventura Leatherware Manufacturing BD Limited',
+		'Section Seven International Limited',
+		'Ahmed Wood and Board',
+		'Win champion BD Limited',
+		'Equ Jute Process',
+		'Shamoli Cement Sheet Mills Ltd',
+		'Classical Handmade Products BD Kirtaniapara',
+		'Center Zakat Management',
+		'Millennium Gold Limited',
+		'Atamul Millennium Gold Supplier',
+		'Ever green products factory BD Limited',
+		'Margin Bangladesh Limited',
+		'Sonic Bangladesh Limited',
+		'EQE International Limited',
+		'Rangpur group Private ltd',
+		'Karupannya Rangpur Ltd',
+		'Ishpahani ltd',
+		'BRAC NGO',
+		'Buro Bangladesh',
+		'Nourish',
+		'Paragon',
+		'Bombay Agro',
+		'Opsonin pharma',
+		'Amena baki foundation',
+		'Safi uddin ahmed foundation',
 	],
 ];

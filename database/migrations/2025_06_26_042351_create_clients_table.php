@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -18,6 +19,12 @@ return new class extends Migration
 			$table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
+
+		foreach (config('reference.clients') as $name) {
+			DB::table('clients')->updateOrInsert([
+				'name' => $name,
+			]);
+		}
     }
 
     /**
