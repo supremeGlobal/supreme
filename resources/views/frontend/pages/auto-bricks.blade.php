@@ -12,7 +12,6 @@
 	@php
 		$topHeading = 'About Us';
 		$slogan = 'Building the Future with A&A Auto Brick';
-		$order = 5;
 	@endphp
 	@include('frontend.partials.default')
 

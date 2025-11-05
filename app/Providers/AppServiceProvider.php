@@ -18,18 +18,17 @@ class AppServiceProvider extends ServiceProvider
 	}
 
 	public function boot(): void
-	{
+	{		
+		Schema::defaultStringLength(191);
+	
 		try {			
 			View::share([
-				'company' => Company::where('status', 'active')->orderBy('sort_order', 'asc')->get(),
-				'client' => Client::where('status', 'active')->get(),
-				'companyInfo' => CompanyInfo::where('status', 'active')->get()->mapWithKeys(fn($item) => [$item->key => $item->value !== '' ? $item->value : true])->toArray(),
-				'news' => News::where('status', 'active')->get(),
+                'company'     => Company::where('status', 'active')->orderBy('sort_order', 'asc')->get(),
+                'companyInfo' => CompanyInfo::where('status', 'active')->get()->mapWithKeys(fn($item) => [$item->key => $item->value !== '' ? $item->value : true])->toArray(),
+                'news'        => News::where('status', 'active')->get(),
 			]);			
 		} catch (\Exception $e) {
 			
 		}
-
-		Schema::defaultStringLength(191);
 	}
 }

@@ -117,12 +117,12 @@
             <h2 class="fw-bold">{{ $heading ?? '' }}</h2>
         </div>
 
-        @foreach ($contents->where('order', $order)->values() as $index => $item)
+        @foreach ($contents as $index => $item)
             <div class="row {{ !$loop->last ? 'mb-3' : '' }} border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }}">
 
                 <!-- Image Column -->
                 <div class="col-lg-4 p-0 image-col h-100 {{ $index % 2 != 0 ? 'order-lg-2' : '' }}">
-                    <img src="{{ asset('images/' . $item['image']) }}" alt="{{ $item['title'] }}" tyle="height: 400px !important;" />
+                    <img src="{{ asset($item['image']) }}" alt="{{ $item['title'] }}" tyle="height: 400px !important;" />
                 </div>
 
                 <!-- Text Column -->

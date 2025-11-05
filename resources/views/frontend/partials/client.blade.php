@@ -72,7 +72,7 @@
         <p class="text-muted">Trusted by industry leaders</p>
         <div class="marquee">
             <div class="track" id="client-track">
-                @foreach ($client as $item)
+                @foreach ($clients as $item)
                     <div class="client">
                         <div class="client-box">
                             <img src="{{ asset($item->image) }}" alt="{{ $item->name }}"

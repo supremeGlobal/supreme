@@ -2,7 +2,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="container-fluid pt-4">
+    <div class="container-fluid pt-2">
 		@php
 			$colors = [
 				'text-bg-primary',

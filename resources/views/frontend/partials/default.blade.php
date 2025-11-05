@@ -47,9 +47,7 @@
         </div>
         <div class="row border shadow rounded-2 overflow-hidden">
             <div class="col-12 p-2 about-text">
-                @foreach ($contents->where('order', $order) as $item)
-                    <p class="mb-3">{!! $item->details !!}</p>
-                @endforeach
+				<p class="mb-3">{!! $aboutUs->details ?? '' !!}</p>
             </div>
         </div>
     </div>

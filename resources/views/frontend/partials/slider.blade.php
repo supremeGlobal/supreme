@@ -41,32 +41,14 @@
 </style>
 
 <section id="slide" class="p-0">
-     @php
-		if(isset($imgStart)){
-			$i = $imgStart;
-            $j = $imgEnd;
-            
-		}else{
-			$imgStart = 1;
-			$imgEnd = 27;
-		}
-		
-        $images = [];
-        for ($i = $imgStart; $i <= $imgEnd; $i++) {
-            $images[] = $i . '.jpg';
-        }
-    @endphp
-
     <div id="companyCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
         <h5 class="position-absolute top-0 start-0 m-3 text-light px-3 py-1 rounded-2 z-1 fw-bold">
             {{ $companyName ?? '' }}
         </h5>
 
         <div class="carousel-inner">
-            @foreach ($images as $index => $img)
-                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}"
-                    style="background-image: url('{{ asset('images/slide/' . $img) }}');">
-                </div>
+            @foreach ($sliders as $index => $slider)
+                <div class="carousel-item {{ $index === 0 ? 'active' : '' }}" style="background-image: url('{{ asset($slider->image) }}');"></div>
             @endforeach
         </div>
 
@@ -74,6 +56,7 @@
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
+
         <button class="carousel-control-next" type="button" data-bs-target="#companyCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>

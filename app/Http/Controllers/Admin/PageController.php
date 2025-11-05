@@ -184,7 +184,7 @@ class PageController extends Controller
 	{
 		$request->validate([
 			'content_category_id' => 'required',
-			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:2048',
+			'image' => 'required|image|mimes:jpg,jpeg,png,gif|max:5120',
 			'details' => 'required',
 		]);
 

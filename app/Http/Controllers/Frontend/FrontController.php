@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Slider;
+use App\Models\AboutUs;
 use App\Models\Content;
-use App\Models\GlobalPage;
-use Illuminate\Http\Request;
+use App\Models\CompanyClient;
 use App\Http\Controllers\Controller;
 
 class FrontController extends Controller
@@ -14,57 +15,62 @@ class FrontController extends Controller
     //     $this->middleware('auth');
     // }
 
+	private function faceData($company_id)
+	{
+		return [
+            'sliders'  => Slider::whereCompanyId($company_id)->whereStatus('active')->get(),
+            'aboutUs'  => AboutUs::whereCompanyId($company_id)->whereStatus('active')->first(),
+            'contents' => Content::whereCompanyId($company_id)->whereStatus('active')->get(),
+            'clients'  => CompanyClient::whereCompanyId($company_id)->whereStatus('active')->with('client')->get()->pluck('client'),
+		];
+	}
+
     public function home()
     {
-        return view('welcome');
-    }	
+		$data['sliders'] = Slider::where('status', 'active')->get();
+        $data['clients'] = CompanyClient::whereStatus('active')->with('client')->get()->pluck('client');
 
-	public function global()
-    {
-		$data['contents'] = Content::where('company_id', 1)->orderBy('order')->get();
-        return view('frontend.pages.global', $data);
+        return view('welcome', $data);
     }
 
-	public function supremeTea()
+	public function global($company_id = 1)
+	{
+		return view('frontend.pages.global', $this->faceData($company_id));
+	}
+
+	public function supremeTea($company_id = 2)
     {
-		$data['contents'] = Content::where('company_id', 2)->orderBy('order')->get();
-        return view('frontend.pages.tea', $data);
+        return view('frontend.pages.tea', $this->faceData($company_id));
     }
 
-	public function autoBricks()
+	public function autoBricks($company_id = 3)
     {
-		$data['contents'] = Content::where('company_id', 3)->orderBy('order')->get();
-        return view('frontend.pages.auto-bricks', $data);
+        return view('frontend.pages.auto-bricks', $this->faceData($company_id));
     }
 
-	public function darKafaa()
+	public function darKafaa($company_id = 4)
     {
-		$data['contents'] = Content::where('company_id', 4)->orderBy('order')->get();
-        return view('frontend.pages.dar-kafaa', $data);
+        return view('frontend.pages.dar-kafaa', $this->faceData($company_id));
     }
 
-	public function supremeAgro()
+	public function supremeAgro($company_id = 5)
     {
-		$data['contents'] = Content::where('company_id', 5)->orderBy('order')->get();
-        return view('frontend.pages.agro', $data);
+        return view('frontend.pages.agro', $this->faceData($company_id));
     }
 
-	public function northPoint()
+	public function northPoint($company_id = 6)
     {
-		$data['contents'] = Content::where('company_id', 6)->orderBy('order')->get();
-        return view('frontend.pages.north-point', $data);
+        return view('frontend.pages.north-point', $this->faceData($company_id));
     }
 
-	public function gardenInn()
+	public function gardenInn($company_id = 7)
     {
-		$data['contents'] = Content::where('company_id', 7)->orderBy('order')->get();
-        return view('frontend.pages.garden-inn', $data);
+        return view('frontend.pages.garden-inn', $this->faceData($company_id));
     }
 
-	public function alifCo()
+	public function alifCo($company_id = 8)
     {
-		$data['contents'] = Content::where('company_id', 8)->orderBy('order')->get();
-        return view('frontend.pages.alif-co', $data);
+        return view('frontend.pages.alif-co', $this->faceData($company_id));
     }
 	
 	public function job()

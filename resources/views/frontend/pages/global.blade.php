@@ -6,20 +6,18 @@
 		$companyName = 'Supreme Global';
 	@endphp
 
-	@include('frontend.partials.slider')    
+	@include('frontend.partials.slider')
 
     {{-- about us --}}
 	@php
 		$topHeading = 'About Us';
 		$slogan = 'Innovation | Sustainability | Excellence';
-		$order = 1;
 	@endphp
 	@include('frontend.partials.default')
 
    	{{-- product  & service --}}
 	@php
 		$heading = 'Our Divisions';
-		$order = 2;
 	@endphp
 	@include('frontend.partials.productService')
 

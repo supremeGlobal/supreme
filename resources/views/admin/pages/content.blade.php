@@ -189,7 +189,7 @@
 
                             <div class="col-md-12 mb-2">
                                 <label for="image" class="form-label fs-5 mb-0">Add image</label>
-                                <input type="file" name="image" id="image" class="form-control"
+                                <input type="file" name="image" id="image" accept="image/*" class="form-control"
                                     placeholder="Add image" required>
                             </div>
                             <div class="col-md-12">
