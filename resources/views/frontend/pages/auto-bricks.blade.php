@@ -5,8 +5,8 @@
 	@php
 		$companyName = 'A&A Auto Bricks Industries Ltd';
 	@endphp
-
 	@include('frontend.partials.slider')
+
 
 	{{-- about us --}}
 	@php
@@ -15,45 +15,24 @@
 	@endphp
 	@include('frontend.partials.default')
 
+	
 	{{-- mission --}}
-	@php
-		$heading = 'Our Mission';
-		$slogan = '';
-		$order = 6;
-		$position = 'left';
+	@php 
+		$heading = '';
 	@endphp
-	@include('frontend.partials.singleService')
+	@include('frontend.partials.productService2')
 
-	{{-- vision --}}
-	@php
-		$heading = 'Our Vision';
-		$slogan = '';
-		$order = 7;
-		$position = 'right';
-	@endphp
-	@include('frontend.partials.singleService')
-
-	{{-- Other part --}}
-	@php
-		$heading = 'Our Core Values';
-		$slogan = '';
-		$order = 8;
-		$position = 'left';
-	@endphp
-	@include('frontend.partials.singleService')
 
 	@php
 		$topHeading = 'Introduction to Our Manufacturing Excellence';
-		$slogan = '';
-		$order = 9;
+		$slogan = '';		
 	@endphp
-	@include('frontend.partials.default')
+	@include('frontend.partials.default2')
 
-	@php
+	@php 
 		$heading = '';
-		$order = 10;
 	@endphp
-	@include('frontend.partials.productService')
+	@include('frontend.partials.productService3')
 
 	<div class="rounded-2 mx-5 p-2 border text-bg-light text-center">
 		<strong class="fs-5">
