@@ -11,50 +11,16 @@
     @php
         $topHeading = 'About Us';
         $slogan = 'Nurturing Nature. Sustaining Lives.';
-        $order = 17;
     @endphp
     @include('frontend.partials.default')
 
-	{{-- mission --}}
-	@php
-		$heading = 'Our Mission';
-		$slogan = '';
-		$order = 18;
-		$position = 'left';
-	@endphp
-	@include('frontend.partials.singleService')
-
-	{{-- vision --}}
-	@php
-		$heading = 'Our Vision';
-		$slogan = '';
-		$order = 19;
-		$position = 'right';
-	@endphp
-	@include('frontend.partials.singleService')
-
-    {{-- Other information --}}
-    @php
-        $heading = 'Our Core Activities';
-        $order = 20;
-    @endphp
-    @include('frontend.partials.productService')    
 	
-    @php
-        $heading = 'Sustainability & Social Responsibility';
-        $slogan = '';
-        $order = 21;
-        $position = 'left';
-    @endphp
-    @include('frontend.partials.singleService')
-	
-    @php
-        $heading = 'Why Choose Supreme Agro?';
-        $slogan = '';
-        $order = 22;
-        $position = 'right';
-    @endphp
-    @include('frontend.partials.singleService')
+	{{-- mission/vision --}}
+	@php
+        $heading = '';
+	@endphp
+	@include('frontend.partials.productService')
+       
 
     {{-- client --}}
     @include('frontend.partials.client')
