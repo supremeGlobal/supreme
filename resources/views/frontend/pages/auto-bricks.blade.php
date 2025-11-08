@@ -16,7 +16,7 @@
 	@include('frontend.partials.default')
 
 	
-	{{-- mission --}}
+	{{-- mission/vision --}}
 	@php 
 		$heading = '';
 	@endphp

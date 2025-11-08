@@ -4,8 +4,6 @@
     {{-- slider --}}
     @php
         $companyName = 'Dar Kafaa Al-Alia';
-        $imgStart = 22;
-        $imgEnd = 27;
     @endphp
 
     @include('frontend.partials.slider')
@@ -14,52 +12,22 @@
     @php
         $topHeading = 'About Us';
         $slogan = 'Let’s Build a Better Future';
-        $order = 11;
     @endphp
     @include('frontend.partials.default')
 
     {{-- Company owner information --}}
     @php
         $heading = '';
-        $order = 12;
-    @endphp
-    @include('frontend.partials.productService')
+	@endphp
+	@include('frontend.partials.managementTeam')
+	
 
-	{{-- mission --}}
-    @php
-        $heading = 'Our Mission';
-        $slogan = '';
-        $order = 13;
-        $position = 'left';
-    @endphp
-    @include('frontend.partials.singleService')
+	{{-- mission/vision --}}
+	@php
+        $heading = '';
+	@endphp
+	@include('frontend.partials.productService')
 
-    {{-- vision --}}
-    @php
-        $heading = 'Our Vision';
-        $slogan = '';
-        $order = 14;
-        $position = 'right';
-    @endphp
-    @include('frontend.partials.singleService')
-
-    {{-- Our Services --}}
-    @php
-        $heading = 'Our Services';
-        $slogan = '';
-        $order = 15;
-        $position = 'left';
-    @endphp
-    @include('frontend.partials.singleService')
-
-	{{-- Our Services --}}
-    @php
-        $heading = 'Our Projects';
-        $slogan = '';
-        $order = 16;
-        $position = 'right';
-    @endphp
-    @include('frontend.partials.singleService')
 	
     <div class="rounded-2 mx-5 p-2 border text-bg-light text-center">
         <strong class="fs-5 fst-italic">
