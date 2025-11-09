@@ -31,6 +31,7 @@
 
 	@php 
 		$heading = '';
+		$skip = 4;
 	@endphp
 	@include('frontend.partials.productService3')
 

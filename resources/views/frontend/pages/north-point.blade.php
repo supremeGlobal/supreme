@@ -11,50 +11,31 @@
     @php
         $topHeading = 'About Us';
         $slogan = 'Bridging Nations, Healing Generations';
-        $order = 35;
     @endphp
     @include('frontend.partials.default')
 
-    {{-- mission --}}
-    @php
-        $heading = 'Our Mission';
-        $slogan = '';
-        $order = 36;
-        $position = 'right';
-    @endphp
-    @include('frontend.partials.singleService')
 
-    {{-- vision --}}
-    @php
-        $heading = 'Our Vision';
-        $slogan = '';
-        $order = 37;
-        $position = 'left';
-    @endphp
-    @include('frontend.partials.singleService')
+	{{-- mission/vision --}}
+	@php 
+		$heading = '';
+	@endphp
+	@include('frontend.partials.productService2')
 
-    {{-- Project Highlights --}}
-	@php
-        $heading = 'Project Highlights';
-        $slogan = '';
-        $order = 38;
-        $position = 'right';
-    @endphp
-    @include('frontend.partials.singleService')
 
-    {{-- Company owner information --}}
+	{{-- Company owner information --}}
     @php
         $heading = 'Key Leadership';
-        $order = 39;
-    @endphp
-    @include('frontend.partials.productService')
+	@endphp
+	@include('frontend.partials.managementTeam')
 
-    {{-- Next three(3) part here --}}
-	@php
-        $heading = 'Position, Recognition, and Tomorrow';
-        $order = 40;
-    @endphp
-    @include('frontend.partials.productService')
+
+	{{-- Position, Recognition, and Tomorrow --}}
+	@php 
+		$heading = 'Position, Recognition, and Tomorrow';
+		$skip = 3;
+	@endphp
+	@include('frontend.partials.productService3')
+	
 
     {{-- client --}}
     @include('frontend.partials.client')

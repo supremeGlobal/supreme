@@ -117,7 +117,7 @@
             <h2 class="fw-bold">{{ $heading ?? '' }}</h2>
         </div>
 
-        @foreach ($contents->skip(4) as $index => $item)
+        @foreach ($contents->skip($skip) as $index => $item)
             <div class="row {{ !$loop->last ? 'mb-3' : '' }} border shadow rounded-2 overflow-hidden {{ $index % 2 != 0 ? 'bg-cyan' : '' }}">
 
                 <!-- Image Column -->
