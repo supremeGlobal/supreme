@@ -7,7 +7,7 @@
 <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
 <script>
     $('.table').DataTable({
-        "pageLength": 15,
+        "pageLength": 100,
         "lengthMenu": [
             [15, 25, 50, -1],
             [15, 25, 50, "All"]

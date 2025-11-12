@@ -96,24 +96,33 @@
         let lastTime = null;
         let pos = 0;
 
+        // Calculate total width of all client items
+        function getTrackWidth() {
+            return Array.from(track.children).reduce(
+                (total, el) => total + el.offsetWidth + 32, // 2rem gap ≈ 32px
+                0
+            );
+        }
+
         function animate(time) {
             if (lastTime !== null) {
-                const delta = (time - lastTime) / 1000; // seconds since last frame
-                pos -= speed * delta; // move at constant px/sec
+                const delta = (time - lastTime) / 1000; // seconds
+                pos -= speed * delta; // move leftwards
+
+                const trackWidth = getTrackWidth();
                 track.style.transform = `translateX(${pos}px)`;
 
-                // check if first element is fully outside left
-                const first = track.children[0];
-                const firstWidth = first.offsetWidth + 32; // width + gap (2rem ≈ 32px)
-                if (pos <= -firstWidth) {
-                    pos += firstWidth;
-                    track.appendChild(first); // move smoothly to end
-                    track.style.transform = `translateX(${pos}px)`;
+                // if the whole track scrolled past left edge, reset to start from right
+                if (pos <= -trackWidth) {
+                    pos = window.innerWidth;
                 }
             }
             lastTime = time;
             requestAnimationFrame(animate);
         }
+
+        // Start with the entire track off-screen to the right
+        pos = window.innerWidth;
 
         requestAnimationFrame(animate);
     });

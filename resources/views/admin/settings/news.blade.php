@@ -38,7 +38,9 @@
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}" data-company_id="{{ $item->company_id }}"
                                                 data-subject="{{ $item->subject }}"
-                                                data-details="{{ htmlspecialchars($item->details) }}" data-bs-toggle="modal"
+                                                data-details="{{ $item->details }}" 
+												
+												data-bs-toggle="modal"
                                                 data-bs-target="#editNews">
 												<i class="fa-solid fa-pen-to-square me-1"></i> Edit
                                             </button>

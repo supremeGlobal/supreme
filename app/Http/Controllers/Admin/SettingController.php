@@ -138,7 +138,7 @@ class SettingController extends Controller
 		$path = null;
 
 		if ($request->hasFile('image')) {
-			$path = $this->uploadImage($request->image, 'clients/');
+			$path = $this->uploadImage($request->image, 'clients');
 		}
 
 		Client::create([
@@ -165,7 +165,7 @@ class SettingController extends Controller
 			}
 
 			// Upload new image via your helper
-			$path = $this->uploadImage($request->image, 'clients/');
+			$path = $this->uploadImage($request->image, 'clients');
 			$client->image = $path;
 		}
 

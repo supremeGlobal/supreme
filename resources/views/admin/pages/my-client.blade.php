@@ -53,7 +53,7 @@
                                                         {{ $item->pivot->status == 'active' ? 'checked' : '' }} />
                                                 </div>
 
-                                                <a href="{{ url('admin/itemDelete', ['CompanyClient', $item->pivot->id, 'tabName']) }}" onclick="return confirm('Are you want to delete this?')"
+                                                <a href="{{ url('admin/itemDelete', ['CompanyClient', $item->pivot->id]) }}" onclick="return confirm('Are you want to delete this?')"
                                                     class="btn btn-sm btn-outline-danger w-50 fw-bold">
                                                     <i class="fa-solid fa-trash me-1"></i> Delete
                                                 </a>

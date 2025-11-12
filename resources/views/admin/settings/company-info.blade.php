@@ -39,7 +39,7 @@
                                                 data-id="{{ $item->id }}" 
 												data-company_id="{{ $item->company_id }}"
                                                 data-key="{{ $item->key }}"
-                                                data-value="{{ htmlspecialchars($item->value) }}" 
+                                                data-value="{{ $item->value }}" 
 												data-bs-toggle="modal"
                                                 data-bs-target="#editInfo">
                                                 <i class="fa-solid fa-pen-to-square me-1"></i> Edit

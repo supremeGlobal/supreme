@@ -42,8 +42,7 @@
                                             <button type="button" class="btn btn-outline-primary btn-edit"
                                                 data-id="{{ $item->id }}"
                                                 data-image="{{ asset($item->image) }}"
-                                                data-details={{ htmlspecialchars($item->details) }}
-												
+                                                data-details="{{ $item->details }}"																								
 												data-bs-toggle="modal"
                                                 data-bs-target="#editManagement">
                                                 <i class="fa-solid fa-pen-to-square me-1"></i> Edit
