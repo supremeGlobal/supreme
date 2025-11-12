@@ -2,7 +2,13 @@
 
 @section('content')   
 	{{-- slider --}}
-	@php $companyName = 'Supreme Tea'; @endphp
+	@php 
+		$companyName = 'Supreme Tea';
+
+		$office_location = $companyInfo['supreme_tea_location'];        
+        $office_help_desk = $companyInfo['contact_number'];        
+        $office_location_map = $companyInfo['supreme_tea_location_map'];
+	@endphp
 	@include('frontend.partials.slider')
 
 	{{-- about us --}}

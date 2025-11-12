@@ -4,6 +4,10 @@
 	{{-- slider --}}
 	@php
 		$companyName = 'A&A Auto Bricks Industries Ltd';
+
+		$office_location = $companyInfo['auto_bricks_location'];
+        $office_help_desk = $companyInfo['contact_number'];
+        $office_location_map = $companyInfo['auto_bricks_location_map'];
 	@endphp
 	@include('frontend.partials.slider')
 

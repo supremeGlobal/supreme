@@ -4,6 +4,10 @@
     {{-- slider --}}
     @php
         $companyName = 'Dar Kafaa Al-Alia';
+
+		$office_location = $companyInfo['saudi_office_location'];        
+        $office_help_desk = $companyInfo['saudi_office_help_desk'];        
+        $office_location_map = $companyInfo['saudi_office_location_map'];
     @endphp
 
     @include('frontend.partials.slider')

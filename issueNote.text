@@ -1,0 +1,16 @@
+Tast list
+[edit/delete] category content not working
+[edit/delete] content not working
+
+Buttom part need route add 
+PageController(it can convert Setting controller), SettingController both should connect one controller
+Summernote not working sometime all option
+
+Optional: FrontController can add route code
+Frontend all code should add dynamic
+
+Email side should add file also, delete button problem and some design also
+
+All company sidebar connect url to route not web.php, it need sidebar.blade.php
+
+job section need one task...

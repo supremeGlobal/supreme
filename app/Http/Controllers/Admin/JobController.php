@@ -106,7 +106,7 @@ class JobController extends Controller
 		// 	: null;
 
 		if ($request->hasFile('file')) {
-			$path = $this->uploadImage($request->file, 'job_portal/');
+			$path = $this->uploadImage($request->file, 'job_portal');
 		}
 
 		JobRequest::create([

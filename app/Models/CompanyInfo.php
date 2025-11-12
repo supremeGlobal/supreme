@@ -28,7 +28,6 @@ class CompanyInfo extends Model
             'linkedin'                 => '',
             'youtube'                  => '',
             'twitter'                  => '',
-            'github'                   => '',
 		],
 		2 => [
             'supreme_tea_location'     => 'Chakravita, Jagdal, Panchagarh, Bangladesh',
